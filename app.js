@@ -320,6 +320,7 @@
   const orbitBodies = orbitSystem ? [...orbitSystem.querySelectorAll('[data-orbit-node]')] : [];
   let orbitFrame = 0;
   let orbitStart = 0;
+  let orbitElapsed = 0;
 
   function orbitPosition(body, elapsed) {
     const a = Number(body.dataset.a);
@@ -343,7 +344,7 @@
 
   function renderOrbit(timestamp) {
     if (!orbitStart) orbitStart = timestamp;
-    const elapsed = (timestamp - orbitStart) / 1000;
+    const elapsed = orbitElapsed + (timestamp - orbitStart) / 1000;
     orbitBodies.forEach(body => orbitPosition(body, elapsed));
     orbitFrame = window.requestAnimationFrame(renderOrbit);
   }
@@ -359,9 +360,10 @@
       orbitStart = 0;
       orbitFrame = window.requestAnimationFrame(renderOrbit);
     } else if ((!overviewActive || !motionAllowed) && orbitFrame) {
+      orbitElapsed += orbitStart ? (performance.now() - orbitStart) / 1000 : 0;
       window.cancelAnimationFrame(orbitFrame);
       orbitFrame = 0;
-      if (orbitBodies.length) orbitBodies.forEach(body => orbitPosition(body, 0));
+      orbitStart = 0;
     }
   }
 
