@@ -314,13 +314,10 @@ html[data-theme="light"] {
 }
 
 body,
-.sidebar,
 .topbar,
 .welcome-section,
 .welcome-visual,
-.field-card,
 .closing-note,
-.mobile-drawer,
 .mobile-tabbar,
 .preferences-panel,
 .search-box,
@@ -328,6 +325,15 @@ body,
   transition-property: background-color, color, border-color;
   transition-duration: var(--theme-transition);
   transition-timing-function: var(--ease);
+}
+.sidebar {
+  transition: transform var(--medium) var(--ease), background-color var(--theme-transition) var(--ease), color var(--theme-transition) var(--ease), border-color var(--theme-transition) var(--ease);
+}
+.mobile-drawer {
+  transition: transform var(--medium) var(--ease), background-color var(--theme-transition) var(--ease), color var(--theme-transition) var(--ease), border-color var(--theme-transition) var(--ease);
+}
+.field-card {
+  transition: border-color var(--fast) var(--ease), background-color var(--fast) var(--ease), color var(--theme-transition) var(--ease), transform var(--fast) var(--ease);
 }
 
 .welcome-section[data-enter] {
@@ -356,10 +362,10 @@ body,
 .preferences-toggle { width: 40px; height: 40px; }
 .preferences-toggle svg { width: 19px; height: 19px; }
 .preferences-panel {
-  position: absolute;
+  position: fixed;
   z-index: 60;
-  top: calc(100% + 8px);
-  right: 0;
+  top: calc(var(--topbar-height) + 8px);
+  right: clamp(24px, 4vw, 56px);
   display: grid;
   width: min(292px, calc(100vw - 24px));
   gap: 14px;
