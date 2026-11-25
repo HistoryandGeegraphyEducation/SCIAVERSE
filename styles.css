@@ -260,3 +260,161 @@ body.drawer-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* SCIAVERSE interaction and appearance layer */
+:root {
+  --theme-transition: 180ms;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f3f6f4;
+  --bg-raised: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #e8efec;
+  --line: rgba(28, 51, 45, .12);
+  --line-strong: rgba(28, 51, 45, .2);
+  --text: #172521;
+  --text-soft: #435650;
+  --muted: #63756e;
+  --accent: #187d6b;
+  --accent-ink: #ffffff;
+  --amber: #a66d20;
+  --sidebar-bg: #eaf0ed;
+  --drawer-bg: #f7faf8;
+  --hero-bg: #e7f0ec;
+  --visual-bg: #dfeae5;
+  --search-focus-bg: #ffffff;
+  --card-hover-bg: #f7fbf9;
+  --accent-hover: #136b5c;
+  --muted-strong: #64756f;
+  --muted-soft: #70817a;
+  --muted-dim: #788981;
+  --muted-build: #71817a;
+  --muted-tab: #64756f;
+  --orbit-blue: #526b96;
+  --white-soft: rgba(28, 51, 45, .04);
+  --white-hover: rgba(28, 51, 45, .05);
+  --accent-line: rgba(24, 125, 107, .32);
+  --accent-surface: rgba(24, 125, 107, .07);
+  --accent-active-line: rgba(24, 125, 107, .18);
+  --accent-active: rgba(24, 125, 107, .08);
+  --accent-focus: rgba(24, 125, 107, .45);
+  --accent-hover-line: rgba(24, 125, 107, .36);
+  --accent-icon-line: rgba(24, 125, 107, .18);
+  --accent-icon-bg: rgba(24, 125, 107, .07);
+  --accent-visual-line: rgba(24, 125, 107, .18);
+  --accent-orbit: rgba(43, 109, 95, .3);
+  --amber-orbit-line: rgba(166, 109, 32, .28);
+  --text-orbit: rgba(23, 37, 33, .5);
+  --drawer-overlay: rgba(20, 35, 30, .34);
+  --topbar-bg: rgba(243, 246, 244, .96);
+  --tabbar-bg: rgba(247, 250, 248, .97);
+  --focus-accent-bg: rgba(24, 125, 107, .06);
+}
+
+body,
+.sidebar,
+.topbar,
+.welcome-section,
+.welcome-visual,
+.field-card,
+.closing-note,
+.mobile-drawer,
+.mobile-tabbar,
+.preferences-panel,
+.search-box,
+.icon-button {
+  transition-property: background-color, color, border-color;
+  transition-duration: var(--theme-transition);
+  transition-timing-function: var(--ease);
+}
+
+.welcome-section[data-enter] {
+  animation: hero-arrive 720ms var(--ease) both;
+}
+
+@keyframes hero-arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.orbit-node {
+  transform-box: view-box;
+  transform-origin: center;
+  animation: orbit-drift 28s linear infinite;
+}
+.node-a { animation-duration: 36s; animation-direction: reverse; }
+.node-b { animation-duration: 25s; }
+.node-c { animation-duration: 43s; animation-direction: reverse; }
+
+@keyframes orbit-drift {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.preferences-toggle { width: 40px; height: 40px; }
+.preferences-toggle svg { width: 19px; height: 19px; }
+.preferences-panel {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 8px);
+  right: 0;
+  display: grid;
+  width: min(292px, calc(100vw - 24px));
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .18);
+}
+.preferences-panel[hidden] { display: none !important; }
+.preferences-panel.is-open { animation: preferences-arrive 180ms var(--ease) both; }
+@keyframes preferences-arrive {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.preference-field {
+  display: grid;
+  gap: 6px;
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 600;
+}
+.preference-field select {
+  width: 100%;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--bg-raised);
+  color: var(--text);
+  font: inherit;
+  font-weight: 450;
+}
+.preference-field select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .preferences-toggle {
+    width: 40px;
+    height: 44px;
+    flex-basis: 40px;
+    border: 0;
+  }
+  .preferences-panel {
+    position: fixed;
+    top: calc(var(--topbar-height) + 8px);
+    right: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-section[data-enter] { animation: none; }
+  .orbit-node { animation: none; }
+  .preferences-panel.is-open { animation: none; }
+}
+
