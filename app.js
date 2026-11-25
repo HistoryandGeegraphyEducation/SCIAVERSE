@@ -26,8 +26,10 @@
     if (open) {
       setMobileSearch(false);
       closeMenu?.focus();
-    } else {
+    } else if (window.innerWidth <= 760) {
       openMenu?.focus();
+    } else {
+      document.querySelector('.side-nav .nav-link')?.focus();
     }
   }
 
