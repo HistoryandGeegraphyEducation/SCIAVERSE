@@ -327,19 +327,25 @@
     const eccentricity = Number(body.dataset.e);
     const angle = Number(body.dataset.rotation) * Math.PI / 180;
     const period = Number(body.dataset.period);
-    const meanAnomaly = ((elapsed / period) * Math.PI * 2) % (Math.PI * 2);
+    const phase = Number(body.dataset.phase || 0);
+    const meanAnomaly = ((elapsed / period) * Math.PI * 2 + phase) % (Math.PI * 2);
     let eccentricAnomaly = meanAnomaly;
-    for (let i = 0; i < 6; i += 1) {
+    for (let i = 0; i < 8; i += 1) {
       eccentricAnomaly -= (eccentricAnomaly - eccentricity * Math.sin(eccentricAnomaly) - meanAnomaly)
         / (1 - eccentricity * Math.cos(eccentricAnomaly));
     }
     const b = a * Math.sqrt(1 - eccentricity * eccentricity);
-    const x = a * (Math.cos(eccentricAnomaly) - eccentricity);
-    const y = b * Math.sin(eccentricAnomaly);
-    const cx = 210 + x * Math.cos(angle) - y * Math.sin(angle);
-    const cy = 137 + x * Math.sin(angle) + y * Math.cos(angle);
-    body.setAttribute('cx', cx.toFixed(2));
-    body.setAttribute('cy', cy.toFixed(2));
+    const localX = a * (Math.cos(eccentricAnomaly) - eccentricity);
+    const localY = b * Math.sin(eccentricAnomaly);
+    const focusX = 210;
+    const focusY = 135;
+    const centerOffset = a * eccentricity;
+    const x = focusX + centerOffset * Math.cos(angle)
+      + localX * Math.cos(angle) - localY * Math.sin(angle);
+    const y = focusY + centerOffset * Math.sin(angle)
+      + localX * Math.sin(angle) + localY * Math.cos(angle);
+    body.setAttribute('cx', x.toFixed(3));
+    body.setAttribute('cy', y.toFixed(3));
   }
 
   function renderOrbit(timestamp) {
