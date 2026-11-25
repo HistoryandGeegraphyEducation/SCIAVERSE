@@ -567,3 +567,141 @@ html[data-theme="light"] {
   .region-scene * { animation: none !important; }
   .main-content::before { transform: none; }
 }
+
+
+/* SCIAVERSE motion pass: orbital geometry + four connected scientific scenes */
+:root {
+  --scene-ink: rgba(130, 207, 191, .34);
+  --scene-flow: rgba(143, 184, 213, .48);
+  --scene-node: rgba(224, 190, 130, .78);
+  --scene-line-speed: 18s;
+}
+html[data-theme="light"] {
+  --scene-ink: rgba(29, 121, 105, .32);
+  --scene-flow: rgba(62, 112, 160, .42);
+  --scene-node: rgba(157, 103, 37, .72);
+}
+.welcome-visual { position: relative; }
+.orbit-visual { overflow: visible; }
+.orbit-lines ellipse {
+  stroke: var(--scene-ink);
+  stroke-width: 1;
+  stroke-dasharray: 2.5 7;
+}
+.orbit-core {
+  fill: #e9c27e;
+  stroke: rgba(233,194,126,.25);
+  stroke-width: 7;
+}
+.orbit-node { filter: none; }
+.orbit-node.node-a { fill: #a8b8e5; }
+.orbit-node.node-b { fill: #e9c27e; }
+.orbit-node.node-c { fill: #83cdbb; }
+.scene-bridge {
+  fill: none;
+  stroke: var(--scene-flow);
+  stroke-width: 1.15;
+  stroke-dasharray: 3 10;
+  opacity: .72;
+  animation: scene-bridge-flow 18s linear infinite;
+}
+.region-block, .welcome-section { position: relative; isolation: isolate; }
+.region-block::before, .welcome-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  opacity: .48;
+  background:
+    linear-gradient(115deg, transparent 0 46%, rgba(125,190,180,.035) 46.2% 46.5%, transparent 46.7%),
+    linear-gradient(25deg, transparent 0 72%, rgba(125,190,180,.03) 72.2% 72.5%, transparent 72.7%);
+}
+.region-scene {
+  width: min(78%, 620px);
+  opacity: .76;
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.4) 12%, #000 42%, #000 100%);
+}
+.scene-earth-contours {
+  stroke: var(--scene-ink);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 8;
+  animation: contour-trace 32s linear infinite paused;
+}
+.scene-earth-seam {
+  stroke: var(--scene-node);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 8;
+  animation: contour-seam 22s linear infinite paused;
+}
+.scene-wave-lines {
+  stroke: var(--scene-flow);
+  stroke-width: 1.4;
+  stroke-dasharray: 18 9 3 9;
+  animation: wave-propagation 16s linear infinite paused;
+}
+.scene-wave-particles {
+  fill: var(--scene-node);
+  animation: wave-particle-flow 7s ease-in-out infinite alternate paused;
+}
+.scene-network-orbit {
+  stroke: var(--scene-ink);
+  stroke-width: 1.25;
+  stroke-dasharray: 5 7;
+  animation: network-flow 24s linear infinite paused;
+}
+.scene-network-nodes {
+  fill: var(--scene-node);
+  animation: network-pulse 5s ease-in-out infinite alternate paused;
+}
+.region-scene.is-in-view .scene-earth-contours,
+.region-scene.is-in-view .scene-earth-seam,
+.region-scene.is-in-view .scene-wave-lines,
+.region-scene.is-in-view .scene-wave-particles,
+.region-scene.is-in-view .scene-network-orbit,
+.region-scene.is-in-view .scene-network-nodes { animation-play-state: running; }
+.fields-section .region-scene { width: 90%; opacity: .62; }
+.spaces-section .region-scene { width: 88%; opacity: .68; }
+.library-section .region-scene { width: 92%; opacity: .72; }
+.fields-section, .spaces-section, .library-section {
+  border-color: color-mix(in srgb, var(--line) 76%, var(--scene-ink));
+}
+@keyframes scene-bridge-flow {
+  to { stroke-dashoffset: -260; }
+}
+@keyframes contour-trace {
+  to { stroke-dashoffset: -240; transform: translate3d(-9px, 0, 0); }
+}
+@keyframes contour-seam {
+  to { stroke-dashoffset: 130; transform: translate3d(8px, 0, 0); }
+}
+@keyframes wave-propagation {
+  to { stroke-dashoffset: -220; transform: translate3d(-18px, 0, 0); }
+}
+@keyframes wave-particle-flow {
+  from { transform: translate3d(-8px, -4px, 0); }
+  to { transform: translate3d(12px, 7px, 0); }
+}
+@keyframes network-flow {
+  to { stroke-dashoffset: -180; transform: rotate(8deg); }
+}
+@keyframes network-pulse {
+  from { opacity: .48; transform: scale(.96); }
+  to { opacity: .95; transform: scale(1.04); }
+}
+@media (max-width: 760px) {
+  .welcome-section::before, .region-block::before { opacity: .68; }
+  .region-scene { width: 100%; opacity: .68; }
+  .fields-section .region-scene, .spaces-section .region-scene, .library-section .region-scene {
+    width: 100%;
+    opacity: .62;
+  }
+  .scene-bridge { opacity: .88; stroke-width: 1.4; }
+  .orbit-visual { max-height: 260px; }
+}
+@media (max-width: 360px) {
+  .region-scene { opacity: .56; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene-bridge, .region-scene *, .orbit-node { animation: none !important; }
+}
