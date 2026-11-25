@@ -424,3 +424,146 @@ body,
   .preferences-panel.is-open { animation: none; }
 }
 
+
+
+/* SCIAVERSE regional motion system */
+:root {
+  --region-line: rgba(131, 216, 198, .13);
+  --region-earth: rgba(131, 216, 198, .42);
+  --region-wave: rgba(166, 181, 220, .42);
+  --region-network: rgba(217, 180, 122, .38);
+  --region-duration: 64s;
+}
+html[data-theme="light"] {
+  --region-line: rgba(24, 125, 107, .14);
+  --region-earth: rgba(24, 125, 107, .38);
+  --region-wave: rgba(82, 107, 150, .36);
+  --region-network: rgba(166, 109, 32, .34);
+}
+.main-content { position: relative; isolation: isolate; }
+.main-content::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 13px;
+  width: 1px;
+  content: "";
+  background: linear-gradient(180deg, var(--region-earth), var(--region-wave) 42%, var(--region-network) 76%, var(--accent-line));
+  transform-origin: top;
+  opacity: .7;
+}
+.region-block {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--bg-raised) 88%, transparent);
+}
+.region-block > :not(.region-scene) { position: relative; z-index: 1; }
+.region-block .section-heading { margin-bottom: 16px; }
+.region-scene {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: min(64%, 560px);
+  height: 100%;
+  min-height: 190px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: .52;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 28%, #000 100%);
+}
+.region-scene svg { width: 100%; height: 100%; overflow: visible; }
+.region-scene path, .region-scene ellipse, .region-scene circle {
+  vector-effect: non-scaling-stroke;
+}
+.region-scene.is-in-view .scene-earth-contours,
+.region-scene.is-in-view .scene-earth-seam,
+.region-scene.is-in-view .scene-wave-lines,
+.region-scene.is-in-view .scene-wave-particles,
+.region-scene.is-in-view .scene-network-orbit,
+.region-scene.is-in-view .scene-network-nodes { animation-play-state: running; }
+.scene-earth-contours {
+  stroke: var(--region-earth);
+  stroke-width: 1.05;
+  transform-origin: 360px 130px;
+  animation: earth-contour-drift 72s ease-in-out infinite alternate paused;
+}
+.scene-earth-seam {
+  stroke: var(--accent);
+  stroke-width: 1.3;
+  opacity: .55;
+  transform-origin: 380px 130px;
+  animation: earth-seam-drift 54s ease-in-out infinite alternate paused;
+}
+.scene-wave-lines {
+  stroke: var(--region-wave);
+  stroke-width: 1.2;
+  transform-origin: center;
+  animation: wave-field-drift 58s ease-in-out infinite alternate paused;
+}
+.scene-wave-particles {
+  fill: var(--orbit-blue);
+  transform-origin: center;
+  animation: wave-particle-drift 38s ease-in-out infinite alternate paused;
+}
+.scene-network-orbit {
+  stroke: var(--region-network);
+  stroke-width: 1.05;
+  transform-origin: 260px 130px;
+  animation: network-rotation 88s linear infinite paused;
+}
+.scene-network-nodes {
+  fill: var(--amber);
+  transform-origin: 260px 130px;
+  animation: network-counterflow 88s linear infinite paused;
+}
+.library-section { display: grid; align-items: center; min-height: 220px; }
+.library-card { width: min(100%, 620px); min-height: 170px; }
+.fields-section, .spaces-section, .library-section { margin-top: 32px; }
+.fields-section .field-card, .spaces-section .space-card, .library-card {
+  background-color: color-mix(in srgb, var(--bg-raised) 94%, transparent);
+}
+@keyframes earth-contour-drift {
+  from { transform: translate3d(0, -7px, 0) rotate(-1deg); }
+  to { transform: translate3d(0, 7px, 0) rotate(1deg); }
+}
+@keyframes earth-seam-drift {
+  from { transform: translate3d(-5px, 0, 0); }
+  to { transform: translate3d(5px, 0, 0); }
+}
+@keyframes wave-field-drift {
+  from { transform: translate3d(-12px, 0, 0) scale(1); }
+  to { transform: translate3d(12px, 0, 0) scale(1.015); }
+}
+@keyframes wave-particle-drift {
+  from { transform: translate3d(-9px, -3px, 0); }
+  to { transform: translate3d(9px, 3px, 0); }
+}
+@keyframes network-rotation {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(5deg); }
+}
+@keyframes network-counterflow {
+  from { transform: rotate(5deg); }
+  to { transform: rotate(-5deg); }
+}
+@media (max-width: 760px) {
+  .main-content::before { left: 4px; opacity: .48; }
+  .region-block { padding: 16px 12px; border-radius: 16px; }
+  .region-scene { width: 88%; min-height: 150px; opacity: .34; }
+  .library-section { min-height: 190px; }
+  .library-card { min-height: 150px; }
+}
+@media (max-width: 360px) {
+  .region-block { padding: 14px 10px; }
+  .region-scene { width: 100%; opacity: .26; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .region-scene * { animation: none !important; }
+  .main-content::before { transform: none; }
+}
