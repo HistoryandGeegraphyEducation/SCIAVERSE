@@ -54,7 +54,7 @@
       chemistry: 'Hóa học',
       biology: 'Sinh học',
       mathComputerScience: 'Toán học &amp; tin học',
-      searchEmpty: 'Không tìm thấy lĩnh vực phù hợp.',
+      searchEmpty: 'Không tìm thấy nội dung phù hợp.',
       spacesTitle: 'Không gian khoa học',
       scientificSimulation: 'Mô phỏng khoa học',
       virtualExperiments: 'Thực nghiệm ảo',
@@ -100,7 +100,7 @@
       chemistry: 'Chemistry',
       biology: 'Biology',
       mathComputerScience: 'Mathematics &amp; computer science',
-      searchEmpty: 'No matching fields found.',
+      searchEmpty: 'No matching content found.',
       spacesTitle: 'Science spaces',
       scientificSimulation: 'Scientific simulations',
       virtualExperiments: 'Virtual experiments',
@@ -199,7 +199,10 @@
     preferencesPanel.hidden = !open;
     preferencesPanel.classList.toggle('is-open', open);
     preferencesToggle.setAttribute('aria-expanded', String(open));
-    if (open) languageSelect?.focus();
+    if (open) {
+      setMobileSearch(false);
+      languageSelect?.focus();
+    }
   }
 
   function setDrawer(open) {
@@ -209,6 +212,9 @@
     drawer.inert = !open;
     appShell?.toggleAttribute('inert', open);
     openMenu?.setAttribute('aria-expanded', String(open));
+    openMenu?.setAttribute('aria-label', open
+      ? translations[currentLanguage].closeNavigation
+      : translations[currentLanguage].openNavigation);
     backdrop.hidden = !open;
     requestAnimationFrame(() => backdrop.classList.toggle('is-visible', open));
     body.classList.toggle('drawer-open', open);
