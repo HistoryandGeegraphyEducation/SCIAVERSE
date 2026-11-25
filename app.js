@@ -1,5 +1,6 @@
 (() => {
   const body = document.body;
+  const root = document.documentElement;
   const collapseButton = document.getElementById('collapseSidebar');
   const openMenu = document.getElementById('openMenu');
   const closeMenu = document.getElementById('closeMenu');
@@ -10,8 +11,188 @@
   const backdrop = document.getElementById('drawerBackdrop');
   const search = document.getElementById('globalSearch');
   const searchEmpty = document.getElementById('searchEmpty');
+  const preferencesToggle = document.getElementById('preferencesToggle');
+  const preferencesPanel = document.getElementById('preferencesPanel');
+  const languageSelect = document.getElementById('languageSelect');
+  const themeSelect = document.getElementById('themeSelect');
   const searchable = [...document.querySelectorAll('[data-search]')];
   const navLinks = [...document.querySelectorAll('[data-section]')];
+
+  const translations = {
+    vi: {
+      skipLink: 'Bỏ qua điều hướng',
+      mainNavigation: 'Điều hướng chính',
+      spacesLabel: 'Không gian',
+      overview: 'Tổng quan',
+      fields: 'Lĩnh vực',
+      toolSpaces: 'Không gian công cụ',
+      library: 'Thư viện',
+      collapse: 'Thu gọn',
+      expandSidebar: 'Mở rộng thanh điều hướng',
+      collapseSidebar: 'Thu gọn thanh điều hướng',
+      searchPlaceholder: 'Tìm kiếm lĩnh vực, học liệu...',
+      openSearch: 'Mở tìm kiếm',
+      closeSearch: 'Đóng tìm kiếm',
+      openNavigation: 'Mở điều hướng',
+      closeNavigation: 'Đóng điều hướng',
+      preferences: 'Cài đặt',
+      languageLabel: 'Ngôn ngữ',
+      themeLabel: 'Giao diện',
+      themeSystem: 'Theo thiết bị',
+      themeDark: 'Tối',
+      themeLight: 'Sáng',
+      pageTitle: 'Không gian khoa học số<br>đa lĩnh vực.',
+      startExploring: 'Bắt đầu khám phá',
+      fieldsTitle: 'Khám phá theo lĩnh vực',
+      earthEnvironment: 'Trái Đất &amp; môi trường',
+      spaceAstronomy: 'Vũ trụ &amp; thiên văn',
+      physics: 'Vật lí',
+      chemistry: 'Hóa học',
+      biology: 'Sinh học',
+      mathComputerScience: 'Toán học &amp; tin học',
+      searchEmpty: 'Không tìm thấy lĩnh vực phù hợp.',
+      spacesTitle: 'Không gian khoa học',
+      scientificSimulation: 'Mô phỏng khoa học',
+      virtualExperiments: 'Thực nghiệm ảo',
+      scientificData: 'Dữ liệu khoa học',
+      learningLibrary: 'Thư viện học liệu',
+      copyright: '© 2026 SCIAVERSE. Bảo lưu mọi quyền.',
+      mobileNavigation: 'Điều hướng trên điện thoại',
+      navigation: 'Điều hướng',
+      quickNavigation: 'Điều hướng nhanh'
+    },
+    en: {
+      skipLink: 'Skip navigation',
+      mainNavigation: 'Main navigation',
+      spacesLabel: 'Spaces',
+      overview: 'Overview',
+      fields: 'Fields',
+      toolSpaces: 'Science tools',
+      library: 'Library',
+      collapse: 'Collapse',
+      expandSidebar: 'Expand navigation',
+      collapseSidebar: 'Collapse navigation',
+      searchPlaceholder: 'Search fields and learning resources...',
+      openSearch: 'Open search',
+      closeSearch: 'Close search',
+      openNavigation: 'Open navigation',
+      closeNavigation: 'Close navigation',
+      preferences: 'Settings',
+      languageLabel: 'Language',
+      themeLabel: 'Appearance',
+      themeSystem: 'Use device setting',
+      themeDark: 'Dark',
+      themeLight: 'Light',
+      pageTitle: 'Digital science environment<br>across disciplines.',
+      startExploring: 'Start exploring',
+      fieldsTitle: 'Explore by field',
+      earthEnvironment: 'Earth &amp; environment',
+      spaceAstronomy: 'Space &amp; astronomy',
+      physics: 'Physics',
+      chemistry: 'Chemistry',
+      biology: 'Biology',
+      mathComputerScience: 'Mathematics &amp; computer science',
+      searchEmpty: 'No matching fields found.',
+      spacesTitle: 'Science spaces',
+      scientificSimulation: 'Scientific simulations',
+      virtualExperiments: 'Virtual experiments',
+      scientificData: 'Scientific data',
+      learningLibrary: 'Learning library',
+      copyright: '© 2026 SCIAVERSE. All rights reserved.',
+      mobileNavigation: 'Mobile navigation',
+      navigation: 'Navigation',
+      quickNavigation: 'Quick navigation'
+    }
+  };
+
+  let currentLanguage = 'vi';
+  let themeChoice = 'dark';
+  let systemThemeQuery = null;
+
+  function readPreference(key, fallback) {
+    try {
+      return localStorage.getItem(key) || fallback;
+    } catch {
+      return fallback;
+    }
+  }
+
+  function savePreference(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch {
+      // The interface still works when storage is unavailable.
+    }
+  }
+
+  function applyLanguage(language) {
+    currentLanguage = language === 'en' ? 'en' : 'vi';
+    const dictionary = translations[currentLanguage];
+    root.lang = currentLanguage;
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const value = dictionary[element.dataset.i18n];
+      if (value !== undefined) {
+        if (element.dataset.i18n === 'pageTitle') element.innerHTML = value;
+        else element.innerHTML = value;
+      }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+      const value = dictionary[element.dataset.i18nPlaceholder];
+      if (value !== undefined) element.setAttribute('placeholder', value);
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(element => {
+      const value = dictionary[element.dataset.i18nAria];
+      if (value !== undefined) element.setAttribute('aria-label', value);
+    });
+    if (document.title) {
+      document.title = currentLanguage === 'en'
+        ? 'SCIAVERSE: Digital Science Environment'
+        : 'SCIAVERSE: Không gian khoa học số';
+    }
+    const description = document.querySelector('meta[name="description"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const descriptionText = currentLanguage === 'en'
+      ? 'SCIAVERSE: A multidisciplinary digital science environment.'
+      : 'SCIAVERSE: Môi trường khoa học số đa lĩnh vực.';
+    if (description) description.content = descriptionText;
+    if (ogDescription) ogDescription.content = descriptionText;
+    if (ogTitle) ogTitle.content = document.title;
+    if (languageSelect) languageSelect.value = currentLanguage;
+    if (mobileSearchToggle) {
+      mobileSearchToggle.setAttribute('aria-label', searchBox?.classList.contains('is-open')
+        ? dictionary.closeSearch : dictionary.openSearch);
+    }
+    if (openMenu) openMenu.setAttribute('aria-label', dictionary.openNavigation);
+    if (closeMenu) closeMenu.setAttribute('aria-label', dictionary.closeNavigation);
+    if (collapseButton) {
+      const collapsed = root.classList.contains('sidebar-collapsed');
+      collapseButton.setAttribute('aria-label', collapsed ? dictionary.expandSidebar : dictionary.collapseSidebar);
+    }
+    if (search) filterContent(search.value);
+    savePreference('sciaverse-language', currentLanguage);
+  }
+
+  function applyTheme(choice) {
+    themeChoice = ['system', 'light', 'dark'].includes(choice) ? choice : 'dark';
+    const systemPrefersLight = systemThemeQuery?.matches ?? false;
+    const resolved = themeChoice === 'system'
+      ? (systemPrefersLight ? 'light' : 'dark')
+      : themeChoice;
+    root.dataset.theme = resolved;
+    if (themeSelect) themeSelect.value = themeChoice;
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = resolved === 'light' ? '#f3f6f4' : '#10171b';
+    savePreference('sciaverse-theme', themeChoice);
+  }
+
+  function setPreferences(open) {
+    if (!preferencesPanel || !preferencesToggle) return;
+    preferencesPanel.hidden = !open;
+    preferencesPanel.classList.toggle('is-open', open);
+    preferencesToggle.setAttribute('aria-expanded', String(open));
+    if (open) languageSelect?.focus();
+  }
 
   function setDrawer(open) {
     if (!drawer || !backdrop) return;
@@ -25,6 +206,7 @@
     body.classList.toggle('drawer-open', open);
     if (open) {
       setMobileSearch(false);
+      setPreferences(false);
       closeMenu?.focus();
     } else if (window.innerWidth <= 760) {
       openMenu?.focus();
@@ -36,9 +218,31 @@
   function setMobileSearch(open) {
     searchBox?.classList.toggle('is-open', open);
     mobileSearchToggle?.setAttribute('aria-expanded', String(open));
-    mobileSearchToggle?.setAttribute('aria-label', open ? 'Đóng tìm kiếm' : 'Mở tìm kiếm');
-    if (open) search?.focus();
-    else if (document.activeElement === search) search.blur();
+    mobileSearchToggle?.setAttribute('aria-label', open
+      ? translations[currentLanguage].closeSearch
+      : translations[currentLanguage].openSearch);
+    if (open) {
+      setPreferences(false);
+      search?.focus();
+    } else if (document.activeElement === search) {
+      search.blur();
+    }
+  }
+
+  function filterContent(value) {
+    const locale = currentLanguage === 'vi' ? 'vi' : 'en';
+    const query = value.trim().toLocaleLowerCase(locale);
+    let matches = 0;
+    searchable.forEach(item => {
+      const indexedText = currentLanguage === 'en'
+        ? (item.dataset.searchEn || '')
+        : (item.dataset.search || '');
+      const text = `${indexedText} ${item.textContent || ''}`.toLocaleLowerCase(locale);
+      const match = !query || text.includes(query);
+      item.hidden = !match;
+      if (match) matches += 1;
+    });
+    if (searchEmpty) searchEmpty.hidden = !query || matches > 0;
   }
 
   openMenu?.addEventListener('click', () => setDrawer(true));
@@ -46,9 +250,25 @@
   closeMenu?.addEventListener('click', () => setDrawer(false));
   backdrop?.addEventListener('click', () => setDrawer(false));
   drawer?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setDrawer(false)));
+
+  preferencesToggle?.addEventListener('click', () => {
+    setPreferences(preferencesPanel?.hidden ?? true);
+  });
+  languageSelect?.addEventListener('change', event => applyLanguage(event.target.value));
+  themeSelect?.addEventListener('change', event => applyTheme(event.target.value));
+  document.addEventListener('pointerdown', event => {
+    if (!preferencesPanel?.hidden
+      && !preferencesPanel?.contains(event.target)
+      && !preferencesToggle?.contains(event.target)) setPreferences(false);
+  });
+
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && drawer?.classList.contains('is-open')) setDrawer(false);
-    else if (event.key === 'Escape' && searchBox?.classList.contains('is-open')) {
+    if (event.key === 'Escape' && drawer?.classList.contains('is-open')) {
+      setDrawer(false);
+    } else if (event.key === 'Escape' && preferencesPanel && !preferencesPanel.hidden) {
+      setPreferences(false);
+      preferencesToggle?.focus();
+    } else if (event.key === 'Escape' && searchBox?.classList.contains('is-open')) {
       setMobileSearch(false);
       mobileSearchToggle?.focus();
     }
@@ -59,7 +279,7 @@
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     }
-    if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+    if (event.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) {
       event.preventDefault();
       if (window.innerWidth <= 760) setMobileSearch(true);
       else search?.focus();
@@ -67,22 +287,11 @@
   });
 
   collapseButton?.addEventListener('click', () => {
-    const collapsed = document.documentElement.classList.toggle('sidebar-collapsed');
+    const collapsed = root.classList.toggle('sidebar-collapsed');
+    const dictionary = translations[currentLanguage];
     collapseButton.setAttribute('aria-expanded', String(!collapsed));
-    collapseButton.setAttribute('aria-label', collapsed ? 'Mở rộng thanh điều hướng' : 'Thu gọn thanh điều hướng');
+    collapseButton.setAttribute('aria-label', collapsed ? dictionary.expandSidebar : dictionary.collapseSidebar);
   });
-
-  function filterContent(value) {
-    const query = value.trim().toLocaleLowerCase('vi');
-    let fieldMatches = 0;
-    searchable.forEach(item => {
-      const text = `${item.dataset.search || ''} ${item.textContent || ''}`.toLocaleLowerCase('vi');
-      const match = !query || text.includes(query);
-      item.hidden = !match;
-      if (match && item.classList.contains('field-card')) fieldMatches += 1;
-    });
-    if (searchEmpty) searchEmpty.hidden = !query || fieldMatches > 0;
-  }
 
   search?.addEventListener('input', event => filterContent(event.target.value));
   search?.addEventListener('search', event => filterContent(event.target.value));
@@ -113,6 +322,17 @@
     const id = link.dataset.section;
     if (id) setActiveSection(id);
   }));
+
+  systemThemeQuery = window.matchMedia?.('(prefers-color-scheme: light)') || null;
+  systemThemeQuery?.addEventListener?.('change', () => {
+    if (themeChoice === 'system') applyTheme('system');
+  });
+
+  const savedLanguage = readPreference('sciaverse-language', 'vi');
+  const savedTheme = readPreference('sciaverse-theme', 'dark');
+  applyLanguage(savedLanguage);
+  applyTheme(savedTheme);
+  if (preferencesPanel) preferencesPanel.hidden = true;
 
   window.addEventListener('resize', () => {
     if (window.innerWidth > 760 && drawer?.classList.contains('is-open')) setDrawer(false);
