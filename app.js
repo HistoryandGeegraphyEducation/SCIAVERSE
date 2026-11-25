@@ -314,6 +314,70 @@
     .map(id => document.getElementById(id))
     .filter(Boolean);
 
+  const motionRegions = [...document.querySelectorAll('[data-motion-region]')];
+  const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)') || null;
+  const orbitSystem = document.querySelector('[data-orbit-system]');
+  const orbitBodies = orbitSystem ? [...orbitSystem.querySelectorAll('[data-orbit-node]')] : [];
+  let orbitFrame = 0;
+  let orbitStart = 0;
+
+  function orbitPosition(body, elapsed) {
+    const a = Number(body.dataset.a);
+    const eccentricity = Number(body.dataset.e);
+    const angle = Number(body.dataset.rotation) * Math.PI / 180;
+    const period = Number(body.dataset.period);
+    const meanAnomaly = ((elapsed / period) * Math.PI * 2) % (Math.PI * 2);
+    let eccentricAnomaly = meanAnomaly;
+    for (let i = 0; i < 6; i += 1) {
+      eccentricAnomaly -= (eccentricAnomaly - eccentricity * Math.sin(eccentricAnomaly) - meanAnomaly)
+        / (1 - eccentricity * Math.cos(eccentricAnomaly));
+    }
+    const b = a * Math.sqrt(1 - eccentricity * eccentricity);
+    const x = a * (Math.cos(eccentricAnomaly) - eccentricity);
+    const y = b * Math.sin(eccentricAnomaly);
+    const cx = 210 + x * Math.cos(angle) - y * Math.sin(angle);
+    const cy = 137 + x * Math.sin(angle) + y * Math.cos(angle);
+    body.setAttribute('cx', cx.toFixed(2));
+    body.setAttribute('cy', cy.toFixed(2));
+  }
+
+  function renderOrbit(timestamp) {
+    if (!orbitStart) orbitStart = timestamp;
+    const elapsed = (timestamp - orbitStart) / 1000;
+    orbitBodies.forEach(body => orbitPosition(body, elapsed));
+    orbitFrame = window.requestAnimationFrame(renderOrbit);
+  }
+
+  function syncMotion() {
+    const motionAllowed = !reducedMotion?.matches && !document.hidden;
+    motionRegions.forEach(region => {
+      const active = motionAllowed && region.classList.contains('is-in-view');
+      region.querySelector('.region-scene')?.classList.toggle('is-in-view', active);
+    });
+    const overviewActive = motionAllowed && document.getElementById('overview')?.classList.contains('is-in-view');
+    if (overviewActive && orbitBodies.length && !orbitFrame) {
+      orbitStart = 0;
+      orbitFrame = window.requestAnimationFrame(renderOrbit);
+    } else if ((!overviewActive || !motionAllowed) && orbitFrame) {
+      window.cancelAnimationFrame(orbitFrame);
+      orbitFrame = 0;
+      if (orbitBodies.length) orbitBodies.forEach(body => orbitPosition(body, 0));
+    }
+  }
+
+  if ('IntersectionObserver' in window && motionRegions.length) {
+    const motionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.target.classList.toggle('is-in-view', entry.isIntersecting));
+      syncMotion();
+    }, { rootMargin: '120px 0px 120px 0px', threshold: 0 });
+    motionRegions.forEach(region => motionObserver.observe(region));
+  } else {
+    motionRegions.forEach(region => region.classList.add('is-in-view'));
+    syncMotion();
+  }
+  reducedMotion?.addEventListener?.('change', syncMotion);
+  document.addEventListener('visibilitychange', syncMotion);
+
   function setActiveSection(id) {
     navLinks.forEach(link => {
       const active = link.dataset.section === id;
