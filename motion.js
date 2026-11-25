@@ -7,6 +7,10 @@
   const root = document.documentElement;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const states = new Map();
+  const canvasSupported = canvases.every(canvas => {
+    try { return Boolean(canvas.getContext('2d')); } catch { return false; }
+  });
+  if (!canvasSupported) return;
   const TAU = Math.PI * 2;
   let frame = 0;
   let lastFrame = 0;
@@ -65,7 +69,7 @@
 
   function drawOrbit(ctx, w, h, t, p) {
     const cx = w * .5, cy = h * .5;
-    const scale = Math.min(w / 520, h / 270);
+    const scale = Math.min(w / 460, (h * .78) / 410);
     const specs = [
       { a: 205 * scale, e: .22, r: -.22, period: 21, phase: .35, color: p.blue, radius: 5.2 },
       { a: 151 * scale, e: .16, r: .48, period: 31, phase: 2.0, color: p.warm, radius: 6.1 },
@@ -278,26 +282,29 @@
     }
   }
 
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      const state=states.get(entry.target);
-      if(state) state.active=entry.isIntersecting;
-    });
-    updateLoop();
-  },{rootMargin:'100px 0px 100px 0px',threshold:0.01});
+  canvases.forEach(canvas=>states.set(canvas,{active:false}));
+  if ('IntersectionObserver' in window) {
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        const state=states.get(entry.target);
+        if(state) state.active=entry.isIntersecting;
+      });
+      updateLoop();
+    },{rootMargin:'100px 0px 100px 0px',threshold:0.01});
+    canvases.forEach(canvas=>observer.observe(canvas));
+  } else {
+    states.forEach(state=>{ state.active=true; });
+  }
 
-  canvases.forEach(canvas=>{
-    states.set(canvas,{active:false});
-    observer.observe(canvas);
-  });
-
-  const resizeObserver=new ResizeObserver(entries=>{
-    entries.forEach(({target})=>{
-      const state=states.get(target);
-      if(state) state.needsResize=true;
+  if ('ResizeObserver' in window) {
+    const resizeObserver=new ResizeObserver(entries=>{
+      entries.forEach(({target})=>{
+        const state=states.get(target);
+        if(state) state.needsResize=true;
+      });
     });
-  });
-  canvases.forEach(canvas=>resizeObserver.observe(canvas));
+    canvases.forEach(canvas=>resizeObserver.observe(canvas));
+  }
 
   reduced.addEventListener('change',()=>{
     canvases.forEach(canvas=>{
