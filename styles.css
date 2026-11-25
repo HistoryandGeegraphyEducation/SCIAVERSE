@@ -603,8 +603,10 @@ html[data-theme="light"] {
   stroke-width: 1.15;
   stroke-dasharray: 3 10;
   opacity: .72;
-  animation: scene-bridge-flow 18s linear infinite;
+  animation: scene-bridge-flow 18s linear infinite paused;
 }
+.welcome-section.is-in-view .scene-bridge,
+.region-scene.is-in-view .scene-bridge { animation-play-state: running; }
 .region-block, .welcome-section { position: relative; isolation: isolate; }
 .region-block::before, .welcome-section::before {
   content: "";
