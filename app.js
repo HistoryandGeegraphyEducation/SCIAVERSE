@@ -59,7 +59,8 @@
     }
     if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
       event.preventDefault();
-      search?.focus();
+      if (window.innerWidth <= 760) setMobileSearch(true);
+      else search?.focus();
     }
   });
 
