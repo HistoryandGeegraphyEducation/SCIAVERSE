@@ -1,0 +1,9 @@
+[submodule "tools/taste-skill"]
+	path = tools/taste-skill
+	url = https://github.com/Leonxlnx/taste-skill.git
+[submodule "tools/hallmark"]
+	path = tools/hallmark
+	url = https://github.com/Nutlope/hallmark.git
+[submodule "tools/unslop"]
+	path = tools/unslop
+	url = https://github.com/heydamir/unslop.git
