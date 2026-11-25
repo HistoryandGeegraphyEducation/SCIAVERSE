@@ -1,22 +1,27 @@
 <!doctype html>
-<html lang="vi" data-theme="dark">
+<html lang="vi" data-theme="dark" data-type="software" data-radius="soft" data-buttons="solid" data-motion="quiet">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#10171b">
-  <meta name="description" content="SCIAVERSE — Môi trường khoa học số đa lĩnh vực.">
-  <title>SCIAVERSE — Không gian khoa học số</title>
+  <meta name="description" content="SCIAVERSE: Môi trường khoa học số đa lĩnh vực.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta property="og:title" content="SCIAVERSE: Không gian khoa học số">
+  <meta property="og:description" content="Môi trường khoa học số đa lĩnh vực.">
+  <meta property="og:type" content="website">
+  <title>SCIAVERSE: Không gian khoa học số</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
 
   <aside class="sidebar" id="sidebar" aria-label="Điều hướng chính">
-    <a class="brand" href="#overview" aria-label="SCIAVERSE — Trang tổng quan">
+    <a class="brand" href="#overview" aria-label="SCIAVERSE: Trang tổng quan">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="5"/><ellipse cx="20" cy="20" rx="16" ry="7" transform="rotate(-34 20 20)"/><path d="M7.8 29.2 32.2 10.8"/></svg>
       </span>
-      <span class="brand-copy"><strong>SCIAVERSE</strong><small>Digital Science Environment</small></span>
+      <span class="brand-copy"><span class="brand-wordmark">SCIAVERSE</span><small>Digital Science Environment</small></span>
     </a>
 
     <div class="side-label">Không gian</div>
@@ -40,7 +45,7 @@
     </nav>
 
     <div class="sidebar-bottom">
-      <div class="system-note"><span class="status-dot"></span><span>Giai đoạn khởi tạo</span></div>
+      <div class="system-note"><span>Giai đoạn khởi tạo</span></div>
       <button class="collapse-button" id="collapseSidebar" type="button" aria-label="Thu gọn thanh điều hướng" aria-expanded="true">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
         <span>Thu gọn</span>
@@ -53,18 +58,17 @@
       <button class="mobile-menu icon-button" id="openMenu" type="button" aria-label="Mở điều hướng" aria-expanded="false" aria-controls="mobileDrawer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
-      <a class="mobile-brand" href="#overview"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="5"/><ellipse cx="20" cy="20" rx="16" ry="7" transform="rotate(-34 20 20)"/><path d="M7.8 29.2 32.2 10.8"/></svg></span><strong>SCIAVERSE</strong></a>
-      <div class="topbar-context"><span class="context-mark"></span><span>Không gian khoa học số</span></div>
+      <a class="mobile-brand" href="#overview"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="5"/><ellipse cx="20" cy="20" rx="16" ry="7" transform="rotate(-34 20 20)"/><path d="M7.8 29.2 32.2 10.8"/></svg></span><span class="brand-wordmark">SCIAVERSE</span></a>
+      <div class="topbar-context"><span>Không gian khoa học số</span></div>
       <div class="topbar-actions">
         <label class="search-box" for="globalSearch">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
           <input id="globalSearch" type="search" placeholder="Tìm kiếm lĩnh vực, học liệu..." autocomplete="off">
           <kbd>/</kbd>
         </label>
-        <button class="icon-button notification-button" type="button" aria-label="Thông báo" title="Thông báo">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg>
+        <button class="icon-button mobile-search-toggle" id="mobileSearchToggle" type="button" aria-label="Mở tìm kiếm" aria-expanded="false" aria-controls="globalSearch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
         </button>
-        <button class="profile-button" type="button" aria-label="Tài khoản"><span>SC</span></button>
       </div>
     </header>
 
@@ -72,11 +76,10 @@
       <section class="welcome-section" id="overview" aria-labelledby="pageTitle">
         <div class="welcome-copy">
           <h1 id="pageTitle">Không gian khoa học số<br><span>đa lĩnh vực.</span></h1>
-          <p class="welcome-description">Mô phỏng, thực nghiệm ảo, dữ liệu và học liệu được tổ chức trong cùng một môi trường.</p>
+          <p class="welcome-description">Khám phá mô phỏng, thực nghiệm ảo và học liệu khoa học.</p>
           <a class="primary-button" href="#fields">Bắt đầu khám phá <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
         <div class="welcome-visual" aria-label="Sơ đồ quỹ đạo minh họa">
-          <div class="visual-topline"><span>Mô hình quỹ đạo</span></div>
           <svg class="orbit-visual" viewBox="0 0 420 270" role="img" aria-labelledby="orbitTitle orbitDesc">
             <title id="orbitTitle">Sơ đồ quỹ đạo minh họa</title>
             <desc id="orbitDesc">Một thiên thể trung tâm và các quỹ đạo elip được vẽ để minh họa chuyển động quỹ đạo, không theo tỉ lệ.</desc>
@@ -91,39 +94,38 @@
             <circle class="orbit-node node-c" cx="268" cy="249" r="5"/>
             <path class="orbit-cross" d="M210 108v-10m0 78v10m-29-49h-10m78 0h10"/>
           </svg>
-          <div class="visual-caption"><span class="visual-caption-dot"></span><span>Sơ đồ quỹ đạo minh họa · Không theo tỉ lệ</span></div>
         </div>
       </section>
 
       <section class="section-block" id="fields" aria-labelledby="fieldsTitle">
         <div class="section-heading">
           <div><h2 id="fieldsTitle">Khám phá theo lĩnh vực</h2></div>
-          <p class="section-intro">Chọn một hướng tiếp cận để bắt đầu tìm hiểu.</p>
+          <p class="section-intro">Các nhóm nội dung ban đầu để tiếp tục hoàn thiện.</p>
         </div>
         <div class="field-grid" id="fieldGrid">
           <a class="field-card field-earth" href="#spaces" data-search="trái đất môi trường địa chất khí hậu">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11.5"/><path d="M5 14h22M8 22c3-2 5-3 8-2s5 1 8-2M16 4.5c3 3 4.5 7 4.5 11.5S19 24.5 16 27.5C13 24.5 11.5 20.5 11.5 16S13 7.5 16 4.5Z"/></svg></span>
-            <span class="field-name">Trái Đất &amp; môi trường</span><span class="field-meta">Địa chất · Khí hậu · Hệ sinh thái</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+            <span class="field-name">Trái Đất &amp; môi trường</span><span class="field-meta">Địa chất, khí hậu, hệ sinh thái</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
           <a class="field-card field-space" href="#spaces" data-search="vũ trụ thiên văn hệ mặt trời hành tinh">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="4"/><ellipse cx="16" cy="16" rx="13" ry="6" transform="rotate(-28 16 16)"/><circle cx="26.5" cy="9.5" r="1.5"/></svg></span>
-            <span class="field-name">Vũ trụ &amp; thiên văn</span><span class="field-meta">Hệ Mặt Trời · Hành tinh · Vũ trụ</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+            <span class="field-name">Vũ trụ &amp; thiên văn</span><span class="field-meta">Hệ Mặt Trời, hành tinh, vũ trụ</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
           <a class="field-card field-physics" href="#spaces" data-search="vật lí cơ học quang học điện từ">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="16" rx="13" ry="5.5"/><ellipse cx="16" cy="16" rx="13" ry="5.5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5.5" transform="rotate(120 16 16)"/><circle cx="16" cy="16" r="2.5"/></svg></span>
-            <span class="field-name">Vật lí</span><span class="field-meta">Cơ học · Năng lượng · Quang học</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+            <span class="field-name">Vật lí</span><span class="field-meta">Cơ học, năng lượng, quang học</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
           <a class="field-card field-chemistry" href="#spaces" data-search="hóa học nguyên tử phân tử phản ứng">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 5h8M14 5v9l-7 12a1.5 1.5 0 0 0 1.3 2.2h15.4A1.5 1.5 0 0 0 25 26L18 14V5"/><path d="M10 22h12"/><circle cx="14" cy="19" r="1"/><circle cx="19" cy="24" r="1"/></svg></span>
-            <span class="field-name">Hóa học</span><span class="field-meta">Nguyên tử · Phân tử · Phản ứng</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+            <span class="field-name">Hóa học</span><span class="field-meta">Nguyên tử, phân tử, phản ứng</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
           <a class="field-card field-bio" href="#spaces" data-search="sinh học tế bào di truyền sinh thái">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25.5 6.5C13 5 6 12 7 21c.7 6 7 7 11 3 4-4 5-11 7.5-17.5Z"/><path d="M7 26c4-7 9-11 16-17M12 19l-1-6m6 1 5 1"/></svg></span>
-            <span class="field-name">Sinh học</span><span class="field-meta">Tế bào · Di truyền · Sinh thái</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+            <span class="field-name">Sinh học</span><span class="field-meta">Tế bào, di truyền, sinh thái</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
           <a class="field-card field-math" href="#spaces" data-search="toán học tin học thuật toán dữ liệu">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 8h18M7 16h18M7 24h18M12 4v24M21 4v24"/><circle cx="12" cy="8" r="2"/><circle cx="21" cy="24" r="2"/></svg></span>
-            <span class="field-name">Toán học &amp; tin học</span><span class="field-meta">Mô hình · Thuật toán · Dữ liệu</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+            <span class="field-name">Toán học &amp; tin học</span><span class="field-meta">Mô hình, thuật toán, dữ liệu</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
         </div>
         <p class="search-empty" id="searchEmpty" hidden>Không tìm thấy lĩnh vực phù hợp.</p>
@@ -132,7 +134,7 @@
       <section class="section-block spaces-section" id="spaces" aria-labelledby="spacesTitle">
         <div class="section-heading">
           <div><h2 id="spacesTitle">Không gian khoa học</h2></div>
-          <p class="section-intro">Các hình thức tiếp cận và làm việc với tri thức đang được xây dựng.</p>
+          <p class="section-intro">Các hướng chức năng đang được xem xét trong giai đoạn khởi tạo.</p>
         </div>
         <div class="space-grid">
           <article class="space-card" data-search="mô phỏng mô hình trực quan">
@@ -156,20 +158,20 @@
 
       <section class="closing-note" aria-label="Thông tin dự án">
         <div class="closing-mark"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="5"/><ellipse cx="20" cy="20" rx="16" ry="7" transform="rotate(-34 20 20)"/><path d="M7.8 29.2 32.2 10.8"/></svg></div>
-        <div><strong>SCIAVERSE</strong><p>Môi trường khoa học số đa lĩnh vực · Giai đoạn khởi tạo</p></div>
+        <div><span class="brand-wordmark">SCIAVERSE</span><p>Môi trường khoa học số đa lĩnh vực: giai đoạn khởi tạo</p></div>
         <span class="build-label">Bản dựng giao diện</span>
       </section>
     </main>
   </div>
 
-  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
-  <nav class="mobile-drawer" id="mobileDrawer" aria-label="Điều hướng trên điện thoại" aria-hidden="true">
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden aria-hidden="true"></div>
+  <nav class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Điều hướng trên điện thoại" aria-hidden="true" inert>
     <div class="drawer-head"><span class="drawer-title">Điều hướng</span><button class="icon-button" id="closeMenu" type="button" aria-label="Đóng điều hướng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
     <a class="drawer-link is-active" href="#overview" data-section="overview">Tổng quan <span>01</span></a>
     <a class="drawer-link" href="#fields" data-section="fields">Lĩnh vực <span>02</span></a>
     <a class="drawer-link" href="#spaces" data-section="spaces">Không gian công cụ <span>03</span></a>
     <a class="drawer-link" href="#library" data-section="library">Thư viện <span>04</span></a>
-    <p class="drawer-footnote">SCIAVERSE · Digital Science Environment</p>
+    <p class="drawer-footnote">SCIAVERSE: Digital Science Environment</p>
   </nav>
 
   <nav class="mobile-tabbar" aria-label="Điều hướng nhanh">
