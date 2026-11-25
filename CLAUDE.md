@@ -10,13 +10,13 @@ SCIAVERSE (Digital Science Environment) is an independent, multi-disciplinary di
 4. Read Unslop after the design or implementation stage, then audit and correct the result.
 5. Inspect the actual repository state before editing. Never rely on prior summaries as a substitute for the current files.
 
-The skill sources are pinned as Git submodules in `vendor/skills/`:
-- Taste Skill: `vendor/skills/taste-skill/skills/taste-skill/SKILL.md`
-- Hallmark: `vendor/skills/hallmark/skills/hallmark/SKILL.md`
-- Unslop: `vendor/skills/unslop/skills/unslop/SKILL.md`
+The pinned skill sources are Git submodules:
+- Taste Skill: `tools/taste-skill/skills/taste-skill/SKILL.md`
+- Hallmark: `tools/hallmark/skills/hallmark/SKILL.md`
+- Unslop: `tools/unslop/skills/unslop/SKILL.md`
 
 ## Product and implementation rules
-- Mobile-first is mandatory. Design, implement, and verify the complete core experience on a real phone-sized viewport before adapting it to tablet and desktop.
+- Mobile-first is mandatory. Design, implement, and verify the complete core experience on a phone-sized viewport before adapting it to tablet and desktop.
 - Do not treat desktop as the source layout or shrink a desktop dashboard to fit a phone.
 - Touch targets, reading order, navigation, scrolling, and performance on mobile take priority.
 - Support reduced motion, visible keyboard focus, sufficient contrast, and no horizontal overflow.
