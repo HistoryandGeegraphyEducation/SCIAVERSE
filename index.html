@@ -96,14 +96,15 @@
             <title id="orbitTitle" data-i18n="orbitDiagram">Sơ đồ quỹ đạo minh họa</title>
             <desc id="orbitDesc" data-i18n="orbitDescription">Một thiên thể trung tâm và các quỹ đạo elip được vẽ để minh họa chuyển động quỹ đạo, không theo tỉ lệ.</desc>
             <g class="orbit-lines" fill="none" stroke="currentColor">
-              <ellipse data-orbit-path="a" cx="241.32" cy="137" rx="174" ry="171.15" transform="rotate(-17 210 137)"/>
-              <ellipse data-orbit-path="b" cx="244.08" cy="137" rx="142" ry="137.85" transform="rotate(29 210 137)"/>
-              <ellipse data-orbit-path="c" cx="223.16" cy="137" rx="94" ry="93.07" transform="rotate(67 210 137)"/>
+              <g data-orbit-path="a" transform="translate(210 135) rotate(-17) translate(24.3 0)"><ellipse rx="135" ry="132.2"/></g>
+              <g data-orbit-path="b" transform="translate(210 135) rotate(29) translate(18.5 0)"><ellipse rx="103" ry="101.3"/></g>
+              <g data-orbit-path="c" transform="translate(210 135) rotate(-48) translate(8.6 0)"><ellipse rx="72" ry="71.5"/></g>
             </g>
-            <circle class="orbit-core" cx="210" cy="137" r="18"/>
-            <circle class="orbit-node node-a" data-orbit-node="a" data-a="174" data-e="0.18" data-rotation="-17" data-period="19" cx="346.3" cy="95.3" r="6"/>
-            <circle class="orbit-node node-b" data-orbit-node="b" data-a="142" data-e="0.24" data-rotation="29" data-period="27" cx="304.4" cy="189.3" r="8"/>
-            <circle class="orbit-node node-c" data-orbit-node="c" data-a="94" data-e="0.14" data-rotation="67" data-period="34" cx="241.6" cy="211.4" r="5"/>
+            <circle class="orbit-core" cx="210" cy="135" r="18"/>
+            <circle class="orbit-node node-a" data-orbit-node="a" data-a="135" data-e="0.18" data-rotation="-17" data-period="24" data-phase="0.18" cx="330" cy="98" r="6"/>
+            <circle class="orbit-node node-b" data-orbit-node="b" data-a="103" data-e="0.18" data-rotation="29" data-period="34" data-phase="2.1" cx="272" cy="219" r="8"/>
+            <circle class="orbit-node node-c" data-orbit-node="c" data-a="72" data-e="0.12" data-rotation="-48" data-period="43" data-phase="4.2" cx="194" cy="205" r="5"/>
+            <path class="scene-bridge" d="M0 238 C105 205 315 205 420 238"/>
             <path class="orbit-cross" d="M210 108v-10m0 78v10m-29-49h-10m78 0h10"/>
           </svg>
         </div>
@@ -119,6 +120,7 @@
               <path d="M330 34c-23 16-27 34-10 49s43 8 49 27-19 31-8 48 33 13 52 4 30 0 39 13"/>
             </g>
             <path class="scene-earth-seam" d="M380 0c-20 49-8 73 21 93s22 50 0 72-22 43 1 95"/>
+            <path class="scene-bridge" d="M0 220 C130 182 390 182 520 220"/>
           </svg>
         </div>
         <div class="section-heading">
@@ -163,6 +165,7 @@
               <path d="M-30 144c48-44 96-44 144 0s96 44 144 0 96-44 144 0 96 44 144 0"/>
               <path d="M-30 180c48-44 96-44 144 0s96 44 144 0 96-44 144 0 96 44 144 0"/>
             </g>
+            <path class="scene-bridge" d="M0 220 C130 182 390 182 520 220"/>
             <g class="scene-wave-particles"><circle cx="92" cy="72" r="3"/><circle cx="236" cy="144" r="3"/><circle cx="380" cy="72" r="3"/></g>
           </svg>
         </div>
@@ -194,6 +197,7 @@
               <path d="M160 54 390 208M68 126 452 124M146 204 360 58"/>
               <circle cx="260" cy="130" r="72"/>
             </g>
+            <path class="scene-bridge" d="M0 220 C130 182 390 182 520 220"/>
             <g class="scene-network-nodes">
               <circle cx="260" cy="130" r="7"/><circle cx="360" cy="58" r="5"/><circle cx="452" cy="124" r="4"/>
               <circle cx="390" cy="208" r="5"/><circle cx="146" cy="204" r="4"/><circle cx="68" cy="126" r="5"/><circle cx="160" cy="54" r="4"/>
