@@ -1,65 +1,51 @@
-# CLAUDE.md
+# SCIAVERSE — Project Instructions
 
-Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
+## Project identity
+SCIAVERSE (Digital Science Environment) is an independent, multi-disciplinary digital science environment. It is not a rename or a fork of EDUVERSE. Do not read, copy, migrate, edit, or depend on EDUVERSE unless the user explicitly starts a later research and transfer phase.
 
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+## Required workflow before every development task
+1. Read this file first.
+2. Read the current Taste Skill instructions and only the references relevant to the task.
+3. Read the current Hallmark instructions and the references relevant to the task.
+4. Read Unslop after the design or implementation stage, then audit and correct the result.
+5. Inspect the actual repository state before editing. Never rely on prior summaries as a substitute for the current files.
 
-## 1. Think Before Coding
+The skill sources are pinned as Git submodules in `vendor/skills/`:
+- Taste Skill: `vendor/skills/taste-skill/skills/taste-skill/SKILL.md`
+- Hallmark: `vendor/skills/hallmark/skills/hallmark/SKILL.md`
+- Unslop: `vendor/skills/unslop/skills/unslop/SKILL.md`
 
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
+## Product and implementation rules
+- Mobile-first is mandatory. Design, implement, and verify the complete core experience on a real phone-sized viewport before adapting it to tablet and desktop.
+- Do not treat desktop as the source layout or shrink a desktop dashboard to fit a phone.
+- Touch targets, reading order, navigation, scrolling, and performance on mobile take priority.
+- Support reduced motion, visible keyboard focus, sufficient contrast, and no horizontal overflow.
+- Use restrained scientific/technical visual language. Avoid generic space gradients, neon glow, decorative planets, fake charts, invented metrics, and filler content.
+- Motion must communicate state or spatial relationships. Keep it lightweight and respect reduced-motion preferences.
+- Do not invent scientific facts, user activity, statistics, or completed features. Clearly mark demonstrative/sample data when used.
+- Do not add domains or product modules as approved taxonomy unless the user has approved them.
 
-Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
+## Change discipline
+- Make the smallest targeted change that satisfies the task.
+- Do not rewrite unrelated files or remove unrelated functionality.
+- Preserve working behavior and assets.
+- Do not add dependencies unless required and justified.
+- Before editing, state the intended files and verification criteria.
+- After editing, report exact files changed, behavior implemented, tests actually run, and known limitations.
+- Never claim a test, render, deployment, or repository change succeeded unless the result was observed.
 
-## 2. Simplicity First
+## Dashboard development order
+1. Establish the mobile navigation and app shell.
+2. Build the mobile dashboard content hierarchy and touch interactions.
+3. Verify at phone widths and heights, including narrow and tall devices.
+4. Refine tablet layouts.
+5. Refine desktop layouts.
+6. Run the relevant Hallmark and Unslop checks.
 
-**Minimum code that solves the problem. Nothing speculative.**
-
-- No features beyond what was asked.
-- No abstractions for single-use code.
-- No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
-
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
-
-## 3. Surgical Changes
-
-**Touch only what you must. Clean up only your own mess.**
-
-When editing existing code:
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
-
-When your changes create orphans:
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
-
-The test: Every changed line should trace directly to the user's request.
-
-## 4. Goal-Driven Execution
-
-**Define success criteria. Loop until verified.**
-
-Transform tasks into verifiable goals:
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
-
-For multi-step tasks, state a brief plan:
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
-
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
-
----
-
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+## Definition of done for mobile-first work
+- Core navigation is visible and usable without hover.
+- No clipped controls, overlapping content, or horizontal page scrolling.
+- Main actions are reachable with one-handed touch where practical.
+- Text remains readable without zooming.
+- Layout remains usable with reduced motion enabled.
+- The page works at 320px, 360px, 390px, and 430px CSS widths before larger breakpoints are considered.
