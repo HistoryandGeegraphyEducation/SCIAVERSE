@@ -143,7 +143,7 @@ h2 { margin: 0; font-size: clamp(21px, 2vw, 27px); font-weight: 570; letter-spac
 .search-empty { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
 
 .spaces-section { margin-top: 48px; }
-.space-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.space-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .space-card { color: var(--text); position: relative; min-height: 210px; padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-raised); }
 .space-symbol { display: grid; width: 43px; height: 43px; margin-bottom: 24px; place-items: center; border: 1px solid var(--accent-icon-line); border-radius: 12px; color: var(--accent); background: var(--accent-icon-bg); }
 .space-symbol svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
