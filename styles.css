@@ -226,7 +226,7 @@ body.drawer-open { overflow: hidden; }
   .field-meta { font-size: 11px; }
   .field-arrow { top: 13px; right: 11px; }
   .spaces-section { margin-top: 40px; }
-  .space-grid { grid-template-columns: 1fr; gap: 9px; }
+  .space-grid { grid-template-columns: 1fr; gap: 8px; }
   .space-card { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 12px; min-height: 0; padding: 16px; border-radius: 12px; }
   .space-symbol { grid-row: 1 / span 3; width: 42px; height: 42px; margin: 0; }
   .space-card h3 { margin: 0 32px 4px 0; font-size: 12px; }
@@ -247,7 +247,7 @@ body.drawer-open { overflow: hidden; }
   .topbar { padding-right: 12px; padding-left: 12px; gap: 8px; }
   .mobile-brand { gap: 8px; }
   .mobile-brand .brand-wordmark { font-size: 11px; }
-  .field-card { min-height: 148px; padding-right: 10px; padding-left: 10px; }
+  .field-card { min-height: 148px; padding-right: 12px; padding-left: 12px; }
   .field-name { font-size: 12px; }
   .field-meta { font-size: 11px; }
 }
