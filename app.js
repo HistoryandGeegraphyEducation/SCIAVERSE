@@ -21,6 +21,10 @@
   const translations = {
     vi: {
       skipLink: 'Bỏ qua điều hướng',
+      brandHome: 'SCIAVERSE: Trang tổng quan',
+      projectInfo: 'Thông tin dự án',
+      orbitDiagram: 'Sơ đồ quỹ đạo minh họa',
+      orbitDescription: 'Một thiên thể trung tâm và các quỹ đạo elip được vẽ để minh họa chuyển động quỹ đạo, không theo tỉ lệ.',
       mainNavigation: 'Điều hướng chính',
       spacesLabel: 'Không gian',
       overview: 'Tổng quan',
@@ -63,6 +67,10 @@
     },
     en: {
       skipLink: 'Skip navigation',
+      brandHome: 'SCIAVERSE: Overview',
+      projectInfo: 'Project information',
+      orbitDiagram: 'Illustrative orbital diagram',
+      orbitDescription: 'A central body and elliptical paths illustrate orbital motion. The diagram is not to scale.',
       mainNavigation: 'Main navigation',
       spacesLabel: 'Spaces',
       overview: 'Overview',
