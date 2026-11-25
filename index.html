@@ -86,30 +86,41 @@
     </header>
 
     <main id="main" class="main-content">
-      <section class="welcome-section" id="overview" aria-labelledby="pageTitle" data-enter>
+      <section class="welcome-section" id="overview" aria-labelledby="pageTitle" data-enter data-motion-region="overview">
         <div class="welcome-copy">
           <h1 id="pageTitle" data-i18n="pageTitle">Không gian khoa học số<br>đa lĩnh vực.</h1>
           <a class="primary-button" href="#fields"><span data-i18n="startExploring">Bắt đầu khám phá</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
         <div class="welcome-visual" aria-label="Sơ đồ quỹ đạo minh họa" data-i18n-aria="orbitDiagram">
-          <svg class="orbit-visual" viewBox="0 0 420 270" role="img" aria-labelledby="orbitTitle orbitDesc">
+          <svg class="orbit-visual" data-orbit-system viewBox="0 0 420 270" role="img" aria-labelledby="orbitTitle orbitDesc">
             <title id="orbitTitle" data-i18n="orbitDiagram">Sơ đồ quỹ đạo minh họa</title>
             <desc id="orbitDesc" data-i18n="orbitDescription">Một thiên thể trung tâm và các quỹ đạo elip được vẽ để minh họa chuyển động quỹ đạo, không theo tỉ lệ.</desc>
             <g class="orbit-lines" fill="none" stroke="currentColor">
-              <ellipse cx="210" cy="137" rx="174" ry="54" transform="rotate(-17 210 137)"/>
-              <ellipse cx="210" cy="137" rx="142" ry="91" transform="rotate(29 210 137)"/>
-              <ellipse cx="210" cy="137" rx="94" ry="118" transform="rotate(67 210 137)"/>
+              <ellipse data-orbit-path="a" cx="241.32" cy="137" rx="174" ry="171.15" transform="rotate(-17 210 137)"/>
+              <ellipse data-orbit-path="b" cx="244.08" cy="137" rx="142" ry="137.85" transform="rotate(29 210 137)"/>
+              <ellipse data-orbit-path="c" cx="223.16" cy="137" rx="94" ry="93.07" transform="rotate(67 210 137)"/>
             </g>
             <circle class="orbit-core" cx="210" cy="137" r="18"/>
-            <circle class="orbit-node node-a" cx="44" cy="88" r="6"/>
-            <circle class="orbit-node node-b" cx="321" cy="57" r="8"/>
-            <circle class="orbit-node node-c" cx="268" cy="249" r="5"/>
+            <circle class="orbit-node node-a" data-orbit-node="a" data-a="174" data-e="0.18" data-rotation="-17" data-period="19" cx="346.3" cy="95.3" r="6"/>
+            <circle class="orbit-node node-b" data-orbit-node="b" data-a="142" data-e="0.24" data-rotation="29" data-period="27" cx="304.4" cy="189.3" r="8"/>
+            <circle class="orbit-node node-c" data-orbit-node="c" data-a="94" data-e="0.14" data-rotation="67" data-period="34" cx="241.6" cy="211.4" r="5"/>
             <path class="orbit-cross" d="M210 108v-10m0 78v10m-29-49h-10m78 0h10"/>
           </svg>
         </div>
       </section>
 
-      <section class="section-block" id="fields" aria-labelledby="fieldsTitle">
+      <section class="section-block region-block fields-section" id="fields" aria-labelledby="fieldsTitle" data-motion-region="fields">
+                <div class="region-scene scene-earth" aria-hidden="true">
+          <svg viewBox="0 0 520 260" preserveAspectRatio="xMidYMid slice">
+            <g class="scene-earth-contours" fill="none">
+              <path d="M290 18c-45 20-55 47-28 70s84 10 91 45-35 51-18 82 58 22 91 8 57-2 76 25"/>
+              <path d="M270 2c-61 28-75 68-39 99s96 16 105 48-42 62-20 98 74 28 116 10 63-1 83 26"/>
+              <path d="M247-14c-78 36-95 88-50 128s108 23 119 57-50 72-23 113 89 34 141 12 69 1 90 31"/>
+              <path d="M330 34c-23 16-27 34-10 49s43 8 49 27-19 31-8 48 33 13 52 4 30 0 39 13"/>
+            </g>
+            <path class="scene-earth-seam" d="M380 0c-20 49-8 73 21 93s22 50 0 72-22 43 1 95"/>
+          </svg>
+        </div>
         <div class="section-heading">
           <div><h2 id="fieldsTitle" data-i18n="fieldsTitle">Khám phá theo lĩnh vực</h2></div>
 
@@ -143,8 +154,19 @@
         <p class="search-empty" id="searchEmpty" data-i18n="searchEmpty" hidden>Không tìm thấy lĩnh vực phù hợp.</p>
       </section>
 
-      <section class="section-block spaces-section" id="spaces" aria-labelledby="spacesTitle">
-        <div class="section-heading">
+      <section class="section-block region-block spaces-section" id="spaces" aria-labelledby="spacesTitle" data-motion-region="spaces">
+                <div class="region-scene scene-waves" aria-hidden="true">
+          <svg viewBox="0 0 520 260" preserveAspectRatio="xMidYMid slice">
+            <g class="scene-wave-lines" fill="none">
+              <path d="M-30 72c48-44 96-44 144 0s96 44 144 0 96-44 144 0 96 44 144 0"/>
+              <path d="M-30 108c48-44 96-44 144 0s96 44 144 0 96-44 144 0 96 44 144 0"/>
+              <path d="M-30 144c48-44 96-44 144 0s96 44 144 0 96-44 144 0 96 44 144 0"/>
+              <path d="M-30 180c48-44 96-44 144 0s96 44 144 0 96-44 144 0 96 44 144 0"/>
+            </g>
+            <g class="scene-wave-particles"><circle cx="92" cy="72" r="3"/><circle cx="236" cy="144" r="3"/><circle cx="380" cy="72" r="3"/></g>
+          </svg>
+        </div>
+<div class="section-heading">
           <div><h2 id="spacesTitle" data-i18n="spacesTitle">Không gian khoa học</h2></div>
 
         </div>
@@ -161,11 +183,27 @@
             <span class="space-symbol symbol-data"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 39V9M7 39h35"/><path d="m11 31 8-9 7 4 10-13"/><circle cx="11" cy="31" r="2"/><circle cx="19" cy="22" r="2"/><circle cx="26" cy="26" r="2"/><circle cx="36" cy="13" r="2"/></svg></span>
             <h3 data-i18n="scientificData">Dữ liệu khoa học</h3>
           </article>
-          <article class="space-card" id="library" data-search="thư viện học liệu tài liệu bản đồ" data-search-en="library learning resources documents maps">
-            <span class="space-symbol symbol-library"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 11c6-2 12-1 17 2v27c-5-3-11-4-17-2zM41 11c-6-2-12-1-17 2v27c5-3 11-4 17-2z"/><path d="M13 18c3-.5 6 0 8 1M13 24c3-.5 6 0 8 1M35 18c-3-.5-6 0-8 1M35 24c-3-.5-6 0-8 1"/></svg></span>
-            <h3 data-i18n="learningLibrary">Thư viện học liệu</h3>
-          </article>
+          </div>
+      </section>
+
+      <section class="section-block region-block library-section" id="library" aria-labelledby="libraryCardTitle" data-motion-region="library">
+        <div class="region-scene scene-network" aria-hidden="true">
+          <svg viewBox="0 0 520 260" preserveAspectRatio="xMidYMid slice">
+            <g class="scene-network-orbit" fill="none">
+              <path d="M260 130 360 58 452 124 390 208 260 130 146 204 68 126 160 54 260 130"/>
+              <path d="M160 54 390 208M68 126 452 124M146 204 360 58"/>
+              <circle cx="260" cy="130" r="72"/>
+            </g>
+            <g class="scene-network-nodes">
+              <circle cx="260" cy="130" r="7"/><circle cx="360" cy="58" r="5"/><circle cx="452" cy="124" r="4"/>
+              <circle cx="390" cy="208" r="5"/><circle cx="146" cy="204" r="4"/><circle cx="68" cy="126" r="5"/><circle cx="160" cy="54" r="4"/>
+            </g>
+          </svg>
         </div>
+        <article class="space-card" data-search="thư viện học liệu tài liệu bản đồ" data-search-en="library learning resources documents maps">
+            <span class="space-symbol symbol-library"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 11c6-2 12-1 17 2v27c-5-3-11-4-17-2zM41 11c-6-2-12-1-17 2v27c5-3 11-4 17-2z"/><path d="M13 18c3-.5 6 0 8 1M13 24c3-.5 6 0 8 1M35 18c-3-.5-6 0-8 1M35 24c-3-.5-6 0-8 1"/></svg></span>
+            <h3 id="libraryCardTitle" data-i18n="learningLibrary">Thư viện học liệu</h3>
+          </article>
       </section>
 
       <section class="closing-note" aria-label="Thông tin dự án" data-i18n-aria="projectInfo">
