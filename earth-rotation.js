@@ -24,6 +24,7 @@
   let controls;
   let earth;
   let earthGroup;
+  let pendingTexture = null;
   let resizeObserver;
   let frameId = 0;
   let playing = !reducedMotion.matches;
@@ -66,6 +67,12 @@
       resizeObserver.disconnect();
       resizeObserver = null;
     }
+    listeners.forEach(([target, eventName, handler, options]) => {
+      target.removeEventListener(eventName, handler, options);
+    });
+    listeners.length = 0;
+    pendingTexture?.dispose?.();
+    pendingTexture = null;
     if (controls) {
       controls.removeEventListener('change', requestFrame);
       controls.dispose();
@@ -238,6 +245,7 @@
       })
     );
     earthGroup.add(earth);
+    pendingTexture = null;
 
     const equatorPoints = [];
     for (let index = 0; index < 180; index += 1) {
@@ -331,8 +339,10 @@
       loader.load(TEXTURE_URL, resolve, undefined, () => reject(new Error('Không tải được ảnh bản đồ Trái Đất từ NASA.')));
     }))
     .then(texture => {
-      if (!destroyed && !disposed) init(window.THREE, texture);
-      else texture.dispose();
+      if (!destroyed && !disposed) {
+        pendingTexture = texture;
+        init(window.THREE, texture);
+      } else texture.dispose();
     })
     .catch(error => {
       if (!destroyed) showError(error.message || 'Không thể khởi tạo mô hình Trái Đất.');
@@ -341,10 +351,6 @@
   function destroy() {
     if (destroyed) return;
     destroyed = true;
-    listeners.forEach(([target, eventName, handler, options]) => {
-      target.removeEventListener(eventName, handler, options);
-    });
-    listeners.length = 0;
     cleanupScene();
   }
 
