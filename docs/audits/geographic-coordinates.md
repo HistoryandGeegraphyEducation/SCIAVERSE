@@ -31,15 +31,13 @@
 ### Phần đúng trong phạm vi mô hình
 
 - Slider vĩ độ từ -90° đến +90° và kinh độ từ -180° đến +180° phù hợp với miền giá trị góc thông dụng.
-- Công thức đặt điểm trên hình cầu:
-  - (x=r\cos\varphi\cos\lambda)
-  - (y=r\sin\varphi)
-  - (z=r\cos\varphi\sin\lambda)
-  với \(\varphi\) là vĩ độ và \(\lambda\) là kinh độ, nhất quán với hệ tọa độ cầu mà trục Y hướng về Bắc và kinh tuyến 0° nằm trên trục X dương.
-- Hàm nghịch đảo khi nhấp lên bề mặt dùng:
-  - \(\varphi=\arcsin(y/r)\)
-  - \(\lambda=\operatorname{atan2}(z,x)\)
-  Hai biểu thức này là nghịch đảo phù hợp của phép ánh xạ trên hình cầu, ngoại trừ kinh độ không xác định tại hai cực.
+- Công thức đặt điểm trên hình cầu trong mã nguồn:
+  - \(x=r\cos\varphi\cos\lambda\)
+  - \(y=r\sin\varphi\)
+  - \(z=r\cos\varphi\sin\lambda\)
+  với \(\varphi\) là vĩ độ và \(\lambda\) là kinh độ. Công thức và hàm nghịch đảo trong mã nguồn nhất quán nội bộ.
+- Hàm nghịch đảo dùng \(\varphi=\arcsin(y/r)\) và \(\lambda=\operatorname{atan2}(z,x)\). Kinh độ vẫn không xác định tại hai cực.
+- **Rủi ro hướng texture:** tính nhất quán nội bộ không bảo đảm lưới kinh độ trùng với hướng Đông/Tây của ảnh equirectangular. Với UV tiêu chuẩn của \`THREE.SphereGeometry\`, cần kiểm tra hướng tăng kinh độ bằng điểm địa lí đã biết; nếu không, texture có thể bị đảo Đông/Tây so với nhãn.
 - Vĩ tuyến, kinh tuyến, xích đạo và kinh tuyến 0° được tạo thành các lớp riêng. Trục mô hình đặt theo trục Y, nhất quán với thành phần Y của công thức.
 - Giao diện ghi vĩ độ trước kinh độ. Cách ghi này phù hợp với cách trình bày giáo dục thông dụng; khi trao đổi dữ liệu số cần nêu rõ quy ước thứ tự trục của định dạng hoặc API đang sử dụng.
 - Các mô tả cơ bản về vĩ độ, kinh độ và cặp tọa độ phù hợp ở mức nhập môn, nhưng cần làm rõ giả định hình cầu và giới hạn độ chính xác.
@@ -109,3 +107,11 @@ Mô hình hiện chưa đạt điều kiện tiếp nhận vào SCIAVERSE. Các 
 - NOAA National Ocean Service. (2024). *What is longitude?* https://oceanservice.noaa.gov/facts/longitude.html
 - National Geospatial-Intelligence Agency. *World Geodetic System 1984 (WGS 84).* https://earth-info.nga.mil/?action=wgs84&dir=wgs84
 - National Geospatial-Intelligence Agency. *Coordinate Systems.* https://earth-info.nga.mil/index.php?action=coordsys&dir=coordsys
+
+
+## Tệp triển khai SCIAVERSE
+
+- `simulations/geography/coordinates/index.html`
+- `simulations/geography/coordinates/main.js`
+- `simulations/geography/coordinates/styles.css`
+
