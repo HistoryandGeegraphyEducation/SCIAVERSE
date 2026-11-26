@@ -4,8 +4,6 @@
   const root = document.documentElement;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const nodes = [...document.querySelectorAll('[data-orbit-node]')];
-  const packet = document.getElementById('network-packet');
-  const networkPath = document.querySelector('.scene-network-orbit path');
   const orbitStart = performance.now();
   let raf = 0;
   let lastDraw = 0;
@@ -54,13 +52,6 @@
       spec.node.setAttribute('cy', point.y.toFixed(2));
     });
 
-    if (packet && networkPath) {
-      const length = networkPath.getTotalLength();
-      const distance = (seconds / 46 % 1) * length;
-      const point = networkPath.getPointAtLength(distance);
-      packet.setAttribute('cx', point.x.toFixed(2));
-      packet.setAttribute('cy', point.y.toFixed(2));
-    }
     raf = requestAnimationFrame(render);
   }
 
