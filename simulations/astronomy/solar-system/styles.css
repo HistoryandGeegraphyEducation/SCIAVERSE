@@ -20,7 +20,7 @@
 .solar-button:focus-visible,.solar-body-list button:focus-visible,.solar-speed input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .solar-speed{display:grid;grid-template-columns:1fr auto;gap:8px 12px;margin-top:14px;color:var(--text);font-size:14px}
 .solar-speed output{font-variant-numeric:tabular-nums}
-.solar-speed input{grid-column:1/-1;width:100%;accent-color:var(--accent)}
+.solar-speed input{grid-column:1/-1;width:100%;min-height:44px;accent-color:var(--accent);touch-action:pan-y;cursor:pointer}
 .solar-speed small{grid-column:1/-1;color:var(--text-soft);font-size:13px;line-height:1.45}
 .solar-time{margin:12px 0 0;color:var(--text-soft);font-size:14px}
 .solar-time strong{color:var(--text);font-variant-numeric:tabular-nums}
