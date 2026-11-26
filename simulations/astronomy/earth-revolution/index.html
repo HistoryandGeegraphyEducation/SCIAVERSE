@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Mô hình ba chiều về chuyển động quanh Mặt Trời và hướng nghiêng gần cố định của trục Trái Đất.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#10171b">
+  <title>SCIAVERSE — Trái Đất chuyển động quanh Mặt Trời</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../../model-base.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#orbitMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a>
+  </header>
+  <main class="standalone-main orbit-main" id="orbitMain">
+    <header class="model-intro">
+      <h1>Trái Đất chuyển động quanh Mặt Trời</h1>
+      <p>Quan sát trục nghiêng của Trái Đất tại các vị trí chính trên quỹ đạo.</p>
+    </header>
+    <section class="orbit-layout" aria-label="Mô hình quỹ đạo Trái Đất">
+      <div class="orbit-stage" id="orbitStage">
+        <div class="orbit-status" id="orbitStatus" role="status">Đang khởi tạo mô hình 3D…</div>
+      </div>
+      <aside class="orbit-panel">
+        <h2>Vị trí trên quỹ đạo</h2>
+        <label for="orbitSeason">Chọn mốc thiên văn</label>
+        <select id="orbitSeason">
+          <option value="march">Xuân phân</option>
+          <option value="june">Hạ chí</option>
+          <option value="september">Thu phân</option>
+          <option value="december">Đông chí</option>
+        </select>
+        <section class="orbit-result" aria-live="polite" aria-atomic="true">
+          <h3 id="orbitResultTitle">Xuân phân</h3>
+          <p id="orbitResultText">Trục không nghiêng về phía Mặt Trời. Điểm Mặt Trời thiên đỉnh ở gần xích đạo; ngày và đêm gần bằng nhau.</p>
+        </section>
+      </aside>
+    </section>
+    <p class="orbit-note">Trục quay giữ hướng gần như cố định trong không gian và nghiêng 23,44° so với phương vuông góc mặt phẳng quỹ đạo. Quỹ đạo tròn và kích thước, khoảng cách trong mô hình không theo tỉ lệ. Mùa không hình thành do Trái Đất gần hay xa Mặt Trời.</p>
+    <details class="model-sources">
+      <summary>Tài liệu khoa học</summary>
+      <p>Nguồn: <a href="https://aa.usno.navy.mil/faq/seasons_orbit" target="_blank" rel="noopener noreferrer">U.S. Naval Observatory — The Seasons and the Earth's Orbit</a>; <a href="https://science.nasa.gov/helio-and-you-seasons-on-earth-mars-and-beyond/" target="_blank" rel="noopener noreferrer">NASA — Seasons on Earth, Mars, and Beyond</a>.</p>
+    </details>
+  </main>
+</body>
+</html>
