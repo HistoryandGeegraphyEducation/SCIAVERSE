@@ -343,8 +343,9 @@
 
 
   function setActiveSection(id) {
+    const activeId = id.startsWith('workspace-') ? 'spaces' : id;
     navLinks.forEach(link => {
-      const active = link.dataset.section === id;
+      const active = link.dataset.section === activeId;
       link.classList.toggle('is-active', active);
       if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
