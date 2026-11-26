@@ -135,3 +135,17 @@ Có thể tiếp nhận ý tưởng tương tác và cấu trúc thông tin, nh�
 - NASA. *How Tilted Are The Planets?* NASA Heliophysics Education Activation Team. https://assets.science.nasa.gov/content/dam/science/hpd/heat/teacher-lessons/Why%20Do%20We%20Have%20Seasons_%20by%20Tanya%20Anderson_0.pdf
 - NASA. *Uranus Facts*. https://science.nasa.gov/uranus/facts/
 - NASA. *Neptune Facts*. https://science.nasa.gov/neptune/neptune-facts/
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/astronomy/solar-system/`.
+
+- Dữ liệu kích thước dùng đường kính từ bán kính trung bình JPL; khối lượng, chu kỳ tự quay sao và chu kỳ quỹ đạo sao dùng bảng JPL. Dấu âm của chu kỳ tự quay được giữ để biểu diễn nghịch hành (Sao Kim, Sao Thiên Vương).
+- Độ nghiêng trục được đối chiếu với NASA/NSSDC Fact Sheet. Sao Hải Vương dùng khoảng 28,32°; Sao Thiên Vương khoảng 97,77°; Sao Kim khoảng 177,36°.
+- Tốc độ quỹ đạo được tính từ chu kỳ quỹ đạo sao: góc trung bình = 2π × thời gian mô phỏng / chu kỳ. Tốc độ thời gian mô phỏng được công bố rõ trong giao diện.
+- Quỹ đạo tròn hóa, vị trí ban đầu được phân bố có chủ đích, khoảng cách và kích thước hiển thị không theo tỉ lệ. Mô hình không tuyên bố vị trí hành tinh hiện tại hoặc ephemeris.
+- Chu kỳ tự quay được trình bày như dữ liệu, không ghép hoạt ảnh tự quay vào cùng thang thời gian đã nén quỹ đạo.
+- Thay texture procedural có hình dạng lục địa/đám mây giả bằng hình cầu màu trung tính; không gán bề mặt giả như ảnh quan sát.
+
+Kiểm tra tĩnh: cú pháp JavaScript đạt; ID HTML không trùng; CSS cân bằng dấu ngoặc, có breakpoint điện thoại và reduced-motion. Chưa kiểm tra WebGL trên trình duyệt hoặc thiết bị thật. Trạng thái vẫn `needs-revision` và `sciaverse-pilot-in-progress` cho đến khi kiểm thử runtime, kiểm tra dữ liệu hiển thị và xác nhận khả năng truy cập hoàn tất.
