@@ -15,6 +15,7 @@ function setHemisphere(value){
 function update(){
  const sst=Number($('cycloneSst').value),humidity=Number($('cycloneHumidity').value),shear=Number($('cycloneShear').value),lat=Number($('cycloneLatitude').value);
  $('cycloneSstOut').textContent=fmt(sst,1)+'°C';$('cycloneHumidityOut').textContent=humidity+'%';$('cycloneShearOut').textContent=shear+' m/s';$('cycloneLatitudeOut').textContent=lat+'°';
+ $('cycloneDiagram').dataset.equator=lat===0?'true':'false';
  $('cycloneDirection').textContent=lat===0?'Ngay tại xích đạo: lực Coriolis bằng 0 trong mô hình lý tưởng; không gán chiều xoáy hình thành.':hemisphere==='north'?'Bắc bán cầu: hoàn lưu ngược chiều kim đồng hồ.':'Nam bán cầu: hoàn lưu cùng chiều kim đồng hồ.';
  $('cycloneLatitudeNote').textContent=lat<5?'Vĩ độ nhỏ hơn khoảng 5°: lực Coriolis thường quá yếu để duy trì hoàn lưu bão nhiệt đới.':'Vĩ độ đã xa vùng xích đạo hơn; điều này vẫn không đủ để kết luận bão sẽ hình thành.';
  $('sstState').textContent=sst>=26.5?'Đạt vùng nhiệt độ thường thuận lợi; cần xét độ sâu lớp nước ấm.':'Thấp hơn mốc tham khảo thường dùng; không phải ngưỡng tuyệt đối.';
