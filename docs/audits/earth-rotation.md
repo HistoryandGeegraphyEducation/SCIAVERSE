@@ -69,7 +69,7 @@ Pilot được triển khai độc lập trong `simulations/earth/rotation/main.
 - Vị trí biểu kiến của Mặt Trời được tính bằng công thức thiên văn xấp xỉ theo ngày Julius mô phỏng. Vị trí Mặt Trăng được tính bằng bộ phần tử quỹ đạo gần đúng; cả hai dùng cùng thời gian mô phỏng đã tăng tốc.
 - Mô hình không vẽ quỹ đạo Trái Đất quanh Mặt Trời. Sự thay đổi hướng biểu kiến của Mặt Trời theo ngày được tính bằng công thức, không phải dữ liệu ephemeris độ chính xác cao.
 - Ảnh bề mặt Trái Đất tải từ tệp NASA Blue Marble cục bộ; nếu không tải được, mô hình thử các nguồn NASA trực tuyến. Không còn tạo bản đồ procedural để thay ảnh thật. Nếu tất cả nguồn đều lỗi, trang hiển thị lỗi và dọn tài nguyên đã khởi tạo.
-- Lớp mây dùng ảnh cục bộ riêng. Nguồn và giấy phép của tệp mây vẫn cần được xác minh.
+- Không dựng lớp mây trong mô hình; tránh dùng texture chưa xác minh nguồn và giấy phép.
 - Mặt Trăng được thể hiện bằng hình cầu màu đơn, không dùng texture miêu tả địa hình giả. Vị trí, kích thước và khoảng cách của Mặt Trời, Mặt Trăng không theo tỉ lệ không gian thực.
 - Đồng hồ quốc gia dùng múi giờ IANA và thời gian hiện tại của thiết bị; đồng hồ này không chạy theo thời gian mô phỏng thiên văn.
 - Khi bật reduced motion, chuyển động tự động dừng nhưng khung hình tĩnh vẫn được dựng khi cần tương tác camera. Khi tab bị ẩn, requestAnimationFrame bị hủy; khi quay lại, mô phỏng tiếp tục mà không cộng thời gian tab nền.
@@ -78,12 +78,11 @@ Pilot được triển khai độc lập trong `simulations/earth/rotation/main.
 ### Điểm còn phải hoàn thiện
 
 1. Xác nhận bằng landmark trên texture rằng chiều quay quan sát được đúng Tây sang Đông.
-2. Xác minh nguồn, giấy phép và thông tin kỹ thuật của `assets/earth-clouds.png`.
+2. Kiểm tra lỗi tải texture Blue Marble cục bộ và các URL NASA dự phòng trên mạng yếu, CORS và chế độ offline.
 3. Đối chiếu vị trí Mặt Trời và Mặt Trăng với một bộ ephemeris độc lập tại các ngày kiểm tra; hiện các công thức là xấp xỉ.
-4. Kiểm tra lỗi tải texture cục bộ và các URL NASA dự phòng trên mạng yếu, CORS và chế độ offline.
-5. Kiểm tra thao tác OrbitControls, khả năng truy cập bằng bàn phím và trạng thái focus. Camera hiện chủ yếu được điều khiển bằng pointer.
-6. Kiểm thử WebGL, vòng đời tài nguyên và hiệu năng trên Android, iOS và desktop; kiểm tra các chiều rộng 320, 360, 390 và 430 CSS px.
-7. Chưa có kiểm thử runtime trình duyệt trong lượt cập nhật này. Việc rà soát mã và cập nhật hồ sơ không thay thế kiểm thử thực tế.
+4. Kiểm tra thao tác OrbitControls, khả năng truy cập bằng bàn phím và trạng thái focus. Camera hiện chủ yếu được điều khiển bằng pointer.
+5. Kiểm thử WebGL, vòng đời tài nguyên và hiệu năng trên Android, iOS và desktop; kiểm tra các chiều rộng 320, 360, 390 và 430 CSS px.
+6. Chưa có kiểm thử runtime trình duyệt trong lượt cập nhật này. Việc rà soát mã và cập nhật hồ sơ không thay thế kiểm thử thực tế.
 
 ## 4. Đặc tả khoa học hiện hành
 
@@ -95,7 +94,7 @@ Pilot được triển khai độc lập trong `simulations/earth/rotation/main.
 - Không dựng đường quỹ đạo Trái Đất quanh Mặt Trời. Mô hình không phải mô phỏng hệ Mặt Trời theo tỉ lệ.
 - Kích thước và khoảng cách Mặt Trời, Mặt Trăng được nén để hiển thị; không dùng để suy ra tỉ lệ không gian.
 - Ảnh Blue Marble là ảnh ghép từ quan sát vệ tinh có thời điểm dữ liệu lịch sử, không phải ảnh Trái Đất trực tiếp.
-- Lớp mây là ảnh texture riêng, không phải dữ liệu mây quan trắc theo thời gian thực.
+- Không mô phỏng mây; không có lớp mây dữ liệu trong mô hình.
 - Khi không tải được texture Blue Marble hoặc WebGL không khởi tạo được, mô hình phải báo lỗi; không thay bằng bản đồ địa lí tự tạo.
 
 ## 5. Tiêu chí kiểm chứng trước khi công bố kỹ thuật
@@ -115,7 +114,7 @@ Pilot được triển khai độc lập trong `simulations/earth/rotation/main.
 
 Các điểm khoa học chính đã được giữ trong pilot: trục nghiêng cố định 23,44°, chiều quay Tây sang Đông và chu kỳ ngày Mặt Trời trung bình được nén thời gian. Vị trí biểu kiến của Mặt Trời và Mặt Trăng được tính theo cùng ngày Julius mô phỏng bằng các công thức xấp xỉ. Các khoảng cách và kích thước thiên thể được nén, không dùng như mô hình không gian theo tỉ lệ.
 
-Đã sửa đường dẫn texture theo vị trí trang, bỏ texture Trái Đất procedural, chuyển mã mô hình vào thư mục riêng, đồng bộ thời gian thiên văn với thời gian mô phỏng, dừng animation khi tab nền hoặc reduced motion, và bổ sung cleanup khi khởi tạo lỗi. Trang đã có tiêu đề mô hình, ghi nguồn ảnh Blue Marble và công bố giới hạn tỉ lệ hình học.
+Đã sửa đường dẫn texture theo vị trí trang, bỏ texture Trái Đất procedural và lớp mây chưa xác minh nguồn, chuyển mã mô hình vào thư mục riêng, đồng bộ thời gian thiên văn với thời gian mô phỏng, dừng animation khi tab nền hoặc reduced motion, và bổ sung cleanup khi khởi tạo lỗi. Trang đã có tiêu đề mô hình, ghi nguồn ảnh Blue Marble và công bố giới hạn tỉ lệ hình học.
 
 Trạng thái khoa học trong registry là `validated` theo xác nhận của chủ dự án ngày 26/11/2026. Trạng thái triển khai vẫn là `sciaverse-pilot-in-progress`; chưa chuyển sang `verified-in-build` vì chưa có kiểm thử runtime trên trình duyệt và thiết bị thật.
 
