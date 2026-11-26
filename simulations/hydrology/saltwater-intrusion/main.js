@@ -18,8 +18,8 @@ function update(){
   $('saltDescription').textContent='Lưu lượng sông đang ở mức '+flow+' và tác động thủy triều ở mức '+tide+'. Hình chỉ diễn tả xu hướng tương đối, không tính khoảng cách xâm nhập.';
  }else{
   const intrusion=rank[pumping]+(2-rank[recharge]);
-  const x=intrusion*45;
-  $('aquiferTransition').setAttribute('d',`M0 ${170-x*.35} C180 ${165-x*.55} 300 ${190-x*.8} 420 ${235-x} C500 ${270-x} 570 ${280-x} 640 ${280-x}`);
+  const shift=intrusion*18;
+  $('aquiferTransition').setAttribute('d',`M0 170 C${180-shift} 165 ${300-shift} 190 ${420-shift} 235 C${500-shift*.4} 270 570 280 640 280`);
   $('saltTendency').textContent=intrusion>=3?'Vùng chuyển tiếp có xu hướng dịch chuyển vào đất liền và/hoặc dâng gần giếng.':intrusion<=1?'Dòng nước ngọt có xu hướng hạn chế xâm nhập mặn.':'Vị trí vùng chuyển tiếp ở mức trung gian trong sơ đồ.';
   $('saltDescription').textContent='Khai thác nước ngầm đang ở mức '+pumping+', bổ cập nước ngọt ở mức '+recharge+'. Hình không tính vị trí ranh mặn thực tế.';
  }
