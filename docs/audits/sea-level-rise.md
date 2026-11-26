@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Nước biển dâng
 
 - Mã nguồn tham chiếu: `EDUVERSE/simulations/natural-hazards/nuoc-bien-dang/main.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: mực nước biển trung bình, mực nước biển tương đối, cao độ địa hình, đường bờ, ngập ven biển, kết nối thủy văn và các yếu tố địa phương.
 - Kết luận hiện tại: mô hình minh họa được ý tưởng mực nước biển tăng và vùng đất thấp có nguy cơ bị ngập. Tuy nhiên, địa hình là hàm giả lập; mực nước và đường bờ được điều khiển bằng tọa độ cảnh, không theo DEM hoặc datum; công trình chỉ đổi màu, không có vùng ngập tính toán. Slider 0–2 m không gắn với thời gian hoặc kịch bản. Chưa đủ điều kiện tiếp nhận như mô hình ngập ven biển định lượng.
 
@@ -128,3 +128,15 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - NOAA. *Limitations of Sea Level Rise Maps*. https://repository.library.noaa.gov/view/noaa/39930/noaa_39930_DS1.pdf
 - NOAA National Geodetic Survey. *Vertical Datums Transformation FAQs*. https://www.geodesy.noaa.gov/docs/faqs.html
 - NOAA. *Sea Level Calculator*. https://coast.noaa.gov/sealevelcalculator/
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/coastal/sea-level-rise/`.
+
+- Dùng một mặt cắt địa hình giả định và thanh điều chỉnh mực nước tương đối 0–2 m so với mốc nền minh họa.
+- Vùng địa hình thấp bị nước phủ chỉ có ý nghĩa trong mặt cắt giả định; không gắn với DEM, datum thủy triều hoặc địa điểm thực.
+- Phân biệt mực nước biển dâng dài hạn với thủy triều, nước dâng do bão và sóng thần.
+- Không đưa ra bản đồ ngập, đường bờ dự báo hoặc mốc thời gian/kịch bản khí hậu.
+
+Chưa kiểm thử runtime trên thiết bị. Mô hình chỉ đủ làm học liệu khái niệm; để trở thành mô hình địa phương cần DEM, datum đứng, kết nối thủy văn và dữ liệu chuyển động thẳng đứng của đất.
