@@ -13,7 +13,10 @@
   const timeOutput = document.getElementById('earthModelTime');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  const TEXTURE_URL = 'https://svs.gsfc.nasa.gov/vis/a000000/a002900/a002915/bluemarble-2048.png';
+  const TEXTURE_URLS = [
+    'https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/july/world.200407.3x5400x2700.jpg',
+    'https://svs.gsfc.nasa.gov/vis/a000000/a002900/a002915/bluemarble-2048.png'
+  ];
   const AXIAL_TILT_DEGREES = 23.44;
   const MODEL_SOLAR_DAY_HOURS = 24;
   const TAU = Math.PI * 2;
@@ -34,32 +37,19 @@
   let disposed = false;
   const listeners = [];
 
-  function loadScript(src, ready) {
-    if (ready()) return Promise.resolve();
+  function loadEarthTexture(THREE) {
+    const loader = new THREE.TextureLoader();
+    loader.setCrossOrigin('anonymous');
     return new Promise((resolve, reject) => {
-      const existing = [...document.scripts].find(script => script.src === src);
-      if (existing) {
-        if (existing.dataset.sciaverseLoadState === 'loaded') {
-          reject(new Error('Thư viện 3D đã tải nhưng không khởi tạo được.'));
+      let index = 0;
+      const attempt = () => {
+        if (index >= TEXTURE_URLS.length) {
+          reject(new Error('Không tải được ảnh Blue Marble từ các nguồn NASA dự phòng.'));
           return;
         }
-        existing.addEventListener('load', resolve, { once: true });
-        existing.addEventListener('error', () => reject(new Error('Không tải được thư viện 3D.')), { once: true });
-        return;
-      }
-      const script = document.createElement('script');
-      script.src = src;
-      script.async = true;
-      script.dataset.sciaverseLoadState = 'loading';
-      script.onload = () => {
-        script.dataset.sciaverseLoadState = 'loaded';
-        resolve();
+        loader.load(TEXTURE_URLS[index++], resolve, undefined, attempt);
       };
-      script.onerror = () => {
-        script.dataset.sciaverseLoadState = 'error';
-        reject(new Error('Không tải được thư viện 3D.'));
-      };
-      document.head.appendChild(script);
+      attempt();
     });
   }
 
@@ -343,23 +333,16 @@
     else renderOnce();
   });
 
-  loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', () => Boolean(window.THREE))
-    .then(() => {
+  const threeReady = window.SCIAVERSE_THREE_READY || Promise.reject(new Error('Thiếu bộ nạp thư viện 3D.'));
+  threeReady
+    .then(THREE => {
       if (destroyed || disposed) throw new Error('Mô hình đã được đóng.');
-      return loadScript(
-      'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
-      () => Boolean(window.THREE?.OrbitControls)
-      );
+      return loadEarthTexture(THREE).then(texture => ({ THREE, texture }));
     })
-    .then(() => new Promise((resolve, reject) => {
-      const loader = new window.THREE.TextureLoader();
-      loader.setCrossOrigin('anonymous');
-      loader.load(TEXTURE_URL, resolve, undefined, () => reject(new Error('Không tải được ảnh bản đồ Trái Đất từ NASA.')));
-    }))
-    .then(texture => {
+    .then(({ THREE, texture }) => {
       if (!destroyed && !disposed) {
         pendingTexture = texture;
-        init(window.THREE, texture);
+        init(THREE, texture);
       } else texture.dispose();
     })
     .catch(error => {
