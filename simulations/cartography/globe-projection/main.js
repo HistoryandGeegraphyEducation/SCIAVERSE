@@ -28,7 +28,7 @@
     },
     mercator: {
       name: 'Mercator',
-      description: 'Phép chiếu bảo toàn góc tại phạm vi nhỏ. Vĩ độ được biến đổi bằng hàm logarit; diện tích và khoảng cách tăng rất nhanh khi tiến gần hai cực. Bản đồ này giới hạn ở ±85,0511°.',
+      description: 'Phép chiếu bảo toàn góc tại phạm vi nhỏ. Vĩ độ được biến đổi bằng hàm logarit; diện tích và khoảng cách tăng rất nhanh khi tiến gần hai cực. Mô hình cắt ở ±85,0511° để giới hạn khung bản đồ vuông; điểm kỳ dị toán học của Mercator nằm tại hai cực.',
       project(longitude, latitude) {
         const safe = Math.max(-MAX_MERCATOR_LAT, Math.min(MAX_MERCATOR_LAT, latitude));
         const phi = safe * Math.PI / 180;
@@ -47,7 +47,7 @@
     },
     azimuthal: {
       name: 'Phương vị cách đều tâm Bắc Cực',
-      description: 'Khoảng cách và phương vị tính từ tâm chiếu ở Bắc Cực được giữ đúng. Biến dạng tăng khi đi xa tâm; bản đồ tập trung vào một bán cầu.',
+      description: 'Khoảng cách và phương vị tính từ tâm chiếu ở Bắc Cực được giữ đúng. Toàn bộ bề mặt được biểu diễn trên bản đồ dạng tròn; biến dạng tăng khi đi xa tâm.',
       project(longitude, latitude) {
         const phi = latitude * Math.PI / 180;
         const rho = Math.PI / 2 - phi;
