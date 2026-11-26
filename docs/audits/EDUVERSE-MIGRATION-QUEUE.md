@@ -15,7 +15,7 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 
 ## Ghi nhận nghiệm thu
 
-Theo xác nhận của chủ dự án ngày 26/11/2026, cả 12 mô hình trong danh sách dưới đây đã hoàn tất nghiệm thu khoa học. Các phiếu thẩm định ban đầu vẫn được giữ làm hồ sơ lịch sử về nguồn gốc, giả định và giới hạn; trạng thái nghiệm thu hiện hành được quản lý trong `data/model-registry.json`. Không tự ý thay đổi nội dung khoa học đã duyệt. Nghiệm thu kỹ thuật vẫn đang chờ kiểm thử trên trình duyệt và thiết bị thật.
+Theo xác nhận của chủ dự án ngày 26/11/2026, 12 mô hình có trạng thái `validated` trong danh sách dưới đây đã hoàn tất nghiệm thu khoa học. Năm mô hình bản đồ còn lại đang ở trạng thái `in-review`. Các phiếu thẩm định ghi nhận nguồn, giả định và giới hạn; trạng thái hiện hành được quản lý trong `data/model-registry.json`. Không tự ý thay đổi nội dung khoa học đã duyệt. Nghiệm thu kỹ thuật của cả 17 pilot vẫn đang chờ kiểm thử runtime trên trình duyệt và thiết bị thật.
 
 ## Danh sách theo dõi
 
