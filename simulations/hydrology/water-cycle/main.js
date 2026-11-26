@@ -61,6 +61,12 @@
     group.add(cloud);
   }
 
+  function terrainHeight(x){
+    const hill=1.45*Math.exp(-Math.pow((x-1.15)/.95,2));
+    const ridge=.35*Math.exp(-Math.pow((x-.35)/.8,2));
+    return hill+ridge-.38;
+  }
+
   function makeTerrain(){
     const geometry=new THREE.PlaneGeometry(4.8,3.8,56,36);
     geometry.rotateX(-Math.PI/2);
@@ -68,10 +74,7 @@
     const colors=[];
     const low=new THREE.Color(0x557a54),high=new THREE.Color(0x8a7556);
     for(let i=0;i<positions.count;i+=1){
-      const x=positions.getX(i),z=positions.getZ(i);
-      const hill=1.45*Math.exp(-Math.pow((x-1.15)/.95,2));
-      const ridge=.35*Math.exp(-Math.pow((x-.35)/.8,2));
-      const y=hill+ridge-.38;
+      const x=positions.getX(i),y=terrainHeight(x);
       positions.setY(i,y);
       const t=THREE.MathUtils.clamp((y+.38)/1.45,0,1);
       const color=low.clone().lerp(high,t);
@@ -88,11 +91,10 @@
     base.add(makeTerrain());
 
     const riverCurve=new THREE.CatmullRomCurve3([
-      new THREE.Vector3(2.7,.8,.45),
-      new THREE.Vector3(1.9,.42,.2),
-      new THREE.Vector3(1.05,.05,-.12),
-      new THREE.Vector3(.15,-.18,.08),
-      new THREE.Vector3(-.95,-.34,0)
+      new THREE.Vector3(1.3,terrainHeight(1.3)+.05,.2),
+      new THREE.Vector3(.65,terrainHeight(.65)+.05,-.1),
+      new THREE.Vector3(-.1,terrainHeight(-.1)+.05,.05),
+      new THREE.Vector3(-1.1,-.32,0)
     ]);
     base.add(new THREE.Mesh(
       new THREE.TubeGeometry(riverCurve,80,.105,10,false),
@@ -133,7 +135,7 @@
     processGroups.precipitation=new THREE.Group();
     for(let i=0;i<9;i+=1){
       const x=-.1+(i%3)*.22,z=-.35+Math.floor(i/3)*.28;
-      const drop=new THREE.Mesh(new THREE.CapsuleGeometry(.025,.12,4,6),new THREE.MeshStandardMaterial({color:0x77c9e8}));
+      const drop=new THREE.Mesh(new THREE.SphereGeometry(.045,10,8),new THREE.MeshStandardMaterial({color:0x77c9e8}));
       drop.position.set(x,1.25-(i%3)*.13,z);
       processGroups.precipitation.add(drop);
     }
@@ -141,12 +143,12 @@
     scene.add(processGroups.precipitation);
 
     processGroups.runoff=new THREE.Group();
-    addArrow(processGroups.runoff,[2.0,.98,.75],[.7,.12,.2],0x77c9e8);
-    addArrow(processGroups.runoff,[.7,.1,.2],[-.8,-.28,0],0x77c9e8);
+    addArrow(processGroups.runoff,[1.3,terrainHeight(1.3)+.24,.2],[.55,terrainHeight(.55)+.16,-.1],0x77c9e8);
+    addArrow(processGroups.runoff,[.55,terrainHeight(.55)+.14,-.1],[-.8,-.28,0],0x77c9e8);
     scene.add(processGroups.runoff);
 
     processGroups.groundwater=new THREE.Group();
-    addArrow(processGroups.groundwater,[1.55,-.3,.8],[1.5,-1.35,.8],0x70c1d9);
+    addArrow(processGroups.groundwater,[1.55,terrainHeight(1.55)+.03,.8],[1.5,-.85,.8],0x70c1d9);
     addArrow(processGroups.groundwater,[1.45,-1.35,.8],[-1.2,-1.35,.8],0x70c1d9);
     const spring=new THREE.Mesh(new THREE.SphereGeometry(.09,14,10),new THREE.MeshStandardMaterial({color:0x75cce4}));
     spring.position.set(-.75,-.34,.08);processGroups.groundwater.add(spring);
