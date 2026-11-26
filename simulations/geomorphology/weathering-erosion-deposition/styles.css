@@ -1,0 +1,19 @@
+.surface-main{width:min(100% - 32px,1200px);max-width:1200px;padding-top:clamp(14px,2vw,24px);padding-bottom:max(32px,env(safe-area-inset-bottom))}
+.surface-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,.75fr);gap:16px;align-items:stretch}
+.surface-stage{position:relative;min-width:0;min-height:460px;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius-lg);background:#10191f}
+.surface-stage canvas{display:block;width:100%;height:100%;min-height:460px;touch-action:none}
+.surface-status{position:absolute;z-index:2;inset:auto 12px 12px;padding:8px 11px;border:1px solid rgba(255,255,255,.14);border-radius:9px;background:rgba(10,17,22,.84);color:#e8efed;font-size:13px}
+.surface-status[data-state="ready"]{display:none}
+.surface-status[data-state="error"]{inset:12px;display:grid;place-items:center;text-align:center;color:#ffd5b0}
+.surface-panel{display:flex;min-width:0;flex-direction:column;gap:16px;padding:20px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface)}
+.surface-panel h2{margin:0;font-size:18px}
+.surface-process-choice{display:grid;grid-template-columns:1fr;gap:8px}
+.surface-process-choice button{min-height:46px;padding:10px 12px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--bg-raised);color:var(--text);font:inherit;text-align:left;cursor:pointer}
+.surface-process-choice button.is-selected{border-color:var(--accent);background:var(--accent-surface);color:var(--text)}
+.surface-result{margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.surface-result h3{margin:0 0 8px;font-size:16px}
+.surface-result p{margin:0;color:var(--text-soft);font-size:14px;line-height:1.65}
+.surface-note{max-width:90ch;margin:14px 0;color:var(--text-soft);font-size:13px;line-height:1.6}
+@media(max-width:760px){.surface-main{width:min(100% - 24px,680px)}.surface-layout{grid-template-columns:minmax(0,1fr)}.surface-stage,.surface-stage canvas{min-height:360px}.surface-panel{padding:16px}.surface-process-choice{grid-template-columns:repeat(3,minmax(0,1fr))}.surface-process-choice button{padding:9px 8px;text-align:center;font-size:13px}}
+@media(max-width:430px){.surface-main{width:min(100% - 18px,680px)}.surface-stage,.surface-stage canvas{min-height:300px}.surface-panel{padding:13px}.surface-process-choice{gap:5px}.surface-process-choice button{min-height:44px;padding:7px 5px;font-size:12px}}
+@media(max-width:360px){.surface-main{width:calc(100% - 14px)}.surface-stage,.surface-stage canvas{min-height:280px}.surface-process-choice button{font-size:11px}}
