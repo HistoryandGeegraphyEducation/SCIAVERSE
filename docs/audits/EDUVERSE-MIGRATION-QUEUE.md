@@ -8,8 +8,9 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 - Đạt trạng thái khoa học `validated`: **0/12**.
 - Trạng thái khoa học hiện tại: **12 `needs-revision`**.
 - Đã tiếp nhận vào bản SCIAVERSE: **0 mô hình hoàn tất**.
-- Pilot đang triển khai: **Trái Đất tự quay**; chưa nghiệm thu trình duyệt/thiết bị.
-- Các mô hình còn lại: `not-migrated`.
+- Đã dựng pilot SCIAVERSE độc lập: **12/12 mô hình**.
+- Đã nghiệm thu khoa học và kỹ thuật: **0/12**.
+- Cả 12 mô hình vẫn ở trạng thái `needs-revision` và `sciaverse-pilot-in-progress`; chưa kiểm thử runtime đầy đủ trên thiết bị thật.
 
 `needs-revision` nghĩa là hồ sơ đã xác định điểm phải sửa hoặc giới hạn phải công bố; không có nghĩa mọi nội dung trong mô hình đều sai.
 
@@ -20,15 +21,15 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 | Xác định tọa độ địa lí | `js/sims/geo-01-coordinates/main.js` | [Phiếu](geographic-coordinates.md) · [Pilot](../../simulations/geography/coordinates/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
 | Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | [Phiếu](solar-system.md) · [Pilot](../../simulations/astronomy/solar-system/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
 | Cấu tạo bên trong Trái Đất 3D | `js/sims/interior-earth.js` | [Phiếu](interior-earth.md) · [Pilot](../../simulations/earth/interior/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Động đất | `js/sims/quake.js` | [Phiếu](earthquake.md) | `needs-revision` | `not-migrated` |
-| Sóng thần 3D | `js/sims/tsunami.js` | [Phiếu](tsunami.md) | `needs-revision` | `not-migrated` |
-| Trái Đất tự quay | `js/sims/earth.js` | [Phiếu](earth-rotation.md) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Núi lửa | `js/sims/volcano.js` | [Phiếu](volcano.md) | `needs-revision` | `not-migrated` |
-| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | [Phiếu](tropical-cyclone.md) | `needs-revision` | `not-migrated` |
-| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | [Phiếu](flash-flood.md) | `needs-revision` | `not-migrated` |
-| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | [Phiếu](landslide.md) | `needs-revision` | `not-migrated` |
-| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | [Phiếu](saltwater-intrusion.md) | `needs-revision` | `not-migrated` |
-| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | [Phiếu](sea-level-rise.md) | `needs-revision` | `not-migrated` |
+| Động đất | `js/sims/quake.js` | [Phiếu](earthquake.md) · [Pilot](../../simulations/geophysics/earthquake/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Sóng thần 3D | `js/sims/tsunami.js` | [Phiếu](tsunami.md) · [Pilot](../../simulations/oceanography/tsunami/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Trái Đất tự quay | `js/sims/earth.js` | [Phiếu](earth-rotation.md) · [Pilot](../../simulations/earth/rotation/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Núi lửa | `js/sims/volcano.js` | [Phiếu](volcano.md) · [Pilot](../../simulations/geophysics/volcano/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | [Phiếu](tropical-cyclone.md) · [Pilot](../../simulations/meteorology/tropical-cyclone/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | [Phiếu](flash-flood.md) · [Pilot](../../simulations/hydrology/flash-flood/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | [Phiếu](landslide.md) · [Pilot](../../simulations/geotechnical/landslide/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | [Phiếu](saltwater-intrusion.md) · [Pilot](../../simulations/hydrology/saltwater-intrusion/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | [Phiếu](sea-level-rise.md) · [Pilot](../../simulations/coastal/sea-level-rise/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
 
 ## Quy tắc hoàn tất một mô hình
 
@@ -45,13 +46,13 @@ Chỉ chuyển `implementationStatus` sang `verified-in-build` sau khi phiên b�
 
 ## Thứ tự hiệu chỉnh và tiếp nhận
 
-1. **Hoàn tất pilot Trái Đất tự quay:** ghi công NASA, kiểm tra hướng quay bằng landmark, xử lý lỗi khởi tạo WebGL và thử nghiệm trên điện thoại.
-2. **Xác định tọa độ địa lí:** pilot đã được dựng tại `simulations/geography/coordinates/`; tiếp tục kiểm tra texture bằng landmark, WebGL và thao tác cảm ứng trước khi nghiệm thu.
-3. **Cấu tạo bên trong Trái Đất:** pilot mặt cắt tương tác đã được dựng tại `simulations/earth/interior/`; tiếp tục kiểm tra thuật ngữ, tỉ lệ lớp và khả năng đọc trên thiết bị.
-4. **Động đất và sóng thần:** làm rõ nguồn phát, tham số vật lí, quan hệ độ lớn–độ trượt và giới hạn truyền sóng/ngập.
-5. **Núi lửa:** phân biệt kiểu phun trào và tách biến hoạt ảnh khỏi thông số vật lí.
-6. **Khám phá các hành tinh:** pilot đã được dựng tại `simulations/astronomy/solar-system/`; tiếp tục đối chiếu dữ liệu thiên văn, kiểm tra tỉ lệ chu kỳ và WebGL.
-7. **Nhóm môi trường:** bão nhiệt đới, lũ quét, sạt lở đất, xâm nhập mặn và nước biển dâng; mỗi mô hình phải có bộ biến và giới hạn dự báo riêng.
+1. **Trái Đất tự quay và tọa độ địa lí:** kiểm tra hướng texture bằng landmark, WebGL, cảm ứng và quy ước trắc địa.
+2. **Cấu tạo bên trong Trái Đất:** xác nhận các ranh giới lớp, trạng thái vật chất và nội dung sóng địa chấn.
+3. **Khám phá các hành tinh:** đối chiếu bộ dữ liệu JPL/NSSDC, chu kỳ, dấu nghịch hành và cách nén tỉ lệ.
+4. **Động đất và sóng thần:** kiểm tra công thức M0/Mw, giả định môđun trượt, tốc độ sóng dài và điều kiện độ sâu không đổi.
+5. **Núi lửa:** xác nhận các mô tả thành phần magma, khí hòa tan và giới hạn phân loại kiểu phun.
+6. **Bão nhiệt đới:** xác nhận quy ước chiều xoáy theo bán cầu và các yếu tố môi trường; không xây dựng dự báo.
+7. **Lũ quét, sạt lở, xâm nhập mặn và nước biển dâng:** kiểm tra đơn vị, giả định mô hình, điều kiện áp dụng và ranh giới giữa minh họa với dự báo.
 
 Thứ tự này là kế hoạch triển khai, không phải đánh giá mức độ quan trọng khoa học. Không mô hình nào được đưa vào nội dung công bố chỉ vì đã có hồ sơ thẩm định hoặc giao diện.
 
