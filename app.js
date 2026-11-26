@@ -25,6 +25,22 @@
       projectInfo: 'Thông tin dự án',
       orbitDiagram: 'Sơ đồ quỹ đạo minh họa',
       orbitDescription: 'Một thiên thể trung tâm và các quỹ đạo elip được vẽ để minh họa chuyển động quỹ đạo, không theo tỉ lệ.',
+      earthModelTitle: 'Trái Đất tự quay quanh trục',
+      earthModelDescription: 'Trái Đất quay từ Tây sang Đông. Trục quay nghiêng 23,44° so với phương vuông góc mặt phẳng quỹ đạo.',
+      sunlightSource: 'Mặt Trời',
+      earthModelStage: 'Mô hình 3D Trái Đất tự quay quanh trục, có trục nghiêng và vùng ngày đêm',
+      earthGlobeCanvas: 'Quả Địa Cầu 3D với vùng được chiếu sáng và vùng ban đêm',
+      earthModelLoading: 'Đang tải mô hình Trái Đất…',
+      pauseRotation: 'Tạm dừng',
+      resumeRotation: 'Tiếp tục',
+      resetModel: 'Đặt lại',
+      simulationSpeed: 'Tốc độ mô phỏng',
+      simulationSpeedNote: '1×: 1 giờ mô phỏng/giây thực.',
+      simulationTime: 'Giờ mô phỏng',
+      earthModelImageCredit: 'Ảnh nền: NASA/GSFC Scientific Visualization Studio, Blue Marble (ảnh ghép từ dữ liệu quan sát năm 2001; công bố năm 2004).',
+      earthModelSourceLink: 'Thông tin bộ ảnh NASA',
+      earthModelAxisLegend: 'Trục vàng: trục quay; nét đứt: phương vuông góc mặt phẳng quỹ đạo.',
+      earthModelFootnote: 'Một ngày Mặt Trời trung bình kéo dài 24 giờ; chu kỳ quay sao khoảng 23 giờ 56 phút 4 giây. Hướng chiếu sáng đặt ở cấu hình phân điểm; mô hình không mô phỏng chuyển động quỹ đạo và sự thay đổi mùa.',
       mainNavigation: 'Điều hướng chính',
       spacesLabel: 'Không gian',
       overview: 'Tổng quan',
@@ -71,6 +87,22 @@
       projectInfo: 'Project information',
       orbitDiagram: 'Illustrative orbital diagram',
       orbitDescription: 'A central body and elliptical paths illustrate orbital motion. The diagram is not to scale.',
+      earthModelTitle: 'Earth’s axial rotation',
+      earthModelDescription: 'Earth rotates from west to east. Its axis is tilted 23.44° from the normal to the orbital plane.',
+      sunlightSource: 'Sunlight',
+      earthModelStage: '3D model of Earth rotating on its tilted axis, showing day and night',
+      earthGlobeCanvas: '3D Earth globe with an illuminated hemisphere and a night hemisphere',
+      earthModelLoading: 'Loading the Earth model…',
+      pauseRotation: 'Pause',
+      resumeRotation: 'Resume',
+      resetModel: 'Reset',
+      simulationSpeed: 'Simulation speed',
+      simulationSpeedNote: '1×: 1 simulated hour per real second.',
+      simulationTime: 'Simulation time',
+      earthModelImageCredit: 'Base texture: NASA/GSFC Scientific Visualization Studio, Blue Marble (mosaic from 2001 observations; released in 2004).',
+      earthModelSourceLink: 'NASA image details',
+      earthModelAxisLegend: 'Solid gold line: rotation axis; dashed line: normal to the orbital plane.',
+      earthModelFootnote: 'A mean solar day lasts 24 hours; a sidereal rotation takes about 23 hours 56 minutes 4 seconds. Lighting uses an equinox-like configuration; orbital motion and seasonal changes are not modeled.',
       mainNavigation: 'Main navigation',
       spacesLabel: 'Spaces',
       overview: 'Overview',
@@ -179,6 +211,7 @@
     }
     if (search) filterContent(search.value);
     savePreference('sciaverse-language', currentLanguage);
+    window.dispatchEvent(new CustomEvent('sciaverse:languagechange', { detail: { language: currentLanguage } }));
   }
 
   function applyTheme(choice) {
@@ -316,8 +349,9 @@
 
 
   function setActiveSection(id) {
+    const activeId = id.startsWith('workspace-') ? 'spaces' : id;
     navLinks.forEach(link => {
-      const active = link.dataset.section === id;
+      const active = link.dataset.section === activeId;
       link.classList.toggle('is-active', active);
       if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');

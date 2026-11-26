@@ -1,0 +1,38 @@
+[
+  {
+    "id": "earth-environment",
+    "name": "Trái Đất và môi trường",
+    "status": "active",
+    "description": "Các hệ thống, cấu trúc và quá trình tự nhiên của Trái Đất; môi trường và tương tác con người–tự nhiên."
+  },
+  {
+    "id": "space-astronomy",
+    "name": "Vũ trụ và thiên văn",
+    "status": "active",
+    "description": "Thiên thể, hệ hành tinh, chuyển động và các hiện tượng thiên văn."
+  },
+  {
+    "id": "physics",
+    "name": "Vật lí",
+    "status": "active",
+    "description": "Vật chất, năng lượng, chuyển động, lực, sóng, điện và các quy luật vật lí."
+  },
+  {
+    "id": "chemistry",
+    "name": "Hóa học",
+    "status": "active",
+    "description": "Chất, cấu tạo chất, tính chất, biến đổi hóa học và thực nghiệm hóa học."
+  },
+  {
+    "id": "biology",
+    "name": "Sinh học",
+    "status": "active",
+    "description": "Sinh vật, tế bào, di truyền, tiến hóa, sinh lí và các hệ sinh thái."
+  },
+  {
+    "id": "mathematics-computing",
+    "name": "Toán học và tin học",
+    "status": "active",
+    "description": "Mô hình toán học, đo lường, dữ liệu, thuật toán và phương pháp tính toán."
+  }
+]

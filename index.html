@@ -11,7 +11,7 @@
   <meta property="og:description" content="Môi trường khoa học số đa lĩnh vực.">
   <meta property="og:type" content="website">
   <title>SCIAVERSE: Không gian khoa học số</title>
-  <link rel="stylesheet" href="styles.css?v=20261126-sciencevisuals2">
+  <link rel="stylesheet" href="styles.css?v=20261126-earthmodel2">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skipLink">Bỏ qua điều hướng</a>
@@ -91,22 +91,33 @@
           <h1 id="pageTitle" data-i18n="pageTitle">Không gian khoa học số<br>đa lĩnh vực.</h1>
           <a class="primary-button" href="#fields"><span data-i18n="startExploring">Bắt đầu khám phá</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
-        <div class="welcome-visual" aria-label="Sơ đồ quỹ đạo minh họa" data-i18n-aria="orbitDiagram">
-          <svg class="orbit-visual" data-orbit-system viewBox="0 0 420 270" role="img" aria-labelledby="orbitTitle orbitDesc">
-            <title id="orbitTitle" data-i18n="orbitDiagram">Sơ đồ quỹ đạo minh họa</title>
-            <desc id="orbitDesc" data-i18n="orbitDescription">Một thiên thể trung tâm và các quỹ đạo elip được vẽ để minh họa chuyển động quỹ đạo, không theo tỉ lệ.</desc>
-            <g class="orbit-lines" fill="none" stroke="currentColor">
-              <g data-orbit-path="a" transform="translate(210 135) rotate(-17) translate(-24.3 0)"><ellipse rx="135" ry="132.2"/></g>
-              <g data-orbit-path="b" transform="translate(210 135) rotate(29) translate(-18.5 0)"><ellipse rx="103" ry="101.3"/></g>
-              <g data-orbit-path="c" transform="translate(210 135) rotate(-48) translate(-8.6 0)"><ellipse rx="72" ry="71.5"/></g>
-            </g>
-            <circle class="orbit-core" cx="210" cy="135" r="18"/>
-            <circle class="orbit-node node-a" data-orbit-node="a" data-a="135" data-e="0.18" data-rotation="-17" data-period="24" data-phase="0.18" cx="321.22" cy="131.18" r="6"/>
-            <circle class="orbit-node node-b" data-orbit-node="b" data-a="103" data-e="0.18" data-rotation="29" data-period="34" data-phase="2.1" cx="99.33" cy="164.44" r="8"/>
-            <circle class="orbit-node node-c" data-orbit-node="c" data-a="72" data-e="0.12" data-rotation="-48" data-period="43" data-phase="4.2" cx="133.07" cy="132.92" r="5"/>
-            <path class="scene-bridge" d="M0 238 C105 205 315 205 420 238"/>
-            <path class="orbit-cross" d="M210 108v-10m0 78v10m-29-49h-10m78 0h10"/>
-          </svg>
+        <div class="welcome-visual earth-rotation-visual">
+          <div class="earth-model-heading">
+            <div>
+              <h2 data-i18n="earthModelTitle">Trái Đất tự quay quanh trục</h2>
+              <p data-i18n="earthModelDescription">Trái Đất quay từ Tây sang Đông. Trục quay nghiêng 23,44° so với phương vuông góc mặt phẳng quỹ đạo.</p>
+            </div>
+            <span class="earth-sun-indicator"><span aria-hidden="true"></span><span data-i18n="sunlightSource">Mặt Trời</span></span>
+          </div>
+          <div class="earth-model-stage" id="earthRotationStage" role="img" aria-label="Mô hình 3D Trái Đất tự quay quanh trục, có trục nghiêng và vùng ngày đêm" data-i18n-aria="earthModelStage">
+            <canvas id="earthRotationCanvas" aria-label="Quả Địa Cầu 3D với vùng được chiếu sáng và vùng ban đêm" data-i18n-aria="earthGlobeCanvas"></canvas>
+            <div class="earth-model-loading" id="earthModelLoading" role="status" data-i18n="earthModelLoading">Đang tải mô hình Trái Đất…</div>
+          </div>
+          <p class="earth-model-axis-legend" data-i18n="earthModelAxisLegend">Trục vàng: trục quay; nét đứt: phương vuông góc mặt phẳng quỹ đạo.</p>
+          <div class="earth-model-controls">
+            <div class="earth-model-actions">
+              <button class="earth-model-button is-primary" id="earthModelPlay" type="button" aria-pressed="true" data-i18n="pauseRotation">Tạm dừng</button>
+              <button class="earth-model-button" id="earthModelReset" type="button" data-i18n="resetModel">Đặt lại</button>
+            </div>
+            <label class="earth-model-speed">
+              <span class="earth-model-speed-copy"><span data-i18n="simulationSpeed">Tốc độ mô phỏng</span><small class="earth-model-speed-note" id="earthModelSpeedNote" data-i18n="simulationSpeedNote">1×: 1 giờ mô phỏng/giây thực.</small></span>
+              <input id="earthModelSpeed" type="range" min="0.25" max="4" step="0.25" value="1" aria-describedby="earthModelSpeedNote">
+              <output id="earthModelSpeedValue" for="earthModelSpeed">1×</output>
+            </label>
+            <span class="earth-model-time"><span data-i18n="simulationTime">Giờ mô phỏng</span> <strong id="earthModelTime">00:00</strong></span>
+          </div>
+          <p class="earth-model-footnote" data-i18n="earthModelFootnote">Một ngày Mặt Trời trung bình kéo dài 24 giờ; chu kỳ quay sao khoảng 23 giờ 56 phút 4 giây. Hướng chiếu sáng đặt ở cấu hình phân điểm; mô hình không mô phỏng chuyển động quỹ đạo và sự thay đổi mùa.</p>
+          <p class="earth-model-source"><span data-i18n="earthModelImageCredit">Ảnh nền: NASA/GSFC Scientific Visualization Studio, Blue Marble (ảnh ghép từ dữ liệu quan sát năm 2001; công bố năm 2004).</span> <a href="https://svs.gsfc.nasa.gov/2915/" target="_blank" rel="noopener noreferrer" data-i18n="earthModelSourceLink">Thông tin bộ ảnh NASA</a></p>
         </div>
       </section>
 
@@ -129,27 +140,27 @@
 
         </div>
         <div class="field-grid" id="fieldGrid">
-          <a class="field-card field-earth" href="#spaces" data-search="trái đất môi trường địa chất khí hậu" data-search-en="earth environment geology climate">
+          <a class="field-card field-earth" href="field.html?id=earth-environment" data-search="trái đất môi trường địa chất khí hậu" data-search-en="earth environment geology climate">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11.5"/><path d="M5 14h22M8 22c3-2 5-3 8-2s5 1 8-2M16 4.5c3 3 4.5 7 4.5 11.5S19 24.5 16 27.5C13 24.5 11.5 20.5 11.5 16S13 7.5 16 4.5Z"/></svg></span>
             <span class="field-name" data-i18n="earthEnvironment">Trái Đất &amp; môi trường</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
-          <a class="field-card field-space" href="#spaces" data-search="vũ trụ thiên văn hệ mặt trời hành tinh" data-search-en="space astronomy solar system planets">
+          <a class="field-card field-space" href="field.html?id=space-astronomy" data-search="vũ trụ thiên văn hệ mặt trời hành tinh" data-search-en="space astronomy solar system planets">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="4"/><ellipse cx="16" cy="16" rx="13" ry="6" transform="rotate(-28 16 16)"/><circle cx="26.5" cy="9.5" r="1.5"/></svg></span>
             <span class="field-name" data-i18n="spaceAstronomy">Vũ trụ &amp; thiên văn</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
-          <a class="field-card field-physics" href="#spaces" data-search="vật lí cơ học quang học điện từ" data-search-en="physics mechanics optics electromagnetism">
+          <a class="field-card field-physics" href="field.html?id=physics" data-search="vật lí cơ học quang học điện từ" data-search-en="physics mechanics optics electromagnetism">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="16" rx="13" ry="5.5"/><ellipse cx="16" cy="16" rx="13" ry="5.5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5.5" transform="rotate(120 16 16)"/><circle cx="16" cy="16" r="2.5"/></svg></span>
             <span class="field-name" data-i18n="physics">Vật lí</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
-          <a class="field-card field-chemistry" href="#spaces" data-search="hóa học nguyên tử phân tử phản ứng" data-search-en="chemistry atoms molecules reactions">
+          <a class="field-card field-chemistry" href="field.html?id=chemistry" data-search="hóa học nguyên tử phân tử phản ứng" data-search-en="chemistry atoms molecules reactions">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 5h8M14 5v9l-7 12a1.5 1.5 0 0 0 1.3 2.2h15.4A1.5 1.5 0 0 0 25 26L18 14V5"/><path d="M10 22h12"/><circle cx="14" cy="19" r="1"/><circle cx="19" cy="24" r="1"/></svg></span>
             <span class="field-name" data-i18n="chemistry">Hóa học</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
-          <a class="field-card field-bio" href="#spaces" data-search="sinh học tế bào di truyền sinh thái" data-search-en="biology cells genetics ecology">
+          <a class="field-card field-bio" href="field.html?id=biology" data-search="sinh học tế bào di truyền sinh thái" data-search-en="biology cells genetics ecology">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25.5 6.5C13 5 6 12 7 21c.7 6 7 7 11 3 4-4 5-11 7.5-17.5Z"/><path d="M7 26c4-7 9-11 16-17M12 19l-1-6m6 1 5 1"/></svg></span>
             <span class="field-name" data-i18n="biology">Sinh học</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
-          <a class="field-card field-math" href="#spaces" data-search="toán học tin học thuật toán dữ liệu" data-search-en="mathematics computer science algorithms data">
+          <a class="field-card field-math" href="field.html?id=mathematics-computing" data-search="toán học tin học thuật toán dữ liệu" data-search-en="mathematics computer science algorithms data">
             <span class="field-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 8h18M7 16h18M7 24h18M12 4v24M21 4v24"/><circle cx="12" cy="8" r="2"/><circle cx="21" cy="24" r="2"/></svg></span>
             <span class="field-name" data-i18n="mathComputerScience">Toán học &amp; tin học</span><span class="field-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
           </a>
@@ -176,18 +187,51 @@
 
         </div>
         <div class="space-grid">
-          <article class="space-card" data-search="mô phỏng mô hình trực quan" data-search-en="simulation scientific models visualization">
+          <a class="space-card" href="space.html?id=simulations" data-search="mô phỏng mô hình trực quan" data-search-en="simulation scientific models visualization">
             <span class="space-symbol symbol-simulation"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 24c5-12 10-12 15 0s10 12 15 0 5-12 6-12"/><path d="M6 34c5-12 10-12 15 0s10 12 15 0 5-12 6-12"/></svg></span>
             <h3 data-i18n="scientificSimulation">Mô phỏng khoa học</h3>
-          </article>
-          <article class="space-card" data-search="thực nghiệm phòng thí nghiệm ảo" data-search-en="experiments virtual laboratory">
+          </a>
+          <a class="space-card" href="space.html?id=virtual-laboratories" data-search="thực nghiệm phòng thí nghiệm ảo" data-search-en="experiments virtual laboratory">
             <span class="space-symbol symbol-lab"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 7h12M21 7v13L10 39a2 2 0 0 0 1.7 3h24.6a2 2 0 0 0 1.7-3L27 20V7"/><path d="M15 33h18M19 27h10"/></svg></span>
             <h3 data-i18n="virtualExperiments">Thực nghiệm ảo</h3>
-          </article>
-          <article class="space-card" data-search="dữ liệu biểu đồ bản đồ phân tích" data-search-en="scientific data charts maps analysis">
+          </a>
+          <a class="space-card" href="space.html?id=scientific-data" data-search="dữ liệu biểu đồ bản đồ phân tích" data-search-en="scientific data charts maps analysis">
             <span class="space-symbol symbol-data"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 39V9M7 39h35"/><path d="m11 31 8-9 7 4 10-13"/><circle cx="11" cy="31" r="2"/><circle cx="19" cy="22" r="2"/><circle cx="26" cy="26" r="2"/><circle cx="36" cy="13" r="2"/></svg></span>
             <h3 data-i18n="scientificData">Dữ liệu khoa học</h3>
-          </article>
+          </a>
+        </div>
+      </section>
+
+      <section class="workspace-panel" id="workspace-simulations" aria-labelledby="simulationWorkspaceTitle">
+        <div class="workspace-header">
+          <div><h2 id="simulationWorkspaceTitle" data-i18n="simulationWorkspaceTitle">Mô phỏng khoa học</h2><p data-i18n="simulationWorkspaceIntro">Mô hình chỉ được công bố sau khi có hồ sơ khoa học, kiểm thử và giới hạn áp dụng rõ ràng.</p></div>
+          <a class="workspace-back" href="#spaces" data-i18n="backToSpaces">Các không gian</a>
+        </div>
+        <div class="workspace-content">
+          <div><h3 data-i18n="simulationWorkflowTitle">Quy trình tiếp nhận mô hình</h3><ol class="workspace-steps"><li data-i18n="simulationStep1">Phân loại theo lĩnh vực khoa học</li><li data-i18n="simulationStep2">Thẩm định kiến thức, dữ liệu và thuật toán</li><li data-i18n="simulationStep3">Triển khai và kiểm thử tương tác</li><li data-i18n="simulationStep4">Nghiệm thu và công bố phiên bản</li></ol></div>
+          <div class="workspace-status" role="status"><span data-i18n="workspaceStatus">Trạng thái</span><strong data-i18n="simulationStatusTitle">Đang xây dựng danh mục</strong><p data-i18n="simulationStatusText">Các mô hình được tiếp nhận từ nguồn nghiên cứu đang trong quá trình rà soát. Chưa mô hình nào được công bố là đã thẩm định.</p></div>
+        </div>
+      </section>
+
+      <section class="workspace-panel" id="workspace-laboratories" aria-labelledby="laboratoryWorkspaceTitle">
+        <div class="workspace-header">
+          <div><h2 id="laboratoryWorkspaceTitle" data-i18n="laboratoryWorkspaceTitle">Phòng thí nghiệm ảo</h2><p data-i18n="laboratoryWorkspaceIntro">Không gian thực hiện thí nghiệm có biến số, điều kiện ban đầu, quy trình thao tác và kết quả quan sát.</p></div>
+          <a class="workspace-back" href="#spaces" data-i18n="backToSpaces">Các không gian</a>
+        </div>
+        <div class="workspace-content">
+          <div><h3 data-i18n="laboratoryWorkflowTitle">Cấu trúc một thí nghiệm</h3><ol class="workspace-steps"><li data-i18n="laboratoryStep1">Câu hỏi hoặc giả thuyết khoa học</li><li data-i18n="laboratoryStep2">Biến độc lập, biến phụ thuộc và điều kiện</li><li data-i18n="laboratoryStep3">Quy trình thao tác và quan sát</li><li data-i18n="laboratoryStep4">Phân tích kết quả và giới hạn</li></ol></div>
+          <div class="workspace-status" role="status"><span data-i18n="workspaceStatus">Trạng thái</span><strong data-i18n="laboratoryStatusTitle">Chưa có thí nghiệm được nghiệm thu</strong><p data-i18n="laboratoryStatusText">Chỉ đưa thí nghiệm vào không gian này khi quy trình, biến số, kết quả và lưu ý an toàn đã được kiểm chứng.</p></div>
+        </div>
+      </section>
+
+      <section class="workspace-panel" id="workspace-data" aria-labelledby="dataWorkspaceTitle">
+        <div class="workspace-header">
+          <div><h2 id="dataWorkspaceTitle" data-i18n="dataWorkspaceTitle">Dữ liệu khoa học</h2><p data-i18n="dataWorkspaceIntro">Tra cứu và phân tích dữ liệu có nguồn gốc, đơn vị, thời gian, phạm vi và phương pháp thu thập.</p></div>
+          <a class="workspace-back" href="#spaces" data-i18n="backToSpaces">Các không gian</a>
+        </div>
+        <div class="workspace-content">
+          <div><h3 data-i18n="dataWorkflowTitle">Thông tin bắt buộc của bộ dữ liệu</h3><ol class="workspace-steps"><li data-i18n="dataStep1">Nguồn cung cấp và quyền sử dụng</li><li data-i18n="dataStep2">Phạm vi không gian và thời gian</li><li data-i18n="dataStep3">Đơn vị, phương pháp và độ phân giải</li><li data-i18n="dataStep4">Giới hạn và cách diễn giải dữ liệu</li></ol></div>
+          <div class="workspace-status" role="status"><span data-i18n="workspaceStatus">Trạng thái</span><strong data-i18n="dataStatusTitle">Chưa có bộ dữ liệu được công bố</strong><p data-i18n="dataStatusText">Dữ liệu mẫu hoặc dữ liệu minh họa phải được gắn nhãn riêng, không trình bày như kết quả quan trắc.</p></div>
         </div>
       </section>
 
@@ -206,10 +250,10 @@
             </g>
           </svg>
         </div>
-        <article class="space-card library-card" data-search="thư viện học liệu tài liệu bản đồ" data-search-en="library learning resources documents maps">
+        <a class="space-card library-card" href="space.html?id=learning-library" data-search="thư viện học liệu tài liệu bản đồ" data-search-en="library learning resources documents maps">
           <span class="space-symbol symbol-library"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 11c6-2 12-1 17 2v27c-5-3-11-4-17-2zM41 11c-6-2-12-1-17 2v27c5-3 11-4 17-2z"/><path d="M13 18c3-.5 6 0 8 1M13 24c3-.5 6 0 8 1M35 18c-3-.5-6 0-8 1M35 24c-3-.5-6 0-8 1"/></svg></span>
-          <h3 id="libraryCardTitle" data-i18n="learningLibrary">Thư viện học liệu</h3>
-        </article>
+          <h3 id="libraryCardTitle" data-i18n="learningLibrary">Thư viện học liệu</h3><p class="library-description" data-i18n="libraryDescription">Tài liệu được lưu kèm nguồn, thông tin xuất bản, quyền sử dụng và lĩnh vực liên quan.</p>
+        </a>
       </section>
 
       <section class="closing-note" aria-label="Thông tin dự án" data-i18n-aria="projectInfo">
@@ -235,7 +279,7 @@
     <a class="tab-link" href="#library" data-section="library"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1.2 5.3-1.2 8 0v14c-2.7-1.2-5.3-1.2-8 0zM20 5.5c-2.7-1.2-5.3-1.2-8 0v14c2.7-1.2 5.3-1.2 8 0z"/></svg><span data-i18n="library">Thư viện</span></a>
   </nav>
 
-  <script src="app.js?v=20261126-sciencevisuals2" defer></script>
-  <script src="motion.js?v=20261126-sciencevisuals2" defer></script>
+  <script src="app.js?v=20261126-earthmodel2" defer></script>
+  <script src="earth-rotation.js?v=20261126-earthmodel1" defer></script>
 </body>
 </html>

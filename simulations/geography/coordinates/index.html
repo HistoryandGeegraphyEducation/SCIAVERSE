@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="vi" data-theme="dark" data-type="software" data-radius="soft" data-buttons="solid" data-motion="quiet">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10171b">
+  <meta name="description" content="Mô hình tương tác vĩ độ, kinh độ và lưới tọa độ địa lí trên quả Địa Cầu.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <title>SCIAVERSE — Xác định tọa độ địa lí</title>
+  <link rel="stylesheet" href="../../../styles.css?v=20261126-foundation1">
+  <link rel="stylesheet" href="styles.css?v=20261126-coordinate1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
+  <script src="main.js?v=20261126-coordinate1" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#coordinateMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <nav aria-label="Điều hướng trang">
+      <a href="../../../index.html#fields">Lĩnh vực</a>
+      <a href="../../../space.html?id=simulations">Mô phỏng khoa học</a>
+    </nav>
+  </header>
+
+  <main id="coordinateMain" class="standalone-main coordinate-main">
+    <a class="standalone-back" href="../../../space.html?id=simulations">← Trở về không gian mô phỏng</a>
+    <header class="standalone-title">
+      <p class="standalone-kicker">Trái Đất và môi trường</p>
+      <h1>Xác định tọa độ địa lí</h1>
+      <p>Chọn một điểm trên quả Địa Cầu hoặc nhập vĩ độ và kinh độ để quan sát vị trí trên lưới tọa độ.</p>
+    </header>
+
+    <section class="coordinate-layout" aria-label="Mô hình xác định tọa độ địa lí">
+      <div class="coordinate-stage-card">
+        <div class="coordinate-stage" id="coordinateStage" aria-describedby="coordinateHint">
+          <div class="coordinate-hud">
+            <span class="coordinate-chip">Điểm đang chọn</span>
+            <output class="coordinate-chip coordinate-hud-value" id="coordinateHud" aria-hidden="true">0.00° · 0.00°</output>
+          </div>
+          <p class="coordinate-stage-status" id="textureStatus" role="status" aria-live="polite">Đang tải ảnh bề mặt Trái Đất…</p>
+        </div>
+        <p class="coordinate-hint" id="coordinateHint">Kéo để xoay quả Địa Cầu; chạm hoặc nhấp lên bề mặt để chọn điểm. Có thể nhập tọa độ bằng bàn phím ở bảng bên cạnh.</p>
+      </div>
+
+      <aside class="coordinate-panel" aria-labelledby="coordinateControlsTitle">
+        <h2 id="coordinateControlsTitle">Điểm khảo sát</h2>
+
+        <div class="coordinate-control">
+          <div class="coordinate-control-heading">
+            <label for="latitudeRange">Vĩ độ</label>
+            <span class="coordinate-sign">Bắc (+) / Nam (−)</span>
+          </div>
+          <div class="coordinate-input-row">
+            <input id="latitudeRange" type="range" min="-90" max="90" step="0.01" value="0" aria-label="Thanh trượt vĩ độ">
+            <input id="latitudeNumber" class="coordinate-number" type="number" min="-90" max="90" step="0.01" value="0.00" inputmode="decimal" aria-label="Nhập vĩ độ theo độ thập phân">
+          </div>
+        </div>
+
+        <div class="coordinate-control">
+          <div class="coordinate-control-heading">
+            <label for="longitudeRange">Kinh độ</label>
+            <span class="coordinate-sign">Đông (+) / Tây (−)</span>
+          </div>
+          <div class="coordinate-input-row">
+            <input id="longitudeRange" type="range" min="-180" max="180" step="0.01" value="0" aria-label="Thanh trượt kinh độ" aria-describedby="coordinatePoleNote">
+            <input id="longitudeNumber" class="coordinate-number" type="number" min="-180" max="180" step="0.01" value="0.00" inputmode="decimal" aria-label="Nhập kinh độ theo độ thập phân" aria-describedby="coordinatePoleNote">
+          </div>
+        </div>
+
+        <div class="coordinate-actions">
+          <button class="coordinate-button" id="resetPoint" type="button">Đặt về 0°, 0°</button>
+          <button class="coordinate-button coordinate-button-secondary" id="resetCamera" type="button">Góc nhìn ban đầu</button>
+        </div>
+
+        <fieldset class="coordinate-layers">
+          <legend>Lớp tọa độ</legend>
+          <label><input id="showParallels" type="checkbox" checked> Vĩ tuyến</label>
+          <label><input id="showMeridians" type="checkbox" checked> Kinh tuyến</label>
+          <label><input id="showEquator" type="checkbox" checked> Xích đạo</label>
+          <label><input id="showPrime" type="checkbox" checked> Kinh tuyến gốc 0°</label>
+          <label><input id="showAxis" type="checkbox"> Trục quay Bắc – Nam</label>
+        </fieldset>
+
+        <div class="coordinate-result">
+          <span class="coordinate-result-label">Tọa độ điểm đang chọn</span>
+          <output id="coordinateOutput" aria-live="polite">0.00° (Xích đạo), 0.00° (kinh tuyến gốc)</output>
+          <p id="coordinatePoleNote" class="coordinate-pole-note" hidden>Tại hai cực, mọi kinh tuyến hội tụ nên không có kinh độ riêng.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="coordinate-knowledge" aria-labelledby="coordinateKnowledgeTitle">
+      <h2 id="coordinateKnowledgeTitle">Đọc tọa độ địa lí</h2>
+      <div class="coordinate-knowledge-grid">
+        <article>
+          <h3>Vĩ độ</h3>
+          <p>Cho biết vị trí ở phía Bắc hoặc phía Nam xích đạo. Giá trị nằm trong khoảng 0° đến 90° ở mỗi bán cầu.</p>
+        </article>
+        <article>
+          <h3>Kinh độ</h3>
+          <p>Cho biết vị trí ở phía Đông hoặc phía Tây kinh tuyến gốc 0° theo quy ước Greenwich. Giá trị nằm trong khoảng 0° đến 180° mỗi phía.</p>
+        </article>
+        <article>
+          <h3>Cặp tọa độ</h3>
+          <p>Khi ghi tọa độ địa lí, viết vĩ độ trước rồi đến kinh độ. Hai giá trị xác định vị trí của điểm trên lưới kinh – vĩ tuyến.</p>
+        </article>
+      </div>
+      <p class="coordinate-model-note">Đây là mô hình hình cầu giản lược để học lưới tọa độ. Vĩ độ trên mô hình không thay thế vĩ độ trắc địa của ellipsoid WGS 84. Bước nhập 0,01° chỉ là độ phân giải hiển thị, không phải độ chính xác định vị; ảnh nền chỉ dùng tham chiếu trực quan, không phải bản đồ ranh giới. Kinh độ +180° và −180° biểu diễn cùng một kinh tuyến.</p>
+      <p class="coordinate-source">Nguồn kiến thức: <a href="https://oceanservice.noaa.gov/facts/latitude.html" target="_blank" rel="noopener noreferrer">NOAA — Vĩ độ</a>, <a href="https://oceanservice.noaa.gov/facts/longitude.html" target="_blank" rel="noopener noreferrer">NOAA — Kinh độ</a> và <a href="https://earth-info.nga.mil/?action=wgs84&dir=wgs84" target="_blank" rel="noopener noreferrer">NGA — WGS 84</a>.</p>
+      <p class="coordinate-source">Ảnh nền: NASA/GSFC Scientific Visualization Studio, Blue Marble (ảnh ghép từ dữ liệu quan sát năm 2001; công bố năm 2004). <a href="https://svs.gsfc.nasa.gov/2915/" target="_blank" rel="noopener noreferrer">Thông tin bộ ảnh NASA</a></p>
+    </section>
+  </main>
+</body>
+</html>

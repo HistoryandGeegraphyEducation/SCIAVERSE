@@ -1,0 +1,92 @@
+[
+  {
+    "id": "simulations",
+    "name": "Mô phỏng khoa học",
+    "kind": "interactive-models",
+    "status": "foundation",
+    "purpose": "Biểu diễn có kiểm soát các hệ thống, hiện tượng và quy luật khoa học bằng mô hình động hoặc mô hình tương tác.",
+    "requiredMetadata": [
+      "fieldId",
+      "scientificStatus",
+      "learningObjectives",
+      "principles",
+      "parameters",
+      "assumptions",
+      "limitations",
+      "sources",
+      "version"
+    ],
+    "acceptance": [
+      "Cơ chế mô phỏng có thể giải thích và kiểm tra được.",
+      "Thông số có đơn vị, miền giá trị và nguồn hoặc lý do lựa chọn.",
+      "Phân biệt rõ dữ liệu thực, dữ liệu minh họa và tham số giả định.",
+      "Có mô tả giới hạn, không trình bày mô hình minh họa như dự báo thực tế."
+    ]
+  },
+  {
+    "id": "virtual-laboratories",
+    "name": "Phòng thí nghiệm ảo",
+    "kind": "virtual-experiments",
+    "status": "foundation",
+    "purpose": "Không gian thao tác thí nghiệm có biến độc lập, biến phụ thuộc, điều kiện ban đầu, quy trình và kết quả quan sát.",
+    "requiredMetadata": [
+      "fieldId",
+      "experimentQuestion",
+      "variables",
+      "procedure",
+      "safetyNotes",
+      "dataModel",
+      "sources"
+    ],
+    "acceptance": [
+      "Có quy trình và điều kiện thí nghiệm rõ ràng.",
+      "Kết quả thay đổi phù hợp với các biến và quy luật được mô tả.",
+      "Nêu giới hạn khi thay thế thí nghiệm thực bằng mô hình số.",
+      "Cảnh báo an toàn khi nội dung có nguy cơ thực nghiệm."
+    ]
+  },
+  {
+    "id": "scientific-data",
+    "name": "Dữ liệu khoa học",
+    "kind": "data-exploration",
+    "status": "foundation",
+    "purpose": "Không gian đọc, lọc, trực quan hóa và phân tích bộ dữ liệu khoa học có nguồn gốc, thời gian và phương pháp thu thập.",
+    "requiredMetadata": [
+      "datasetTitle",
+      "provider",
+      "sourceUrl",
+      "timeRange",
+      "spatialCoverage",
+      "units",
+      "methodology",
+      "license"
+    ],
+    "acceptance": [
+      "Nguồn dữ liệu truy xuất được.",
+      "Đơn vị, thời gian, phạm vi và phương pháp được công bố.",
+      "Không tạo số liệu minh họa rồi trình bày như dữ liệu quan trắc.",
+      "Biểu đồ thể hiện đúng kiểu dữ liệu và thang đo."
+    ]
+  },
+  {
+    "id": "learning-library",
+    "name": "Thư viện học liệu",
+    "kind": "curated-resources",
+    "status": "foundation",
+    "purpose": "Lưu trữ và tra cứu tài liệu, hình ảnh, bản đồ, video, bộ dữ liệu, thuật ngữ và nguồn tham khảo khoa học.",
+    "requiredMetadata": [
+      "title",
+      "creator",
+      "publisher",
+      "publicationDate",
+      "sourceUrl",
+      "license",
+      "relatedFields"
+    ],
+    "acceptance": [
+      "Tài liệu có xuất xứ và thông tin bản quyền.",
+      "Phân biệt tài liệu gốc, tài liệu diễn giải và học liệu do SCIAVERSE biên soạn.",
+      "Có liên kết tới mô hình hoặc lĩnh vực liên quan khi phù hợp."
+    ]
+  }
+]

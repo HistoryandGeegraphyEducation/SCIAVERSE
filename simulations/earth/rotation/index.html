@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi" data-theme="dark" data-type="software" data-radius="soft" data-buttons="solid">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mô hình Trái Đất tự quay quanh trục, thể hiện trục nghiêng, hướng chiếu sáng và chu kỳ ngày Mặt Trời trung bình.">
+<meta name="page-type" content="software"><meta name="site-kind" content="software"><meta name="theme-color" content="#10171b">
+<title>SCIAVERSE — Trái Đất tự quay quanh trục</title>
+<link rel="stylesheet" href="../../../styles.css"><link rel="stylesheet" href="styles.css">
+<script src="../../../earth-rotation.js" defer></script>
+</head>
+<body class="standalone-page">
+<a class="skip-link" href="#earthRotationMain">Bỏ qua điều hướng</a>
+<header class="standalone-header"><a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a><a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a></header>
+<main class="standalone-main earth-rotation-main" id="earthRotationMain">
+<header class="model-intro"><p class="model-kicker">Trái Đất và môi trường</p><h1>Trái Đất tự quay quanh trục</h1><p>Quan sát hướng tự quay, trục nghiêng và sự luân phiên ngày – đêm trên bề mặt Trái Đất.</p></header>
+<section class="earth-rotation-visual">
+<div class="earth-model-heading"><div><h2>Mô hình quả Địa Cầu</h2><p>Trái Đất quay từ Tây sang Đông; trục quay nghiêng khoảng 23,44° so với phương vuông góc mặt phẳng quỹ đạo.</p></div><span class="earth-sun-indicator"><span aria-hidden="true"></span>Mặt Trời</span></div>
+<div class="earth-model-stage" id="earthRotationStage" role="img" aria-label="Mô hình 3D Trái Đất tự quay quanh trục với vùng ngày và đêm">
+<canvas id="earthRotationCanvas" aria-label="Quả Địa Cầu 3D, trục nghiêng và vùng được chiếu sáng"></canvas>
+<div class="earth-model-loading" id="earthModelLoading" role="status">Đang tải mô hình Trái Đất…</div>
+</div>
+<p class="earth-model-axis-legend">Trục vàng: trục quay; nét đứt: phương vuông góc mặt phẳng quỹ đạo.</p>
+<div class="earth-model-controls">
+<div class="earth-model-actions"><button class="earth-model-button is-primary" id="earthModelPlay" type="button" aria-pressed="false">Tiếp tục</button><button class="earth-model-button" id="earthModelReset" type="button">Đặt lại</button></div>
+<label class="earth-model-speed"><span class="earth-model-speed-copy"><span>Tốc độ mô phỏng</span><small class="earth-model-speed-note" id="earthModelSpeedNote">1×: 1 giờ mô phỏng/giây thực.</small></span><input id="earthModelSpeed" type="range" min="0.25" max="4" step="0.25" value="1"><output id="earthModelSpeedValue" for="earthModelSpeed">1×</output></label>
+<span class="earth-model-time"><span>Giờ mô phỏng</span> <strong id="earthModelTime">00:00</strong></span>
+</div>
+<p class="earth-model-footnote">Một ngày Mặt Trời trung bình kéo dài 24 giờ; chu kỳ quay sao khoảng 23 giờ 56 phút 4 giây. Hướng chiếu sáng đặt ở cấu hình phân điểm; mô hình không mô phỏng chuyển động quỹ đạo hoặc sự thay đổi mùa.</p>
+<p class="earth-model-source">Ảnh nền: NASA/GSFC Scientific Visualization Studio, Blue Marble (ảnh ghép từ dữ liệu quan sát năm 2001; công bố năm 2004). <a href="https://svs.gsfc.nasa.gov/2915/" target="_blank" rel="noopener noreferrer">Thông tin bộ ảnh NASA</a></p>
+</section>
+<section class="model-notes"><h2>Giới hạn mô hình</h2><p>Trục được giữ cố định trong không gian và chiếu sáng ở cấu hình phân điểm. Mô hình không có chuyển động quỹ đạo quanh Mặt Trời, không biểu diễn sự thay đổi xích vĩ Mặt Trời theo mùa và không dùng để xác định giờ địa phương chính xác.</p><p>Nguồn: <a href="https://science.nasa.gov/learn/basics-of-space-flight/chapter2-1/" target="_blank" rel="noopener noreferrer">NASA — Reference Systems</a>; <a href="https://aa.usno.navy.mil/faq/seasons_orbit" target="_blank" rel="noopener noreferrer">U.S. Naval Observatory — Seasons and Earth’s Orbit</a>; <a href="https://svs.gsfc.nasa.gov/2915/" target="_blank" rel="noopener noreferrer">NASA SVS — Blue Marble</a>.</p></section>
+</main></body></html>

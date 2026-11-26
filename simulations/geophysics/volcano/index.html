@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mô hình khái niệm về thành phần magma, hàm lượng silica, độ nhớt, khí hòa tan và xu hướng phun trào núi lửa.">
+<meta name="page-type" content="software"><meta name="site-kind" content="software"><meta name="theme-color" content="#10171b">
+<title>SCIAVERSE — Núi lửa</title>
+<link rel="stylesheet" href="../../../styles.css"><link rel="stylesheet" href="../../model-base.css"><link rel="stylesheet" href="styles.css">
+<script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+<a class="skip-link" href="#modelMain">Bỏ qua điều hướng</a>
+<header class="standalone-header"><a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a><a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a></header>
+<main class="standalone-main model-main" id="modelMain">
+<header class="model-intro"><p class="model-kicker">Trái Đất và môi trường</p><h1>Magma và kiểu phun trào núi lửa</h1><p>Tìm hiểu mối liên hệ giữa thành phần magma, độ nhớt và khí hòa tan trong magma.</p></header>
+<section class="model-layout">
+<div class="model-visual">
+<svg class="model-diagram volcano-diagram" id="volcanoDiagram" data-style="mixed" viewBox="0 0 640 380" role="img" aria-labelledby="volcanoTitle volcanoDesc">
+<title id="volcanoTitle">Mặt cắt giản đồ núi lửa</title><desc id="volcanoDesc">Mặt cắt núi lửa có buồng magma, ống dẫn, miệng phun, cột tro và dòng dung nham. Hình chỉ dùng minh họa các bộ phận, không theo tỉ lệ.</desc>
+<path d="M0 310 L150 260 L235 165 L290 118 L350 118 L405 170 L490 260 L640 310 V380 H0Z" fill="#76624e"/>
+<path d="M0 310 L150 260 L235 165 L290 118 L350 118 L405 170 L490 260 L640 310" fill="none" stroke="#b99b76" stroke-width="4"/>
+<path d="M290 118 L300 178 L318 250 L320 290 L350 290 L350 250 L340 178 L350 118" fill="#b84e32" opacity=".88"/>
+<ellipse cx="330" cy="304" rx="76" ry="36" fill="#d76b38" stroke="#f2b36b" stroke-width="4"/>
+<path d="M310 118 Q330 102 350 118" fill="none" stroke="#e7d1ae" stroke-width="5"/>
+<g id="ashPlume" class="volcano-plume"><path d="M318 111 C282 80 310 51 286 32 C328 17 333 55 352 28 C397 42 371 74 354 86 C370 101 348 116 318 111Z" fill="#b7b8b0" opacity=".9"/><circle cx="282" cy="35" r="7" fill="#d1d1ca"/><circle cx="384" cy="46" r="6" fill="#d1d1ca"/><circle cx="366" cy="17" r="4" fill="#d1d1ca"/></g>
+<path id="lavaFlow" class="volcano-lava" d="M347 120 C385 147 404 182 433 209 C455 229 477 243 503 252" fill="none" stroke="#f28a42" stroke-width="13" stroke-linecap="round"/>
+<path d="M330 118 L330 302" stroke="#ffcf76" stroke-width="4" stroke-dasharray="5 6"/>
+<g fill="#f1ede3" font-size="13"><text x="22" y="34">Miệng phun</text><path d="M110 30 L296 113" stroke="#f1ede3" fill="none"/><text x="18" y="350">Đá nền</text><text x="455" y="340">Buồng magma</text><path d="M450 330 L397 310" stroke="#f1ede3" fill="none"/></g>
+</svg>
+<p class="interior-visual-note">Mặt cắt minh họa cấu trúc chung. Hình không mô tả một núi lửa cụ thể hoặc dự báo một đợt phun trào.</p>
+</div>
+<aside class="model-panel">
+<h2>Chọn thành phần magma</h2>
+<p class="model-label">Nhóm thành phần</p>
+<div class="model-choice" id="magmaChoice" role="group" aria-label="Chọn nhóm magma">
+<button type="button" data-magma="basaltic" class="is-selected" aria-pressed="true">Bazơ (basalt)</button>
+<button type="button" data-magma="andesitic" aria-pressed="false">Trung tính (andesite)</button>
+<button type="button" data-magma="rhyolitic" aria-pressed="false">Axit (rhyolite)</button>
+</div>
+<p class="model-label">Khí hòa tan trong magma</p>
+<div class="model-choice" id="gasChoice" role="group" aria-label="Chọn mức khí hòa tan">
+<button type="button" data-gas="low" class="is-selected" aria-pressed="true">Thấp</button>
+<button type="button" data-gas="medium" aria-pressed="false">Trung bình</button>
+<button type="button" data-gas="high" aria-pressed="false">Cao</button>
+</div>
+<div class="model-results">
+<div class="model-result"><small>Hàm lượng SiO₂ điển hình</small><strong id="silicaValue">45–53%</strong></div>
+<div class="model-result"><small>Độ nhớt tương đối</small><strong id="viscosityValue">Thấp</strong></div>
+</div>
+<section class="model-explanation" aria-live="polite" aria-atomic="true">
+<strong id="eruptionTendency">Xu hướng thường gặp: phun tràn</strong>
+<p id="eruptionExplanation">Magma bazan thường có độ nhớt thấp, khí dễ thoát hơn và thường tạo dòng dung nham. Hàm lượng khí cao hoặc tương tác với nước vẫn có thể làm thay đổi kiểu phun.</p>
+</section>
+</aside>
+</section>
+<section class="model-notes">
+<h2>Những yếu tố còn chi phối phun trào</h2>
+<p>Độ nhớt thường tăng khi hàm lượng silica tăng, nhưng còn phụ thuộc nhiệt độ, hàm lượng tinh thể, nước và thành phần hóa học khác. Khí hòa tan cung cấp lực đẩy cho phun nổ; khả năng khí thoát ra còn phụ thuộc độ nhớt và tốc độ magma giảm áp khi đi lên.</p>
+<p>Hai lựa chọn trên chỉ cho thấy xu hướng khái quát, không xác định chắc chắn kiểu phun trào. Nước ngầm hoặc nước mặt tiếp xúc với magma/đá nóng có thể gây phun nổ do tương tác nước ngay cả khi magma có hàm lượng silica thấp. Mô hình không tính áp suất, nhiệt độ, độ nhớt định lượng, lưu lượng dung nham hoặc chỉ số nổ.</p>
+<p>Nguồn: <a href="https://www.usgs.gov/faqs/how-do-volcanoes-erupt" target="_blank" rel="noopener noreferrer">USGS — How do volcanoes erupt?</a>; <a href="https://www.usgs.gov/glossary/volcano-hazards-program-glossary" target="_blank" rel="noopener noreferrer">USGS — Volcano Hazards Glossary</a>; <a href="https://www.usgs.gov/glossary/volcano-hazards-program-glossary" target="_blank" rel="noopener noreferrer">USGS — Eruption Styles</a>.</p>
+</section></main></body></html>

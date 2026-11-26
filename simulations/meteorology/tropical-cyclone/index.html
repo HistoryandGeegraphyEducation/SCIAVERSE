@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Mô hình cấu trúc và các điều kiện môi trường thuận lợi cho sự hình thành bão nhiệt đới."><meta name="page-type" content="software"><meta name="site-kind" content="software"><meta name="theme-color" content="#10171b"><title>SCIAVERSE — Bão nhiệt đới</title><link rel="stylesheet" href="../../../styles.css"><link rel="stylesheet" href="../../model-base.css"><link rel="stylesheet" href="styles.css"><script src="main.js" defer></script></head>
+<body class="standalone-page"><a class="skip-link" href="#modelMain">Bỏ qua điều hướng</a><header class="standalone-header"><a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a><a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a></header>
+<main class="standalone-main model-main" id="modelMain">
+<header class="model-intro"><p class="model-kicker">Trái Đất và môi trường</p><h1>Bão nhiệt đới</h1><p>Quan sát cấu trúc bão và thay đổi các điều kiện môi trường có liên quan đến quá trình hình thành.</p></header>
+<section class="model-layout">
+<div class="model-visual">
+<svg class="model-diagram cyclone-diagram" id="cycloneDiagram" viewBox="0 0 640 420" role="img" aria-labelledby="cycloneTitle cycloneDesc"><title id="cycloneTitle">Sơ đồ cấu trúc bão nhiệt đới nhìn từ trên cao</title><desc id="cycloneDesc">Mô hình khái niệm gồm mắt bão, thành mắt và các dải mưa xoắn quanh tâm.</desc>
+<circle cx="320" cy="210" r="176" fill="#193c46" stroke="#5d8f99" stroke-width="2"/><circle cx="320" cy="210" r="112" fill="none" stroke="#79b7c0" stroke-width="24" opacity=".32"/><circle cx="320" cy="210" r="72" fill="none" stroke="#a5d0d0" stroke-width="15" opacity=".55"/><circle cx="320" cy="210" r="36" fill="#d3e2d9" opacity=".8"/>
+<g id="cycloneBands" fill="none" stroke="#8ec3c7" stroke-width="9" stroke-linecap="round"><path d="M320 35 C480 30 565 160 470 260 C390 340 230 320 190 220"/><path d="M320 75 C430 70 500 160 440 235 C390 300 275 285 240 215"/><path d="M320 112 C390 110 435 165 405 215 C380 255 315 250 290 215"/></g>
+<g id="cycloneArrows" fill="none" stroke="#f0d18b" stroke-width="4" stroke-linecap="round"><path d="M160 150 C180 65 300 28 390 65"/><path d="M390 65 l-14 -3 m14 3 l-7 13"/><path d="M480 260 C430 345 310 380 225 340"/><path d="M225 340 l13 -1 m-13 1 l5 -12"/></g>
+<g fill="#f2f1e9" font-size="13"><text x="303" y="215">Mắt bão</text><text x="390" y="200">Thành mắt</text><text x="28" y="32">Dải mưa</text><path d="M95 38 L180 98" stroke="#f2f1e9" fill="none"/></g>
+</svg>
+<p class="model-visual-note">Sơ đồ cấu trúc lý tưởng hóa. Kích thước mắt, thành mắt và dải mưa thay đổi giữa các cơn bão.</p>
+<div class="cyclone-direction"><strong id="cycloneDirection">Bắc bán cầu: hoàn lưu ngược chiều kim đồng hồ.</strong><span id="cycloneLatitudeNote">Chiều xoáy phụ thuộc bán cầu; gần xích đạo, lực Coriolis yếu.</span></div>
+</div>
+<aside class="model-panel">
+<h2>Điều kiện môi trường</h2>
+<div class="model-choice" id="hemisphereChoice" role="group" aria-label="Chọn bán cầu"><button type="button" data-hemisphere="north" class="is-selected" aria-pressed="true">Bắc bán cầu</button><button type="button" data-hemisphere="south" aria-pressed="false">Nam bán cầu</button></div>
+<div class="model-control"><label for="cycloneSst">Nhiệt độ mặt biển <output id="cycloneSstOut">28°C</output></label><input id="cycloneSst" type="range" min="20" max="32" step=".5" value="28"></div>
+<div class="model-control"><label for="cycloneHumidity">Độ ẩm tương đối tầng giữa <output id="cycloneHumidityOut">70%</output></label><input id="cycloneHumidity" type="range" min="30" max="100" step="5" value="70"></div>
+<div class="model-control"><label for="cycloneShear">Độ đứt gió thẳng đứng <output id="cycloneShearOut">8 m/s</output></label><input id="cycloneShear" type="range" min="0" max="25" step="1" value="8"></div>
+<div class="model-control"><label for="cycloneLatitude">Vĩ độ tuyệt đối <output id="cycloneLatitudeOut">15°</output></label><input id="cycloneLatitude" type="range" min="0" max="30" step="1" value="15"></div>
+<div class="cyclone-factors" id="cycloneFactors" aria-live="polite" aria-atomic="true">
+<p><strong>Nước biển:</strong> <span id="sstState">Ấm, có thể cung cấp năng lượng.</span></p>
+<p><strong>Độ ẩm:</strong> <span id="humidityState">Tương đối ẩm; thuận lợi hơn cho đối lưu sâu.</span></p>
+<p><strong>Đứt gió:</strong> <span id="shearState">Tương đối yếu; ít làm nghiêng cấu trúc đối lưu.</span></p>
+<p><strong>Vĩ độ:</strong> <span id="latitudeState">Coriolis có vai trò rõ hơn so với vùng xích đạo.</span></p>
+</div>
+</aside></section>
+<section class="model-notes"><h2>Điều kiện hình thành không phải phép dự báo</h2><p>Bão nhiệt đới cần nhiều điều kiện cùng tồn tại: đại dương đủ ấm ở lớp nước có độ sâu đáng kể, khí quyển ẩm và bất ổn đối lưu, nhiễu động ban đầu có hoàn lưu, lực Coriolis đủ lớn và độ đứt gió thẳng đứng thấp. Không một thanh trượt riêng lẻ nào xác định được một cơn bão sẽ hình thành.</p><p>Mốc khoảng 26,5°C thường được dùng cho nhiệt độ mặt biển, nhưng nước ấm cần tồn tại đủ sâu; khoảng cách 500 km từ xích đạo (xấp xỉ 4,5° vĩ độ) là mốc tham khảo về Coriolis, không phải ngưỡng tuyệt đối. Mô hình không có biến độ sâu lớp nước ấm hoặc nhiễu động ban đầu; không tính trường áp suất, hoàn lưu gió, nhiệt động lực học, xác suất hình thành hoặc dự báo đường đi/cường độ.</p><p>Nguồn: <a href="https://www.noaa.gov/jetstream/tropical/tropical-cyclone-introduction" target="_blank" rel="noopener noreferrer">NOAA — Tropical Cyclone Introduction</a>; <a href="https://www.aoml.noaa.gov/hrd/tcfaq/G4.html" target="_blank" rel="noopener noreferrer">NOAA — Tropical Cyclone Structure</a>; <a href="https://www.aoml.noaa.gov/hrd/tcfaq/A15.html" target="_blank" rel="noopener noreferrer">NOAA/AOML — How do tropical cyclones form?</a>.</p></section></main></body></html>

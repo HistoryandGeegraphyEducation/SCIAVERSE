@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Mô hình mặt cắt cấu tạo Trái Đất, ranh giới các lớp và trạng thái vật chất bên trong hành tinh.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#10171b">
+  <title>SCIAVERSE — Cấu tạo bên trong Trái Đất</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#interiorMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a>
+  </header>
+  <main class="standalone-main interior-main" id="interiorMain">
+    <header class="model-intro">
+      <p class="model-kicker">Trái Đất và môi trường</p>
+      <h1>Cấu tạo bên trong Trái Đất</h1>
+      <p>Khám phá các lớp cấu tạo, độ sâu ranh giới và trạng thái vật chất từ bề mặt đến tâm Trái Đất.</p>
+    </header>
+    <section class="interior-layout" aria-label="Mô hình cấu tạo bên trong Trái Đất">
+      <div class="interior-visual">
+        <svg class="earth-section" viewBox="0 0 440 420" role="img" aria-labelledby="earthDiagramTitle earthDiagramDesc">
+          <title id="earthDiagramTitle">Mặt cắt giản đồ các lớp bên trong Trái Đất</title>
+          <desc id="earthDiagramDesc">Các vòng đồng tâm biểu diễn vỏ, lớp phủ, nhân ngoài và nhân trong. Độ dày vỏ được phóng đại để dễ quan sát.</desc>
+          <circle class="layer-mantle" data-layer-shape="mantle" cx="205" cy="202" r="122" fill="none" stroke-width="72"/>
+          <circle class="layer-outer" data-layer-shape="outer" cx="205" cy="202" r="58" fill="none" stroke-width="56"/>
+          <circle class="layer-inner" data-layer-shape="inner" cx="205" cy="202" r="30"/>
+          <circle class="layer-crust" data-layer-shape="crust" cx="205" cy="202" r="158"/>
+          <circle class="earth-boundary" cx="205" cy="202" r="158"/>
+          <g class="diagram-callouts">
+            <path d="M205 42 L205 18 L324 18"/>
+            <text x="330" y="22">Vỏ</text>
+            <path d="M292 117 L355 82 L418 82"/>
+            <text x="358" y="75">Lớp phủ</text>
+            <path d="M266 250 L342 292 L418 292"/>
+            <text x="348" y="311">Nhân ngoài</text>
+            <path d="M225 222 L270 358 L322 358"/>
+            <text x="328" y="363">Nhân trong</text>
+          </g>
+        </svg>
+        <p class="interior-visual-note">Mặt cắt sơ đồ. Độ dày vỏ được phóng đại; các lớp còn lại được giản lược để dễ quan sát.</p>
+      </div>
+      <aside class="interior-panel">
+        <h2>Chọn lớp cấu tạo</h2>
+        <div class="layer-select" id="layerSelect">
+          <button type="button" data-layer="crust" aria-pressed="true" class="is-selected">Vỏ Trái Đất</button>
+          <button type="button" data-layer="mantle" aria-pressed="false">Lớp phủ</button>
+          <button type="button" data-layer="outer" aria-pressed="false">Nhân ngoài</button>
+          <button type="button" data-layer="inner" aria-pressed="false">Nhân trong</button>
+        </div>
+        <section class="layer-details" aria-live="polite" aria-atomic="true">
+          <h3 id="layerName">Vỏ Trái Đất</h3>
+          <p id="layerState">Rắn</p>
+          <dl>
+            <div><dt>Độ sâu tính từ bề mặt</dt><dd id="layerDepth">0 đến khoảng 70 km</dd></div>
+            <div><dt>Độ dày / bán kính</dt><dd id="layerThickness">Khoảng 5–70 km</dd></div>
+            <div><dt>Thành phần chủ yếu</dt><dd id="layerMaterial">Đá silicat</dd></div>
+          </dl>
+          <p id="layerDescription">Lớp ngoài cùng, gồm vỏ đại dương và vỏ lục địa. Độ dày thay đổi theo vị trí.</p>
+        </section>
+        <section class="wave-explainer">
+          <h3>Sóng địa chấn và trạng thái vật chất</h3>
+          <div class="wave-options" role="group" aria-label="Chọn loại sóng địa chấn">
+            <button type="button" data-wave="p" aria-pressed="true" class="is-selected">Sóng P</button>
+            <button type="button" data-wave="s" aria-pressed="false">Sóng S</button>
+          </div>
+          <p id="waveExplanation">Sóng P là sóng nén, truyền được qua chất rắn và chất lỏng. Vì vậy, sóng P có thể truyền qua nhân ngoài lỏng.</p>
+        </section>
+      </aside>
+    </section>
+    <section class="interior-notes">
+      <h2>Giới hạn của mô hình</h2>
+      <p>Đây là mô hình phân lớp khái quát, không biểu diễn đầy đủ các phân chia địa vật lí như thạch quyển, quyển mềm, vùng chuyển tiếp trong lớp phủ hoặc các cấu trúc không đồng nhất. Các ranh giới độ sâu được làm tròn. Hoạt động đối lưu trong lớp phủ diễn ra rất chậm trên thang thời gian địa chất; không có một đại dương magma lỏng bao phủ toàn bộ lớp phủ.</p>
+      <p class="interior-source">Nguồn: <a href="https://pubs.usgs.gov/gip/dynamic/inside.html" target="_blank" rel="noopener noreferrer">USGS — Inside the Earth</a>; <a href="https://www.usgs.gov/faqs/are-the-tectonic-plates-floating-on-magma" target="_blank" rel="noopener noreferrer">USGS — Are tectonic plates floating on magma?</a>; <a href="https://www.usgs.gov/media/images/p-wave-and-s-wave-paths-through-earth" target="_blank" rel="noopener noreferrer">USGS — P-wave and S-wave paths through the Earth</a>.</p>
+    </section>
+  </main>
+</body>
+</html>

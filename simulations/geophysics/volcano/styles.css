@@ -1,0 +1,12 @@
+.volcano-diagram{border-radius:12px;background:#182b2e;min-height:240px}
+.volcano-plume,.volcano-lava{opacity:.55}
+.volcano-diagram[data-style="explosive"] .volcano-plume{opacity:1}
+.volcano-diagram[data-style="explosive"] .volcano-lava{opacity:.25}
+.volcano-diagram[data-style="effusive"] .volcano-plume{opacity:.2}
+.volcano-diagram[data-style="effusive"] .volcano-lava{opacity:1}
+.model-label{margin:14px 0 7px;color:var(--text-soft);font-size:14px}
+.model-choice button{flex:1}
+.interior-visual-note{margin:10px 0 0;color:var(--text-soft);font-size:13px;line-height:1.5}
+.model-explanation strong{color:var(--text)}
+.model-explanation p{margin:7px 0 0}
+@media(max-width:520px){.volcano-diagram{min-height:200px}.model-choice button{min-width:calc(50% - 8px)}}

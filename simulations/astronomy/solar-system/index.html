@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Mô hình tương tác tám hành tinh, chu kỳ quỹ đạo, chu kỳ tự quay và độ nghiêng trục trong Hệ Mặt Trời.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#10171b">
+  <title>SCIAVERSE — Khám phá các hành tinh</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#solarMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a>
+  </header>
+  <main class="standalone-main solar-main" id="solarMain">
+    <header class="model-intro">
+      <p class="model-kicker">Vũ trụ và thiên văn</p>
+      <h1>Khám phá các hành tinh</h1>
+      <p>Quan sát tám hành tinh theo chu kỳ quỹ đạo và đối chiếu các thông số thiên văn cơ bản.</p>
+    </header>
+    <section class="solar-layout" aria-label="Mô hình Hệ Mặt Trời">
+      <div class="solar-visual-column">
+        <div class="solar-stage" id="solarStage">
+          <svg class="solar-fallback" id="solarFallback" viewBox="0 0 600 400" role="img" aria-label="Sơ đồ tĩnh tám hành tinh quay quanh Mặt Trời, quỹ đạo và kích thước không theo tỉ lệ" hidden><g fill="none" stroke="#81928e" stroke-width="1" opacity=".7"><circle cx="300" cy="200" r="32"/><circle cx="300" cy="200" r="48"/><circle cx="300" cy="200" r="66"/><circle cx="300" cy="200" r="86"/><circle cx="300" cy="200" r="112"/><circle cx="300" cy="200" r="140"/><circle cx="300" cy="200" r="170"/><circle cx="300" cy="200" r="200"/></g><circle cx="300" cy="200" r="15" fill="#f3c66f"/><circle cx="332" cy="200" r="3" fill="#9a9995"/><circle cx="348" cy="200" r="4" fill="#d3a96f"/><circle cx="366" cy="200" r="4" fill="#4f9db3"/><circle cx="386" cy="200" r="3.5" fill="#b96c51"/><circle cx="412" cy="200" r="8" fill="#c79d78"/><circle cx="440" cy="200" r="7" fill="#c8b58c"/><circle cx="470" cy="200" r="5" fill="#86c6c9"/><circle cx="500" cy="200" r="5" fill="#5578c8"/><text x="20" y="30" fill="#edf4f1" font-size="14">Sơ đồ tĩnh — không theo tỉ lệ</text></svg>
+          <canvas id="solarCanvas" role="img" aria-label="Mô hình ba chiều giản lược của Mặt Trời và tám quỹ đạo hành tinh"></canvas>
+          <div class="solar-loading" id="solarLoading" role="status">Đang khởi tạo mô hình 3D…</div>
+          <div class="solar-stage-caption">Mặt phẳng quỹ đạo được giản lược để quan sát</div>
+        </div>
+        <div class="solar-controls">
+          <div class="solar-play-row">
+            <button class="solar-button solar-primary" id="solarPlay" type="button" aria-pressed="false">Bắt đầu</button>
+            <button class="solar-button" id="solarReset" type="button">Đặt lại thời gian</button>
+          </div>
+          <label class="solar-speed" for="solarSpeed">
+            <span>Tốc độ thời gian mô phỏng</span>
+            <output id="solarSpeedValue" for="solarSpeed">1×</output>
+            <input id="solarSpeed" type="range" min="0.25" max="10" step="0.25" value="1">
+            <small>1× tương ứng một năm Trái Đất trong 120 giây thực.</small>
+          </label>
+          <p class="solar-time">Thời gian mô phỏng: <strong id="solarTime">Ngày 0</strong></p>
+        </div>
+      </div>
+      <aside class="solar-information" aria-label="Thông tin thiên thể">
+        <h2>Chọn thiên thể</h2>
+        <div class="solar-body-list" id="solarBodyList">
+          <button type="button" data-body="mercury">Sao Thủy</button>
+          <button type="button" data-body="venus">Sao Kim</button>
+          <button type="button" data-body="earth" class="is-selected" aria-pressed="true">Trái Đất</button>
+          <button type="button" data-body="mars">Sao Hỏa</button>
+          <button type="button" data-body="jupiter">Sao Mộc</button>
+          <button type="button" data-body="saturn">Sao Thổ</button>
+          <button type="button" data-body="uranus">Sao Thiên Vương</button>
+          <button type="button" data-body="neptune">Sao Hải Vương</button>
+        </div>
+        <section class="solar-facts" aria-live="polite" aria-atomic="true">
+          <h3 id="solarSelectedName">Trái Đất</h3>
+          <p id="solarSelectedType">Hành tinh đất đá</p>
+          <dl>
+            <div><dt>Đường kính trung bình</dt><dd id="solarDiameter">12.742 km</dd></div>
+            <div><dt>Khối lượng</dt><dd id="solarMass">5,972 × 10²⁴ kg</dd></div>
+            <div><dt>Bán trục lớn</dt><dd id="solarDistance">1,000 AU</dd></div>
+            <div><dt>Chu kỳ quỹ đạo sao (sidereal)</dt><dd id="solarYear">365,256 ngày</dd></div>
+            <div><dt>Chu kỳ tự quay sao (sidereal)</dt><dd id="solarDay">23 giờ 56 phút 4 giây</dd></div>
+            <div><dt>Độ nghiêng trục</dt><dd id="solarTilt">23,44°</dd></div>
+          </dl>
+          <p class="solar-direction" id="solarDirection">Tự quay thuận hành.</p>
+        </section>
+      </aside>
+    </section>
+    <section class="solar-notes" aria-labelledby="solarLimitsTitle">
+      <h2 id="solarLimitsTitle">Cách đọc mô hình</h2>
+      <p>Khoảng cách quỹ đạo được nén phi tuyến và kích thước thiên thể được phóng đại để nhìn rõ. Quỹ đạo được biểu diễn bằng đường tròn, không phải quỹ đạo elip theo đúng độ lệch tâm. Vị trí ban đầu chỉ để phân bố các hành tinh trên hình, không phải vị trí thiên văn tại thời điểm hiện tại.</p>
+      <p>Hoạt ảnh giữ đúng tỉ lệ chu kỳ quỹ đạo trung bình giữa các hành tinh, nhưng thời gian được nén theo thang điều khiển. Mô hình không tính nhiễu loạn hấp dẫn, cộng hưởng quỹ đạo hoặc vị trí tức thời chính xác. Chu kỳ tự quay được cung cấp dưới dạng dữ liệu, không đồng bộ hoạt ảnh tự quay với hoạt ảnh quỹ đạo.</p>
+      <p class="solar-source">Dữ liệu: <a href="https://ssd.jpl.nasa.gov/planets/phys_par.html" target="_blank" rel="noopener noreferrer">NASA/JPL — Planetary Physical Parameters</a>; <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/" target="_blank" rel="noopener noreferrer">NASA/NSSDC — Planetary Fact Sheet</a> và <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html" target="_blank" rel="noopener noreferrer">ghi chú định nghĩa tham số</a>.</p>
+    </section>
+  </main>
+</body>
+</html>

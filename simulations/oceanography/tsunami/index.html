@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mô hình tốc độ truyền sóng thần theo độ sâu nước bằng xấp xỉ sóng dài c bằng căn bậc hai của g nhân h.">
+<meta name="page-type" content="software"><meta name="site-kind" content="software"><meta name="theme-color" content="#10171b">
+<title>SCIAVERSE — Sóng thần</title>
+<link rel="stylesheet" href="../../../styles.css"><link rel="stylesheet" href="../../model-base.css"><link rel="stylesheet" href="styles.css">
+<script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+<a class="skip-link" href="#modelMain">Bỏ qua điều hướng</a>
+<header class="standalone-header"><a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a><a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a></header>
+<main class="standalone-main model-main" id="modelMain">
+<header class="model-intro"><p class="model-kicker">Trái Đất và môi trường</p><h1>Sóng thần và tốc độ truyền</h1><p>Khảo sát ảnh hưởng của độ sâu nước đến tốc độ truyền của sóng dài trong xấp xỉ nước nông.</p></header>
+<section class="model-layout">
+<div class="model-visual">
+<svg class="model-diagram tsunami-diagram" viewBox="0 0 640 340" role="img" aria-labelledby="tsTitle tsDesc">
+<title id="tsTitle">Sơ đồ sóng thần truyền qua đại dương</title><desc id="tsDesc">Một sóng dài truyền qua cột nước từ vùng biển sâu về phía bờ. Hình không biểu diễn biên độ hoặc địa hình đáy biển theo tỉ lệ.</desc>
+<rect x="0" y="0" width="640" height="250" fill="#183d4b"/><path d="M0 248 Q130 250 260 256 T470 265 L545 286 L640 310 V340 H0Z" fill="#7b725c"/>
+<path d="M0 128 C40 116 65 138 105 128 S170 116 210 128 S275 140 315 128 S380 116 420 128 S485 140 525 128 S590 116 640 128" fill="none" stroke="#c3e3e0" stroke-width="4"/>
+<path d="M0 155 C40 143 65 165 105 155 S170 143 210 155 S275 167 315 155 S380 143 420 155 S485 167 525 155 S590 143 640 155" fill="none" stroke="#73b5c0" stroke-width="2" opacity=".65"/>
+<path d="M500 270 L545 286 L640 310" fill="none" stroke="#b9a17a" stroke-width="3"/>
+<path d="M540 80 L540 258" stroke="#d9c48d" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="18" y="34" fill="#e8f2ef" font-size="14">Ngoài khơi</text><text x="554" y="246" fill="#e8f2ef" font-size="14">Bờ biển</text><text x="18" y="226" fill="#c5d7d1" font-size="12">Đáy biển</text><text x="340" y="90" fill="#e8f2ef" font-size="13">Sóng dài</text>
+<path d="M260 102 H410" stroke="#f0d28c" stroke-width="2"/><path d="M400 94 L412 102 L400 110" fill="none" stroke="#f0d28c" stroke-width="2"/>
+</svg>
+<div class="model-explanation"><strong>Điểm cần phân biệt:</strong> ngoài khơi, sóng thần có thể có biên độ nhỏ nhưng bước sóng rất dài. Khi tiến vào vùng nước nông, sóng chậm lại và có thể tăng chiều cao; mức dâng và ngập ven bờ cần mô hình thủy động lực cùng dữ liệu địa hình đáy biển.</div>
+</div>
+<aside class="model-panel">
+<h2>Điều kiện truyền sóng</h2>
+<div class="model-control"><label for="waterDepth">Độ sâu nước h <output id="waterDepthOut">4.000 m</output></label><input id="waterDepth" type="range" min="100" max="6000" step="50" value="4000"></div>
+<div class="model-control"><label for="elapsedTime">Thời gian truyền <output id="elapsedTimeOut">1,0 giờ</output></label><input id="elapsedTime" type="range" min="0" max="6" step="0.25" value="1"></div>
+<div class="model-results">
+<div class="model-result"><small>Tốc độ xấp xỉ</small><strong id="waveSpeed">198,1 m/s</strong></div>
+<div class="model-result"><small>Tốc độ quy đổi</small><strong id="waveSpeedKmh">713 km/h</strong></div>
+<div class="model-result"><small>Quãng đường lý tưởng</small><strong id="waveDistance">713 km</strong></div>
+<div class="model-result"><small>Gia tốc trọng trường</small><strong>9,81 m/s²</strong></div>
+</div>
+<p class="model-explanation" id="tsunamiFormula" aria-live="polite">c = √(g × h). Với độ sâu nước không đổi, quãng đường lý tưởng được tính bằng c × thời gian.</p>
+</aside>
+</section>
+<section class="model-notes"><h2>Phương trình và giới hạn</h2>
+<p>Vận tốc truyền sóng dài trong xấp xỉ nước nông: c = √(g × h), trong đó g là gia tốc trọng trường và h là độ sâu nước. Xấp xỉ này phù hợp khi bước sóng lớn hơn nhiều so với độ sâu nước, đây là đặc điểm của sóng thần.</p>
+<p>Mô hình giả định độ sâu không đổi và không tính ma sát đáy, biến thiên địa hình, khúc xạ, phản xạ, tương tác phi tuyến, độ cao sóng, run-up hoặc ngập lụt. Thời gian và quãng đường chỉ là kết quả lý tưởng của công thức tốc độ, không phải dự báo cảnh báo sóng thần. Mô hình cũng không tính quá trình đứt gãy và dịch chuyển đáy biển tạo nguồn sóng.</p>
+<p>Nguồn: <a href="https://www.noaa.gov/explainers/science-behind-tsunamis" target="_blank" rel="noopener noreferrer">NOAA — The Science Behind Tsunamis</a>; <a href="https://www.pmel.noaa.gov/pubs/PDF/gonz3031/gonz3031.pdf" target="_blank" rel="noopener noreferrer">NOAA/PMEL — Long-wave propagation speed</a>; <a href="https://repository.library.noaa.gov/view/noaa/11079/noaa_11079_DS1.pdf" target="_blank" rel="noopener noreferrer">NOAA — SIFT tsunami generation and forecasting</a>.</p>
+</section></main></body></html>
