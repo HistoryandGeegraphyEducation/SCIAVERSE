@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Động đất
 
 - Mã nguồn tham chiếu: `EDUVERSE/js/sims/quake.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: độ lớn mômen Mw, độ sâu chấn tiêu, độ trượt, hình học đứt gãy, chuyển động hai khối đá, sóng P/S/sóng mặt và phản hồi hoạt ảnh.
 - Kết luận hiện tại: quan hệ hình học chấn tiêu–chấn tâm đúng; các tham số đầu vào và hoạt ảnh chưa được liên kết bằng mô hình nguồn động đất có cơ sở vật lí. Chuyển động đứt gãy chưa xác định loại cơ chế, vận tốc sóng không có đơn vị vật lí và trạng thái sóng sau khi hoạt ảnh kết thúc có lỗi. Chưa đủ điều kiện tiếp nhận.
 
@@ -124,3 +124,16 @@ Chỉ chuyển trạng thái sang `validated` sau khi sửa các điểm chặn 
 - U.S. Geological Survey. *What is a fault and what are the different types?* https://www.usgs.gov/faqs/what-a-fault-and-what-are-different-types
 - U.S. Geological Survey. *Seismographs — Keeping Track of Earthquakes*. https://www.usgs.gov/programs/earthquake-hazards/seismographs-keeping-track-earthquakes
 - U.S. Geological Survey. *Body waves inside the earth*. https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/earthwaves.php
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/geophysics/earthquake/`.
+
+- Tính mômen địa chấn theo (M_0=\mu A D), trong đó diện tích đứt gãy được đổi từ km² sang m², môđun trượt từ GPa sang Pa và độ trượt tính bằng m.
+- Tính độ lớn mômen theo (M_w=\frac{2}{3}(\log_{10}M_0-9.1)), với (M_0) tính bằng N·m.
+- Thêm độ sâu chấn tiêu để phân nhóm nông/trung gian/sâu; đây là phân loại theo độ sâu, không làm thay đổi Mw.
+- Loại bỏ việc dùng slider gió/biên độ tùy ý như một đại lượng vật lí. Các vòng sóng chỉ là sơ đồ, không gắn vận tốc hoặc cường độ rung lắc.
+- Giao diện nêu rõ môđun trượt và hình học đứt gãy là tham số giả định, không phải nguồn động đất thực.
+
+Kiểm tra tĩnh công thức và cú pháp JavaScript đã đạt bước đầu; chưa kiểm thử trực quan trên trình duyệt/điện thoại. Cần kiểm tra thêm đơn vị, phạm vi tham số và phản hồi bàn phím trước nghiệm thu.
