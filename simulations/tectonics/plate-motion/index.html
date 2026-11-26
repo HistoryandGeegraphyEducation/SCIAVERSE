@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Mô hình ba chiều về ba kiểu ranh giới mảng kiến tạo và hướng chuyển động tương đối.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#10171b">
+  <title>SCIAVERSE — Chuyển động các mảng kiến tạo</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../../model-base.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#plateMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a>
+  </header>
+  <main class="standalone-main plate-main" id="plateMain">
+    <header class="model-intro">
+      <h1>Chuyển động các mảng kiến tạo</h1>
+      <p>Quan sát hướng chuyển động tương đối tại ba kiểu ranh giới mảng.</p>
+    </header>
+    <section class="plate-layout" aria-label="Mô hình chuyển động mảng kiến tạo">
+      <div class="plate-stage" id="plateStage">
+        <div class="plate-status" id="plateStatus" role="status">Đang khởi tạo mô hình 3D…</div>
+      </div>
+      <aside class="plate-panel">
+        <h2>Kiểu ranh giới</h2>
+        <div class="plate-boundary-choice" id="plateBoundaryChoice" role="group" aria-label="Chọn kiểu ranh giới mảng">
+          <button type="button" data-boundary="divergent" class="is-selected" aria-pressed="true">Tách giãn</button>
+          <button type="button" data-boundary="convergent" aria-pressed="false">Hội tụ</button>
+          <button type="button" data-boundary="transform" aria-pressed="false">Trượt ngang</button>
+        </div>
+        <div class="plate-velocity-control">
+          <label for="plateVelocity">Tốc độ tương đối giả định</label>
+          <output id="plateVelocityValue" for="plateVelocity">5 cm/năm</output>
+          <input id="plateVelocity" type="range" min="1" max="15" step="1" value="5">
+        </div>
+        <section class="plate-result" aria-live="polite" aria-atomic="true">
+          <h3 id="plateResultTitle">Ranh giới tách giãn</h3>
+          <p id="plateResultText">Hai mảng chuyển động ra xa nhau. Vật chất nóng từ manti có thể đi lên và tạo vỏ đại dương mới khi nguội, kết tinh.</p>
+        </section>
+      </aside>
+    </section>
+    <p class="plate-note">Mô hình là mặt cắt giản đồ, không theo tỉ lệ. Tốc độ là giá trị kịch bản, không phải số đo của một cặp mảng cụ thể. Mô hình không dự báo động đất hoặc phun trào.</p>
+    <details class="model-sources">
+      <summary>Tài liệu khoa học</summary>
+      <p>Nguồn: <a href="https://pubs.usgs.gov/gip/dynamic/understanding.html" target="_blank" rel="noopener noreferrer">USGS — Understanding Plate Motions</a>; <a href="https://oceanexplorer.noaa.gov/ocean-fact/plate-boundaries/" target="_blank" rel="noopener noreferrer">NOAA Ocean Exploration — Plate Boundaries</a>; <a href="https://www.usgs.gov/faqs/how-fast-do-tectonic-plates-move" target="_blank" rel="noopener noreferrer">USGS — How fast do tectonic plates move?</a>.</p>
+    </details>
+  </main>
+</body>
+</html>
