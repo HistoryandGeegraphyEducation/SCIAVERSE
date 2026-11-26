@@ -232,10 +232,12 @@
     "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-catalog.js",
-    "implementationType": "shared-catalog",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Pilot 3D tạo đường đồng mức từ bề mặt độ cao tổng hợp; khoảng cao đều 50/100/200 m. Không dùng DEM hoặc datum độ cao thực. Chưa kiểm thử runtime.",
+    "sciaversePath": "simulations/cartography/contour-terrain/main.js",
+    "implementationPath": "simulations/cartography/contour-terrain/index.html"
   },
   {
     "id": "luoc-do-lat-cat-dia-hinh",
