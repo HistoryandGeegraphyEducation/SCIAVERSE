@@ -42,3 +42,18 @@
 @media(max-width:900px){.world-clock-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:720px){.world-clock-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.world-clock{grid-template-columns:minmax(0,1fr) 58px;padding:10px;gap:3px 6px}.world-clock-face{width:58px;height:58px}}
 @media(max-width:360px){.world-clock{grid-template-columns:minmax(0,1fr) 52px;padding:8px}.world-clock-face{width:52px;height:52px}.world-clock-place{font-size:11px}.world-clock-date,.world-clock-offset{font-size:10px}}
+
+
+/* Selected-country analogue clock */
+.world-clock-grid{display:block;margin-top:12px}
+.world-clock{display:grid;grid-template-rows:auto minmax(190px,1fr) auto;justify-items:center;gap:16px;min-height:340px;padding:18px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface-2)}
+.world-clock-header{display:flex;width:100%;align-items:center;justify-content:flex-end;gap:10px}
+.world-clock-select{max-width:min(58%,260px);min-height:40px;padding:0 34px 0 12px;border:1px solid var(--line-strong);border-radius:10px;background:var(--bg-raised);color:var(--text);font:inherit;font-size:13px}
+.world-clock-date{padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg-raised);color:var(--text-soft);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.world-clock-face{grid-column:auto;grid-row:auto;align-self:center;width:clamp(180px,27vw,250px);height:auto;aspect-ratio:1}
+.world-clock-footer{display:flex;width:100%;align-items:baseline;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
+.world-clock-country{min-width:0;color:var(--text);font-size:15px;font-weight:550}
+.world-clock-offset{flex:0 0 auto;color:var(--text-soft);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.world-clock-select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:760px){.world-clock{min-height:310px;padding:14px;gap:14px}.world-clock-header{gap:7px}.world-clock-select{max-width:62%;min-height:42px;font-size:12px}.world-clock-date{padding:8px 10px;font-size:11px}.world-clock-face{width:clamp(170px,48vw,220px)}}
+@media(max-width:360px){.world-clock{min-height:290px;padding:12px}.world-clock-header{flex-wrap:wrap}.world-clock-select{max-width:100%;flex:1 1 140px}.world-clock-date{font-size:10px}.world-clock-country{font-size:14px}.world-clock-offset{font-size:12px}}
