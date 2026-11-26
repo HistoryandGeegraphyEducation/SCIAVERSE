@@ -14,21 +14,21 @@
   const TAU = Math.PI * 2;
   const DEG = Math.PI / 180;
   const CLOCKS = [
-    ['Hà Nội', 'VN', 'Asia/Ho_Chi_Minh'],
-    ['Tokyo', 'JP', 'Asia/Tokyo'],
-    ['Seoul', 'KR', 'Asia/Seoul'],
-    ['Bắc Kinh', 'CN', 'Asia/Shanghai'],
-    ['Singapore', 'SG', 'Asia/Singapore'],
-    ['Bangkok', 'TH', 'Asia/Bangkok'],
-    ['New Delhi', 'IN', 'Asia/Kolkata'],
-    ['Dubai', 'AE', 'Asia/Dubai'],
-    ['Moscow', 'RU', 'Europe/Moscow'],
+    ['UTC', null, 'UTC'],
+    ['Vancouver', 'CA', 'America/Vancouver'],
+    ['New York', 'US', 'America/New_York'],
+    ['Mexico City', 'MX', 'America/Mexico_City'],
+    ['São Paulo', 'BR', 'America/Sao_Paulo'],
     ['London', 'GB', 'Europe/London'],
     ['Paris', 'FR', 'Europe/Paris'],
-    ['New York', 'US', 'America/New_York'],
-    ['Los Angeles', 'US', 'America/Los_Angeles'],
-    ['São Paulo', 'BR', 'America/Sao_Paulo'],
-    ['Sydney', 'AU', 'Australia/Sydney']
+    ['Cairo', 'EG', 'Africa/Cairo'],
+    ['Nairobi', 'KE', 'Africa/Nairobi'],
+    ['Dubai', 'AE', 'Asia/Dubai'],
+    ['Mumbai', 'IN', 'Asia/Kolkata'],
+    ['Hà Nội', 'VN', 'Asia/Ho_Chi_Minh'],
+    ['Tokyo', 'JP', 'Asia/Tokyo'],
+    ['Sydney', 'AU', 'Australia/Sydney'],
+    ['Auckland', 'NZ', 'Pacific/Auckland']
   ];
 
   let renderer, scene, camera, controls, earth, earthGroup, sunMesh, moonMesh, sunlight;
@@ -195,37 +195,103 @@
     return texture;
   }
 
+  function createAnalogClock() {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.setAttribute('class', 'world-clock-face');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-hidden', 'true');
+    const face = document.createElementNS(svg.namespaceURI, 'circle');
+    face.setAttribute('cx', '50'); face.setAttribute('cy', '50'); face.setAttribute('r', '46');
+    face.setAttribute('class', 'clock-face-ring');
+    svg.appendChild(face);
+    for (let i = 0; i < 60; i += 1) {
+      const mark = document.createElementNS(svg.namespaceURI, 'line');
+      mark.setAttribute('x1', '50');
+      mark.setAttribute('x2', '50');
+      mark.setAttribute('y1', i % 5 === 0 ? '8' : '8.5');
+      mark.setAttribute('y2', i % 5 === 0 ? '14' : '11');
+      mark.setAttribute('transform', 'rotate(' + (i * 6) + ' 50 50)');
+      mark.setAttribute('class', i % 5 === 0 ? 'clock-tick clock-tick-major' : 'clock-tick');
+      svg.appendChild(mark);
+    }
+    const hands = {};
+    [['hour', 26], ['minute', 35], ['second', 39]].forEach(([name, length]) => {
+      const hand = document.createElementNS(svg.namespaceURI, 'line');
+      hand.setAttribute('x1', '50'); hand.setAttribute('y1', '50');
+      hand.setAttribute('x2', '50'); hand.setAttribute('y2', String(50 - length));
+      hand.setAttribute('class', 'clock-hand clock-hand-' + name);
+      svg.appendChild(hand);
+      hands[name] = hand;
+    });
+    const pin = document.createElementNS(svg.namespaceURI, 'circle');
+    pin.setAttribute('cx', '50'); pin.setAttribute('cy', '50'); pin.setAttribute('r', '2.5');
+    pin.setAttribute('class', 'clock-pin');
+    svg.appendChild(pin);
+    return { svg, hands };
+  }
+
+  function getClockParts(now, timeZone) {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone, year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+    }).formatToParts(now).reduce((result, part) => {
+      if (part.type !== 'literal') result[part.type] = Number(part.value);
+      return result;
+    }, {});
+    const localAsUtc = Date.UTC(parts.year, parts.month - 1, parts.day, parts.hour, parts.minute, parts.second);
+    const utcRounded = Math.floor(now.getTime() / 1000) * 1000;
+    const offsetMinutes = Math.round((localAsUtc - utcRounded) / 60000);
+    return { ...parts, offsetMinutes };
+  }
+
+  function formatUtcOffset(minutes) {
+    const sign = minutes < 0 ? '−' : '+';
+    const absolute = Math.abs(minutes);
+    return 'UTC' + sign + String(Math.floor(absolute / 60)).padStart(2, '0')
+      + ':' + String(absolute % 60).padStart(2, '0');
+  }
+
   function buildWorldClocks() {
     if (!clockGrid || clockNodes.length) return;
     const locale = document.documentElement.lang.startsWith('en') ? 'en-US' : 'vi-VN';
     let countryNames;
     try { countryNames = new Intl.DisplayNames([locale], { type: 'region' }); } catch (_) { countryNames = null; }
     CLOCKS.forEach(([city, countryCode, timeZone]) => {
-      const card = document.createElement('div');
+      const card = document.createElement('article');
       card.className = 'world-clock';
       const place = document.createElement('div');
       place.className = 'world-clock-place';
-      place.textContent = city + ', ' + (countryNames ? countryNames.of(countryCode) : countryCode);
-      const time = document.createElement('time');
-      time.className = 'world-clock-time';
-      const date = document.createElement('div');
+      place.textContent = countryCode
+        ? city + ', ' + (countryNames ? countryNames.of(countryCode) : countryCode)
+        : (locale === 'en-US' ? 'UTC reference time' : 'UTC · Múi giờ gốc');
+      const offset = document.createElement('div');
+      offset.className = 'world-clock-offset';
+      const { svg, hands } = createAnalogClock();
+      const date = document.createElement('time');
       date.className = 'world-clock-date';
-      card.append(place, time, date);
+      card.append(place, offset, svg, date);
       clockGrid.appendChild(card);
-      clockNodes.push({ time, date, timeZone });
+      clockNodes.push({ date, offset, hands, timeZone });
     });
   }
 
   function updateWorldClocks(now) {
     const locale = document.documentElement.lang.startsWith('en') ? 'en-US' : 'vi-VN';
     clockNodes.forEach(node => {
-      node.time.textContent = new Intl.DateTimeFormat(locale, {
-        timeZone: node.timeZone, hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
-      }).format(now);
-      node.time.dateTime = now.toISOString();
+      const parts = getClockParts(now, node.timeZone);
+      const hour = parts.hour % 12;
+      const hourAngle = (hour + parts.minute / 60 + parts.second / 3600) * 30;
+      const minuteAngle = (parts.minute + parts.second / 60) * 6;
+      const secondAngle = parts.second * 6;
+      node.hands.hour.setAttribute('transform', 'rotate(' + hourAngle + ' 50 50)');
+      node.hands.minute.setAttribute('transform', 'rotate(' + minuteAngle + ' 50 50)');
+      node.hands.second.setAttribute('transform', 'rotate(' + secondAngle + ' 50 50)');
+      node.offset.textContent = formatUtcOffset(parts.offsetMinutes);
       node.date.textContent = new Intl.DateTimeFormat(locale, {
         timeZone: node.timeZone, day: '2-digit', month: 'short', year: 'numeric'
       }).format(now);
+      node.date.dateTime = now.toISOString();
     });
   }
 
