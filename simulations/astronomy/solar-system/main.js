@@ -199,6 +199,8 @@
 
   function fail(message) {
     cleanup();
+    canvas.hidden = true;
+    el('solarFallback').hidden = false;
     loading.hidden = false;
     loading.classList.add('is-error');
     loading.textContent = message + ' Danh sách và thông số hành tinh vẫn có thể sử dụng.';
@@ -206,6 +208,7 @@
     speed.disabled = true;
   }
 
+  listen(canvas,'webglcontextlost',event=>{event.preventDefault();fail('WebGL đã bị gián đoạn.');});
   listen(play,'click',()=>setRunning(!running));
   listen(reset,'click',()=>{
     simulatedDays=0;
