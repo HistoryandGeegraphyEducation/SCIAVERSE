@@ -22,7 +22,9 @@
       name: 'Hình trụ đứng (Plate Carrée)',
       description: 'Kinh độ và vĩ độ được biểu diễn tuyến tính. Đây là cách biểu diễn đơn giản, không bảo toàn diện tích; biến dạng tăng về phía hai cực.',
       project(longitude, latitude) {
-        return { x: longitude, y: latitude };
+        const lambda = longitude * Math.PI / 180;
+        const phi = latitude * Math.PI / 180;
+        return { x: lambda, y: phi };
       },
       latitudeLimit: 90
     },
@@ -31,8 +33,9 @@
       description: 'Phép chiếu bảo toàn góc tại phạm vi nhỏ. Vĩ độ được biến đổi bằng hàm logarit; diện tích và khoảng cách tăng rất nhanh khi tiến gần hai cực. Mô hình cắt ở ±85,0511° để giới hạn khung bản đồ vuông; điểm kỳ dị toán học của Mercator nằm tại hai cực.',
       project(longitude, latitude) {
         const safe = Math.max(-MAX_MERCATOR_LAT, Math.min(MAX_MERCATOR_LAT, latitude));
+        const lambda = longitude * Math.PI / 180;
         const phi = safe * Math.PI / 180;
-        return { x: longitude, y: Math.log(Math.tan(Math.PI / 4 + phi / 2)) };
+        return { x: lambda, y: Math.log(Math.tan(Math.PI / 4 + phi / 2)) };
       },
       latitudeLimit: MAX_MERCATOR_LAT
     },
@@ -40,8 +43,9 @@
       name: 'Hình trụ đồng diện tích',
       description: 'Với vĩ tuyến chuẩn ở xích đạo, phép chiếu giữ diện tích tương đối. Hình dạng bị kéo giãn theo phương Đông–Tây ở vĩ độ cao.',
       project(longitude, latitude) {
+        const lambda = longitude * Math.PI / 180;
         const phi = latitude * Math.PI / 180;
-        return { x: longitude, y: Math.sin(phi) };
+        return { x: lambda, y: Math.sin(phi) };
       },
       latitudeLimit: 90
     },
@@ -276,10 +280,18 @@
     const equalAreaPole = PROJECTIONS['equal-area'].project(0, 90);
     const polarCenter = PROJECTIONS.azimuthal.project(0, 90);
     const polarEquator = PROJECTIONS.azimuthal.project(0, 0);
+    const plateHalfWidth = PROJECTIONS.equirectangular.project(180, 0).x;
+    const mercatorHalfWidth = PROJECTIONS.mercator.project(180, 0).x;
+    const mercatorLimit = PROJECTIONS.mercator.project(0, MAX_MERCATOR_LAT).y;
+    const equalAreaHalfWidth = PROJECTIONS['equal-area'].project(180, 0).x;
     const distance = Math.hypot(polarEquator.x - polarCenter.x, polarEquator.y - polarCenter.y);
     console.assert(Math.abs(eq.x) < 1e-10 && Math.abs(eq.y) < 1e-10, 'Plate Carrée origin check failed');
+    console.assert(Math.abs(plateHalfWidth - Math.PI) < 1e-10, 'Plate Carrée longitude unit check failed');
     console.assert(Math.abs(mercatorEquator.y) < 1e-10, 'Mercator equator check failed');
+    console.assert(Math.abs(mercatorHalfWidth - Math.PI) < 1e-10, 'Mercator longitude unit check failed');
+    console.assert(Number.isFinite(mercatorLimit), 'Mercator latitude limit check failed');
     console.assert(Math.abs(equalAreaPole.y - 1) < 1e-10, 'Equal-area pole check failed');
+    console.assert(Math.abs(equalAreaHalfWidth - Math.PI) < 1e-10, 'Equal-area longitude unit check failed');
     console.assert(Math.abs(polarCenter.x) < 1e-10 && Math.abs(polarCenter.y) < 1e-10, 'Azimuthal centre check failed');
     console.assert(Math.abs(distance - Math.PI / 2) < 1e-10, 'Azimuthal equidistance check failed');
   }
