@@ -5,10 +5,10 @@
     "fieldId": "mathematics-computing",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-01-coordinates/main.js",
-    "implementationType": "shared-module",
-    "scientificStatus": "not-reviewed",
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát định nghĩa và công thức tọa độ; cần thay texture dự phòng và kiểm thử hướng kinh độ."
   },
   {
     "id": "qua-dia-cau-ban-do",
