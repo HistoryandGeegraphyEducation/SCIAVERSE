@@ -8,7 +8,7 @@ const lengthValue=document.getElementById('mapLengthValue');
 const groundOutput=document.getElementById('groundDistance');
 const equation=document.getElementById('scaleEquation');
 const reset=document.getElementById('resetMapScale');
-let T,scene,camera,renderer,controls,measureLine,pointB,markerB,observer,raf=0,dead=false;
+let T,scene,camera,renderer,controls,measureLine,pointB,markerB,observer,usingResizeListener=false,raf=0,dead=false;
 const listeners=[];
 function listen(el,event,fn){el.addEventListener(event,fn);listeners.push([el,event,fn]);}
 function draw(){if(dead||!renderer||document.hidden)return;if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{raf=0;if(!dead)renderer.render(scene,camera);});}
@@ -36,7 +36,7 @@ function resize(){
  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));renderer.setSize(w,h,false);camera.aspect=w/h;camera.position.set(0,6.6,9);camera.lookAt(0,0,0);camera.updateProjectionMatrix();draw();
 }
 function destroy(){
- if(dead)return;dead=true;if(raf)cancelAnimationFrame(raf);if(observer)observer.disconnect();
+ if(dead)return;dead=true;if(raf)cancelAnimationFrame(raf);if(observer)observer.disconnect();if(usingResizeListener)window.removeEventListener('resize',resize);
  listeners.forEach(([el,event,fn])=>el.removeEventListener(event,fn));document.removeEventListener('visibilitychange',draw);window.removeEventListener('pagehide',destroy);
  if(controls)controls.dispose();
  if(scene)scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});
@@ -44,7 +44,7 @@ function destroy(){
 }
 function init(THREE){
  T=THREE;scene=new T.Scene();scene.background=new T.Color(0x111b20);camera=new T.PerspectiveCamera(42,1,.1,80);
- renderer=new T.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});renderer.domElement.setAttribute('role','img');renderer.domElement.setAttribute('aria-label','Sơ đồ 3D hai địa điểm và đoạn đo trên bản đồ.');renderer.domElement.style.touchAction='pan-y';stage.prepend(renderer.domElement);
+ renderer=new T.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});renderer.domElement.setAttribute('role','img');renderer.domElement.setAttribute('aria-label','Sơ đồ 3D hai địa điểm và đoạn đo trên bản đồ.');renderer.domElement.style.touchAction='none';stage.prepend(renderer.domElement);
  scene.add(new T.HemisphereLight(0xe7eee9,0x35413b,1.35));const light=new T.DirectionalLight(0xffffff,1.5);light.position.set(-4,8,5);scene.add(light);
  const board=new T.Mesh(new T.BoxGeometry(10,.12,6.4),mat(0xc9c5b7));board.position.y=-.12;scene.add(board);
  const road=new T.Mesh(new T.BoxGeometry(9.2,.025,.58),mat(0x7b8586));road.position.set(0,-.04,.7);scene.add(road);
@@ -59,7 +59,7 @@ function init(THREE){
  controls=new T.OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.enablePan=false;controls.minDistance=7;controls.maxDistance=18;controls.maxPolarAngle=Math.PI/2.1;controls.addEventListener('change',draw);
  listen(ratio,'change',update);listen(length,'input',update);listen(reset,'click',()=>{ratio.value='50000';length.value='4';update();});
  document.addEventListener('visibilitychange',draw);window.addEventListener('pagehide',destroy,{once:true});
- if('ResizeObserver'in window){observer=new ResizeObserver(resize);observer.observe(stage);}else window.addEventListener('resize',resize);
+ if('ResizeObserver'in window){observer=new ResizeObserver(resize);observer.observe(stage);}else{usingResizeListener=true;window.addEventListener('resize',resize);}
  resize();update();setStatus('Mô hình đã sẵn sàng.','ready');
 }
 Promise.all([window.SCIAVERSE_THREE_READY||Promise.reject(new Error('Thiếu Three.js')),window.SCIAVERSE_ORBIT_CONTROLS_READY||Promise.reject(new Error('Thiếu OrbitControls'))])
