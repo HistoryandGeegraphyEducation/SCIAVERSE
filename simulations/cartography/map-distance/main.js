@@ -9,7 +9,7 @@ const mapOutput=document.getElementById('mapLengthOutput');
 const groundOutput=document.getElementById('groundLengthOutput');
 const straightOutput=document.getElementById('straightLengthOutput');
 const instruction=document.getElementById('distanceInstruction');
-let T,scene,camera,renderer,controls,observer,raf=0,dead=false,measuring=false;
+let T,scene,camera,renderer,controls,observer,usingResizeListener=false,raf=0,dead=false,measuring=false;
 let routeLine=null;
 const points=[],markers=[],listeners=[];
 const mapPlane=new TPlane();
@@ -73,7 +73,7 @@ function resize(){
  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));renderer.setSize(w,h,false);camera.aspect=w/h;camera.position.set(0,8.5,8.5);camera.lookAt(0,0,0);camera.updateProjectionMatrix();draw();
 }
 function destroy(){
- if(dead)return;dead=true;if(raf)cancelAnimationFrame(raf);if(observer)observer.disconnect();
+ if(dead)return;dead=true;if(raf)cancelAnimationFrame(raf);if(observer)observer.disconnect();if(usingResizeListener)window.removeEventListener('resize',resize);
  listeners.forEach(([el,event,fn])=>el.removeEventListener(event,fn));document.removeEventListener('visibilitychange',draw);window.removeEventListener('pagehide',destroy);
  if(renderer)renderer.domElement.removeEventListener('pointerdown',pointerDown);if(controls)controls.dispose();
  if(scene)scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});
@@ -95,7 +95,7 @@ function init(THREE){
  renderer.domElement.addEventListener('pointerdown',pointerDown);
  listen(scale,'change',updateReadouts);listen(toggle,'click',()=>setMeasuring(!measuring));listen(clearButton,'click',clearPoints);
  document.addEventListener('visibilitychange',draw);window.addEventListener('pagehide',destroy,{once:true});
- if('ResizeObserver'in window){observer=new ResizeObserver(resize);observer.observe(stage);}else window.addEventListener('resize',resize);
+ if('ResizeObserver'in window){observer=new ResizeObserver(resize);observer.observe(stage);}else{usingResizeListener=true;window.addEventListener('resize',resize);}
  resize();setMeasuring(false);setStatus('Sơ đồ đã sẵn sàng.','ready');
 }
 Promise.all([window.SCIAVERSE_THREE_READY||Promise.reject(new Error('Thiếu Three.js')),window.SCIAVERSE_ORBIT_CONTROLS_READY||Promise.reject(new Error('Thiếu OrbitControls'))])
