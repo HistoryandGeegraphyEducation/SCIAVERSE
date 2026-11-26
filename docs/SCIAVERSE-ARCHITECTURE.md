@@ -76,6 +76,18 @@ Không được chuyển thẳng từ `discovered` sang `published`. Mô hình c
 - Có trạng thái tải, lỗi, dừng/chạy, đặt lại và giải phóng tài nguyên khi rời mô hình.
 - Tôn trọng `prefers-reduced-motion`, bàn phím, độ tương phản và khả năng đọc trên màn hình nhỏ.
 
+### Cấu trúc mô-đun triển khai
+
+Mô hình độc lập được tổ chức dưới `simulations/<domain>/<model-id>/` với các tệp tối thiểu:
+
+- `index.html`: cấu trúc trang và nội dung học tập.
+- `main.js`: logic mô hình, công thức, tham số và xử lý tương tác.
+- `styles.css`: giao diện thích ứng cho mô hình.
+
+Các mô hình dùng chung bố cục có thể nạp `simulations/model-base.css`; không đưa nội dung khoa học riêng của mô hình vào stylesheet dùng chung. Mô hình dùng WebGL phải có giới hạn tài nguyên, xử lý lỗi khởi tạo, xử lý context loss nếu phù hợp và giải phóng tài nguyên khi rời trang. Nếu không có khả năng dự phòng tương đương, giao diện phải báo rõ thay vì hiển thị hình ảnh giả lập như dữ liệu thực.
+
+Đường dẫn triển khai và trạng thái được khai báo trong `data/model-registry.json`. Một pilot chỉ được đưa vào trang lĩnh vực/không gian chính thức khi đồng thời đạt `scientificStatus: validated` và `implementationStatus: verified-in-build`. Trạng thái `sciaverse-pilot-in-progress` chỉ phục vụ kiểm tra nội bộ, không phải nghiệm thu.
+
 ## 7. Tách biệt dữ liệu và giao diện
 
 Dữ liệu lĩnh vực, không gian và danh mục mô hình được lưu riêng với mã dựng giao diện. Nội dung khoa học không được chỉ tồn tại trong chuỗi HTML hoặc nhãn điều khiển. Nhờ đó, cùng một hồ sơ mô hình có thể được hiển thị trong lĩnh vực, không gian mô phỏng và thư viện mà không tạo bản sao.
