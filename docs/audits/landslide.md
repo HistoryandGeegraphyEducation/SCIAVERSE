@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Sạt lở đất
 
 - Mã nguồn tham chiếu: `EDUVERSE/simulations/natural-hazards/sat-lo-dat/main.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: độ bão hòa đất, thấm nước, áp lực nước lỗ rỗng, sức kháng cắt, mặt trượt, chuyển động khối đất và phân loại sạt lở.
 - Kết luận hiện tại: mô tả định tính về vai trò của nước, trọng lực và sức chống trượt là phù hợp. Tuy nhiên, độ bão hòa là biến duy nhất; không có tham số cơ học đất hoặc hệ số an toàn. Khối đất được dịch chuyển trực tiếp theo slider và nút giai đoạn, không phải kết quả tính ổn định sườn dốc. Một số tổ hợp giai đoạn–độ bão hòa mâu thuẫn. Chưa đủ điều kiện tiếp nhận.
 
@@ -126,3 +126,15 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - U.S. Geological Survey. *Landslide Types and Processes*. https://pubs.usgs.gov/fs/2004/3072/fs-2004-3072.html
 - U.S. Army Corps of Engineers. *EM 1110-2-1902 — Slope Stability*. https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-1902.pdf
 - California Geological Survey. *Types of Landslides*. https://conservation.ca.gov/cgs/landslides/types
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/geotechnical/landslide/`.
+
+- Thay slider độ bão hòa đơn lẻ bằng mô hình mái dốc vô hạn có lực dính hữu hiệu (c'), góc ma sát (phi'), trọng lượng thể tích (gamma), chiều dày lớp đất (z), góc dốc (eta) và áp lực nước lỗ rỗng (u).
+- Tính hệ số an toàn theo (FS=[c'+(\gamma z\cos^2\beta-u)\tan\phi']/[\gamma z\sin\beta\cos\beta]). (z) đo vuông góc mặt dốc; đơn vị ứng suất trong tử số được đưa về kPa.
+- Phân loại FS<1 là mất ổn định trong giả định; FS>1 là ổn định theo mô hình. Không diễn giải FS thành xác suất sạt lở.
+- Chặn trường hợp ứng suất pháp hữu hiệu không dương; ghi rõ mô hình không đại diện trượt quay, đá rơi hoặc dòng bùn đá.
+
+Kiểm tra cú pháp và công thức tĩnh đã đạt bước đầu. Cần đối chiếu thêm công thức với trường hợp bão hòa/không bão hòa và thử giá trị biên trong runtime trước nghiệm thu.
