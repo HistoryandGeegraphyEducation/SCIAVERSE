@@ -171,6 +171,7 @@
     }
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.19));
+    // Fixed sunlight along +Z; the axis orientation is set to an equinox-like configuration.
     const sunlight = new THREE.DirectionalLight(0xfff2d8, 2.15);
     sunlight.position.set(0, 0, 8);
     scene.add(sunlight);
