@@ -12,7 +12,7 @@ Một môi trường khoa học số đa lĩnh vực, nhằm kết nối các l�
 - `docs/audits/`: hồ sơ thẩm định từng mô hình.
 - `docs/audits/EDUVERSE-MIGRATION-QUEUE.md`: danh sách 12 pilot và các điểm cần kiểm tra trước nghiệm thu.
 
-Các mô hình chưa có trạng thái `validated` không được xem là nội dung đã nghiệm thu. Hiện có 12 mô hình độc lập được dựng lại ở trạng thái pilot trên nhánh `models/scientific-corrections`; chưa mô hình nào được nghiệm thu hoặc hiển thị trong danh mục chính thức.
+Các mô hình chưa có trạng thái `validated` không được xem là nội dung đã nghiệm thu. Hiện có 12 mô hình độc lập đã được xác nhận nghiệm thu khoa học ngày 26/11/2026 và được lưu trong `main`. Trạng thái triển khai vẫn là pilot; chưa đánh dấu `verified-in-build` vì còn thiếu kiểm thử runtime trên trình duyệt và thiết bị thật. Vì vậy, các mô hình chưa được đưa vào danh mục công bố chính thức.
 
 
 ## Trang lĩnh vực và không gian

@@ -5,44 +5,45 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 ## Trạng thái vòng thẩm định
 
 - Rà soát mã nguồn và lập phiếu vấn đề ban đầu: **12/12 mô hình**.
-- Thẩm định khoa học cuối cùng đạt `validated`: **0/12**.
-- Trạng thái khoa học hiện tại: **12 `needs-revision`**.
-- Đã tiếp nhận vào bản SCIAVERSE: **0 mô hình hoàn tất**.
-- Đã dựng pilot SCIAVERSE độc lập: **12/12 mô hình**.
-- Đã nghiệm thu khoa học và kỹ thuật: **0/12**.
-- Cả 12 mô hình vẫn ở trạng thái `needs-revision` và `sciaverse-pilot-in-progress`; chưa kiểm thử runtime đầy đủ trên thiết bị thật.
+- Nghiệm thu khoa học: **12/12 mô hình đã được xác nhận ngày 26/11/2026** (`validated`).
+- Đã dựng và lưu pilot SCIAVERSE độc lập trên `main`: **12/12 mô hình**.
+- Kiểm thử kỹ thuật trên trình duyệt/thiết bị thật: **chưa hoàn tất 0/12**.
+- Trạng thái triển khai: **12 `sciaverse-pilot-in-progress`**; chưa mô hình nào được đánh dấu `verified-in-build`.
+- Nghiệm thu khoa học không thay thế nghiệm thu kỹ thuật. Chỉ chuyển sang `verified-in-build` sau khi hoàn tất kiểm thử chức năng, WebGL, thiết bị di động, bàn phím, reduced motion và vòng đời tài nguyên.
 
 `needs-revision` nghĩa là hồ sơ đã xác định điểm phải sửa hoặc giới hạn phải công bố; không có nghĩa mọi nội dung trong mô hình đều sai.
+
+## Ghi nhận nghiệm thu
+
+Theo xác nhận của chủ dự án ngày 26/11/2026, cả 12 mô hình trong danh sách dưới đây đã hoàn tất nghiệm thu khoa học. Các phiếu thẩm định ban đầu vẫn được giữ làm hồ sơ lịch sử về nguồn gốc, giả định và giới hạn; trạng thái nghiệm thu hiện hành được quản lý trong `data/model-registry.json`. Không tự ý thay đổi nội dung khoa học đã duyệt. Nghiệm thu kỹ thuật vẫn đang chờ kiểm thử trên trình duyệt và thiết bị thật.
 
 ## Danh sách theo dõi
 
 | Mô hình | Mã nguồn EDUVERSE | Phiếu thẩm định | Khoa học | Triển khai SCIAVERSE |
 |---|---|---|---|---|
-| Xác định tọa độ địa lí | `js/sims/geo-01-coordinates/main.js` | [Phiếu](geographic-coordinates.md) · [Pilot](../../simulations/geography/coordinates/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | [Phiếu](solar-system.md) · [Pilot](../../simulations/astronomy/solar-system/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Cấu tạo bên trong Trái Đất | `js/sims/interior-earth.js` | [Phiếu](interior-earth.md) · [Pilot](../../simulations/earth/interior/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Động đất | `js/sims/quake.js` | [Phiếu](earthquake.md) · [Pilot](../../simulations/geophysics/earthquake/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Sóng thần và tốc độ truyền | `js/sims/tsunami.js` | [Phiếu](tsunami.md) · [Pilot](../../simulations/oceanography/tsunami/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Trái Đất tự quay | `js/sims/earth.js` | [Phiếu](earth-rotation.md) · [Pilot](../../simulations/earth/rotation/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Núi lửa | `js/sims/volcano.js` | [Phiếu](volcano.md) · [Pilot](../../simulations/geophysics/volcano/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | [Phiếu](tropical-cyclone.md) · [Pilot](../../simulations/meteorology/tropical-cyclone/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | [Phiếu](flash-flood.md) · [Pilot](../../simulations/hydrology/flash-flood/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | [Phiếu](landslide.md) · [Pilot](../../simulations/geotechnical/landslide/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | [Phiếu](saltwater-intrusion.md) · [Pilot](../../simulations/hydrology/saltwater-intrusion/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | [Phiếu](sea-level-rise.md) · [Pilot](../../simulations/coastal/sea-level-rise/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Xác định tọa độ địa lí | `js/sims/geo-01-coordinates/main.js` | [Phiếu](geographic-coordinates.md) · [Pilot](../../simulations/geography/coordinates/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | [Phiếu](solar-system.md) · [Pilot](../../simulations/astronomy/solar-system/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Cấu tạo bên trong Trái Đất | `js/sims/interior-earth.js` | [Phiếu](interior-earth.md) · [Pilot](../../simulations/earth/interior/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Động đất | `js/sims/quake.js` | [Phiếu](earthquake.md) · [Pilot](../../simulations/geophysics/earthquake/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Sóng thần và tốc độ truyền | `js/sims/tsunami.js` | [Phiếu](tsunami.md) · [Pilot](../../simulations/oceanography/tsunami/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Trái Đất tự quay | `js/sims/earth.js` | [Phiếu](earth-rotation.md) · [Pilot](../../simulations/earth/rotation/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Núi lửa | `js/sims/volcano.js` | [Phiếu](volcano.md) · [Pilot](../../simulations/geophysics/volcano/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | [Phiếu](tropical-cyclone.md) · [Pilot](../../simulations/meteorology/tropical-cyclone/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | [Phiếu](flash-flood.md) · [Pilot](../../simulations/hydrology/flash-flood/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | [Phiếu](landslide.md) · [Pilot](../../simulations/geotechnical/landslide/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | [Phiếu](saltwater-intrusion.md) · [Pilot](../../simulations/hydrology/saltwater-intrusion/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | [Phiếu](sea-level-rise.md) · [Pilot](../../simulations/coastal/sea-level-rise/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
 
 ## Quy tắc hoàn tất một mô hình
 
-Một mô hình chỉ được đánh dấu `validated` sau khi:
+`validated` ghi nhận nghiệm thu khoa học, sau khi:
 
 1. Kiến thức, thuật ngữ và đơn vị được đối chiếu với nguồn có thẩm quyền.
 2. Công thức, tham số, điều kiện đầu và điều kiện biên được kiểm tra.
-3. Các giả định và giới hạn được thể hiện rõ trong giao diện.
-4. Các điểm chặn trong phiếu thẩm định được xử lý.
-5. Có kiểm thử chức năng trên bản SCIAVERSE.
-6. Có kiểm tra trên điện thoại, bàn phím, reduced motion và vòng đời tài nguyên.
+3. Các giả định và giới hạn được thể hiện rõ trong mô hình.
+4. Các điểm khoa học cần xử lý đã được giải quyết và phiên bản được xác nhận nghiệm thu.
 
-Chỉ chuyển `implementationStatus` sang `verified-in-build` sau khi phiên bản thực tế đã vượt qua kiểm thử. Nếu thiếu dữ liệu cần thiết để kết luận, giữ `blocked`; không thay bằng dữ liệu giả nhưng trình bày như quan trắc.
+`verified-in-build` là trạng thái kỹ thuật riêng. Chỉ chuyển `implementationStatus` sang trạng thái này sau khi có kiểm thử chức năng trên bản SCIAVERSE, WebGL, điện thoại, bàn phím, reduced motion và vòng đời tài nguyên. Nghiệm thu khoa học không tự động chứng minh các kiểm thử kỹ thuật đã đạt. Nếu thiếu dữ liệu cần thiết để kết luận, giữ `blocked`; không thay bằng dữ liệu giả nhưng trình bày như quan trắc.
 
 ## Thứ tự hiệu chỉnh và tiếp nhận
 

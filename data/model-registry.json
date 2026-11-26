@@ -6,10 +6,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-01-coordinates/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Đã dựng pilot độc lập. Còn kiểm tra landmark, WebGL và thao tác cảm ứng; mô hình cầu giản lược, không thay thế tọa độ trắc địa WGS 84.",
-    "implementationPath": "simulations/geography/coordinates/index.html"
+    "implementationPath": "simulations/geography/coordinates/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "qua-dia-cau-ban-do",
@@ -73,10 +78,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/solar-system-explorer.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot dùng dữ liệu NASA/JPL về kích thước trung bình, khối lượng, chu kỳ tự quay và quỹ đạo. Quỹ đạo tròn hóa, vị trí đầu không phải ephemeris; kích thước/khoảng cách nén. Chưa kiểm thử WebGL.",
-    "implementationPath": "simulations/astronomy/solar-system/index.html"
+    "implementationPath": "simulations/astronomy/solar-system/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "traidat-tu-quay-quanh-truc",
@@ -162,10 +172,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/interior-earth.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot mặt cắt tương tác bốn lớp, phân biệt trạng thái vật chất và truyền sóng P/S. Vỏ phóng đại; không mô phỏng đối lưu định lượng hoặc cấu trúc địa vật lí chi tiết.",
-    "implementationPath": "simulations/earth/interior/index.html"
+    "implementationPath": "simulations/earth/interior/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "chuyen-dong-mang-kien-tao",
@@ -394,10 +409,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/quake.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot tính M0 = μAD và Mw từ diện tích đứt gãy, độ trượt và môđun trượt. Sóng chỉ minh họa; không tính cường độ rung lắc tại địa điểm.",
-    "implementationPath": "simulations/geophysics/earthquake/index.html"
+    "implementationPath": "simulations/geophysics/earthquake/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "song-than",
@@ -406,10 +426,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/tsunami.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot tính tốc độ sóng dài c = √(gh) và quãng đường trong độ sâu không đổi. Không tính nguồn đứt gãy, bathymetry, run-up hoặc ngập.",
-    "implementationPath": "simulations/oceanography/tsunami/index.html"
+    "implementationPath": "simulations/oceanography/tsunami/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "traidat",
@@ -418,11 +443,16 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/earth.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot độc lập dùng Blue Marble NASA SVS, trục nghiêng 23,44°, chu kỳ ngày Mặt Trời trung bình 24 giờ. Đã tăng cường cleanup WebGL; còn kiểm tra hướng quay bằng landmark và thiết bị thật.",
     "sciaversePath": "earth-rotation.js",
-    "implementationPath": "simulations/earth/rotation/index.html"
+    "implementationPath": "simulations/earth/rotation/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "nuilua",
@@ -431,10 +461,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/volcano.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot khái niệm phân biệt basalt/andesite/rhyolite, silica, độ nhớt và khí hòa tan. Không dự báo kiểu phun trào; không dùng gauge áp suất/nhiệt độ giả.",
-    "implementationPath": "simulations/geophysics/volcano/index.html"
+    "implementationPath": "simulations/geophysics/volcano/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "bao-nhiet-doi",
@@ -443,10 +478,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/bao-nhiet-doi/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot thể hiện chiều xoáy theo bán cầu và các yếu tố môi trường SST, độ ẩm, đứt gió, vĩ độ. Không tạo điểm xác suất hoặc dự báo.",
-    "implementationPath": "simulations/meteorology/tropical-cyclone/index.html"
+    "implementationPath": "simulations/meteorology/tropical-cyclone/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "lu-quet",
@@ -455,10 +495,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/lu-quet/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot tính thể tích dòng chảy theo hệ số C giả định và Qp theo Rational khi A<80 ha, thời lượng mưa ≥Tc, i là cường độ IDF ứng với Tc. C, Tc và i do người học nhập; không tính thủy đồ, thủy lực hoặc dự báo lũ.",
-    "implementationPath": "simulations/hydrology/flash-flood/index.html"
+    "implementationPath": "simulations/hydrology/flash-flood/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "sat-lo-dat",
@@ -467,10 +512,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/sat-lo-dat/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot dùng hệ số an toàn mái dốc vô hạn với c′, φ′, γ, z, β và u. Chỉ áp dụng giả định đất đồng nhất/mặt trượt phẳng; không đại diện mọi kiểu sạt lở.",
-    "implementationPath": "simulations/geotechnical/landslide/index.html"
+    "implementationPath": "simulations/geotechnical/landslide/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "xam-nhap-man",
@@ -479,10 +529,15 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/xam-nhap-man/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot tách hai cơ chế: nêm mặn cửa sông và xâm nhập trong tầng chứa nước ven biển. Các mức điều kiện chỉ định tính, không phải kết quả định lượng.",
-    "implementationPath": "simulations/hydrology/saltwater-intrusion/index.html"
+    "implementationPath": "simulations/hydrology/saltwater-intrusion/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   },
   {
     "id": "nuoc-bien-dang",
@@ -491,9 +546,14 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/nuoc-bien-dang/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "needs-revision",
+    "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot dùng mặt cắt địa hình giả định và mực nước tương đối 0–2 m. Không dùng DEM/datum địa phương, không dự báo ngập hoặc đường bờ.",
-    "implementationPath": "simulations/coastal/sea-level-rise/index.html"
+    "implementationPath": "simulations/coastal/sea-level-rise/index.html",
+    "acceptanceRecord": {
+      "status": "accepted",
+      "date": "2026-11-26",
+      "basis": "Xác nhận nghiệm thu khoa học của chủ dự án"
+    }
   }
 ]
