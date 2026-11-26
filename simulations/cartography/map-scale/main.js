@@ -8,7 +8,7 @@ const lengthValue=document.getElementById('mapLengthValue');
 const groundOutput=document.getElementById('groundDistance');
 const equation=document.getElementById('scaleEquation');
 const reset=document.getElementById('resetMapScale');
-let T,scene,camera,renderer,controls,measureLine,pointB,observer,raf=0,dead=false;
+let T,scene,camera,renderer,controls,measureLine,pointB,markerB,observer,raf=0,dead=false;
 const listeners=[];
 function listen(el,event,fn){el.addEventListener(event,fn);listeners.push([el,event,fn]);}
 function draw(){if(dead||!renderer||document.hidden)return;if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{raf=0;if(!dead)renderer.render(scene,camera);});}
@@ -22,13 +22,13 @@ function update(){
  const km=metres/1000;
  const groundText=km>=1?km.toLocaleString('vi-VN',{maximumFractionDigits:3})+' km':metres.toLocaleString('vi-VN',{maximumFractionDigits:1})+' m';
  equation.textContent=cm.toLocaleString('vi-VN')+' cm × '+den.toLocaleString('vi-VN')+' = '+groundCm.toLocaleString('vi-VN')+' cm = '+groundText;
- if(pointB){pointB.position.x=-3.5+cm*.65;updateLine();}
+ if(pointB){pointB.position.x=-3.5+cm*.65;if(markerB)markerB.position.x=pointB.position.x;updateLine();}
  draw();
 }
 function updateLine(){
  if(!measureLine||!pointB)return;
  const a=new T.Vector3(-3.5,.2,0),b=new T.Vector3(pointB.position.x,.2,0);
- measureLine.geometry.dispose();measureLine.geometry.setFromPoints([a,b]);
+ const nextGeometry=new T.BufferGeometry().setFromPoints([a,b]);measureLine.geometry.dispose();measureLine.geometry=nextGeometry;
 }
 function resize(){
  if(!renderer||!camera||dead)return;
@@ -55,7 +55,7 @@ function init(THREE){
  pointB=new T.Mesh(new T.SphereGeometry(.16,24,18),mat(0x5b8ea4,.4));pointB.position.set(-.9,.2,0);scene.add(pointB);
  measureLine=new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(-3.5,.2,0),new T.Vector3(-.9,.2,0)]),new T.LineBasicMaterial({color:0xd4a24d}));scene.add(measureLine);
  const markerA=new T.Mesh(new T.CylinderGeometry(.035,.05,.4,12),mat(0xc56b58));markerA.position.set(-3.5,.28,0);scene.add(markerA);
- const markerB=new T.Mesh(new T.CylinderGeometry(.035,.05,.4,12),mat(0x5b8ea4));markerB.position.set(-.9,.28,0);scene.add(markerB);
+ markerB=new T.Mesh(new T.CylinderGeometry(.035,.05,.4,12),mat(0x5b8ea4));markerB.position.set(-.9,.28,0);scene.add(markerB);
  controls=new T.OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.enablePan=false;controls.minDistance=7;controls.maxDistance=18;controls.maxPolarAngle=Math.PI/2.1;controls.addEventListener('change',draw);
  listen(ratio,'change',update);listen(length,'input',update);listen(reset,'click',()=>{ratio.value='50000';length.value='4';update();});
  document.addEventListener('visibilitychange',draw);window.addEventListener('pagehide',destroy,{once:true});
