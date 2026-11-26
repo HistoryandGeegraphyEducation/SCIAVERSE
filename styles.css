@@ -835,7 +835,7 @@ html[data-theme="light"] {
   max-width: 34ch;
   margin: 4px 0 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.45;
 }
 .earth-sun-indicator {
@@ -900,7 +900,7 @@ html[data-theme="light"] {
   background: var(--surface-2);
   color: var(--text);
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
 }
 .earth-model-button.is-primary {
@@ -917,7 +917,7 @@ html[data-theme="light"] {
   align-items: center;
   gap: 3px 8px;
   color: var(--text-soft);
-  font-size: 11px;
+  font-size: 13px;
 }
 .earth-model-speed input {
   width: 100%;
@@ -930,7 +930,7 @@ html[data-theme="light"] {
 }
 .earth-model-time {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   white-space: nowrap;
 }
 .earth-model-time strong {
@@ -941,8 +941,14 @@ html[data-theme="light"] {
 .earth-model-footnote {
   margin: 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.45;
+}
+.earth-model-axis-legend {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
 }
 .earth-model-button:focus-visible,
 .earth-model-speed input:focus-visible {
