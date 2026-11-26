@@ -34,24 +34,27 @@
   function loadEarthTexture(T){
     const urls=['../../../assets/earth-blue-marble.png','https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/july/world.200407.3x5400x2700.jpg'];
     return new Promise((resolve,reject)=>{
-      let index=0,finished=false,timer=0;
+      let index=0,finished=false,attemptId=0;
       const attempt=()=>{
         if(index>=urls.length){reject(new Error('Không tải được ảnh Blue Marble từ các nguồn đã khai báo.'));return;}
         const url=urls[index++];
-        timer=window.setTimeout(()=>{
-          if(finished)return;
-          if(earthTexture)earthTexture.dispose();
+        const token=++attemptId;
+        let settled=false;
+        const timer=window.setTimeout(()=>{
+          if(finished||settled||token!==attemptId)return;
+          settled=true;
           attempt();
         },15000);
         new T.TextureLoader().load(url,texture=>{
-          if(finished){texture.dispose();return;}
-          finished=true;window.clearTimeout(timer);
+          if(finished||settled||token!==attemptId){texture.dispose();return;}
+          settled=true;finished=true;window.clearTimeout(timer);
           if(T.SRGBColorSpace)texture.colorSpace=T.SRGBColorSpace;
           else if(T.sRGBEncoding)texture.encoding=T.sRGBEncoding;
           resolve(texture);
         },undefined,()=>{
-          window.clearTimeout(timer);
-          if(!finished)attempt();
+          if(finished||settled||token!==attemptId)return;
+          settled=true;window.clearTimeout(timer);
+          attempt();
         });
       };
       attempt();
@@ -196,9 +199,8 @@
 
   Promise.all([
     window.SCIAVERSE_THREE_READY||Promise.reject(new Error('Không tải được Three.js.')),
-    window.SCIAVERSE_ORBIT_CONTROLS_READY||Promise.reject(new Error('Không tải được OrbitControls.')),
-    loadEarthTexture(window.THREE)
-  ]).then(([T,controlsReady,texture])=>{
+    window.SCIAVERSE_ORBIT_CONTROLS_READY||Promise.reject(new Error('Không tải được OrbitControls.'))
+  ]).then(([T])=>loadEarthTexture(T).then(texture=>({T,texture}))).then(({T,texture})=>{
     if(!destroyed)initialize(T,texture);
     else texture.dispose();
   }).catch(error=>{
