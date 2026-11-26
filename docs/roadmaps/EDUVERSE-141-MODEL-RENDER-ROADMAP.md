@@ -6,7 +6,7 @@ SCIAVERSE là môi trường khoa học số đa lĩnh vực, không giới hạ
 
 Danh mục gốc có 141 mục, theo khối: lớp 6 (63), lớp 7 (30), lớp 8 (26), lớp 9 (22). Cơ cấu loại hình: 57 mô phỏng, 48 trưng bày, 7 bảo tàng, 23 bản đồ, 1 dòng thời gian và 5 khám phá địa phương.
 
-SCIAVERSE hiện có 44 hồ sơ trong `data/model-registry.json`: 12 mô hình đã được chủ dự án xác nhận nghiệm thu khoa học ngày 26/11/2026; 4 mô hình bản đồ đang `in-review`; 28 mục còn lại chưa được thẩm định. Mã đăng ký EDUVERSE hiện có 70 mục trong `SIMS.lsdl`; đây chưa phải bản chép đầy đủ danh mục 141 mục. Không suy diễn 71 mục còn thiếu từ dữ liệu không có trong repo. Giữ nguyên danh mục gốc 141 làm phạm vi quản lý; bổ sung mã định danh và hồ sơ khi đối chiếu được đúng danh sách gốc.
+SCIAVERSE hiện có 44 hồ sơ trong `data/model-registry.json`: 12 mô hình đã được chủ dự án xác nhận nghiệm thu khoa học ngày 26/11/2026; 5 mô hình bản đồ đang `in-review`; 27 mục còn lại chưa được thẩm định. Có 17 mô hình đang ở mức pilot độc lập (`sciaverse-pilot-in-progress`), gồm 12 mô hình đã nghiệm thu khoa học và 5 mô hình đang thẩm định. Mã đăng ký EDUVERSE hiện có 70 mục trong `SIMS.lsdl`; đây chưa phải bản chép đầy đủ danh mục 141 mục. Không suy diễn 71 mục còn thiếu từ dữ liệu không có trong repo. Giữ nguyên danh mục gốc 141 làm phạm vi quản lý; bổ sung mã định danh và hồ sơ khi đối chiếu được đúng danh sách gốc.
 
 EDUVERSE chỉ là nguồn nghiên cứu. Không tải mã EDUVERSE lúc SCIAVERSE chạy. Mỗi mục được phân tích cơ chế trước, sau đó tái triển khai độc lập trong SCIAVERSE. Không mang nguyên xi giao diện hoặc cơ chế sai từ bản cũ.
 
