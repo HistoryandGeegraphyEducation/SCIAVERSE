@@ -32,9 +32,8 @@
     { city: 'Auckland', country: 'NZ', code: 'NZL', flag: '🇳🇿', timeZone: 'Pacific/Auckland' }
   ];
 
-  let renderer, scene, camera, controls, earth, earthClouds, earthGroup, sunMesh, moonMesh, sunlight;
+  let renderer, scene, camera, controls, earth, earthGroup, sunMesh, moonMesh, sunlight;
   let earthSurfaceTexture = null;
-  let earthCloudTexture = null;
   let resizeObserver = null;
   let clockInterval = 0;
   let frameId = 0;
@@ -412,7 +411,6 @@
       scene.clear();
     }
     earthSurfaceTexture?.dispose?.();
-    earthCloudTexture?.dispose?.();
     renderer?.dispose?.();
     renderer?.forceContextLoss?.();
   }
@@ -454,20 +452,6 @@
       })
     );
     earthGroup.add(earth);
-
-    earthCloudTexture = new THREE.TextureLoader().load('../../../assets/earth-clouds.png', requestRender);
-    if (THREE.sRGBEncoding) earthCloudTexture.encoding = THREE.sRGBEncoding;
-    earthClouds = new THREE.Mesh(
-      new THREE.SphereGeometry(1.205, 72, 56),
-      new THREE.MeshPhongMaterial({
-        map: earthCloudTexture,
-        transparent: true,
-        opacity: 0.58,
-        depthWrite: false,
-        shininess: 2
-      })
-    );
-    earthGroup.add(earthClouds);
 
     sunMesh = new THREE.Mesh(
       new THREE.SphereGeometry(0.25, 32, 24),
