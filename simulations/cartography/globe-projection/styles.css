@@ -1,4 +1,4 @@
-:root{--projection-stage-bg:#10191f;--projection-label-border:var(--projection-label-border);--projection-overlay:var(--projection-overlay);--projection-label-ink:var(--projection-label-ink);--projection-status-ink:var(--projection-status-ink);--projection-error:var(--projection-error)}
+:root{--projection-stage-bg:#10191f;--projection-label-border:rgba(219,235,238,.18);--projection-overlay:rgba(10,20,27,.78);--projection-label-ink:#e7eff0;--projection-status-ink:#cbd8dc;--projection-error:#ffc0b4}
 .projection-main{max-width:1320px}
 .projection-heading{max-width:820px;margin:0 0 18px}
 .projection-heading>p:first-child{margin:0 0 7px;color:var(--accent);font-size:14px}
