@@ -2,19 +2,20 @@
 
 Danh sách được lập từ `js/registry.js` và đường dẫn triển khai tương ứng trong EDUVERSE. "Độc lập" ở đây có nghĩa là có tệp hoặc thư mục triển khai riêng; không có nghĩa mô hình đã độc lập hoàn toàn về thư viện hoặc dữ liệu.
 
-| Mô hình | Mã nguồn EDUVERSE | Trạng thái |
+| Mô hình | Mã nguồn EDUVERSE | Phiếu thẩm định | Trạng thái |
 |---|---|---|
-| Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | Đang thẩm định nguồn |
-| Cấu tạo bên trong Trái Đất 3D | `js/sims/interior-earth.js` | Đang thẩm định nguồn |
-| Động đất | `js/sims/quake.js` | Đang thẩm định nguồn |
-| Sóng thần 3D | `js/sims/tsunami.js` | Đang thẩm định nguồn |
-| Trái Đất tự quay | `js/sims/earth.js` | Đã rà soát nguồn; cần hiệu chỉnh và kiểm thử bản SCIAVERSE |
-| Núi lửa | `js/sims/volcano.js` | Đang thẩm định nguồn |
-| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | Đang thẩm định nguồn |
-| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | Đang thẩm định nguồn |
-| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | Đang thẩm định nguồn |
-| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | Đang thẩm định nguồn |
-| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | Đang thẩm định nguồn |
+| Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | [Phiếu](solar-system.md) | Đang thẩm định nguồn |
+| Cấu tạo bên trong Trái Đất 3D | `js/sims/interior-earth.js` | [Phiếu](interior-earth.md) | Đang thẩm định nguồn |
+| Động đất | `js/sims/quake.js` | [Phiếu](earthquake.md) | Đang thẩm định nguồn |
+| Sóng thần 3D | `js/sims/tsunami.js` | [Phiếu](tsunami.md) | Đang thẩm định nguồn |
+| Xác định tọa độ địa lí | `js/sims/geo-01-coordinates/main.js` | [Phiếu](geographic-coordinates.md) | Đang thẩm định nguồn |
+| Trái Đất tự quay | `js/sims/earth.js` | [Phiếu](earth-rotation.md) | Đã rà soát nguồn; cần hiệu chỉnh và kiểm thử bản SCIAVERSE |
+| Núi lửa | `js/sims/volcano.js` | [Phiếu](volcano.md) | Đang thẩm định nguồn |
+| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | [Phiếu](tropical-cyclone.md) | Đang thẩm định nguồn |
+| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | [Phiếu](flash-flood.md) | Đang thẩm định nguồn |
+| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | [Phiếu](landslide.md) | Đang thẩm định nguồn |
+| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | [Phiếu](saltwater-intrusion.md) | Đang thẩm định nguồn |
+| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | [Phiếu](sea-level-rise.md) | Đang thẩm định nguồn |
 
 ## Quy tắc hoàn tất một mô hình
 
