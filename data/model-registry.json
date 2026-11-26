@@ -245,10 +245,12 @@
     "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-catalog.js",
-    "implementationType": "shared-catalog",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Pilot 3D đối chiếu bề mặt địa hình, đường đồng mức và lát cắt A–B/C–D từ cùng hàm độ cao tổng hợp. Không dùng DEM thực; hình 3D phóng đại đứng 3 lần. Chưa kiểm thử runtime.",
+    "sciaversePath": "simulations/cartography/terrain-profile/main.js",
+    "implementationPath": "simulations/cartography/terrain-profile/index.html"
   },
   {
     "id": "khi-ap-huong-gio",
