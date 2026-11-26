@@ -62,7 +62,7 @@
 .route-reset:hover{background:var(--route-hover)}
 .route-network,.route-method{margin-top:16px;padding:20px}
 .route-network-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
-.route-network-heading p{font-size:13px;color:var(--route-secondary);margin:0}
+
 .route-edge-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
 .route-edge-item{display:flex;align-items:center;gap:9px;min-height:44px;padding:8px 10px;border:1px solid var(--route-border);border-radius:9px;background:var(--route-input);font-size:13px;color:var(--route-text)}
 .route-edge-item input{width:18px;height:18px;accent-color:var(--route-active);flex:0 0 auto}

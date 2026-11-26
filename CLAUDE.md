@@ -34,6 +34,12 @@ The pinned skill sources are Git submodules:
 - After editing, report exact files changed, behavior implemented, tests actually run, and known limitations.
 - Never claim a test, render, deployment, or repository change succeeded unless the result was observed.
 
+## UI copy restrictions — mandatory
+- Never add helper microcopy, usage instructions, hint lines, explanatory captions, or secondary guidance under headings, cards, controls, or interactive areas. The interface contains only the title, essential control labels, necessary status/results, and substantive scientific content.
+- Never use the middle-dot character `•` anywhere in repository content, including UI strings, HTML, JavaScript, CSS-generated content, metadata, documentation, and comments. Remove existing occurrences when encountered.
+- Do not replace prohibited helper text with another decorative separator, symbol, or equivalent hint sentence.
+- These restrictions apply to every model and every screen size. Treat any proposed exception as prohibited unless the user explicitly changes this rule.
+
 ## Dashboard development order
 1. Establish the mobile navigation and app shell.
 2. Build the mobile dashboard content hierarchy and touch interactions.
