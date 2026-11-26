@@ -336,23 +336,37 @@
 
   function renderFrame(timestamp) {
     frameId = 0;
-    if (disposed || !renderer || !scene || !camera) return;
-    if (timestamp - lastFrameTime < 1000 / (reducedMotion ? 12 : 30)) {
+    if (disposed || document.hidden || !renderer || !scene || !camera) return;
+    if (!reducedMotion && timestamp - lastFrameTime < 1000 / 30) {
       frameId = window.requestAnimationFrame(renderFrame);
       return;
     }
     lastFrameTime = timestamp;
     renderingFrame = true;
     if (controls) controls.update();
-    updateAstronomicalPositions(timestamp);
+    if (!reducedMotion) updateAstronomicalPositions(timestamp);
     renderer.render(scene, camera);
     renderingFrame = false;
-    if (!disposed) frameId = window.requestAnimationFrame(renderFrame);
+    if (!disposed && !document.hidden && !reducedMotion) {
+      frameId = window.requestAnimationFrame(renderFrame);
+    }
   }
 
   function requestRender() {
-    if (!disposed && !renderingFrame && !frameId) {
+    if (!disposed && !document.hidden && !renderingFrame && !frameId) {
       frameId = window.requestAnimationFrame(renderFrame);
+    }
+  }
+
+  function handleVisibilityChange() {
+    if (document.hidden) {
+      if (frameId) window.cancelAnimationFrame(frameId);
+      frameId = 0;
+      lastSimulationTimestamp = performance.now();
+    } else {
+      lastSimulationTimestamp = performance.now();
+      lastFrameTime = 0;
+      requestRender();
     }
   }
 
@@ -493,9 +507,15 @@
     reducedMotion = motionPreference.matches;
     addListener(motionPreference, 'change', event => {
       reducedMotion = event.matches;
+      lastSimulationTimestamp = performance.now();
       lastFrameTime = 0;
+      if (reducedMotion && frameId) {
+        window.cancelAnimationFrame(frameId);
+        frameId = 0;
+      }
       requestRender();
     });
+    addListener(document, 'visibilitychange', handleVisibilityChange);
     const startDate = new Date();
     initialEarthRotation = Math.PI / 2 - greenwichSiderealAngle(julianDate(startDate));
     simulationStartTime = performance.now();
