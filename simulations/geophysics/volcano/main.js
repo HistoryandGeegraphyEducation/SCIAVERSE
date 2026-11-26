@@ -2,7 +2,7 @@
 'use strict';
 const MAGMA={
  basaltic:{name:'Bazơ (basalt)',silica:'45–53%',viscosity:'Thấp',description:'Magma bazan thường có độ nhớt thấp, khí dễ thoát hơn và thường tạo dòng dung nham.'},
- andesitic:{name:'Trung tính (andesite)',silica:'53–63%',viscosity:'Trung bình',description:'Magma andesit có thành phần và độ nhớt trung gian. Kiểu phun thay đổi đáng kể theo lượng khí, nhiệt độ, tinh thể và điều kiện giảm áp.'},
+ andesitic:{name:'Trung tính (andesite)',silica:'54–62%',viscosity:'Trung bình',description:'Magma andesit có thành phần và độ nhớt trung gian. Kiểu phun thay đổi đáng kể theo lượng khí, nhiệt độ, tinh thể và điều kiện giảm áp.'},
  rhyolitic:{name:'Axit (rhyolite)',silica:'Khoảng 69% trở lên',viscosity:'Cao',description:'Magma rhyolit thường có độ nhớt cao; khí khó thoát hơn và có thể tích tụ áp suất, làm tăng xu hướng phun nổ.'}
 };
 const GAS={low:'thấp',medium:'trung bình',high:'cao'};
