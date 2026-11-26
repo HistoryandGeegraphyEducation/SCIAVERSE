@@ -132,10 +132,12 @@
     "fieldId": "space-astronomy",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-catalog.js",
-    "implementationType": "shared-catalog",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Pilot 3D thể hiện bốn mốc phân/chí, trục nghiêng 23,44° giữ hướng gần như cố định. Quỹ đạo tròn và kích thước không theo tỉ lệ; mùa không do khoảng cách Mặt Trời. Chưa kiểm thử runtime.",
+    "sciaversePath": "simulations/astronomy/earth-revolution/main.js",
+    "implementationPath": "simulations/astronomy/earth-revolution/index.html"
   },
   {
     "id": "bon-mua",
