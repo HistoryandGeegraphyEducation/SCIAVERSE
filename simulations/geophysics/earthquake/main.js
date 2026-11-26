@@ -20,7 +20,6 @@ $('quakeTrigger').addEventListener('click',()=>{
  const svg=document.querySelector('.quake-diagram');
  svg.classList.remove('is-active');void svg.getBoundingClientRect();svg.classList.add('is-active');
 
- $('quakeWaveNote').textContent='Đã bật sơ đồ sóng. Đây là trình tự minh họa; mô hình không tính vận tốc truyền sóng hoặc mức rung lắc thực tế.';
 });
 $('quakeReset').addEventListener('click',()=>{
  controls.forEach(id=>$(id).value=defaults[id]);
