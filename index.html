@@ -186,18 +186,51 @@
 
         </div>
         <div class="space-grid">
-          <article class="space-card" data-search="mô phỏng mô hình trực quan" data-search-en="simulation scientific models visualization">
+          <a class="space-card" href="#workspace-simulations" data-search="mô phỏng mô hình trực quan" data-search-en="simulation scientific models visualization">
             <span class="space-symbol symbol-simulation"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 24c5-12 10-12 15 0s10 12 15 0 5-12 6-12"/><path d="M6 34c5-12 10-12 15 0s10 12 15 0 5-12 6-12"/></svg></span>
             <h3 data-i18n="scientificSimulation">Mô phỏng khoa học</h3>
-          </article>
-          <article class="space-card" data-search="thực nghiệm phòng thí nghiệm ảo" data-search-en="experiments virtual laboratory">
+          </a>
+          <a class="space-card" href="#workspace-laboratories" data-search="thực nghiệm phòng thí nghiệm ảo" data-search-en="experiments virtual laboratory">
             <span class="space-symbol symbol-lab"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 7h12M21 7v13L10 39a2 2 0 0 0 1.7 3h24.6a2 2 0 0 0 1.7-3L27 20V7"/><path d="M15 33h18M19 27h10"/></svg></span>
             <h3 data-i18n="virtualExperiments">Thực nghiệm ảo</h3>
-          </article>
-          <article class="space-card" data-search="dữ liệu biểu đồ bản đồ phân tích" data-search-en="scientific data charts maps analysis">
+          </a>
+          <a class="space-card" href="#workspace-data" data-search="dữ liệu biểu đồ bản đồ phân tích" data-search-en="scientific data charts maps analysis">
             <span class="space-symbol symbol-data"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 39V9M7 39h35"/><path d="m11 31 8-9 7 4 10-13"/><circle cx="11" cy="31" r="2"/><circle cx="19" cy="22" r="2"/><circle cx="26" cy="26" r="2"/><circle cx="36" cy="13" r="2"/></svg></span>
             <h3 data-i18n="scientificData">Dữ liệu khoa học</h3>
-          </article>
+          </a>
+        </div>
+      </section>
+
+      <section class="workspace-panel" id="workspace-simulations" aria-labelledby="simulationWorkspaceTitle">
+        <div class="workspace-header">
+          <div><h2 id="simulationWorkspaceTitle" data-i18n="simulationWorkspaceTitle">Mô phỏng khoa học</h2><p data-i18n="simulationWorkspaceIntro">Mô hình chỉ được công bố sau khi có hồ sơ khoa học, kiểm thử và giới hạn áp dụng rõ ràng.</p></div>
+          <a class="workspace-back" href="#spaces" data-i18n="backToSpaces">Các không gian</a>
+        </div>
+        <div class="workspace-content">
+          <div><h3 data-i18n="simulationWorkflowTitle">Quy trình tiếp nhận mô hình</h3><ol class="workspace-steps"><li data-i18n="simulationStep1">Phân loại theo lĩnh vực khoa học</li><li data-i18n="simulationStep2">Thẩm định kiến thức, dữ liệu và thuật toán</li><li data-i18n="simulationStep3">Triển khai và kiểm thử tương tác</li><li data-i18n="simulationStep4">Nghiệm thu và công bố phiên bản</li></ol></div>
+          <div class="workspace-status" role="status"><span data-i18n="workspaceStatus">Trạng thái</span><strong data-i18n="simulationStatusTitle">Đang xây dựng danh mục</strong><p data-i18n="simulationStatusText">Các mô hình được tiếp nhận từ nguồn nghiên cứu đang trong quá trình rà soát. Chưa mô hình nào được công bố là đã thẩm định.</p></div>
+        </div>
+      </section>
+
+      <section class="workspace-panel" id="workspace-laboratories" aria-labelledby="laboratoryWorkspaceTitle">
+        <div class="workspace-header">
+          <div><h2 id="laboratoryWorkspaceTitle" data-i18n="laboratoryWorkspaceTitle">Phòng thí nghiệm ảo</h2><p data-i18n="laboratoryWorkspaceIntro">Không gian thực hiện thí nghiệm có biến số, điều kiện ban đầu, quy trình thao tác và kết quả quan sát.</p></div>
+          <a class="workspace-back" href="#spaces" data-i18n="backToSpaces">Các không gian</a>
+        </div>
+        <div class="workspace-content">
+          <div><h3 data-i18n="laboratoryWorkflowTitle">Cấu trúc một thí nghiệm</h3><ol class="workspace-steps"><li data-i18n="laboratoryStep1">Câu hỏi hoặc giả thuyết khoa học</li><li data-i18n="laboratoryStep2">Biến độc lập, biến phụ thuộc và điều kiện</li><li data-i18n="laboratoryStep3">Quy trình thao tác và quan sát</li><li data-i18n="laboratoryStep4">Phân tích kết quả và giới hạn</li></ol></div>
+          <div class="workspace-status" role="status"><span data-i18n="workspaceStatus">Trạng thái</span><strong data-i18n="laboratoryStatusTitle">Chưa có thí nghiệm được nghiệm thu</strong><p data-i18n="laboratoryStatusText">Chỉ đưa thí nghiệm vào không gian này khi quy trình, biến số, kết quả và lưu ý an toàn đã được kiểm chứng.</p></div>
+        </div>
+      </section>
+
+      <section class="workspace-panel" id="workspace-data" aria-labelledby="dataWorkspaceTitle">
+        <div class="workspace-header">
+          <div><h2 id="dataWorkspaceTitle" data-i18n="dataWorkspaceTitle">Dữ liệu khoa học</h2><p data-i18n="dataWorkspaceIntro">Tra cứu và phân tích dữ liệu có nguồn gốc, đơn vị, thời gian, phạm vi và phương pháp thu thập.</p></div>
+          <a class="workspace-back" href="#spaces" data-i18n="backToSpaces">Các không gian</a>
+        </div>
+        <div class="workspace-content">
+          <div><h3 data-i18n="dataWorkflowTitle">Thông tin bắt buộc của bộ dữ liệu</h3><ol class="workspace-steps"><li data-i18n="dataStep1">Nguồn cung cấp và quyền sử dụng</li><li data-i18n="dataStep2">Phạm vi không gian và thời gian</li><li data-i18n="dataStep3">Đơn vị, phương pháp và độ phân giải</li><li data-i18n="dataStep4">Giới hạn và cách diễn giải dữ liệu</li></ol></div>
+          <div class="workspace-status" role="status"><span data-i18n="workspaceStatus">Trạng thái</span><strong data-i18n="dataStatusTitle">Chưa có bộ dữ liệu được công bố</strong><p data-i18n="dataStatusText">Dữ liệu mẫu hoặc dữ liệu minh họa phải được gắn nhãn riêng, không trình bày như kết quả quan trắc.</p></div>
         </div>
       </section>
 
@@ -218,7 +251,7 @@
         </div>
         <article class="space-card library-card" data-search="thư viện học liệu tài liệu bản đồ" data-search-en="library learning resources documents maps">
           <span class="space-symbol symbol-library"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 11c6-2 12-1 17 2v27c-5-3-11-4-17-2zM41 11c-6-2-12-1-17 2v27c5-3 11-4 17-2z"/><path d="M13 18c3-.5 6 0 8 1M13 24c3-.5 6 0 8 1M35 18c-3-.5-6 0-8 1M35 24c-3-.5-6 0-8 1"/></svg></span>
-          <h3 id="libraryCardTitle" data-i18n="learningLibrary">Thư viện học liệu</h3>
+          <h3 id="libraryCardTitle" data-i18n="learningLibrary">Thư viện học liệu</h3><p class="library-description" data-i18n="libraryDescription">Tài liệu được lưu kèm nguồn, thông tin xuất bản, quyền sử dụng và lĩnh vực liên quan.</p>
         </article>
       </section>
 
