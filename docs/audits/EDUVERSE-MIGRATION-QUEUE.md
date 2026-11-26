@@ -4,18 +4,18 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 
 ## Trạng thái vòng thẩm định
 
-- Hồ sơ thẩm định đã lập cho các pilot độc lập: **23/23 mô hình**.
+- Hồ sơ thẩm định đã lập cho các pilot độc lập: **24/24 mô hình**.
 - Nghiệm thu khoa học: **12 mô hình** đã được chủ dự án xác nhận ngày 26/11/2026 (`validated`); **6 mô hình** gồm 5 mô hình bản đồ và mô hình chuyển động mảng kiến tạo vẫn ở trạng thái `in-review`.
 - Đã dựng và lưu pilot SCIAVERSE độc lập trên `main`: **17/17 mô hình**.
-- Kiểm thử runtime trên trình duyệt/thiết bị thật: **chưa hoàn tất 0/23**.
-- Trạng thái triển khai: **23 `sciaverse-pilot-in-progress`**; chưa mô hình nào được đánh dấu `verified-in-build`.
+- Kiểm thử runtime trên trình duyệt/thiết bị thật: **chưa hoàn tất 0/24**.
+- Trạng thái triển khai: **24 `sciaverse-pilot-in-progress`**; chưa mô hình nào được đánh dấu `verified-in-build`.
 - Nghiệm thu khoa học không thay thế nghiệm thu kỹ thuật. Chỉ chuyển sang `verified-in-build` sau khi hoàn tất kiểm thử chức năng, WebGL, thiết bị di động, bàn phím, reduced motion và vòng đời tài nguyên.
 
 `needs-revision` nghĩa là hồ sơ đã xác định điểm phải sửa hoặc giới hạn phải công bố; không có nghĩa mọi nội dung trong mô hình đều sai.
 
 ## Ghi nhận nghiệm thu
 
-Theo xác nhận của chủ dự án ngày 26/11/2026, 12 mô hình có trạng thái `validated` trong danh sách dưới đây đã hoàn tất nghiệm thu khoa học. Mười một mô hình còn lại đang ở trạng thái `in-review`: năm mô hình bản đồ, chuyển động mảng kiến tạo, phong hóa, xâm thực và bồi tụ, sóng địa chấn, địa hình 3D và đường đồng mức, lát cắt địa hình, cùng chuyển động quanh Mặt Trời. Các phiếu thẩm định ghi nhận nguồn, giả định và giới hạn; trạng thái hiện hành được quản lý trong `data/model-registry.json`. Không tự ý thay đổi nội dung khoa học đã duyệt. Nghiệm thu kỹ thuật của cả 23 pilot vẫn đang chờ kiểm thử runtime trên trình duyệt và thiết bị thật.
+Theo xác nhận của chủ dự án ngày 26/11/2026, 12 mô hình có trạng thái `validated` trong danh sách dưới đây đã hoàn tất nghiệm thu khoa học. Mười hai mô hình còn lại đang ở trạng thái `in-review`: năm mô hình bản đồ, chuyển động mảng kiến tạo, phong hóa, xâm thực và bồi tụ, sóng địa chấn, địa hình 3D và đường đồng mức, lát cắt địa hình, chuyển động quanh Mặt Trời và vòng tuần hoàn nước. Các phiếu thẩm định ghi nhận nguồn, giả định và giới hạn; trạng thái hiện hành được quản lý trong `data/model-registry.json`. Không tự ý thay đổi nội dung khoa học đã duyệt. Nghiệm thu kỹ thuật của cả 24 pilot vẫn đang chờ kiểm thử runtime trên trình duyệt và thiết bị thật.
 
 ## Danh sách theo dõi
 
@@ -44,6 +44,7 @@ Theo xác nhận của chủ dự án ngày 26/11/2026, 12 mô hình có trạng
 | Địa hình 3D và đường đồng mức | `js/sims/geo-catalog.js` | [Phiếu](contour-terrain.md) · [Pilot](../../simulations/cartography/contour-terrain/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
 | Chuyển lược đồ thành lát cắt địa hình | `js/sims/geo-catalog.js` | [Phiếu](terrain-profile.md) · [Pilot](../../simulations/cartography/terrain-profile/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
 | Trái Đất chuyển động quanh Mặt Trời | `js/sims/geo-catalog.js` | [Phiếu](earth-revolution.md) · [Pilot](../../simulations/astronomy/earth-revolution/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Vòng tuần hoàn nước | `js/sims/geo-processes.js` | [Phiếu](water-cycle.md) · [Pilot](../../simulations/hydrology/water-cycle/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
 
 ## Quy tắc hoàn tất một mô hình
 
