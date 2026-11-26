@@ -141,7 +141,7 @@ Có thể tiếp nhận ý tưởng tương tác và cấu trúc thông tin, nh�
 
 Đã dựng mô-đun độc lập tại `simulations/astronomy/solar-system/`.
 
-- Dữ liệu kích thước dùng đường kính từ bán kính trung bình JPL; khối lượng, chu kỳ tự quay sao và chu kỳ quỹ đạo sao dùng bảng JPL. Dấu âm của chu kỳ tự quay được giữ để biểu diễn nghịch hành (Sao Kim, Sao Thiên Vương).
+- Dữ liệu kích thước dùng đường kính suy ra từ bán kính trung bình JPL; khối lượng, chu kỳ tự quay sao và chu kỳ quỹ đạo sao dùng bảng JPL. Bán trục lớn và độ nghiêng trục dùng NASA/NSSDC Fact Sheet. Dấu âm của chu kỳ tự quay được giữ để biểu diễn nghịch hành (Sao Kim, Sao Thiên Vương).
 - Độ nghiêng trục được đối chiếu với NASA/NSSDC Fact Sheet. Sao Hải Vương dùng khoảng 28,32°; Sao Thiên Vương khoảng 97,77°; Sao Kim khoảng 177,36°.
 - Tốc độ quỹ đạo được tính từ chu kỳ quỹ đạo sao: góc trung bình = 2π × thời gian mô phỏng / chu kỳ. Tốc độ thời gian mô phỏng được công bố rõ trong giao diện.
 - Quỹ đạo tròn hóa, vị trí ban đầu được phân bố có chủ đích, khoảng cách và kích thước hiển thị không theo tỉ lệ. Mô hình không tuyên bố vị trí hành tinh hiện tại hoặc ephemeris.
