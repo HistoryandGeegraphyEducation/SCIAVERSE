@@ -1,4 +1,4 @@
-:root{--projection-stage-bg:#10191f}
+:root{--projection-stage-bg:#10191f;--projection-label-border:var(--projection-label-border);--projection-overlay:var(--projection-overlay);--projection-label-ink:var(--projection-label-ink);--projection-status-ink:var(--projection-status-ink);--projection-error:var(--projection-error)}
 .projection-main{max-width:1320px}
 .projection-heading{max-width:820px;margin:0 0 18px}
 .projection-heading>p:first-child{margin:0 0 7px;color:var(--accent);font-size:14px}
@@ -10,9 +10,9 @@
 .projection-stage{position:relative;width:100%;height:clamp(400px,54vw,590px);min-height:360px;overflow:hidden;border-radius:calc(var(--radius-lg) - 5px);background:var(--projection-stage-bg)}
 .projection-stage canvas{display:block;width:100%;height:100%;touch-action:none}
 .projection-stage-labels{position:absolute;z-index:2;top:12px;left:14px;right:14px;display:flex;justify-content:space-around;gap:12px;pointer-events:none}
-.projection-stage-labels span{padding:6px 10px;border:1px solid rgba(219,235,238,.18);border-radius:7px;background:rgba(10,20,27,.78);color:#e7eff0;font-size:12px}
-.projection-status{position:absolute;z-index:3;right:12px;bottom:10px;left:12px;margin:0;padding:7px 10px;border-radius:7px;background:rgba(10,20,27,.78);color:#cbd8dc;font-size:12px;pointer-events:none}
-.projection-status[data-state="error"]{color:#ffc0b4}
+.projection-stage-labels span{padding:6px 10px;border:1px solid var(--projection-label-border);border-radius:7px;background:var(--projection-overlay);color:var(--projection-label-ink);font-size:12px}
+.projection-status{position:absolute;z-index:3;right:12px;bottom:10px;left:12px;margin:0;padding:7px 10px;border-radius:7px;background:var(--projection-overlay);color:var(--projection-status-ink);font-size:12px;pointer-events:none}
+.projection-status[data-state="error"]{color:var(--projection-error)}
 .projection-status[data-state="ready"]{opacity:0}
 .projection-controls{display:flex;flex-direction:column;gap:16px;padding:18px}
 .projection-controls h2,.projection-learning h2{margin:0;color:var(--text);font-size:19px;font-weight:600}
