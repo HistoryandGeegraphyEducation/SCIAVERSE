@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10171b">
+  <meta name="description" content="Quan sát cách các phép chiếu chuyển bề mặt Địa Cầu lên mặt phẳng và so sánh biến dạng bản đồ.">
+  <title>SCIAVERSE — Chuyển đổi quả Địa Cầu thành bản đồ</title>
+  <link rel="stylesheet" href="../../../styles.css?v=20261126-mobile2">
+  <link rel="stylesheet" href="styles.css?v=20261126-projection1">
+  <script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
+  <script src="main.js?v=20261126-projection1" defer></script>
+</head>
+<body class="standalone-page projection-page">
+  <a class="skip-link" href="#projectionMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <nav aria-label="Điều hướng trang">
+      <a href="../../../index.html#fields">Lĩnh vực</a>
+      <a href="../../../space.html?id=simulations">Mô phỏng khoa học</a>
+    </nav>
+  </header>
+
+  <main id="projectionMain" class="standalone-main projection-main">
+    <a class="standalone-back" href="../../../space.html?id=simulations">Trở về không gian mô phỏng</a>
+    <header class="projection-heading">
+      <p>Trái Đất và môi trường</p>
+      <h1>Chuyển đổi quả Địa Cầu thành bản đồ</h1>
+      <p>So sánh cách các phép chiếu biểu diễn cùng một bề mặt Trái Đất trên mặt phẳng.</p>
+    </header>
+
+    <section class="projection-workspace" aria-label="Mô hình phép chiếu bản đồ">
+      <div class="projection-stage-wrap">
+        <div class="projection-stage" id="projectionStage">
+          <div class="projection-stage-labels" aria-hidden="true">
+            <span>Quả Địa Cầu</span>
+            <span>Bản đồ phẳng</span>
+          </div>
+          <p class="projection-status" id="projectionStatus" role="status" aria-live="polite">Đang khởi tạo mô hình 3D…</p>
+        </div>
+      </div>
+
+      <aside class="projection-controls" aria-labelledby="projectionControlsTitle">
+        <h2 id="projectionControlsTitle">Phép chiếu</h2>
+        <label class="projection-field" for="projectionType">
+          <span>Chọn phép chiếu</span>
+          <select id="projectionType">
+            <option value="equirectangular">Hình trụ đứng (Plate Carrée)</option>
+            <option value="mercator">Mercator</option>
+            <option value="equal-area">Hình trụ đồng diện tích</option>
+            <option value="azimuthal">Phương vị cách đều tâm Bắc Cực</option>
+          </select>
+        </label>
+        <div class="projection-description" aria-live="polite">
+          <h3 id="projectionName">Hình trụ đứng (Plate Carrée)</h3>
+          <p id="projectionDescription">Kinh độ và vĩ độ được biểu diễn tuyến tính. Khoảng cách và diện tích bị biến dạng tăng dần về phía hai cực.</p>
+        </div>
+        <label class="projection-toggle">
+          <input id="showGraticule" type="checkbox" checked>
+          <span>Lưới kinh tuyến và vĩ tuyến</span>
+        </label>
+        <button class="projection-reset" id="resetProjectionView" type="button">Đặt lại góc nhìn</button>
+      </aside>
+    </section>
+
+    <section class="projection-learning" aria-labelledby="projectionLearningTitle">
+      <h2 id="projectionLearningTitle">Vì sao bản đồ bị biến dạng?</h2>
+      <p>Không thể trải bề mặt cong của Trái Đất lên mặt phẳng mà không làm biến dạng. Mỗi phép chiếu ưu tiên một số đặc tính như góc, diện tích, khoảng cách hoặc phương hướng; không phép chiếu phẳng nào giữ chính xác tất cả.</p>
+      <div class="projection-principles">
+        <article><h3>Hình dạng và góc</h3><p>Mercator bảo toàn góc tại phạm vi nhỏ, nhưng diện tích tăng mạnh về vĩ độ cao.</p></article>
+        <article><h3>Diện tích</h3><p>Phép chiếu hình trụ đồng diện tích giữ tỉ lệ diện tích, đổi lại hình dạng bị kéo giãn ở vùng vĩ độ cao.</p></article>
+        <article><h3>Khoảng cách</h3><p>Phép chiếu phương vị cách đều giữ khoảng cách từ tâm chiếu; không giữ mọi khoảng cách trên toàn bản đồ.</p></article>
+      </div>
+    </section>
+
+    <details class="projection-sources">
+      <summary>Tài liệu khoa học</summary>
+      <p><a href="https://www.usgs.gov/faqs/how-are-different-map-projections-used" target="_blank" rel="noopener noreferrer">USGS — How are different map projections used?</a></p>
+      <p><a href="https://pubs.usgs.gov/gip/70047422/report.pdf" target="_blank" rel="noopener noreferrer">USGS — Map Projections: Which ones best suit your needs?</a></p>
+    </details>
+  </main>
+</body>
+</html>
