@@ -264,7 +264,7 @@
       place.className = 'world-clock-place';
       place.textContent = countryCode
         ? city + ', ' + (countryNames ? countryNames.of(countryCode) : countryCode)
-        : (locale === 'en-US' ? 'UTC reference time' : 'UTC · Múi giờ gốc');
+        : (locale === 'en-US' ? 'UTC reference time' : 'UTC — Múi giờ gốc');
       const offset = document.createElement('div');
       offset.className = 'world-clock-offset';
       const { svg, hands } = createAnalogClock();
