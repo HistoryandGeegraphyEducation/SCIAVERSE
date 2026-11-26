@@ -745,3 +745,29 @@ html[data-theme="light"] {
   .motion-ready .welcome-visual > .orbit-visual,
   .motion-ready .region-scene > svg { opacity: 1; }
 }
+
+
+/* SCIAVERSE scientific illustration pass */
+.scene-canvas { display: none !important; }
+.motion-ready .welcome-visual > .orbit-visual,
+.motion-ready .region-scene > svg { opacity: 1; }
+.region-scene .scene-earth-contours,
+.region-scene .scene-earth-seam,
+.region-scene .scene-wave-lines,
+.region-scene .scene-wave-particles,
+.region-scene .scene-network-orbit,
+.region-scene .scene-network-nodes {
+  animation: none !important;
+}
+#network-packet {
+  fill: var(--accent);
+  stroke: var(--visual-bg);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 3px var(--accent));
+}
+.orbit-node {
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  #network-packet { display: none; }
+}
