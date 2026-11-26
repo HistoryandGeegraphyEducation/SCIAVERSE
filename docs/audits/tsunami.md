@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Sóng thần 3D
 
 - Mã nguồn tham chiếu: `EDUVERSE/js/sims/tsunami.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: nguồn phát, dịch chuyển đáy biển, độ sâu nước, vận tốc sóng, shoaling, biên độ, địa hình đáy biển, mực nước và ngập ven bờ.
 - Kết luận hiện tại: công thức vận tốc sóng nước nông (c=\sqrt{gh}) được triển khai đúng về dạng và có thể giữ làm đại lượng lý thuyết. Phần tạo nguồn, biên độ, tỉ lệ không gian và ngập ven bờ chưa được hiệu chuẩn vật lí. Một tham số đang mang nhãn sai; chuyển động mảng đáy biển không cập nhật mặt đáy thực tế. Chưa đủ điều kiện tiếp nhận.
 
@@ -137,3 +137,15 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - U.S. Geological Survey. *Tsunami Generation from the 2004 M=9.1 Sumatra-Andaman Earthquake*. https://www.usgs.gov/centers/pcmsc/science/tsunami-generation-2004-m91-sumatra-andaman-earthquake
 - NOAA Pacific Marine Environmental Laboratory. *Development, testing, and applications of site-specific tsunami inundation models for real-time forecasting*. https://www.pmel.noaa.gov/pubs/outstand/tang3332/modeldev.shtml
 - NOAA/International Tsunami Information Center. *Tsunami Dynamics*. https://www.weather.gov/media/itic-car/marine_guidance/japan/English%20version%2026_01.pdf
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/oceanography/tsunami/`.
+
+- Giữ công thức tốc độ sóng dài (c=\sqrt{gh}), dùng (g=9.81\,m/s^2) và độ sâu (h) tính bằng m.
+- Tính quãng đường lý tưởng (s=ct) với thời gian đổi sang giây; không đưa ra biên độ hoặc chiều cao sóng.
+- Bổ sung giải thích điều kiện xấp xỉ: bước sóng lớn hơn nhiều so với độ sâu nước.
+- Không mô phỏng dịch chuyển đáy biển, biên độ, shoaling định lượng, run-up hoặc ngập ven bờ; địa hình trong hình chỉ là sơ đồ.
+
+Kiểm tra tĩnh công thức và cú pháp JavaScript đã đạt bước đầu. Chưa kiểm thử runtime trên thiết bị. Không chuyển sang `validated` khi chưa có bathymetry, nguồn phát và mô hình thủy động lực phù hợp với mục tiêu dự báo.
