@@ -413,9 +413,10 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/earth.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "scientificStatus": "needs-revision",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Đã lập phiếu thẩm định và triển khai bản thử nghiệm SCIAVERSE; chưa nghiệm thu trình duyệt/thiết bị.",
+    "sciaversePath": "earth-rotation.js"
   },
   {
     "id": "nuilua",
