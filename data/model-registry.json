@@ -6,9 +6,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-01-coordinates/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát định nghĩa và công thức tọa độ; cần thay texture dự phòng và kiểm thử hướng kinh độ."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Công thức hình cầu nhất quán; cần phân biệt vĩ độ địa tâm/trắc địa, sửa click-drag, selector CSS, xử lý cực và nguồn texture. Chưa kiểm thử runtime."
   },
   {
     "id": "qua-dia-cau-ban-do",
@@ -72,9 +72,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/solar-system-explorer.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Dữ liệu kích thước/khối lượng phần lớn được làm tròn hợp lý; cần sửa độ nghiêng trục Sao Hải Vương, đối chiếu chu kỳ Sao Thổ, hiệu chuẩn hoặc ghi rõ tốc độ minh họa và thay/ghi nhãn texture procedural."
   },
   {
     "id": "traidat-tu-quay-quanh-truc",
@@ -160,9 +160,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/interior-earth.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Ranh giới lớp gần đúng; hoạt ảnh sóng/đối lưu chỉ là sơ đồ, đang quay toàn khối; cần sửa nhãn texture dự phòng và vòng đời tài nguyên."
   },
   {
     "id": "chuyen-dong-mang-kien-tao",
@@ -391,9 +391,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/quake.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Mw và độ trượt chưa liên kết qua diện tích đứt gãy/môđun trượt; cơ chế đứt gãy chưa xác định, sóng mặt có thứ tự tốc độ không phù hợp và độ sâu chỉ bao phủ động đất nông."
   },
   {
     "id": "song-than",
@@ -402,9 +402,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/tsunami.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Giữ được c = sqrt(g h) cho sóng dài nước nông; nhãn độ sâu nguồn sai chức năng, đáy biển không biến dạng theo nguồn và vùng ngập chỉ là mặt phẳng minh họa."
   },
   {
     "id": "traidat",
@@ -415,7 +415,7 @@
     "implementationType": "independent-module",
     "scientificStatus": "needs-revision",
     "implementationStatus": "sciaverse-pilot-in-progress",
-    "notes": "Đã lập phiếu thẩm định và triển khai bản thử nghiệm SCIAVERSE; chưa nghiệm thu trình duyệt/thiết bị.",
+    "notes": "Mã EDUVERSE cần sửa ánh xạ góc chiếu sáng/xích vĩ và texture dự phòng. Pilot SCIAVERSE đã tái cấu trúc theo trục nghiêng 23,44° và ngày Mặt Trời trung bình 24 giờ; còn chờ ghi công NASA, kiểm tra hướng quay và thử nghiệm thiết bị.",
     "sciaversePath": "earth-rotation.js"
   },
   {
@@ -425,9 +425,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/volcano.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Nhiệt độ/áp suất/năng lượng là biến hoạt ảnh; chưa phân biệt phun trào tràn/nổ, chưa mô hình hóa thành phần magma, khí, độ nhớt và dòng dung nham."
   },
   {
     "id": "bao-nhiet-doi",
@@ -436,9 +436,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/bao-nhiet-doi/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Slider gió chỉ điều khiển hoạt ảnh; thiếu trường khí tượng, chiều xoáy theo bán cầu, thành mắt bão và quy ước thời gian lấy trung bình gió."
   },
   {
     "id": "lu-quet",
@@ -447,9 +447,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/lu-quet/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Thiếu thời lượng mưa, đặc điểm lưu vực, thấm và thủy lực; phát hiện lỗi hạt mưa bị ẩn ở giai đoạn đầu và mặt lũ vẫn hiện ở 0 mm."
   },
   {
     "id": "sat-lo-dat",
@@ -458,9 +458,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/sat-lo-dat/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Độ bão hòa trực tiếp điều khiển chuyển động; thiếu tham số cơ học đất, áp lực nước lỗ rỗng, mặt trượt tính toán và hệ số an toàn."
   },
   {
     "id": "xam-nhap-man",
@@ -469,9 +469,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/xam-nhap-man/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Mô hình chỉ là cửa sông salt-wedge; thiếu thủy triều, độ mặn/mật độ và vùng chuyển tiếp; nội dung nước ngầm chưa có hình học tầng chứa nước."
   },
   {
     "id": "nuoc-bien-dang",
@@ -480,8 +480,8 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/nuoc-bien-dang/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "in-review",
+    "scientificStatus": "needs-revision",
     "implementationStatus": "not-migrated",
-    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
+    "notes": "Thẩm định chuyên sâu hoàn tất. Địa hình giả lập, thiếu DEM/datum/kết nối thủy văn; đường bờ dịch chuyển tuyến tính và công trình chỉ đổi màu, chưa có vùng ngập tính toán."
   }
 ]
