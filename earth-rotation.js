@@ -350,7 +350,7 @@
     CLOCKS.forEach(item => {
       const option = document.createElement('option');
       option.value = item.timeZone;
-      option.textContent = item.flag + ' ' + item.code;
+      option.textContent = item.code;
       const displayName = item.label || (countryNames ? countryNames.of(item.country) : item.city);
       option.dataset.country = displayName.toLocaleUpperCase(locale);
       option.dataset.flag = item.flag;
@@ -359,7 +359,14 @@
     });
 
     select.value = 'Asia/Ho_Chi_Minh';
-    header.append(date, select);
+    const picker = document.createElement('div');
+    picker.className = 'world-clock-country-picker';
+    const flag = document.createElement('span');
+    flag.className = 'world-clock-flag';
+    flag.setAttribute('aria-hidden', 'true');
+    flag.textContent = select.options[select.selectedIndex].dataset.flag;
+    picker.append(flag, select);
+    header.append(date, picker);
 
     const { svg, hands } = createAnalogClock();
     const footer = document.createElement('div');
@@ -373,11 +380,12 @@
     card.append(header, svg, footer);
     clockGrid.replaceChildren(card);
 
-    const node = { date, offset, hands, timeZone: select.value, country, select };
+    const node = { date, offset, hands, timeZone: select.value, country, select, flag };
     clockNodes.push(node);
     select.addEventListener('change', () => {
       const option = select.options[select.selectedIndex];
       node.timeZone = select.value;
+      node.flag.textContent = option.dataset.flag;
       node.country.textContent = option.dataset.country;
       updateWorldClocks(new Date());
     });
