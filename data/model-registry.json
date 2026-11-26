@@ -457,7 +457,7 @@
     "implementationType": "independent-module",
     "scientificStatus": "needs-revision",
     "implementationStatus": "sciaverse-pilot-in-progress",
-    "notes": "Pilot tính tổng lượng mưa, lớp nước chảy tràn và thể tích theo hệ số C giả định; bổ sung Qp theo Rational khi A<80 ha và thời lượng mưa ≥ Tc. C và Tc do người học nhập; không tính thủy đồ, thủy lực hoặc dự báo lũ.",
+    "notes": "Pilot tính thể tích dòng chảy theo hệ số C giả định và Qp theo Rational khi A<80 ha, thời lượng mưa ≥Tc, i là cường độ IDF ứng với Tc. C, Tc và i do người học nhập; không tính thủy đồ, thủy lực hoặc dự báo lũ.",
     "implementationPath": "simulations/hydrology/flash-flood/index.html"
   },
   {
