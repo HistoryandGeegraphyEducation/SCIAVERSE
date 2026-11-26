@@ -39,6 +39,10 @@
     return new Promise((resolve, reject) => {
       const existing = [...document.scripts].find(script => script.src === src);
       if (existing) {
+        if (existing.dataset.sciaverseLoadState === 'loaded') {
+          reject(new Error('Thư viện 3D đã tải nhưng không khởi tạo được.'));
+          return;
+        }
         existing.addEventListener('load', resolve, { once: true });
         existing.addEventListener('error', () => reject(new Error('Không tải được thư viện 3D.')), { once: true });
         return;
@@ -46,8 +50,15 @@
       const script = document.createElement('script');
       script.src = src;
       script.async = true;
-      script.onload = resolve;
-      script.onerror = () => reject(new Error('Không tải được thư viện 3D.'));
+      script.dataset.sciaverseLoadState = 'loading';
+      script.onload = () => {
+        script.dataset.sciaverseLoadState = 'loaded';
+        resolve();
+      };
+      script.onerror = () => {
+        script.dataset.sciaverseLoadState = 'error';
+        reject(new Error('Không tải được thư viện 3D.'));
+      };
       document.head.appendChild(script);
     });
   }
@@ -329,10 +340,13 @@
   });
 
   loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', () => Boolean(window.THREE))
-    .then(() => loadScript(
+    .then(() => {
+      if (destroyed || disposed) throw new Error('Mô hình đã được đóng.');
+      return loadScript(
       'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
       () => Boolean(window.THREE?.OrbitControls)
-    ))
+      );
+    })
     .then(() => new Promise((resolve, reject) => {
       const loader = new window.THREE.TextureLoader();
       loader.setCrossOrigin('anonymous');
