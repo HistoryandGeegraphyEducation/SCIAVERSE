@@ -10,8 +10,7 @@
   <title>SCIAVERSE — Xác định tọa độ địa lí</title>
   <link rel="stylesheet" href="../../../styles.css?v=20261126-foundation1">
   <link rel="stylesheet" href="styles.css?v=20261126-coordinate1">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
+  <script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
   <script src="main.js?v=20261126-coordinate1" defer></script>
 </head>
 <body class="standalone-page">
@@ -29,19 +28,17 @@
     <header class="standalone-title">
       <p class="standalone-kicker">Trái Đất và môi trường</p>
       <h1>Xác định tọa độ địa lí</h1>
-      <p>Chọn một điểm trên quả Địa Cầu hoặc nhập vĩ độ và kinh độ để quan sát vị trí trên lưới tọa độ.</p>
     </header>
 
     <section class="coordinate-layout" aria-label="Mô hình xác định tọa độ địa lí">
       <div class="coordinate-stage-card">
-        <div class="coordinate-stage" id="coordinateStage" aria-describedby="coordinateHint">
+        <div class="coordinate-stage" id="coordinateStage">
           <div class="coordinate-hud">
             <span class="coordinate-chip">Điểm đang chọn</span>
             <output class="coordinate-chip coordinate-hud-value" id="coordinateHud" aria-hidden="true">0.00° · 0.00°</output>
           </div>
           <p class="coordinate-stage-status" id="textureStatus" role="status" aria-live="polite">Đang tải ảnh bề mặt Trái Đất…</p>
         </div>
-        <p class="coordinate-hint" id="coordinateHint">Kéo để xoay quả Địa Cầu; chạm hoặc nhấp lên bề mặt để chọn điểm. Có thể nhập tọa độ bằng bàn phím ở bảng bên cạnh.</p>
       </div>
 
       <aside class="coordinate-panel" aria-labelledby="coordinateControlsTitle">
