@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Mô hình địa hình ba chiều, đường cắt A–B và biểu đồ lát cắt cao độ giả định.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#10171b">
+  <title>SCIAVERSE — Chuyển lược đồ thành lát cắt địa hình</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../../model-base.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#profileMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a>
+  </header>
+  <main class="standalone-main profile-main" id="profileMain">
+    <header class="model-intro">
+      <h1>Chuyển lược đồ thành lát cắt địa hình</h1>
+      <p>Đối chiếu tuyến cắt trên bề mặt 3D với biểu đồ cao độ theo khoảng cách.</p>
+    </header>
+    <section class="profile-layout" aria-label="Mô hình lát cắt địa hình">
+      <div class="profile-stage" id="profileStage">
+        <div class="profile-status" id="profileStatus" role="status">Đang khởi tạo mô hình 3D…</div>
+      </div>
+      <aside class="profile-panel">
+        <h2>Tuyến cắt</h2>
+        <label for="profileRoute">Chọn tuyến trên địa hình</label>
+        <select id="profileRoute">
+          <option value="ab" selected>A–B</option>
+          <option value="cd">C–D</option>
+        </select>
+        <div class="profile-chart-wrap">
+          <svg id="profileChart" viewBox="0 0 420 210" role="img" aria-label="Biểu đồ lát cắt cao độ theo khoảng cách">
+            <text x="210" y="105" text-anchor="middle">Đang tính lát cắt</text>
+          </svg>
+        </div>
+        <output id="profileSummary">Tuyến A–B</output>
+      </aside>
+    </section>
+    <p class="profile-note">Địa hình là bề mặt tổng hợp giả định, không phải DEM. Khoảng cách ngang quy ước 1 đơn vị mô hình bằng 1 km; hình 3D phóng đại đứng 3 lần để quan sát địa hình.</p>
+    <details class="model-sources">
+      <summary>Tài liệu khoa học</summary>
+      <p>Nguồn: <a href="https://pubs.usgs.gov/gip/70039472/lesson-4.pdf" target="_blank" rel="noopener noreferrer">USGS — How to Read a Topographic Map</a>; <a href="https://pressbooks.bccampus.ca/geolmanualed2/chapter/overview-of-topographic-maps/" target="_blank" rel="noopener noreferrer">Physical Geology — Drawing Contour Lines and Topographic Profiles</a>.</p>
+    </details>
+  </main>
+</body>
+</html>
