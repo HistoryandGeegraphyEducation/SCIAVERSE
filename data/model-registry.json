@@ -74,8 +74,9 @@
     "sourcePath": "js/sims/solar-system-explorer.js",
     "implementationType": "independent-module",
     "scientificStatus": "needs-revision",
-    "implementationStatus": "not-migrated",
-    "notes": "Thẩm định chuyên sâu hoàn tất. Dữ liệu kích thước/khối lượng phần lớn được làm tròn hợp lý; cần sửa độ nghiêng trục Sao Hải Vương, đối chiếu chu kỳ Sao Thổ, hiệu chuẩn hoặc ghi rõ tốc độ minh họa và thay/ghi nhãn texture procedural."
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Pilot SCIAVERSE tái dựng bằng dữ liệu NASA/JPL: bán kính trung bình, khối lượng, chu kỳ tự quay sao (giữ dấu âm cho nghịch hành), chu kỳ quỹ đạo và độ nghiêng trục. Hoạt ảnh giữ tỉ lệ chu kỳ quỹ đạo; quỹ đạo tròn hóa, vị trí đầu không phải ephemeris hiện tại; khoảng cách/kích thước hiển thị nén. Chưa kiểm thử WebGL trên trình duyệt/thiết bị.",
+    "implementationPath": "simulations/astronomy/solar-system/index.html"
   },
   {
     "id": "traidat-tu-quay-quanh-truc",
@@ -162,8 +163,9 @@
     "sourcePath": "js/sims/interior-earth.js",
     "implementationType": "independent-module",
     "scientificStatus": "needs-revision",
-    "implementationStatus": "not-migrated",
-    "notes": "Thẩm định chuyên sâu hoàn tất. Ranh giới lớp gần đúng; hoạt ảnh sóng/đối lưu chỉ là sơ đồ, đang quay toàn khối; cần sửa nhãn texture dự phòng và vòng đời tài nguyên."
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Pilot SCIAVERSE dựng lại sơ đồ mặt cắt tương tác: bốn lớp, độ sâu ranh giới làm tròn, trạng thái rắn/lỏng và phân biệt truyền sóng P/S. Độ dày vỏ phóng đại; không mô tả đối lưu định lượng hoặc cấu trúc địa vật lí chi tiết. Chưa kiểm thử trình duyệt/thiết bị.",
+    "implementationPath": "simulations/earth/interior/index.html"
   },
   {
     "id": "chuyen-dong-mang-kien-tao",
@@ -416,7 +418,7 @@
     "implementationType": "independent-module",
     "scientificStatus": "needs-revision",
     "implementationStatus": "sciaverse-pilot-in-progress",
-    "notes": "Mã EDUVERSE cần sửa ánh xạ góc chiếu sáng/xích vĩ và texture dự phòng. Pilot SCIAVERSE đã cố định trục 23,44°, cấu hình phân điểm, ngày Mặt Trời trung bình 24 giờ; đã bổ sung ghi công NASA SVS và quy ước tốc độ 1×. Còn chờ kiểm tra hướng quay bằng landmark, xử lý lỗi khởi tạo một phần và thử nghiệm WebGL trên thiết bị.",
+    "notes": "Pilot SCIAVERSE dùng Blue Marble NASA SVS, trục nghiêng 23,44°, ngày Mặt Trời trung bình 24 giờ và tốc độ 1× có định nghĩa. Đã bổ sung giải phóng tài nguyên, hủy listener và cleanup khi khởi tạo lỗi một phần. Còn chờ kiểm tra hướng quay bằng landmark và WebGL trên thiết bị thật.",
     "sciaversePath": "earth-rotation.js"
   },
   {
