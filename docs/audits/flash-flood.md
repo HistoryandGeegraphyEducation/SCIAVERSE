@@ -142,4 +142,4 @@ Có thể giữ cấu trúc bài học và cảnh 3D; phần lượng mưa–dò
 
 Kiểm tra đổi đơn vị và công thức đã đạt bước tĩnh. Chưa kiểm thử runtime trên thiết bị. Cần kiểm tra điều kiện thời lượng mưa/Tc, các giá trị biên và cách diễn giải Qp trước khi nghiệm thu.
 
-Nguồn bổ sung: Federal Highway Administration. *HEC-22 Urban Drainage Design Manual*, mục 3.2.2 Rational Method. https://www.fhwa.dot.gov/engineering/hydraulics/pubs/hif24006.pdf
+Nguồn bổ sung: Federal Highway Administration. *HEC-22 Urban Drainage Design Manual*, mục 3.2.2 Rational Method. https://www.fhwa.dot.gov/engineering/hydraulics/library_arc.cfm?id=189&pub_number=22
