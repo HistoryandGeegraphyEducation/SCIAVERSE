@@ -69,6 +69,7 @@
   let mapGrid;
   let texture;
   let resizeObserver;
+  let usingResizeListener = false;
   let destroyed = false;
   let renderFrame = 0;
   let activeProjection = 'equirectangular';
@@ -244,6 +245,7 @@
     destroyed = true;
     if (renderFrame) cancelAnimationFrame(renderFrame);
     if (resizeObserver) resizeObserver.disconnect();
+    if (usingResizeListener) window.removeEventListener('resize', resize);
     document.removeEventListener('visibilitychange', render);
     window.removeEventListener('pagehide', destroy);
     if (controls) controls.dispose();
@@ -349,8 +351,13 @@
     document.addEventListener('visibilitychange', render);
     window.addEventListener('pagehide', destroy, { once: true });
 
-    resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(stage);
+    if ('ResizeObserver' in window) {
+      resizeObserver = new ResizeObserver(resize);
+      resizeObserver.observe(stage);
+    } else {
+      usingResizeListener = true;
+      window.addEventListener('resize', resize);
+    }
     resize();
     setStatus('Mô hình đã sẵn sàng.', 'ready');
   }
