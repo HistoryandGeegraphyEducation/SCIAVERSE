@@ -34,6 +34,7 @@
 
   let renderer, scene, camera, controls, earth, earthClouds, earthGroup, sunMesh, moonMesh, sunlight;
   let moonTexture = null;
+  let earthSurfaceTexture = null;
   let earthCloudTexture = null;
   let resizeObserver = null;
   let clockInterval = 0;
@@ -440,6 +441,7 @@
       });
       scene.clear();
     }
+    earthSurfaceTexture?.dispose?.();
     moonTexture?.dispose?.();
     earthCloudTexture?.dispose?.();
     renderer?.dispose?.();
@@ -447,6 +449,7 @@
   }
 
   function init(THREE, earthTexture) {
+    earthSurfaceTexture = earthTexture;
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0x10171b);
     camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
