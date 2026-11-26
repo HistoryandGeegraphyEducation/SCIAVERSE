@@ -86,6 +86,15 @@ Trưng bày, bảo tàng, bản đồ, dòng thời gian và khám phá địa p
 6. Kiểm tra điện thoại trước tại 320, 360, 390 và 430 CSS px; sau đó tablet và desktop; kiểm tra bàn phím, focus, reduced motion và tràn ngang.
 7. Chỉ đặt `scientificStatus: validated` sau khi hoàn tất thẩm định khoa học; chỉ đặt `implementationStatus: verified-in-build` sau kiểm thử runtime trên bản SCIAVERSE. Hai trạng thái không thay thế nhau.
 
-## Trạng thái khởi động
+## Trạng thái triển khai
 
-Đợt A bắt đầu bằng mô hình **Chuyển đổi quả Địa Cầu thành bản đồ**. Bản EDUVERSE cũ dùng một hàm chung và một số phép biến đổi hình học giản lược. Bản SCIAVERSE sẽ dùng công thức phép chiếu được xác định rõ, thể hiện biến dạng và giới hạn vĩ độ, không coi các phép chiếu khác nhau là những kiểu trang trí.
+Đợt A đã có bốn mô-đun SCIAVERSE độc lập ở mức pilot:
+
+1. **Chuyển đổi quả Địa Cầu thành bản đồ** — Plate Carrée, Mercator, Lambert hình trụ đồng diện tích và phương vị cách đều tâm Bắc Cực.
+2. **La bàn và phương hướng** — Bắc địa lí, Bắc từ, độ từ thiên và chuyển đổi phương vị từ sang phương vị thực.
+3. **Thay đổi tỉ lệ bản đồ** — tỉ lệ số, đổi cm–m–km và so sánh tỉ lệ lớn/nhỏ.
+4. **Đo khoảng cách thực tế** — đo tuyến nhiều đoạn, tổng chiều dài và khoảng cách thẳng đầu–cuối.
+
+Cả bốn mô-đun có `index.html`, `main.js`, `styles.css` riêng; hồ sơ khoa học đang ở `in-review`, triển khai ở `sciaverse-pilot-in-progress`. Chưa đưa vào danh mục công bố vì chưa hoàn tất kiểm thử runtime và nghiệm thu khoa học.
+
+Mục tiếp theo của Đợt A là **Tìm đường đi trên bản đồ**.
