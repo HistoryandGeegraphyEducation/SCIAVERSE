@@ -4,17 +4,17 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 
 | Mô hình | Mã nguồn EDUVERSE | Trạng thái |
 |---|---|---|
-| Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | Chưa thẩm định |
-| Cấu tạo bên trong Trái Đất 3D | `js/sims/interior-earth.js` | Chưa thẩm định |
-| Động đất | `js/sims/quake.js` | Chưa thẩm định |
-| Sóng thần 3D | `js/sims/tsunami.js` | Chưa thẩm định |
+| Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | Đang thẩm định nguồn |
+| Cấu tạo bên trong Trái Đất 3D | `js/sims/interior-earth.js` | Đang thẩm định nguồn |
+| Động đất | `js/sims/quake.js` | Đang thẩm định nguồn |
+| Sóng thần 3D | `js/sims/tsunami.js` | Đang thẩm định nguồn |
 | Trái Đất tự quay | `js/sims/earth.js` | Đã rà soát nguồn; cần hiệu chỉnh và kiểm thử bản SCIAVERSE |
-| Núi lửa | `js/sims/volcano.js` | Chưa thẩm định |
-| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | Chưa thẩm định |
-| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | Chưa thẩm định |
-| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | Chưa thẩm định |
-| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | Chưa thẩm định |
-| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | Chưa thẩm định |
+| Núi lửa | `js/sims/volcano.js` | Đang thẩm định nguồn |
+| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | Đang thẩm định nguồn |
+| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | Đang thẩm định nguồn |
+| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | Đang thẩm định nguồn |
+| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | Đang thẩm định nguồn |
+| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | Đang thẩm định nguồn |
 
 ## Quy tắc hoàn tất một mô hình
 
