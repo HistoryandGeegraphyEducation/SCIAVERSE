@@ -5,3 +5,5 @@
 .quake-diagram.is-active .quake-waves circle:nth-child(2){animation-delay:.18s}
 .quake-diagram.is-active .quake-waves circle:nth-child(3){animation-delay:.36s}
 @keyframes quakeWave{0%{opacity:.85;stroke-width:3}100%{opacity:0;stroke-width:1}}
+
+@media(prefers-reduced-motion:reduce){.quake-diagram.is-active .quake-waves circle{animation:none;opacity:.65}}
