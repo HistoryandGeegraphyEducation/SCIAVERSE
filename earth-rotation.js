@@ -30,6 +30,8 @@
   let lastFrame = 0;
   let simulatedHours = 0;
   let destroyed = false;
+  let disposed = false;
+  const listeners = [];
 
   function loadScript(src, ready) {
     if (ready()) return Promise.resolve();
@@ -49,7 +51,49 @@
     });
   }
 
+  function listen(target, eventName, handler, options) {
+    if (!target) return;
+    target.addEventListener(eventName, handler, options);
+    listeners.push([target, eventName, handler, options]);
+  }
+
+  function cleanupScene() {
+    if (disposed) return;
+    disposed = true;
+    if (frameId) window.cancelAnimationFrame(frameId);
+    frameId = 0;
+    if (resizeObserver) {
+      resizeObserver.disconnect();
+      resizeObserver = null;
+    }
+    if (controls) {
+      controls.removeEventListener('change', requestFrame);
+      controls.dispose();
+      controls = null;
+    }
+    if (scene) {
+      scene.traverse(object => {
+        object.geometry?.dispose?.();
+        if (object.material) {
+          const materials = Array.isArray(object.material) ? object.material : [object.material];
+          materials.forEach(material => {
+            material.map?.dispose?.();
+            material.dispose?.();
+          });
+        }
+      });
+      scene.clear();
+      scene = null;
+    }
+    renderer?.dispose?.();
+    renderer?.forceContextLoss?.();
+    renderer = null;
+    earth = null;
+    earthGroup = null;
+  }
+
   function showError(message) {
+    cleanupScene();
     if (loading) {
       loading.hidden = false;
       loading.textContent = message;
@@ -74,19 +118,19 @@
   }
 
   function requestFrame() {
-    if (!destroyed && !document.hidden && !frameId) {
+    if (!destroyed && !disposed && !document.hidden && !frameId) {
       frameId = window.requestAnimationFrame(renderFrame);
     }
   }
 
   function renderOnce() {
-    if (!renderer || !scene || !camera || destroyed) return;
+    if (!renderer || !scene || !camera || destroyed || disposed) return;
     renderer.render(scene, camera);
   }
 
   function renderFrame(now) {
     frameId = 0;
-    if (destroyed || !renderer) return;
+    if (destroyed || disposed || !renderer) return;
 
     const delta = lastFrame ? Math.min((now - lastFrame) / 1000, 0.05) : 0;
     lastFrame = now;
@@ -227,7 +271,7 @@
     resize();
     resizeObserver = window.ResizeObserver ? new ResizeObserver(resize) : null;
     if (resizeObserver) resizeObserver.observe(stage);
-    window.addEventListener('resize', resize, { passive: true });
+    listen(window, 'resize', resize, { passive: true });
     if (loading) loading.hidden = true;
     setPlaying(playing);
     renderOnce();
@@ -258,16 +302,16 @@
     renderOnce();
   }
 
-  window.addEventListener('sciaverse:languagechange', () => {
+  listen(window, 'sciaverse:languagechange', () => {
     if (playButton) setPlaying(playing);
   });
 
-  playButton?.addEventListener('click', () => setPlaying(!playing));
-  resetButton?.addEventListener('click', reset);
-  speedInput?.addEventListener('input', () => {
+  listen(playButton, 'click', () => setPlaying(!playing));
+  listen(resetButton, 'click', reset);
+  listen(speedInput, 'input', () => {
     if (speedOutput) speedOutput.textContent = Number(speedInput.value).toLocaleString('vi-VN') + '×';
   });
-  document.addEventListener('visibilitychange', () => {
+  listen(document, 'visibilitychange', () => {
     if (document.hidden) {
       if (frameId) window.cancelAnimationFrame(frameId);
       frameId = 0;
@@ -287,30 +331,22 @@
       loader.load(TEXTURE_URL, resolve, undefined, () => reject(new Error('Không tải được ảnh bản đồ Trái Đất từ NASA.')));
     }))
     .then(texture => {
-      if (!destroyed) init(window.THREE, texture);
+      if (!destroyed && !disposed) init(window.THREE, texture);
       else texture.dispose();
     })
-    .catch(error => showError(error.message || 'Không thể khởi tạo mô hình Trái Đất.'));
+    .catch(error => {
+      if (!destroyed) showError(error.message || 'Không thể khởi tạo mô hình Trái Đất.');
+    });
 
-  window.addEventListener('pagehide', () => {
+  function destroy() {
+    if (destroyed) return;
     destroyed = true;
-    if (frameId) window.cancelAnimationFrame(frameId);
-    if (resizeObserver) resizeObserver.disconnect();
-    window.removeEventListener('resize', resize);
-    if (controls) controls.dispose();
-    if (scene) {
-      scene.traverse(object => {
-        object.geometry?.dispose?.();
-        if (object.material) {
-          const materials = Array.isArray(object.material) ? object.material : [object.material];
-          materials.forEach(material => {
-            material.map?.dispose?.();
-            material.dispose?.();
-          });
-        }
-      });
-    }
-    renderer?.dispose();
-    renderer?.forceContextLoss?.();
-  }, { once: true });
+    listeners.forEach(([target, eventName, handler, options]) => {
+      target.removeEventListener(eventName, handler, options);
+    });
+    listeners.length = 0;
+    cleanupScene();
+  }
+
+  listen(window, 'pagehide', destroy, { once: true });
 })();
