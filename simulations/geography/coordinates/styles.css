@@ -276,4 +276,4 @@
   .coordinate-button { transition: none; }
 }
 
-.standalone-title h1{font-weight:500}.coordinate-chip{letter-spacing:0;text-transform:none}
+.standalone-title h1{font-weight:500}.coordinate-chip{letter-spacing:0;text-transform:none;font-weight:500;border-radius:6px}
