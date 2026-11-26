@@ -227,6 +227,10 @@
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.setClearColor(0x10171b, 1);
+    listen(renderer.domElement, 'webglcontextlost', event => {
+      event.preventDefault();
+      showError('WebGL đã bị gián đoạn. Tải lại trang để khởi tạo lại mô hình.');
+    });
     if (THREE.sRGBEncoding) {
       renderer.outputEncoding = THREE.sRGBEncoding;
       texture.encoding = THREE.sRGBEncoding;
