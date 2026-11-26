@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Trái Đất tự quay quanh trục
 
 - Mã nguồn tham chiếu EDUVERSE: `js/sims/earth.js`
-- Mã thử nghiệm SCIAVERSE: `earth-rotation.js`
+- Mã thử nghiệm SCIAVERSE: `simulations/earth/rotation/main.js`
 - SHA blob nguồn EDUVERSE đã đọc: `56feba1aea96326fd2a2c95c576507b4eee7fe40`
 - Trạng thái: `needs-revision` đối với mô hình EDUVERSE; pilot SCIAVERSE đang chờ kiểm thử trình duyệt.
 - Phạm vi: hướng và chu kỳ quay, trục nghiêng, chiếu sáng ngày–đêm, xích vĩ Mặt Trời, giờ Mặt Trời địa phương, texture, điều khiển và vòng đời WebGL.
@@ -59,7 +59,7 @@
 
 ## 3. Đánh giá pilot SCIAVERSE
 
-Pilot được xây dựng độc lập trong `earth-rotation.js`, không sao chép nguyên trạng mô hình EDUVERSE.
+Pilot được xây dựng độc lập trong `simulations/earth/rotation/main.js`, không sao chép nguyên trạng mô hình EDUVERSE.
 
 ### Những điểm đã được xử lý
 
@@ -142,7 +142,7 @@ Pilot đã bổ sung ghi công NASA và quy ước tốc độ 1× trong giao di
 - `styles.css`: bổ sung kiểu chữ cho chú thích tốc độ và dòng nguồn, giữ nguyên hệ màu và bố cục hiện có.
 
 Kiểm tra tĩnh:
-- Cú pháp `app.js` và `earth-rotation.js`: đạt.
+- Cú pháp JavaScript đã được kiểm tra tĩnh ở phiên trước; thay đổi đường dẫn mô-đun hiện chưa được kiểm tra cú pháp bằng Node.
 - Thẻ HTML p/label/span: số thẻ mở và đóng cân bằng.
 - `aria-describedby` trỏ đến phần tử tồn tại.
 - Cả ba khóa dịch mới có bản Việt và Anh.
