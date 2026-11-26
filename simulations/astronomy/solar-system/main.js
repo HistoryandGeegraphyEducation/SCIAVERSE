@@ -126,8 +126,6 @@
 
     const sun = new T.Mesh(new T.SphereGeometry(0.42,32,24),new T.MeshBasicMaterial({color:0xf3c66f}));
     scene.add(sun);
-    const sunHalo = new T.Mesh(new T.SphereGeometry(0.5,32,24),new T.MeshBasicMaterial({color:0xd99b45,transparent:true,opacity:0.1,depthWrite:false}));
-    scene.add(sunHalo);
 
     DATA.forEach(body => {
       const orbitRadius = 1.15 + Math.sqrt(body.au) * 1.22;
