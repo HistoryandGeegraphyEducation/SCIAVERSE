@@ -334,8 +334,9 @@
   });
 
   const threeReady = window.SCIAVERSE_THREE_READY || Promise.reject(new Error('Thiếu bộ nạp thư viện 3D.'));
-  threeReady
-    .then(THREE => {
+  const controlsReady = window.SCIAVERSE_ORBIT_CONTROLS_READY || Promise.reject(new Error('Thiếu điều khiển mô hình 3D.'));
+  Promise.all([threeReady, controlsReady])
+    .then(([THREE]) => {
       if (destroyed || disposed) throw new Error('Mô hình đã được đóng.');
       return loadEarthTexture(THREE).then(texture => ({ THREE, texture }));
     })
