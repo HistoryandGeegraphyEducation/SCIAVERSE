@@ -1832,3 +1832,218 @@ html, body { max-width: 100%; overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   .earth-model-stage, .world-clock-face { animation: none; }
 }
+
+/* Mobile-first app shell and country picker refinement */
+#worldClockGrid .world-clock-country-picker {
+  display: inline-flex;
+  min-width: 0;
+  max-width: min(46%, 200px);
+  min-height: 44px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  padding: 4px 10px;
+  border: 1.5px solid #080d11;
+  border-radius: 999px;
+  background: #dce7ef;
+  color: #05090c;
+}
+#worldClockGrid .world-clock-flag {
+  display: inline-grid;
+  flex: 0 0 auto;
+  min-width: 24px;
+  place-items: center;
+  font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: 22px;
+  line-height: 1;
+}
+#worldClockGrid .world-clock-select {
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 34px;
+  padding: 4px 20px 4px 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: #05090c;
+  font-size: clamp(13px, 1.8vw, 19px);
+  font-weight: 650;
+}
+@media (max-width: 760px) {
+  .app-shell { width: 100%; min-width: 0; }
+  .topbar {
+    position: sticky;
+    z-index: 35;
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    height: calc(56px + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) 12px 0;
+    gap: 8px;
+  }
+  .mobile-menu, .mobile-search-toggle, .preferences-toggle {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    flex: 0 0 40px;
+    place-items: center;
+  }
+  .mobile-brand { min-width: 0; gap: 7px; }
+  .mobile-brand .brand-wordmark { font-size: 12px; }
+  .topbar-actions { min-width: 0; gap: 4px; }
+  .main-content {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 12px calc(84px + env(safe-area-inset-bottom));
+  }
+  .welcome-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-width: 0;
+    min-height: 0;
+    gap: 16px;
+    padding: 16px 12px 12px;
+  }
+  .welcome-copy { min-width: 0; max-width: none; }
+  .welcome-copy h1 { max-width: 18ch; font-size: clamp(26px, 7vw, 34px); }
+  .welcome-visual {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 8px;
+    overflow: visible;
+  }
+  .earth-model-stage {
+    width: 100%;
+    height: clamp(190px, 56vw, 320px);
+    min-height: 0;
+    flex: 0 0 auto;
+    aspect-ratio: 16 / 10;
+  }
+  .earth-model-stage canvas { width: 100%; height: 100%; min-height: 0; }
+  #worldClockGrid { width: 100%; min-width: 0; }
+  #worldClockGrid > .world-clock {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 22px;
+  }
+  #worldClockGrid > .world-clock > .world-clock-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    gap: 6px;
+  }
+  #worldClockGrid .world-clock-date {
+    min-width: 0;
+    padding: 7px 9px;
+    font-size: clamp(13px, 3.8vw, 17px);
+  }
+  #worldClockGrid .world-clock-country-picker {
+    max-width: 48%;
+    min-width: 0;
+    min-height: 42px;
+    gap: 5px;
+    padding: 4px 8px;
+  }
+  #worldClockGrid .world-clock-flag { min-width: 22px; font-size: 20px; }
+  #worldClockGrid .world-clock-select {
+    min-width: 0;
+    width: auto;
+    max-width: 100%;
+    min-height: 32px;
+    padding-right: 16px;
+    font-size: clamp(12px, 3.5vw, 15px);
+  }
+  #worldClockGrid .world-clock-face {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+    width: min(100%, 310px);
+    height: auto;
+    aspect-ratio: 1;
+  }
+  #worldClockGrid > .world-clock > .world-clock-footer {
+    display: flex;
+    grid-column: 1;
+    grid-row: 3;
+    width: min(100%, 480px);
+    min-width: 0;
+    min-height: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 10px;
+    padding: 6px 8px;
+  }
+  #worldClockGrid .world-clock-country,
+  #worldClockGrid .world-clock-offset { font-size: clamp(12px, 3.5vw, 16px); }
+  .field-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .field-card { min-width: 0; min-height: 128px; padding: 12px; }
+  .field-name { font-size: clamp(11px, 3vw, 13px); overflow-wrap: anywhere; }
+  .space-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .space-card { min-width: 0; }
+  .section-heading { align-items: flex-start; }
+  .mobile-tabbar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-height: calc(64px + env(safe-area-inset-bottom));
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+  }
+  .tab-link { min-width: 0; min-height: 48px; font-size: clamp(10px, 2.8vw, 12px); }
+}
+@media (max-width: 430px) {
+  .main-content { padding-right: 10px; padding-left: 10px; }
+  .welcome-section { padding: 12px 10px 10px; gap: 12px; }
+  .earth-model-stage { height: clamp(180px, 54vw, 250px); }
+  #worldClockGrid > .world-clock { padding: 10px; gap: 6px; }
+  #worldClockGrid .world-clock-country-picker { max-width: 46%; }
+  #worldClockGrid .world-clock-face { width: min(100%, 286px); }
+  .field-card { min-height: 124px; padding: 10px; }
+}
+@media (max-width: 360px) {
+  .topbar { gap: 4px; padding-right: 8px; padding-left: 8px; }
+  .mobile-menu, .mobile-search-toggle, .preferences-toggle {
+    width: 36px; min-width: 36px; flex-basis: 36px; height: 40px;
+  }
+  .mobile-brand { gap: 5px; }
+  .mobile-brand .brand-mark { width: 28px; height: 28px; flex-basis: 28px; }
+  .mobile-brand .brand-wordmark { font-size: 11px; }
+  .topbar-actions { gap: 2px; }
+  .main-content { padding-right: 8px; padding-left: 8px; }
+  .welcome-section { padding: 10px 8px; }
+  #worldClockGrid > .world-clock { padding: 8px; }
+  #worldClockGrid .world-clock-date { padding: 6px; font-size: 12px; }
+  #worldClockGrid .world-clock-country-picker { max-width: 48%; min-height: 38px; padding: 3px 6px; gap: 3px; }
+  #worldClockGrid .world-clock-flag { min-width: 18px; font-size: 17px; }
+  #worldClockGrid .world-clock-select { font-size: 11px; padding-right: 12px; }
+  #worldClockGrid .world-clock-face { width: min(100%, 258px); }
+  #worldClockGrid .world-clock-country, #worldClockGrid .world-clock-offset { font-size: 11px; }
+  .field-grid { grid-template-columns: minmax(0, 1fr); }
+  .field-card { min-height: 88px; }
+  .tab-link { font-size: 10px; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .app-shell { min-width: 0; }
+  .main-content { padding-inline: clamp(20px, 3vw, 36px); }
+  .welcome-section { grid-template-columns: minmax(0, 1fr) minmax(280px, .9fr); }
+  .earth-model-stage { height: clamp(260px, 32vw, 360px); }
+}
+@media (min-width: 761px) and (max-width: 900px) {
+  .welcome-section { grid-template-columns: minmax(0, 1fr); }
+  .welcome-visual { min-height: 0; }
+}
