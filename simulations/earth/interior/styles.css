@@ -38,3 +38,5 @@
 @media(max-width:860px){.interior-layout{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:520px){.interior-main{padding-inline:14px}.interior-panel{padding:12px}.interior-visual{padding:8px}.layer-details dl>div{grid-template-columns:1fr}.layer-details dd{text-align:left}}
 @media(prefers-reduced-motion:reduce){[data-layer-shape]{transition:none!important}}
+
+.model-intro h1{font-weight:500}
