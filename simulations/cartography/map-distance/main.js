@@ -8,7 +8,6 @@ const clearButton=document.getElementById('clearMeasure');
 const mapOutput=document.getElementById('mapLengthOutput');
 const groundOutput=document.getElementById('groundLengthOutput');
 const straightOutput=document.getElementById('straightLengthOutput');
-const instruction=document.getElementById('distanceInstruction');
 let T,scene,camera,renderer,controls,observer,usingResizeListener=false,raf=0,dead=false,measuring=false;
 let routeLine=null;
 const points=[],markers=[],listeners=[];
@@ -46,15 +45,13 @@ function rebuildRoute(){
  updateReadouts();draw();
 }
 function addPoint(x,z){
- if(points.length>=20){instruction.textContent='Đã đạt giới hạn 20 điểm. Xóa điểm để đo tuyến khác.';return;}
+ if(points.length>=20){setStatus('Đã đạt giới hạn 20 điểm.','limit');return;}
  points.push(new T.Vector3(x,0,z));rebuildRoute();
- instruction.textContent=points.length===1?'Đã đặt điểm đầu. Tiếp tục đặt điểm trên tuyến.':'Đã thêm '+points.length+' điểm. Có thể tiếp tục đặt điểm hoặc tắt chế độ đo.';
 }
 function setMeasuring(value){
  measuring=value;toggle.setAttribute('aria-pressed',String(value));
  toggle.textContent=value?'Tắt chế độ đo':'Bật chế độ đo';
  if(controls)controls.enabled=!value;
- instruction.textContent=value?'Chạm hoặc nhấp lần lượt các điểm theo tuyến cần đo.':'Bật chế độ đo để đặt điểm; tắt để xoay và quan sát sơ đồ.';
  stage.dataset.measuring=String(value);
 }
 function pointerDown(event){
