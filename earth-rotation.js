@@ -36,6 +36,9 @@
   let resizeObserver = null;
   let clockInterval = 0;
   let frameId = 0;
+  let lastFrameTime = 0;
+  let renderingFrame = false;
+  let motionEnabled = true;
   let disposed = false;
   const listeners = [];
   const clockNodes = [];
@@ -231,19 +234,28 @@
     sunMesh.position.copy(sunDirection).multiplyScalar(3.55);
     sunlight.position.copy(sunDirection).multiplyScalar(12);
     moonMesh.position.copy(moonDirection).multiplyScalar(2.25);
-    if (renderer && scene && camera) renderer.render(scene, camera);
   }
 
-  function renderFrame() {
+  function renderFrame(timestamp) {
     frameId = 0;
     if (disposed || !renderer || !scene || !camera) return;
+    if (motionEnabled && timestamp - lastFrameTime < 1000 / 30) {
+      frameId = window.requestAnimationFrame(renderFrame);
+      return;
+    }
+    lastFrameTime = timestamp;
+    renderingFrame = true;
     const damping = controls ? controls.update() : false;
+    updateAstronomicalPositions(new Date());
     renderer.render(scene, camera);
-    if (damping) frameId = window.requestAnimationFrame(renderFrame);
+    renderingFrame = false;
+    if (motionEnabled || damping) frameId = window.requestAnimationFrame(renderFrame);
   }
 
   function requestRender() {
-    if (!disposed && !frameId) frameId = window.requestAnimationFrame(renderFrame);
+    if (!disposed && !renderingFrame && !frameId) {
+      frameId = window.requestAnimationFrame(renderFrame);
+    }
   }
 
   function resize() {
@@ -365,12 +377,23 @@
       resizeObserver.observe(stage);
     }
     addListener(window, 'resize', resize, { passive: true });
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    motionEnabled = !motionPreference.matches;
+    addListener(motionPreference, 'change', event => {
+      motionEnabled = !event.matches;
+      lastFrameTime = 0;
+      requestRender();
+    });
     if (loading) loading.hidden = true;
     updateAstronomicalPositions(new Date());
+    requestRender();
     clockInterval = window.setInterval(() => {
       const now = new Date();
       updateWorldClocks(now);
-      updateAstronomicalPositions(now);
+      if (!motionEnabled) {
+        updateAstronomicalPositions(now);
+        requestRender();
+      }
     }, 1000);
     updateWorldClocks(new Date());
   }
