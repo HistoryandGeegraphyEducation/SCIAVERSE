@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Tính thời lượng ngày và đêm theo vĩ độ và xích vĩ Mặt Trời tại các mùa.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#10171b">
+  <title>SCIAVERSE — Ngày đêm dài ngắn theo mùa</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../../model-base.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#daylightMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a>
+  </header>
+  <main class="standalone-main daylight-main" id="daylightMain">
+    <header class="model-intro">
+      <h1>Ngày đêm dài ngắn theo mùa</h1>
+      <p>Đối chiếu thời lượng chiếu sáng tại các vĩ độ trong năm.</p>
+    </header>
+    <section class="daylight-layout" aria-label="Mô hình ngày và đêm theo vĩ độ">
+      <div class="daylight-stage" id="daylightStage">
+        <div class="daylight-status" id="daylightStatus" role="status">Đang khởi tạo mô hình 3D…</div>
+      </div>
+      <aside class="daylight-panel">
+        <h2>Điều kiện quan sát</h2>
+        <label for="daylightSeason">Mốc trong năm</label>
+        <select id="daylightSeason">
+          <option value="equinox">Xuân phân hoặc thu phân</option>
+          <option value="june">Hạ chí</option>
+          <option value="december">Đông chí</option>
+        </select>
+        <label for="daylightLatitude">Vĩ độ</label>
+        <input id="daylightLatitude" type="range" min="-90" max="90" step="1" value="0">
+        <output id="daylightLatitudeValue">0°</output>
+        <section class="daylight-result" aria-live="polite" aria-atomic="true">
+          <h3 id="daylightResultTitle">Ngày và đêm gần bằng nhau</h3>
+          <div class="daylight-duration">
+            <div><span>Ngày</span><strong id="dayHours">12,00 giờ</strong></div>
+            <div><span>Đêm</span><strong id="nightHours">12,00 giờ</strong></div>
+          </div>
+          <div class="daylight-bar" role="img" id="daylightBar" aria-label="Ngày 12 giờ, đêm 12 giờ">
+            <div id="daylightPart"></div>
+            <div id="nightPart"></div>
+          </div>
+          <p id="daylightExplanation">Vào ngày phân, Mặt Trời ở gần mặt phẳng xích đạo; thời lượng ngày và đêm gần bằng nhau.</p>
+        </section>
+      </aside>
+    </section>
+    <p class="daylight-note">Tính theo đường chân trời hình học, chưa hiệu chỉnh khúc xạ khí quyển và bán kính biểu kiến của Mặt Trời. Ở vùng cực, ngày hoặc đêm có thể kéo dài 24 giờ.</p>
+    <details class="model-sources">
+      <summary>Tài liệu khoa học</summary>
+      <p>Nguồn: <a href="https://aa.usno.navy.mil/faq/rs_solstices" target="_blank" rel="noopener noreferrer">U.S. Naval Observatory — Sunrise and Sunset Times Near the Solstices</a>; <a href="https://gml.noaa.gov/grad/solcalc/glossary.html" target="_blank" rel="noopener noreferrer">NOAA — Solar Calculator Glossary</a>.</p>
+    </details>
+  </main>
+</body>
+</html>
