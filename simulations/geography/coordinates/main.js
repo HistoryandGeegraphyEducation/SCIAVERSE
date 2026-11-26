@@ -457,8 +457,11 @@
   });
 
   updateInterface();
-  (window.SCIAVERSE_THREE_READY || Promise.reject(new Error('Thiếu bộ nạp thư viện 3D.')))
-    .then(THREE => {
+  Promise.all([
+    window.SCIAVERSE_THREE_READY || Promise.reject(new Error('Thiếu bộ nạp thư viện 3D.')),
+    window.SCIAVERSE_ORBIT_CONTROLS_READY || Promise.reject(new Error('Thiếu điều khiển mô hình 3D.'))
+  ])
+    .then(([THREE]) => {
       T = THREE;
       initializeScene();
     })
