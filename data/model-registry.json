@@ -206,10 +206,12 @@
     "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-processes.js",
-    "implementationType": "shared-process-engine",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Pilot 3D phân biệt phong hóa cơ học tại chỗ, xâm thực do dòng chảy và bồi tụ ở vùng cửa sông. Không mô phỏng định lượng vận chuyển trầm tích. Chưa kiểm thử runtime.",
+    "sciaversePath": "simulations/geomorphology/weathering-erosion-deposition/main.js",
+    "implementationPath": "simulations/geomorphology/weathering-erosion-deposition/index.html"
   },
   {
     "id": "song-dia-chan",
