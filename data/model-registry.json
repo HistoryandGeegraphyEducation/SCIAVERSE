@@ -22,10 +22,11 @@
     "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-mini-projects-02-05/main.js",
-    "implementationType": "shared-module",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Đã dựng mô-đun SCIAVERSE độc lập với 4 phép chiếu có công thức riêng: Plate Carrée, Mercator giới hạn ±85,0511°, Lambert hình trụ đồng diện tích và phương vị cách đều tâm Bắc Cực. Đang thẩm định nguồn, kiểm tra trực quan hóa và kiểm thử runtime; chưa được công bố.",
+    "implementationPath": "simulations/cartography/globe-projection/index.html"
   },
   {
     "id": "la-ban-phuong-huong",
