@@ -1,6 +1,6 @@
 :root{--compass-stage-bg:#111b20;--compass-cardinal-ink:#dfe8e8;--compass-north-ink:#e7b1a7;--compass-overlay:rgba(10,20,27,.76);--compass-status-ink:#d3dedf;--compass-error:#ffc0b4}
 .compass-main{max-width:1180px}
-.compass-heading{margin-bottom:18px}.compass-heading>p:first-child{margin:0 0 7px;color:var(--accent);font-size:14px}.compass-heading h1{margin:0;font-size:clamp(28px,4vw,40px);line-height:1.15;font-weight:550}.compass-heading>p:last-child{margin:9px 0 0;color:var(--text-soft);font-size:15px;line-height:1.6}
+.compass-heading{margin-bottom:18px}.compass-heading>p:first-child{margin:0 0 7px;color:var(--accent);font-size:14px}.compass-heading h1{margin:0;font-size:clamp(28px,4vw,40px);line-height:1.15;font-weight:550}
 .compass-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.8fr);gap:14px;align-items:stretch}
 .compass-stage-wrap,.compass-controls,.compass-knowledge{min-width:0;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface)}
 .compass-stage-wrap{padding:10px}.compass-stage{position:relative;height:clamp(360px,42vw,520px);min-height:340px;overflow:hidden;border-radius:calc(var(--radius-lg) - 5px);background:var(--compass-stage-bg)}
