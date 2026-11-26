@@ -178,7 +178,6 @@
       new THREE.Vector3(0, 1.72, 0)
     ];
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
-    geometry.computeLineDistances();
     const line = new THREE.Line(geometry, new THREE.LineDashedMaterial({
       color: 0x9eabb0,
       dashSize: 0.075,
@@ -186,6 +185,7 @@
       transparent: true,
       opacity: 0.55
     }));
+    line.computeLineDistances();
     scene.add(line);
   }
 
