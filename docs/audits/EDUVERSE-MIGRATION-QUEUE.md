@@ -4,18 +4,18 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 
 ## Trạng thái vòng thẩm định
 
-- Hồ sơ thẩm định đã lập cho các pilot độc lập: **17/17 mô hình**.
-- Nghiệm thu khoa học: **12 mô hình** đã được chủ dự án xác nhận ngày 26/11/2026 (`validated`); **5 mô hình bản đồ** vẫn ở trạng thái `in-review`.
+- Hồ sơ thẩm định đã lập cho các pilot độc lập: **18/18 mô hình**.
+- Nghiệm thu khoa học: **12 mô hình** đã được chủ dự án xác nhận ngày 26/11/2026 (`validated`); **6 mô hình** gồm 5 mô hình bản đồ và mô hình chuyển động mảng kiến tạo vẫn ở trạng thái `in-review`.
 - Đã dựng và lưu pilot SCIAVERSE độc lập trên `main`: **17/17 mô hình**.
-- Kiểm thử runtime trên trình duyệt/thiết bị thật: **chưa hoàn tất 0/17**.
-- Trạng thái triển khai: **17 `sciaverse-pilot-in-progress`**; chưa mô hình nào được đánh dấu `verified-in-build`.
+- Kiểm thử runtime trên trình duyệt/thiết bị thật: **chưa hoàn tất 0/18**.
+- Trạng thái triển khai: **18 `sciaverse-pilot-in-progress`**; chưa mô hình nào được đánh dấu `verified-in-build`.
 - Nghiệm thu khoa học không thay thế nghiệm thu kỹ thuật. Chỉ chuyển sang `verified-in-build` sau khi hoàn tất kiểm thử chức năng, WebGL, thiết bị di động, bàn phím, reduced motion và vòng đời tài nguyên.
 
 `needs-revision` nghĩa là hồ sơ đã xác định điểm phải sửa hoặc giới hạn phải công bố; không có nghĩa mọi nội dung trong mô hình đều sai.
 
 ## Ghi nhận nghiệm thu
 
-Theo xác nhận của chủ dự án ngày 26/11/2026, 12 mô hình có trạng thái `validated` trong danh sách dưới đây đã hoàn tất nghiệm thu khoa học. Năm mô hình bản đồ còn lại đang ở trạng thái `in-review`. Các phiếu thẩm định ghi nhận nguồn, giả định và giới hạn; trạng thái hiện hành được quản lý trong `data/model-registry.json`. Không tự ý thay đổi nội dung khoa học đã duyệt. Nghiệm thu kỹ thuật của cả 17 pilot vẫn đang chờ kiểm thử runtime trên trình duyệt và thiết bị thật.
+Theo xác nhận của chủ dự án ngày 26/11/2026, 12 mô hình có trạng thái `validated` trong danh sách dưới đây đã hoàn tất nghiệm thu khoa học. Sáu mô hình còn lại đang ở trạng thái `in-review`, gồm năm mô hình bản đồ và mô hình chuyển động mảng kiến tạo. Các phiếu thẩm định ghi nhận nguồn, giả định và giới hạn; trạng thái hiện hành được quản lý trong `data/model-registry.json`. Không tự ý thay đổi nội dung khoa học đã duyệt. Nghiệm thu kỹ thuật của cả 18 pilot vẫn đang chờ kiểm thử runtime trên trình duyệt và thiết bị thật.
 
 ## Danh sách theo dõi
 
@@ -38,6 +38,7 @@ Theo xác nhận của chủ dự án ngày 26/11/2026, 12 mô hình có trạng
 | Thay đổi tỉ lệ bản đồ | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](map-scale.md) · [Pilot](../../simulations/cartography/map-scale/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
 | Đo khoảng cách thực tế | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](map-distance.md) · [Pilot](../../simulations/cartography/map-distance/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
 | Tìm đường đi trên bản đồ | `js/sims/geo-catalog.js` | [Phiếu](route-finding.md) · [Pilot](../../simulations/cartography/route-finding/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Chuyển động các mảng kiến tạo | `js/sims/geo-processes.js` | [Phiếu](plate-tectonics.md) · [Pilot](../../simulations/tectonics/plate-motion/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
 
 ## Quy tắc hoàn tất một mô hình
 
