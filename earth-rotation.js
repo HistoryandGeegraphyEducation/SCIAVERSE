@@ -257,6 +257,10 @@
     renderOnce();
   }
 
+  window.addEventListener('sciaverse:languagechange', () => {
+    if (playButton) setPlaying(playing);
+  });
+
   playButton?.addEventListener('click', () => setPlaying(!playing));
   resetButton?.addEventListener('click', reset);
   speedInput?.addEventListener('input', () => {
