@@ -2,13 +2,14 @@
   {
     "id": "toa-do-dia-li",
     "title": "Xác định tọa độ địa lí",
-    "fieldId": "mathematics-computing",
+    "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-01-coordinates/main.js",
     "implementationType": "independent-module",
     "scientificStatus": "needs-revision",
-    "implementationStatus": "not-migrated",
-    "notes": "Thẩm định chuyên sâu hoàn tất. Công thức hình cầu nhất quán; cần phân biệt vĩ độ địa tâm/trắc địa, sửa click-drag, selector CSS, xử lý cực và nguồn texture. Chưa kiểm thử runtime."
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Đã dựng pilot SCIAVERSE độc lập: texture NASA Blue Marble, lưới kinh-vĩ tuyến, nhập 0,01°, chọn điểm và xử lý cực/±180°. Dùng quy ước east-positive khớp texture equirectangular; mô hình cầu giản lược, không phải WGS 84. Còn chờ kiểm thử landmark, WebGL và cảm ứng trên thiết bị thật.",
+    "implementationPath": "simulations/geography/coordinates/index.html"
   },
   {
     "id": "qua-dia-cau-ban-do",
