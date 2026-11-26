@@ -323,7 +323,7 @@
     if (!earthGroup || !sunMesh || !moonMesh || !sunlight || !simulationStartTime) return;
     const delta = Math.max(0, timestamp - lastSimulationTimestamp);
     lastSimulationTimestamp = timestamp;
-    const simulatedDayLength = reducedMotion ? 180000 : 60000;
+    const simulatedDayLength = 60000;
     simulationDaysElapsed += delta / simulatedDayLength;
     const simulatedJulianDate = simulationStartJulianDate + simulationDaysElapsed;
     const sunDirection = solarCoordinates(simulatedJulianDate);
