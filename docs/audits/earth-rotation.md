@@ -4,7 +4,7 @@
 - Mã thử nghiệm SCIAVERSE: `simulations/earth/rotation/main.js`
 - SHA blob nguồn EDUVERSE đã đọc: `56feba1aea96326fd2a2c95c576507b4eee7fe40`
 - Trạng thái: `needs-revision` đối với mô hình EDUVERSE; pilot SCIAVERSE đang chờ kiểm thử trình duyệt.
-- Phạm vi: hướng và chu kỳ quay, trục nghiêng, chiếu sáng ngày–đêm, xích vĩ Mặt Trời, giờ Mặt Trời địa phương, texture, điều khiển và vòng đời WebGL.
+- Phạm vi: hướng và chu kỳ quay, trục nghiêng, chiếu sáng ngày–đêm, vị trí biểu kiến Mặt Trời và Mặt Trăng, đồng hồ múi giờ, texture và vòng đời WebGL.
 
 ## 1. Cơ sở khoa học dùng làm chuẩn
 
@@ -59,71 +59,65 @@
 
 ## 3. Đánh giá pilot SCIAVERSE
 
-Pilot được xây dựng độc lập trong `simulations/earth/rotation/main.js`, không sao chép nguyên trạng mô hình EDUVERSE.
+Pilot được triển khai độc lập trong `simulations/earth/rotation/main.js`. Trang mô hình nằm trong cùng thư mục; không còn dùng JavaScript mô hình ở thư mục gốc.
 
-### Những điểm đã được xử lý
+### Cơ chế hiện tại
 
-- Trục nghiêng được cố định ở 23,44° so với trục tham chiếu vuông góc mặt phẳng quỹ đạo.
-- Trục tham chiếu được vẽ bằng đường đứt; trục quay được thể hiện riêng.
-- Hướng Mặt Trời được cố định theo +Z. Trục quay được nghiêng trong mặt phẳng XY, nên tích vô hướng giữa trục quay và hướng Mặt Trời bằng 0 trong cấu hình mặc định; đây là cấu hình phân điểm (equinox-like) phù hợp cho minh họa ngày–đêm.
-- Quả Địa Cầu quay quanh trục local Y trong nhóm đã nghiêng. Theo quy ước tọa độ hình cầu và UV của texture hiện dùng, chiều quay dương quanh Y tương ứng hướng Tây sang Đông. Cần xác nhận trực quan bằng landmark trên texture khi chạy trình duyệt.
-- Pilot dùng 24 giờ mô phỏng cho một vòng ngày Mặt Trời trung bình và ghi rõ chu kỳ quay sao ngắn hơn khoảng 3 phút 56 giây. Đây là lựa chọn nhất quán với việc giữ Mặt Trời cố định để minh họa ngày–đêm.
-- Không có slider đổi trục nghiêng, đảo chiều quay hoặc xích vĩ Mặt Trời giả định.
-- Không mô phỏng mùa hoặc chuyển động quỹ đạo; chú thích ở giao diện đã nêu giới hạn này.
-- Dùng ảnh NASA Blue Marble 2048×1024 từ NASA SVS. Không có texture procedural thay thế nếu tải ảnh thất bại; giao diện hiển thị lỗi và khóa điều khiển.
-- Tốc độ là hệ số tua thời gian, không phải tốc độ quay thực. Đồng hồ hiển thị giờ mô phỏng.
-- Khi bật reduced motion, mô hình mặc định ở trạng thái tạm dừng.
-- Vòng lặp dừng khi trang bị ẩn; chỉ tiếp tục khi cần chuyển động hoặc OrbitControls còn damping.
-- Có ResizeObserver, giới hạn pixel ratio 1,5, xử lý WebGL cleanup khi pagehide và giải phóng geometry/material/texture.
+- Trục quay nghiêng cố định 23,44° so với phương vuông góc mặt phẳng quỹ đạo.
+- Trái Đất quay quanh trục theo chiều Tây sang Đông.
+- Đồng hồ mô phỏng dùng thời gian tích lũy theo delta thời gian giữa các khung hình. Một ngày Mặt Trời trung bình trong mô hình tương ứng 60 giây thực.
+- Vị trí biểu kiến của Mặt Trời được tính bằng công thức thiên văn xấp xỉ theo ngày Julius mô phỏng. Vị trí Mặt Trăng được tính bằng bộ phần tử quỹ đạo gần đúng; cả hai dùng cùng thời gian mô phỏng đã tăng tốc.
+- Mô hình không vẽ quỹ đạo Trái Đất quanh Mặt Trời. Sự thay đổi hướng biểu kiến của Mặt Trời theo ngày được tính bằng công thức, không phải dữ liệu ephemeris độ chính xác cao.
+- Ảnh bề mặt Trái Đất tải từ tệp NASA Blue Marble cục bộ; nếu không tải được, mô hình thử các nguồn NASA trực tuyến. Không còn tạo bản đồ procedural để thay ảnh thật. Nếu tất cả nguồn đều lỗi, trang hiển thị lỗi và dọn tài nguyên đã khởi tạo.
+- Lớp mây dùng ảnh cục bộ riêng. Nguồn và giấy phép của tệp mây vẫn cần được xác minh.
+- Mặt Trăng được thể hiện bằng hình cầu màu đơn, không dùng texture miêu tả địa hình giả. Vị trí, kích thước và khoảng cách của Mặt Trời, Mặt Trăng không theo tỉ lệ không gian thực.
+- Đồng hồ quốc gia dùng múi giờ IANA và thời gian hiện tại của thiết bị; đồng hồ này không chạy theo thời gian mô phỏng thiên văn.
+- Khi bật reduced motion, chuyển động tự động dừng nhưng khung hình tĩnh vẫn được dựng khi cần tương tác camera. Khi tab bị ẩn, requestAnimationFrame bị hủy; khi quay lại, mô phỏng tiếp tục mà không cộng thời gian tab nền.
+- Lỗi trong quá trình khởi tạo gọi cleanup để giải phóng renderer, texture, geometry, material, OrbitControls, observer và event listeners.
 
 ### Điểm còn phải hoàn thiện
 
-1. **Ghi công NASA trên giao diện:** đã bổ sung dòng nguồn dưới mô hình, ghi NASA/GSFC Scientific Visualization Studio, Blue Marble, dữ liệu quan sát năm 2001 và năm công bố 2004; liên kết trực tiếp đến trang NASA SVS.
-2. **Nêu rõ quy ước tốc độ:** đã bổ sung chú thích ngay dưới nhãn điều khiển: 1× tương ứng 1 giờ mô phỏng trong 1 giây thực; slider có aria-describedby trỏ đến chú thích này.
-3. **Kiểm tra hướng quay bằng địa danh.** Công thức tọa độ và chiều quay dương phù hợp về mặt toán học, nhưng chưa có kiểm thử trình duyệt xác nhận các địa danh trên texture di chuyển đúng hướng Đông/Tây.
-4. **Kiểm tra trạng thái lỗi giữa lúc khởi tạo.** Nếu lỗi xảy ra sau khi renderer hoặc một phần scene đã được tạo, `catch` chỉ hiển thị lỗi; cần bảo đảm các tài nguyên đã khởi tạo được giải phóng.
-5. **Kiểm tra CDN và texture trên mạng yếu.** Three.js, OrbitControls và texture đều tải từ bên ngoài; khi không có mạng, mô hình hiện không hoạt động. Trạng thái lỗi đã có, nhưng chưa có kiểm thử offline hoặc trên mạng chập chờn.
-6. **Kiểm tra tương tác bàn phím.** Nút chạy/tạm dừng, đặt lại và slider có thể thao tác bằng bàn phím; thao tác xoay/zoom camera hiện chủ yếu dựa vào pointer. Cần có cách xem thay thế hoặc điều khiển camera bằng bàn phím nếu cần thao tác 3D đầy đủ.
-7. **Kiểm tra reduced motion khi thay đổi thiết lập trong lúc trang đang mở.** Giá trị `matchMedia` được đọc khi khởi tạo; chưa có listener theo dõi thay đổi tùy chọn trong phiên.
-8. **Kiểm tra cleanup khi khởi tạo thất bại giữa chừng.** Cleanup đầy đủ được đăng ký ở `pagehide`; nhưng nếu `init()` ném lỗi trước khi hoàn tất, cần xử lý tài nguyên một phần đã tạo.
-9. **Kiểm tra bố cục và hiệu năng thực tế.** Chưa có kiểm thử trực tiếp trên Android WebGL, iOS, trình duyệt desktop hoặc các kích thước 320, 360, 390 và 430 CSS px.
+1. Xác nhận bằng landmark trên texture rằng chiều quay quan sát được đúng Tây sang Đông.
+2. Xác minh nguồn, giấy phép và thông tin kỹ thuật của `assets/earth-clouds.png`.
+3. Đối chiếu vị trí Mặt Trời và Mặt Trăng với một bộ ephemeris độc lập tại các ngày kiểm tra; hiện các công thức là xấp xỉ.
+4. Kiểm tra lỗi tải texture cục bộ và các URL NASA dự phòng trên mạng yếu, CORS và chế độ offline.
+5. Kiểm tra thao tác OrbitControls, khả năng truy cập bằng bàn phím và trạng thái focus. Camera hiện chủ yếu được điều khiển bằng pointer.
+6. Kiểm thử WebGL, vòng đời tài nguyên và hiệu năng trên Android, iOS và desktop; kiểm tra các chiều rộng 320, 360, 390 và 430 CSS px.
+7. Chưa có kiểm thử runtime trình duyệt trong lượt cập nhật này. Việc rà soát mã và cập nhật hồ sơ không thay thế kiểm thử thực tế.
 
-## 4. Đặc tả khoa học giữ cho pilot
+## 4. Đặc tả khoa học hiện hành
 
-- Trục nghiêng cố định 23,44° so với phương vuông góc mặt phẳng quỹ đạo.
-- Trục quay không đổi hướng trong không gian trong phạm vi mô hình; Trái Đất quay quanh chính trục đó.
+- Trục quay nghiêng cố định 23,44° so với phương vuông góc mặt phẳng quỹ đạo.
 - Hướng quay Tây → Đông.
-- Mặt Trời cố định, chiếu sáng hình học tạo vùng ngày và đêm.
-- Một vòng quay trong đồng hồ mô phỏng là 24 giờ Mặt Trời trung bình. Ghi chú riêng chu kỳ quay sao khoảng 23 giờ 56 phút 4 giây.
-- Cấu hình chiếu sáng mặc định là phân điểm; không suy diễn thành mùa.
-- Không có chuyển động quỹ đạo, xích vĩ Mặt Trời thay đổi, mùa, tuế sai hoặc biến thiên độ nghiêng trục.
-- Tốc độ điều khiển là hệ số tua thời gian; không gọi là tốc độ thực.
-- Ảnh Blue Marble là ảnh ghép vệ tinh có thời điểm dữ liệu lịch sử, không phải ảnh Trái Đất thời gian thực.
-- Khi texture hoặc WebGL lỗi, phải hiển thị trạng thái lỗi thay vì thay bằng bản đồ giả lập không được ghi nhãn.
+- Một ngày Mặt Trời trung bình được nén thành 60 giây thực; tốc độ được tính theo thời gian thực giữa các khung hình, không phụ thuộc số FPS.
+- Ngày Julius mô phỏng tăng cùng tốc độ tua; công thức Mặt Trời và Mặt Trăng nhận cùng ngày mô phỏng để tránh cho hai thiên thể chạy theo hai thang thời gian độc lập.
+- Mặt Trời dùng công thức tọa độ biểu kiến xấp xỉ. Mặt Trăng dùng phần tử quỹ đạo gần đúng; mô hình không thay thế ephemeris thiên văn.
+- Không dựng đường quỹ đạo Trái Đất quanh Mặt Trời. Mô hình không phải mô phỏng hệ Mặt Trời theo tỉ lệ.
+- Kích thước và khoảng cách Mặt Trời, Mặt Trăng được nén để hiển thị; không dùng để suy ra tỉ lệ không gian.
+- Ảnh Blue Marble là ảnh ghép từ quan sát vệ tinh có thời điểm dữ liệu lịch sử, không phải ảnh Trái Đất trực tiếp.
+- Lớp mây là ảnh texture riêng, không phải dữ liệu mây quan trắc theo thời gian thực.
+- Khi không tải được texture Blue Marble hoặc WebGL không khởi tạo được, mô hình phải báo lỗi; không thay bằng bản đồ địa lí tự tạo.
 
-## 5. Tiêu chí kiểm chứng trước khi công bố
+## 5. Tiêu chí kiểm chứng trước khi công bố kỹ thuật
 
-- Trục quay luôn giữ góc 23,44° với trục tham chiếu; không tự thay đổi khi quả cầu quay.
-- Đường xích đạo vuông góc với trục quay.
-- Hướng quay của các điểm trên texture đúng Tây → Đông.
-- Hướng chiếu sáng và ranh giới ngày–đêm nhất quán khi Trái Đất quay.
-- Cấu hình mặc định là phân điểm: Mặt Trời nằm trong mặt phẳng xích đạo của mô hình.
-- Đồng hồ 24 giờ mô phỏng khớp một vòng ngày Mặt Trời trung bình; chú thích phân biệt ngày sao.
-- Tốc độ không phụ thuộc tốc độ khung hình.
-- Texture tải được, có ghi nguồn; lỗi tải hiển thị rõ.
-- Reduced motion mặc định dừng chuyển động; người dùng có thể chủ động bắt đầu.
-- Tab nền dừng animation; quay lại trang khôi phục đúng trạng thái.
+- Trục quay giữ góc 23,44° với trục tham chiếu; đường xích đạo vuông góc với trục.
+- Hướng quay của các landmark trên texture đúng Tây sang Đông.
+- Vị trí Mặt Trời và Mặt Trăng khớp với bộ kiểm tra ephemeris độc lập trong sai số của công thức xấp xỉ đã chọn.
+- Một vòng quay mô phỏng hoàn tất trong 60 giây thực ở chế độ chuyển động bình thường.
+- Thời gian mô phỏng không tăng khi tab ở nền hoặc khi reduced motion được bật.
+- Texture NASA tải được từ nguồn cục bộ; lỗi tất cả nguồn phải hiển thị rõ và không để lại WebGL resource.
+- Đồng hồ quốc gia khớp múi giờ IANA và thời gian hệ thống.
 - Không có lỗi console, vòng lặp trùng hoặc tài nguyên WebGL không được giải phóng.
-- Điều khiển cơ bản dùng được bằng bàn phím; không tràn ngang ở 320, 360, 390 và 430 CSS px.
-- Kiểm tra thực tế trên điện thoại Android trước khi nghiệm thu.
+- Giao diện không tràn ngang tại 320, 360, 390 và 430 CSS px; các thao tác camera có phương án truy cập phù hợp.
+- Kiểm tra thực tế trên điện thoại Android trước khi nghiệm thu kỹ thuật.
 
 ## 6. Kết luận
 
-Mã EDUVERSE có nền tảng hình học hữu ích để tham khảo, nhưng slider góc chiếu sáng không ánh xạ đúng sang xích vĩ Mặt Trời; texture dự phòng, đám mây ngẫu nhiên và vòng lặp khi tạm dừng cũng chưa đạt yêu cầu tiếp nhận nguyên trạng.
+Các điểm khoa học chính đã được giữ trong pilot: trục nghiêng cố định 23,44°, chiều quay Tây sang Đông và chu kỳ ngày Mặt Trời trung bình được nén thời gian. Vị trí biểu kiến của Mặt Trời và Mặt Trăng được tính theo cùng ngày Julius mô phỏng bằng các công thức xấp xỉ. Các khoảng cách và kích thước thiên thể được nén, không dùng như mô hình không gian theo tỉ lệ.
 
-Pilot SCIAVERSE đã khắc phục các vấn đề khoa học chính bằng cách cố định độ nghiêng 23,44°, dùng cấu hình chiếu sáng phân điểm, giữ Mặt Trời cố định, sử dụng ngày Mặt Trời trung bình 24 giờ và không mô phỏng mùa khi chưa có quỹ đạo. Việc tải texture NASA có trạng thái lỗi rõ ràng và reduced motion được xử lý ở trạng thái khởi tạo.
+Đã sửa đường dẫn texture theo vị trí trang, bỏ texture Trái Đất procedural, chuyển mã mô hình vào thư mục riêng, đồng bộ thời gian thiên văn với thời gian mô phỏng, dừng animation khi tab nền hoặc reduced motion, và bổ sung cleanup khi khởi tạo lỗi. Trang đã có tiêu đề mô hình, ghi nguồn ảnh Blue Marble và công bố giới hạn tỉ lệ hình học.
 
-Pilot đã bổ sung ghi công NASA và quy ước tốc độ 1× trong giao diện. Các điểm còn mở là kiểm tra hướng quay bằng landmark, xử lý lỗi khởi tạo một phần, xác nhận tương tác bàn phím/di động và kiểm thử WebGL trên trình duyệt/thiết bị thực. Chưa có kết quả kiểm thử runtime; chưa được chuyển sang `validated`.
+Trạng thái khoa học trong registry là `validated` theo xác nhận của chủ dự án ngày 26/11/2026. Trạng thái triển khai vẫn là `sciaverse-pilot-in-progress`; chưa chuyển sang `verified-in-build` vì chưa có kiểm thử runtime trên trình duyệt và thiết bị thật.
 
 ## Nguồn tham khảo
 
