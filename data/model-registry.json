@@ -72,9 +72,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/solar-system-explorer.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   },
   {
     "id": "traidat-tu-quay-quanh-truc",
@@ -160,9 +160,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/interior-earth.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   },
   {
     "id": "chuyen-dong-mang-kien-tao",
@@ -391,9 +391,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/quake.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   },
   {
     "id": "song-than",
@@ -402,9 +402,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/tsunami.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   },
   {
     "id": "traidat",
@@ -425,9 +425,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/volcano.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   },
   {
     "id": "bao-nhiet-doi",
@@ -436,9 +436,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/bao-nhiet-doi/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   },
   {
     "id": "lu-quet",
@@ -447,9 +447,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/lu-quet/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   },
   {
     "id": "sat-lo-dat",
@@ -458,9 +458,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/sat-lo-dat/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   },
   {
     "id": "xam-nhap-man",
@@ -469,9 +469,9 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/xam-nhap-man/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   },
   {
     "id": "nuoc-bien-dang",
@@ -480,8 +480,8 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "simulations/natural-hazards/nuoc-bien-dang/main.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
+    "scientificStatus": "in-review",
     "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "notes": "Đã rà soát mã nguồn và lập phiếu thẩm định ban đầu; cần hoàn tất đối chiếu chi tiết, hiệu chỉnh và kiểm thử trước khi nghiệm thu."
   }
 ]
