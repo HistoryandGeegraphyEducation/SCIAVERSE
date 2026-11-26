@@ -15,7 +15,11 @@
   --route-border:rgba(220,235,238,.12);
   --route-text:#f1f4f2;
   --route-secondary:#b5c0c2;
-  --route-muted:#8e9b9e;\n  --route-node-stroke:#182226;\n  --route-node-label:#f2f5f3;\n  --route-hover:rgba(255,255,255,.06);\n  --route-focus:#e5b65f;
+  --route-muted:#8e9b9e;
+  --route-node-stroke:#182226;
+  --route-node-label:#f2f5f3;
+  --route-hover:rgba(255,255,255,.06);
+  --route-focus:#e5b65f;
 }
 .route-main{max-width:1440px}
 .route-heading{max-width:760px;margin:28px 0 24px}
@@ -33,7 +37,8 @@
 .route-edge{stroke:var(--route-edge);stroke-width:4;stroke-linecap:round;opacity:.7}
 .route-edge.blocked{stroke:var(--route-edge-muted);stroke-dasharray:7 7;opacity:.42}
 .route-edge.active{stroke:var(--route-active);stroke-width:7;opacity:1}
-.route-edge-hit{stroke:transparent;stroke-width:18;cursor:pointer}\n.route-active-path{fill:none;stroke:var(--route-active);stroke-width:8;stroke-linecap:round;stroke-linejoin:round;opacity:.96}
+.route-edge-hit{stroke:transparent;stroke-width:18;cursor:pointer}
+.route-active-path{fill:none;stroke:var(--route-active);stroke-width:8;stroke-linecap:round;stroke-linejoin:round;opacity:.96}
 .route-node circle{fill:var(--route-node);stroke:#182226;stroke-width:4}
 .route-node text{fill:var(--route-node-label);font:600 16px system-ui,sans-serif;text-anchor:middle;paint-order:stroke;stroke:var(--route-map-bg);stroke-width:4px;stroke-linejoin:round}
 .route-node.start circle{fill:var(--route-node-start)}
