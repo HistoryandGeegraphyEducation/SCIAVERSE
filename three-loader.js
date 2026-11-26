@@ -22,16 +22,23 @@
         script.src = sources[index++];
         script.async = true;
         script.crossOrigin = 'anonymous';
+        let finished = false;
         const timeout = window.setTimeout(() => {
+          if (finished) return;
+          finished = true;
           script.remove();
           attempt();
         }, 12000);
         script.onload = () => {
+          if (finished) return;
+          finished = true;
           window.clearTimeout(timeout);
           if (ready()) resolve();
           else attempt();
         };
         script.onerror = () => {
+          if (finished) return;
+          finished = true;
           window.clearTimeout(timeout);
           script.remove();
           attempt();
