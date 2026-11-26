@@ -771,3 +771,40 @@ html[data-theme="light"] {
 @media (prefers-reduced-motion: reduce) {
   #network-packet { display: none; }
 }
+
+
+/* Scientific image layer */
+.region-scene .scene-photo {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .34;
+  filter: saturate(.78) contrast(1.04);
+}
+.region-scene.scene-earth .scene-photo-earth {
+  object-position: center 44%;
+  opacity: .28;
+}
+.region-scene.scene-waves .scene-photo-waves {
+  object-position: center 52%;
+  opacity: .32;
+}
+.region-scene.scene-earth > svg,
+.region-scene.scene-waves > svg {
+  z-index: 1;
+}
+.visual-credit {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+#network-packet { display: none; }
+@media (max-width: 760px) {
+  .region-scene .scene-photo { opacity: .23; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .region-scene .scene-photo { transform: none; }
+}
