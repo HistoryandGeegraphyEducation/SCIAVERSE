@@ -1,7 +1,7 @@
 # SCIAVERSE — Project Instructions
 
 ## Project identity
-SCIAVERSE (Digital Science Environment) is an independent, multi-disciplinary digital science environment. It is not a rename or a fork of EDUVERSE. Do not read, copy, migrate, edit, or depend on EDUVERSE unless the user explicitly starts a later research and transfer phase.
+SCIAVERSE (Digital Science Environment) is an independent, multi-disciplinary scientific environment. It is not limited to lower-secondary education, a school curriculum, or a single learner group. It is not a rename or a fork of EDUVERSE. Do not read, copy, migrate, edit, or depend on EDUVERSE unless the user explicitly starts a later research and transfer phase.
 
 ## Required workflow before every development task
 1. Read this file first.
@@ -22,7 +22,7 @@ The pinned skill sources are Git submodules:
 - Support reduced motion, visible keyboard focus, sufficient contrast, and no horizontal overflow.
 - Use restrained scientific/technical visual language. Avoid generic space gradients, neon glow, decorative planets, fake charts, invented metrics, and filler content.
 - Motion must communicate state or spatial relationships. Keep it lightweight and respect reduced-motion preferences.
-- Do not invent scientific facts, user activity, statistics, or completed features. Clearly mark demonstrative/sample data when used.
+- Scientific accuracy is a product requirement: represent established principles, units, boundary conditions, and uncertainty correctly; distinguish observation, sourced data, model output, approximation, and illustrative sample data. Clearly label assumptions and limits. Do not present demonstrative/sample data as real observations. Do not invent scientific facts, user activity, statistics, or completed features.
 - Do not add domains or product modules as approved taxonomy unless the user has approved them.
 
 ## Change discipline

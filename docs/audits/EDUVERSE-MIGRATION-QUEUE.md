@@ -33,6 +33,7 @@ Theo xác nhận của chủ dự án ngày 26/11/2026, cả 12 mô hình trong 
 | Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | [Phiếu](landslide.md) · [Pilot](../../simulations/geotechnical/landslide/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
 | Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | [Phiếu](saltwater-intrusion.md) · [Pilot](../../simulations/hydrology/saltwater-intrusion/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
 | Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | [Phiếu](sea-level-rise.md) · [Pilot](../../simulations/coastal/sea-level-rise/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Tìm đường đi trên bản đồ | `js/sims/geo-catalog.js` | [Phiếu](route-finding.md) · [Pilot](../../simulations/cartography/route-finding/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
 
 ## Quy tắc hoàn tất một mô hình
 

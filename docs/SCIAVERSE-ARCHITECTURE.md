@@ -2,7 +2,9 @@
 
 ## 1. Nguyên tắc tổ chức
 
-SCIAVERSE là môi trường khoa học số đa lĩnh vực, độc lập với EDUVERSE. EDUVERSE chỉ là nguồn tham khảo trong giai đoạn nghiên cứu và tiếp nhận học liệu; không được trở thành phụ thuộc runtime, thư viện mã hoặc nguồn dữ liệu bắt buộc của SCIAVERSE.
+SCIAVERSE là môi trường khoa học số đa lĩnh vực, độc lập với EDUVERSE và không giới hạn ở giáo dục THCS, một chương trình học hay một nhóm người dùng. EDUVERSE chỉ là một nguồn tham khảo trong giai đoạn nghiên cứu và tiếp nhận học liệu; không được trở thành phụ thuộc runtime, thư viện mã hoặc nguồn dữ liệu bắt buộc của SCIAVERSE.
+
+Tính chính xác khoa học là yêu cầu nền tảng: phân biệt dữ liệu quan trắc có nguồn, dữ liệu mẫu, kết quả mô hình, phép xấp xỉ và minh họa khái niệm. Mọi giả định, đơn vị, điều kiện áp dụng, bất định và giới hạn phải được công bố phù hợp với mô hình. Không trình bày dữ liệu minh họa như dữ liệu thực.
 
 Cấu trúc có ba lớp:
 

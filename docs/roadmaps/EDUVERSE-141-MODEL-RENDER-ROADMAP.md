@@ -92,13 +92,13 @@ Trưng bày, bảo tàng, bản đồ, dòng thời gian và khám phá địa p
 
 SCIAVERSE được định hướng là không gian khoa học thực tế được tái hiện bằng mô hình, dữ liệu và thuật toán có cơ sở. Mọi dữ liệu mẫu, giả định, phép xấp xỉ và giới hạn phải được ghi rõ; không trình bày dữ liệu minh họa như quan trắc thực.
 
-Đợt A đã có bốn mô-đun SCIAVERSE độc lập ở mức pilot:
+Đợt A đã có năm mô-đun SCIAVERSE độc lập ở mức pilot:
 
 1. **Chuyển đổi quả Địa Cầu thành bản đồ** — Plate Carrée, Mercator, Lambert hình trụ đồng diện tích và phương vị cách đều tâm Bắc Cực.
 2. **La bàn và phương hướng** — Bắc địa lí, Bắc từ, độ từ thiên và chuyển đổi phương vị từ sang phương vị thực.
 3. **Thay đổi tỉ lệ bản đồ** — tỉ lệ số, đổi cm–m–km và so sánh tỉ lệ lớn/nhỏ.
 4. **Đo khoảng cách thực tế** — đo tuyến nhiều đoạn, tổng chiều dài và khoảng cách thẳng đầu–cuối.
 
-Cả bốn mô-đun có `index.html`, `main.js`, `styles.css` riêng; hồ sơ khoa học đang ở `in-review`, triển khai ở `sciaverse-pilot-in-progress`. Chưa đưa vào danh mục công bố vì chưa hoàn tất kiểm thử runtime và nghiệm thu khoa học.
+Cả năm mô-đun có `index.html`, `main.js`, `styles.css` riêng; hồ sơ khoa học đang ở `in-review`, triển khai ở `sciaverse-pilot-in-progress`. Chưa đưa vào danh mục công bố vì chưa hoàn tất kiểm thử runtime và nghiệm thu khoa học.
 
 Mục thứ năm **Tìm đường đi trên bản đồ** đã có pilot độc lập. Đợt A hoàn tất phần dựng ban đầu ở mức 5/5 mô-đun; cả năm vẫn cần hoàn thành kiểm thử runtime và thẩm định khoa học trước khi công bố. SCIAVERSE là môi trường khoa học đa lĩnh vực, không giới hạn ở THCS; danh mục EDUVERSE chỉ là một nguồn nghiên cứu/đối chiếu trong giai đoạn tiếp nhận.
