@@ -301,6 +301,11 @@
     renderer.domElement.setAttribute('role', 'img');
     renderer.domElement.setAttribute('aria-label', 'Quả Địa Cầu với lưới kinh tuyến, vĩ tuyến và điểm tọa độ đang chọn.');
     stage.prepend(renderer.domElement);
+    listenScene(renderer.domElement, 'webglcontextlost', event => {
+      event.preventDefault();
+      showStatus('WebGL đã bị gián đoạn. Tải lại trang để khởi tạo lại quả Địa Cầu.', 'error');
+      destroy();
+    });
 
     scene.add(new T.HemisphereLight(0xd9efff, 0x243b36, 1.25));
     const keyLight = new T.DirectionalLight(0xfff0d2, 2.1);
