@@ -77,7 +77,7 @@
     let maxHeight=0;
     for(let iz=0;iz<=GRID_Z;iz+=1){
       const row=[];
-      const z=MIN_Z+iz*dz;
+      const z=MAX_Z-iz*dz;
       for(let ix=0;ix<=GRID_X;ix+=1){
         const x=MIN_X+ix*dx;
         const h=elevationAt(x,z);
