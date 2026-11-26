@@ -1,33 +1,25 @@
 <!doctype html>
 <html lang="vi" data-theme="dark" data-type="software" data-radius="soft" data-buttons="solid">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Mô hình Trái Đất tự quay quanh trục, thể hiện trục nghiêng, hướng chiếu sáng và chu kỳ ngày Mặt Trời trung bình.">
-<meta name="page-type" content="software"><meta name="site-kind" content="software"><meta name="theme-color" content="#10171b">
-<title>SCIAVERSE — Trái Đất tự quay quanh trục</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10171b">
+<title>SCIAVERSE</title>
 <link rel="stylesheet" href="../../../styles.css">
-  <link rel="stylesheet" href="../../model-base.css"><link rel="stylesheet" href="styles.css">
-<script src="../../../three-loader.js?v=20261126-fallback1" defer></script><script src="../../../earth-rotation.js?v=20261126-earthmodel3" defer></script>
+<link rel="stylesheet" href="../../model-base.css">
+<link rel="stylesheet" href="styles.css">
+<script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
+<script src="../../../earth-rotation.js?v=20261126-liveclock1" defer></script>
 </head>
 <body class="standalone-page">
-<a class="skip-link" href="#earthRotationMain">Bỏ qua điều hướng</a>
-<header class="standalone-header"><a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a><a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a></header>
-<main class="standalone-main earth-rotation-main" id="earthRotationMain">
-<header class="model-intro"><p class="model-kicker">Trái Đất và môi trường</p><h1>Trái Đất tự quay quanh trục</h1><p>Quan sát hướng tự quay, trục nghiêng và sự luân phiên ngày – đêm trên bề mặt Trái Đất.</p></header>
-<section class="earth-rotation-visual">
-<div class="earth-model-heading"><div><h2>Mô hình quả Địa Cầu</h2><p>Trái Đất quay từ Tây sang Đông; trục quay nghiêng khoảng 23,44° so với phương vuông góc mặt phẳng quỹ đạo.</p></div><span class="earth-sun-indicator"><span aria-hidden="true"></span>Mặt Trời</span></div>
-<div class="earth-model-stage" id="earthRotationStage" role="img" aria-label="Mô hình 3D Trái Đất tự quay quanh trục với vùng ngày và đêm">
-<canvas id="earthRotationCanvas" aria-label="Quả Địa Cầu 3D, trục nghiêng và vùng được chiếu sáng"></canvas>
-<div class="earth-model-loading" id="earthModelLoading" role="status">Đang tải mô hình Trái Đất…</div>
-</div>
-<p class="earth-model-axis-legend">Trục vàng: trục quay; nét đứt: phương vuông góc mặt phẳng quỹ đạo.</p>
-<div class="earth-model-controls">
-<div class="earth-model-actions"><button class="earth-model-button is-primary" id="earthModelPlay" type="button" aria-pressed="false">Tiếp tục</button><button class="earth-model-button" id="earthModelReset" type="button">Đặt lại</button></div>
-<label class="earth-model-speed"><span class="earth-model-speed-copy"><span>Tốc độ mô phỏng</span><small class="earth-model-speed-note" id="earthModelSpeedNote">1×: 1 giờ mô phỏng/giây thực.</small></span><input id="earthModelSpeed" type="range" min="0.25" max="4" step="0.25" value="1"><output id="earthModelSpeedValue" for="earthModelSpeed">1×</output></label>
-<span class="earth-model-time"><span>Giờ mô phỏng</span> <strong id="earthModelTime">00:00</strong></span>
-</div>
-
-
+<main class="standalone-main earth-rotation-main">
+<section class="earth-rotation-visual" aria-label="Quả Địa Cầu và giờ thế giới">
+  <div class="earth-model-stage" id="earthRotationStage" aria-label="Quả Địa Cầu, Mặt Trời và Mặt Trăng theo thời gian thực">
+    <canvas id="earthRotationCanvas" aria-label="Mô hình không gian 3D"></canvas>
+    <div class="earth-model-loading" id="earthModelLoading" role="status">Đang tải…</div>
+  </div>
+  <div class="world-clock-grid" id="worldClockGrid" aria-label="Giờ và ngày tháng tại các thành phố trên thế giới"></div>
 </section>
-
-<section class="model-insight" aria-labelledby="rotationInsightTitle"><h2 id="rotationInsightTitle">Sự luân phiên ngày và đêm</h2><div class="model-insight-grid"><article><h3>Ngày và đêm</h3><p>Phần Trái Đất hướng về Mặt Trời được chiếu sáng. Phần khuất ánh sáng trải qua ban đêm.</p></article><article><h3>Chu kỳ quay</h3><p>Trái Đất tự quay từ Tây sang Đông. Một ngày Mặt Trời trung bình kéo dài 24 giờ.</p></article></div></section><details class="model-sources"><summary>Tài liệu khoa học</summary><p class="earth-model-source">Ảnh nền: NASA/GSFC Scientific Visualization Studio, Blue Marble (ảnh ghép từ dữ liệu quan sát năm 2001; công bố năm 2004). <a href="https://svs.gsfc.nasa.gov/2915/" target="_blank" rel="noopener noreferrer">Thông tin bộ ảnh NASA</a></p><p>Nguồn: <a href="https://science.nasa.gov/learn/basics-of-space-flight/chapter2-1/" target="_blank" rel="noopener noreferrer">NASA — Reference Systems</a>; <a href="https://aa.usno.navy.mil/faq/seasons_orbit" target="_blank" rel="noopener noreferrer">U.S. Naval Observatory — Seasons and Earth’s Orbit</a>; <a href="https://svs.gsfc.nasa.gov/2915/" target="_blank" rel="noopener noreferrer">NASA SVS — Blue Marble</a>.</p></details></main></body></html>
+</main>
+</body>
+</html>

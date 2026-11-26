@@ -1267,3 +1267,67 @@ html[data-theme="light"] {
   .standalone-section { margin-top: 28px; }
   .standalone-columns { grid-template-columns: 1fr; gap: 18px; }
 }
+
+
+/* Live Earth and world clocks */
+.earth-rotation-visual {
+  min-height: 0;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.earth-model-stage {
+  height: clamp(300px, 38vw, 460px);
+  min-height: 300px;
+  flex: 0 0 auto;
+}
+.earth-model-stage canvas { min-height: 0; height: 100%; }
+.world-clock-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+.world-clock {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 8px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface-2);
+}
+.world-clock-place {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-soft);
+  font-size: 11px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.world-clock-time {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--text);
+  font-size: clamp(15px, 1.55vw, 20px);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.world-clock-date {
+  color: var(--muted);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .earth-rotation-visual { min-height: 0; }
+  .earth-model-stage { height: 340px; min-height: 300px; }
+  .world-clock-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 360px) {
+  .earth-model-stage { height: 300px; min-height: 280px; }
+  .world-clock { padding: 8px; gap: 2px 5px; }
+  .world-clock-time { font-size: 14px; }
+}
