@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Mô hình ba chiều minh họa phong hóa cơ học, xâm thực do dòng chảy và bồi tụ trầm tích.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#10171b">
+  <title>SCIAVERSE — Phong hóa, xâm thực và bồi tụ</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../../model-base.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#surfaceMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a>
+  </header>
+  <main class="standalone-main surface-main" id="surfaceMain">
+    <header class="model-intro">
+      <h1>Phong hóa, xâm thực và bồi tụ</h1>
+      <p>Quan sát sự biến đổi vật liệu đá từ nơi hình thành đến nơi tích tụ.</p>
+    </header>
+    <section class="surface-layout" aria-label="Mô hình quá trình biến đổi bề mặt">
+      <div class="surface-stage" id="surfaceStage">
+        <div class="surface-status" id="surfaceStatus" role="status">Đang khởi tạo mô hình 3D…</div>
+      </div>
+      <aside class="surface-panel">
+        <h2>Quá trình</h2>
+        <div class="surface-process-choice" id="surfaceProcessChoice" role="group" aria-label="Chọn quá trình địa mạo">
+          <button type="button" data-process="weathering" class="is-selected" aria-pressed="true">Phong hóa</button>
+          <button type="button" data-process="erosion" aria-pressed="false">Xâm thực</button>
+          <button type="button" data-process="deposition" aria-pressed="false">Bồi tụ</button>
+        </div>
+        <section class="surface-result" aria-live="polite" aria-atomic="true">
+          <h3 id="surfaceResultTitle">Phong hóa cơ học</h3>
+          <p id="surfaceResultText">Đá bị nứt vỡ tại chỗ do tác động vật lí. Các mảnh vụn vẫn ở gần nơi đá mẹ hình thành.</p>
+        </section>
+      </aside>
+    </section>
+    <p class="surface-note">Mô hình minh họa phong hóa cơ học, xâm thực do dòng chảy và bồi tụ ở cửa sông. Không mô phỏng phản ứng hóa học, lưu lượng, vận tốc hoặc cân bằng trầm tích định lượng.</p>
+    <details class="model-sources">
+      <summary>Tài liệu khoa học</summary>
+      <p>Nguồn: <a href="https://www.nps.gov/subjects/erosion/about.htm" target="_blank" rel="noopener noreferrer">U.S. National Park Service — Weathering, Erosion, and Deposition</a>; <a href="https://pubs.usgs.gov/bul/2195/b2195.pdf" target="_blank" rel="noopener noreferrer">USGS — Sedimentary Rocks and Processes</a>; <a href="https://opentextbc.ca/physicalgeology2ed/chapter/13-3-stream-erosion-and-deposition/" target="_blank" rel="noopener noreferrer">Physical Geology — Stream Erosion and Deposition</a>.</p>
+    </details>
+  </main>
+</body>
+</html>
