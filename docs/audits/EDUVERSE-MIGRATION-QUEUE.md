@@ -20,9 +20,9 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 |---|---|---|---|---|
 | Xác định tọa độ địa lí | `js/sims/geo-01-coordinates/main.js` | [Phiếu](geographic-coordinates.md) · [Pilot](../../simulations/geography/coordinates/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
 | Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | [Phiếu](solar-system.md) · [Pilot](../../simulations/astronomy/solar-system/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Cấu tạo bên trong Trái Đất 3D | `js/sims/interior-earth.js` | [Phiếu](interior-earth.md) · [Pilot](../../simulations/earth/interior/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Cấu tạo bên trong Trái Đất | `js/sims/interior-earth.js` | [Phiếu](interior-earth.md) · [Pilot](../../simulations/earth/interior/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
 | Động đất | `js/sims/quake.js` | [Phiếu](earthquake.md) · [Pilot](../../simulations/geophysics/earthquake/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
-| Sóng thần 3D | `js/sims/tsunami.js` | [Phiếu](tsunami.md) · [Pilot](../../simulations/oceanography/tsunami/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
+| Sóng thần và tốc độ truyền | `js/sims/tsunami.js` | [Phiếu](tsunami.md) · [Pilot](../../simulations/oceanography/tsunami/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
 | Trái Đất tự quay | `js/sims/earth.js` | [Phiếu](earth-rotation.md) · [Pilot](../../simulations/earth/rotation/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
 | Núi lửa | `js/sims/volcano.js` | [Phiếu](volcano.md) · [Pilot](../../simulations/geophysics/volcano/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
 | Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | [Phiếu](tropical-cyclone.md) · [Pilot](../../simulations/meteorology/tropical-cyclone/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
