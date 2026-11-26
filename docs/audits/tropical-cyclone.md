@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Bão nhiệt đới
 
 - Mã nguồn tham chiếu: `EDUVERSE/simulations/natural-hazards/bao-nhiet-doi/main.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: điều kiện hình thành, cấu trúc mắt/thành mắt/dải mưa, chiều xoáy, tốc độ gió, giai đoạn phát triển và suy yếu, giới hạn mô phỏng.
 - Kết luận hiện tại: phần giải thích điều kiện hình thành và suy yếu ở mức khái quát phù hợp; mô hình có dải xoắn, mây và mưa. Tuy nhiên, slider gió chỉ điều khiển kích thước/tốc độ xoay hoạt ảnh và số hạt mưa; chưa có trường gió, áp suất, điều kiện môi trường hoặc cơ chế khí tượng. Chiều xoáy chưa phân biệt bán cầu, mắt bão chưa gắn với cường độ và thành mắt chưa được thể hiện. Chưa đủ điều kiện tiếp nhận.
 
@@ -128,3 +128,15 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - NOAA Atlantic Oceanographic and Meteorological Laboratory. *How do tropical cyclones form?* https://www.aoml.noaa.gov/hrd/tcfaq/A15.html
 - NOAA Atlantic Oceanographic and Meteorological Laboratory. *Hurricane FAQ — Anatomy and Life Cycle*. https://www.aoml.noaa.gov/hrd/tcfaq/G1.html
 - World Meteorological Organization. *Guidelines for Converting between Various Wind Averaging Periods*. https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/2014_Effective_TC_Warning/presentation/11_March/1-1.JMA_WMO_Workshop_Tokyo2014.pdf
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/meteorology/tropical-cyclone/`.
+
+- Bổ sung lựa chọn bán cầu và quy ước hoàn lưu: ngược chiều kim đồng hồ ở Bắc bán cầu, cùng chiều kim đồng hồ ở Nam bán cầu; không gán chiều xoáy tại xích đạo.
+- Thay slider gió vốn chỉ thay tốc độ xoay/hạt mưa bằng các yếu tố môi trường: nhiệt độ mặt biển, độ ẩm tầng giữa, độ đứt gió thẳng đứng và vĩ độ.
+- Mốc khoảng 26,5°C, 10 m/s và 5° chỉ là mốc tham khảo có điều kiện; không dùng để tạo điểm xác suất hoặc kết luận bão chắc chắn hình thành.
+- Không tính trường gió, áp suất, nhiệt động lực học, quỹ đạo hoặc cường độ bão.
+
+Đây là mô hình giải thích điều kiện môi trường và cấu trúc, không phải mô hình dự báo. Chưa kiểm thử runtime trên trình duyệt/thiết bị.
