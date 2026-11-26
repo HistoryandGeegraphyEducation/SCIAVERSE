@@ -94,6 +94,8 @@
     output.textContent = latitudeText + ', ' + longitudeText;
     hud.textContent = latitudeText + ' · ' + longitudeText;
     poleNote.hidden = !atPole;
+    longitudeRange.disabled = atPole;
+    longitudeNumber.disabled = atPole;
     updatePin();
     requestRender();
   }
