@@ -451,7 +451,7 @@
     "scientificStatus": "validated",
     "implementationStatus": "sciaverse-pilot-in-progress",
     "notes": "Pilot độc lập dùng Blue Marble NASA SVS, trục nghiêng 23,44°, chu kỳ ngày Mặt Trời trung bình 24 giờ. Đã tăng cường cleanup WebGL; còn kiểm tra hướng quay bằng landmark và thiết bị thật.",
-    "sciaversePath": "earth-rotation.js",
+    "sciaversePath": "simulations/earth/rotation/main.js",
     "implementationPath": "simulations/earth/rotation/index.html",
     "acceptanceRecord": {
       "status": "accepted",
