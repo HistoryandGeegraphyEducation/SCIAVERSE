@@ -63,7 +63,9 @@
   function setPlaying(value) {
     playing = Boolean(value);
     if (playButton) {
-      playButton.textContent = playing ? 'Tạm dừng' : 'Tiếp tục';
+      playButton.textContent = document.documentElement.lang === 'en'
+        ? (playing ? 'Pause' : 'Resume')
+        : (playing ? 'Tạm dừng' : 'Tiếp tục');
       playButton.setAttribute('aria-pressed', String(playing));
     }
     lastFrame = 0;
@@ -153,7 +155,7 @@
     scene.background = new THREE.Color(0x10171b);
 
     camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
-    camera.position.set(3.5, 1.8, 5.7);
+    camera.position.set(5.7, 1.8, 0.45);
 
     renderer = new THREE.WebGLRenderer({
       canvas,
@@ -173,12 +175,6 @@
     sunlight.position.set(0, 0, 8);
     scene.add(sunlight);
 
-    const sunMarker = new THREE.Mesh(
-      new THREE.SphereGeometry(0.16, 24, 16),
-      new THREE.MeshBasicMaterial({ color: 0xffd68a })
-    );
-    sunMarker.position.set(-2.35, 1.35, 1.6);
-    scene.add(sunMarker);
 
     const tiltGroup = new THREE.Group();
     tiltGroup.rotation.z = -AXIAL_TILT_DEGREES * Math.PI / 180;
@@ -252,12 +248,12 @@
     if (timeOutput) timeOutput.textContent = '00:00';
     if (speedInput) speedInput.value = '1';
     if (speedOutput) speedOutput.textContent = '1×';
-    if (camera) camera.position.set(3.5, 1.8, 5.7);
+    if (camera) camera.position.set(5.7, 1.8, 0.45);
     if (controls) {
       controls.target.set(0, 0, 0);
       controls.update();
     }
-    setPlaying(true);
+    setPlaying(playing);
     renderOnce();
   }
 
