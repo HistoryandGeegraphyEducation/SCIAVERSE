@@ -22,22 +22,16 @@
     const accepted = models.filter(model =>
       model.fieldId === fieldId &&
       model.scientificStatus === 'validated' &&
-      model.implementationStatus === 'verified-in-build'
+      Boolean(model.implementationPath)
     );
-    if (!accepted.length) {
-      const empty = document.createElement('p');
-      empty.className = 'standalone-empty';
-      empty.textContent = 'Chưa có mô hình nào trong lĩnh vực này được nghiệm thu và công bố. Các mô hình đang thẩm định sẽ chỉ xuất hiện sau khi hoàn tất quy trình.';
-      list.appendChild(empty);
-      return;
-    }
     accepted.forEach(model => {
-      const item = document.createElement('article');
+      const item = document.createElement('a');
       item.className = 'standalone-item';
+      item.href = model.implementationPath;
       const heading = document.createElement('h3');
       heading.textContent = model.title;
       const status = document.createElement('p');
-      status.textContent = 'Đã thẩm định khoa học và kiểm thử triển khai';
+      status.textContent = 'Đã nghiệm thu khoa học · Đang kiểm thử kỹ thuật';
       item.append(heading, status);
       list.appendChild(item);
     });
