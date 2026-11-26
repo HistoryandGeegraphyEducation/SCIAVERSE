@@ -415,7 +415,7 @@
     "implementationType": "independent-module",
     "scientificStatus": "needs-revision",
     "implementationStatus": "sciaverse-pilot-in-progress",
-    "notes": "Mã EDUVERSE cần sửa ánh xạ góc chiếu sáng/xích vĩ và texture dự phòng. Pilot SCIAVERSE đã tái cấu trúc theo trục nghiêng 23,44° và ngày Mặt Trời trung bình 24 giờ; còn chờ ghi công NASA, kiểm tra hướng quay và thử nghiệm thiết bị.",
+    "notes": "Mã EDUVERSE cần sửa ánh xạ góc chiếu sáng/xích vĩ và texture dự phòng. Pilot SCIAVERSE đã cố định trục 23,44°, cấu hình phân điểm, ngày Mặt Trời trung bình 24 giờ; đã bổ sung ghi công NASA SVS và quy ước tốc độ 1×. Còn chờ kiểm tra hướng quay bằng landmark, xử lý lỗi khởi tạo một phần và thử nghiệm WebGL trên thiết bị.",
     "sciaversePath": "earth-rotation.js"
   },
   {
