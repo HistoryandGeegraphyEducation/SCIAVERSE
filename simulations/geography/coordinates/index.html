@@ -37,7 +37,7 @@
         <div class="coordinate-stage" id="coordinateStage" aria-describedby="coordinateHint">
           <div class="coordinate-hud">
             <span class="coordinate-chip">ĐIỂM ĐANG CHỌN</span>
-            <output class="coordinate-chip coordinate-hud-value" id="coordinateHud" aria-live="polite">0.00° · 0.00°</output>
+            <output class="coordinate-chip coordinate-hud-value" id="coordinateHud" aria-hidden="true">0.00° · 0.00°</output>
           </div>
           <p class="coordinate-stage-status" id="textureStatus" role="status" aria-live="polite">Đang tải ảnh bề mặt Trái Đất…</p>
         </div>
@@ -64,7 +64,7 @@
             <span class="coordinate-sign">Đông (+) / Tây (−)</span>
           </div>
           <div class="coordinate-input-row">
-            <input id="longitudeRange" type="range" min="-180" max="180" step="0.01" value="0" aria-label="Thanh trượt kinh độ">
+            <input id="longitudeRange" type="range" min="-180" max="180" step="0.01" value="0" aria-label="Thanh trượt kinh độ" aria-describedby="coordinatePoleNote">
             <input id="longitudeNumber" class="coordinate-number" type="number" min="-180" max="180" step="0.01" value="0.00" inputmode="decimal" aria-label="Nhập kinh độ theo độ thập phân" aria-describedby="coordinatePoleNote">
           </div>
         </div>
