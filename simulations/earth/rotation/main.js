@@ -33,7 +33,6 @@
   ];
 
   let renderer, scene, camera, controls, earth, earthClouds, earthGroup, sunMesh, moonMesh, sunlight;
-  let moonTexture = null;
   let earthSurfaceTexture = null;
   let earthCloudTexture = null;
   let resizeObserver = null;
@@ -43,9 +42,10 @@
   let renderingFrame = false;
   let reducedMotion = false;
   let initialEarthRotation = 0;
-  let initialMoonDirection = null;
-  let moonOrbitAxis = null;
   let simulationStartTime = 0;
+  let simulationStartJulianDate = 0;
+  let simulationDaysElapsed = 0;
+  let lastSimulationTimestamp = 0;
   let disposed = false;
   const listeners = [];
   const clockNodes = [];
@@ -154,48 +154,6 @@
     const degrees = 280.46061837 + 360.98564736629 * (jd - 2451545.0)
       + 0.000387933 * t * t - t * t * t / 38710000;
     return normalizeDegrees(degrees) * DEG;
-  }
-
-  function createMoonSurface(THREE) {
-    const textureCanvas = document.createElement('canvas');
-    textureCanvas.width = 1024;
-    textureCanvas.height = 512;
-    const ctx = textureCanvas.getContext('2d');
-    ctx.fillStyle = '#85867f';
-    ctx.fillRect(0, 0, 1024, 512);
-    let seed = 91371;
-    const random = () => {
-      seed = (seed * 16807) % 2147483647;
-      return (seed - 1) / 2147483646;
-    };
-    for (let i = 0; i < 1800; i += 1) {
-      const x = random() * 1024;
-      const y = random() * 512;
-      const radius = 0.5 + random() * 2.2;
-      ctx.fillStyle = random() > 0.5 ? 'rgba(225,225,215,.10)' : 'rgba(35,37,35,.10)';
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, TAU);
-      ctx.fill();
-    }
-    for (let i = 0; i < 190; i += 1) {
-      const x = random() * 1024;
-      const y = random() * 512;
-      const radius = 3 + random() * 19;
-      const shade = Math.floor(92 + random() * 65);
-      const gradient = ctx.createRadialGradient(x - radius * 0.22, y - radius * 0.24, radius * 0.08, x, y, radius);
-      gradient.addColorStop(0, 'rgba(205,205,194,.85)');
-      gradient.addColorStop(0.58, 'rgba(' + shade + ',' + shade + ',' + (shade - 3) + ',.9)');
-      gradient.addColorStop(0.78, 'rgba(48,50,48,.8)');
-      gradient.addColorStop(1, 'rgba(125,126,118,.15)');
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, TAU);
-      ctx.fill();
-    }
-    const texture = new THREE.CanvasTexture(textureCanvas);
-    if (THREE.sRGBEncoding) texture.encoding = THREE.sRGBEncoding;
-    texture.anisotropy = 4;
-    return texture;
   }
 
   function createAnalogClock() {
@@ -361,18 +319,16 @@
     });
   }
 
-  function updateAstronomicalPositions(now, timestamp) {
+  function updateAstronomicalPositions(timestamp) {
     if (!earthGroup || !sunMesh || !moonMesh || !sunlight || !simulationStartTime) return;
-    const jd = julianDate(now);
-    const sunDirection = solarCoordinates(jd);
-    const elapsed = Math.max(0, timestamp - simulationStartTime);
-    const earthPeriod = reducedMotion ? 180000 : 60000;
-    const moonPeriod = reducedMotion ? 90000 : 24000;
-    const moonDirection = initialMoonDirection.clone().applyAxisAngle(
-      moonOrbitAxis,
-      elapsed * TAU / moonPeriod
-    );
-    earthGroup.rotation.y = initialEarthRotation + elapsed * TAU / earthPeriod;
+    const delta = Math.max(0, timestamp - lastSimulationTimestamp);
+    lastSimulationTimestamp = timestamp;
+    const simulatedDayLength = reducedMotion ? 180000 : 60000;
+    simulationDaysElapsed += delta / simulatedDayLength;
+    const simulatedJulianDate = simulationStartJulianDate + simulationDaysElapsed;
+    const sunDirection = solarCoordinates(simulatedJulianDate);
+    const moonDirection = lunarCoordinates(simulatedJulianDate);
+    earthGroup.rotation.y = initialEarthRotation + simulationDaysElapsed * TAU;
     sunMesh.position.copy(sunDirection).multiplyScalar(3.55);
     sunlight.position.copy(sunDirection).multiplyScalar(12);
     moonMesh.position.copy(moonDirection).multiplyScalar(2.25);
@@ -387,8 +343,8 @@
     }
     lastFrameTime = timestamp;
     renderingFrame = true;
-    const damping = controls ? controls.update() : false;
-    updateAstronomicalPositions(new Date(), timestamp);
+    if (controls) controls.update();
+    updateAstronomicalPositions(timestamp);
     renderer.render(scene, camera);
     renderingFrame = false;
     if (!disposed) frameId = window.requestAnimationFrame(renderFrame);
@@ -442,7 +398,6 @@
       scene.clear();
     }
     earthSurfaceTexture?.dispose?.();
-    moonTexture?.dispose?.();
     earthCloudTexture?.dispose?.();
     renderer?.dispose?.();
     renderer?.forceContextLoss?.();
@@ -506,13 +461,10 @@
     );
     scene.add(sunMesh);
 
-    moonTexture = createMoonSurface(THREE);
     moonMesh = new THREE.Mesh(
       new THREE.SphereGeometry(0.31, 40, 32),
       new THREE.MeshPhongMaterial({
-        map: moonTexture,
-        bumpMap: moonTexture,
-        bumpScale: 0.025,
+        color: 0x9a9b95,
         shininess: 2,
         specular: new THREE.Color(0x252525)
       })
@@ -546,11 +498,11 @@
     });
     const startDate = new Date();
     initialEarthRotation = Math.PI / 2 - greenwichSiderealAngle(julianDate(startDate));
-    initialMoonDirection = lunarCoordinates(julianDate(startDate));
-    moonOrbitAxis = new THREE.Vector3(0, 1, 0);
     simulationStartTime = performance.now();
+    simulationStartJulianDate = julianDate(startDate);
+    lastSimulationTimestamp = simulationStartTime;
     if (loading) loading.hidden = true;
-    updateAstronomicalPositions(startDate, simulationStartTime);
+    updateAstronomicalPositions(simulationStartTime);
     requestRender();
     clockInterval = window.setInterval(() => {
       updateWorldClocks(new Date());
