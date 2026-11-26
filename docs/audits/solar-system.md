@@ -149,3 +149,7 @@ Có thể tiếp nhận ý tưởng tương tác và cấu trúc thông tin, nh�
 - Thay texture procedural có hình dạng lục địa/đám mây giả bằng hình cầu màu trung tính; không gán bề mặt giả như ảnh quan sát.
 
 Kiểm tra tĩnh: cú pháp JavaScript đạt; ID HTML không trùng; CSS cân bằng dấu ngoặc, có breakpoint điện thoại và reduced-motion. Chưa kiểm tra WebGL trên trình duyệt hoặc thiết bị thật. Trạng thái vẫn `needs-revision` và `sciaverse-pilot-in-progress` cho đến khi kiểm thử runtime, kiểm tra dữ liệu hiển thị và xác nhận khả năng truy cập hoàn tất.
+
+### Chuẩn hóa chu kỳ quỹ đạo theo JPL
+
+Các chu kỳ trong pilot được lấy từ cột Sidereal Orbital Period của bảng NASA/JPL và đổi từ năm Julian sang ngày bằng 365,25 ngày/năm. Sau khi đối chiếu, đã hiệu chỉnh Jupiter thành khoảng 4.332,820 ngày và Saturn thành khoảng 10.755,699 ngày; các giá trị khác cũng giữ theo cùng một nguồn/quy ước. Không trộn chu kỳ quỹ đạo sao với năm chí tuyến.
