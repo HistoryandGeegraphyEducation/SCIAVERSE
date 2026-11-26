@@ -2,6 +2,8 @@
 
 ## Phạm vi và nguyên tắc
 
+SCIAVERSE là môi trường khoa học số đa lĩnh vực, không giới hạn đối tượng hoặc nội dung ở cấp THCS. Danh mục EDUVERSE 141 mục là một phạm vi tiếp nhận học liệu cụ thể, không phải toàn bộ phạm vi khoa học của SCIAVERSE.
+
 Danh mục gốc có 141 mục, theo khối: lớp 6 (63), lớp 7 (30), lớp 8 (26), lớp 9 (22). Cơ cấu loại hình: 57 mô phỏng, 48 trưng bày, 7 bảo tàng, 23 bản đồ, 1 dòng thời gian và 5 khám phá địa phương.
 
 SCIAVERSE hiện có 44 hồ sơ trong `data/model-registry.json`: 12 mô hình đã được chủ dự án xác nhận nghiệm thu khoa học ngày 26/11/2026; 4 mô hình bản đồ đang `in-review`; 28 mục còn lại chưa được thẩm định. Mã đăng ký EDUVERSE hiện có 70 mục trong `SIMS.lsdl`; đây chưa phải bản chép đầy đủ danh mục 141 mục. Không suy diễn 71 mục còn thiếu từ dữ liệu không có trong repo. Giữ nguyên danh mục gốc 141 làm phạm vi quản lý; bổ sung mã định danh và hồ sơ khi đối chiếu được đúng danh sách gốc.
@@ -88,6 +90,8 @@ Trưng bày, bảo tàng, bản đồ, dòng thời gian và khám phá địa p
 
 ## Trạng thái triển khai
 
+SCIAVERSE được định hướng là không gian khoa học thực tế được tái hiện bằng mô hình, dữ liệu và thuật toán có cơ sở. Mọi dữ liệu mẫu, giả định, phép xấp xỉ và giới hạn phải được ghi rõ; không trình bày dữ liệu minh họa như quan trắc thực.
+
 Đợt A đã có bốn mô-đun SCIAVERSE độc lập ở mức pilot:
 
 1. **Chuyển đổi quả Địa Cầu thành bản đồ** — Plate Carrée, Mercator, Lambert hình trụ đồng diện tích và phương vị cách đều tâm Bắc Cực.
@@ -97,4 +101,4 @@ Trưng bày, bảo tàng, bản đồ, dòng thời gian và khám phá địa p
 
 Cả bốn mô-đun có `index.html`, `main.js`, `styles.css` riêng; hồ sơ khoa học đang ở `in-review`, triển khai ở `sciaverse-pilot-in-progress`. Chưa đưa vào danh mục công bố vì chưa hoàn tất kiểm thử runtime và nghiệm thu khoa học.
 
-Mục tiếp theo của Đợt A là **Tìm đường đi trên bản đồ**.
+Mục thứ năm **Tìm đường đi trên bản đồ** đã có pilot độc lập. Đợt A hoàn tất phần dựng ban đầu ở mức 5/5 mô-đun; cả năm vẫn cần hoàn thành kiểm thử runtime và thẩm định khoa học trước khi công bố. SCIAVERSE là môi trường khoa học đa lĩnh vực, không giới hạn ở THCS; danh mục EDUVERSE chỉ là một nguồn nghiên cứu/đối chiếu trong giai đoạn tiếp nhận.

@@ -70,10 +70,11 @@
     "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-catalog.js",
-    "implementationType": "shared-catalog",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Pilot độc lập dùng đồ thị mạng lưới mẫu có tọa độ địa lí minh họa. Chiều dài cạnh tính bằng bài toán trắc địa ngược trên ellipsoid WGS 84 (Vincenty); tìm đường ngắn nhất bằng Dijkstra với trọng số không âm. Các nút/cạnh không phải dữ liệu đường giao thông thực; chưa có mạng lưới quan trắc hoặc dữ liệu đường có nguồn.",
+    "implementationPath": "simulations/cartography/route-finding/index.html"
   },
   {
     "id": "kham-pha-cac-hanh-tinh",

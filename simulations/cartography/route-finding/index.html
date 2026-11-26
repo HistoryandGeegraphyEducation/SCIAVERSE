@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#11191d">
+  <meta name="description" content="Mô hình đồ thị mạng lưới có tọa độ địa lí, tính chiều dài cạnh theo WGS 84 và tìm tuyến ngắn nhất bằng thuật toán Dijkstra.">
+  <title>SCIAVERSE — Tìm đường đi trên bản đồ</title>
+  <link rel="stylesheet" href="../../../styles.css?v=20261127-route1">
+  <link rel="stylesheet" href="styles.css?v=20261127-route1">
+  <script src="main.js?v=20261127-route1" defer></script>
+</head>
+<body class="standalone-page route-page">
+  <a class="skip-link" href="#routeMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <nav aria-label="Điều hướng trang">
+      <a href="../../../index.html#fields">Lĩnh vực</a>
+      <a href="../../../space.html?id=simulations">Mô phỏng khoa học</a>
+    </nav>
+  </header>
+
+  <main id="routeMain" class="standalone-main route-main">
+    <a class="standalone-back" href="../../../space.html?id=simulations">Trở về không gian mô phỏng</a>
+    <header class="route-heading">
+      <p>Địa lí và phân tích không gian</p>
+      <h1>Tìm đường đi trên bản đồ</h1>
+      <p>Tìm tuyến có tổng chiều dài nhỏ nhất trong một mạng lưới có trọng số</p>
+    </header>
+
+    <section class="route-workspace" aria-label="Mô hình tìm đường trên mạng lưới">
+      <div class="route-map-panel">
+        <div class="route-map-topline">
+          <span>Mạng lưới tọa độ mẫu</span>
+          <span class="route-map-scale">Lưới vĩ độ · kinh độ</span>
+        </div>
+        <svg id="routeMap" class="route-map" viewBox="0 0 960 560" role="img" aria-label="Đồ thị mẫu gồm tám nút và các cạnh kết nối. Tuyến ngắn nhất được làm nổi bật.">
+          <g id="routeGrid"></g>
+          <g id="routeEdges"></g>
+          <g id="routePath"></g>
+          <g id="routeNodes"></g>
+        </svg>
+        <div class="route-map-legend">
+          <span><i class="legend-line"></i> Cạnh mạng lưới</span>
+          <span><i class="legend-line legend-active"></i> Tuyến được chọn</span>
+          <span><i class="legend-node"></i> Nút</span>
+        </div>
+      </div>
+
+      <aside class="route-controls" aria-labelledby="routeControlsTitle">
+        <h2 id="routeControlsTitle">Thiết lập tuyến</h2>
+        <label class="route-field" for="routeStart">
+          <span>Điểm xuất phát</span>
+          <select id="routeStart"></select>
+        </label>
+        <label class="route-field" for="routeEnd">
+          <span>Điểm đến</span>
+          <select id="routeEnd"></select>
+        </label>
+        <div class="route-result" aria-live="polite">
+          <span>Tổng chiều dài tuyến</span>
+          <output id="routeDistance">—</output>
+        </div>
+        <div class="route-result route-result-secondary">
+          <span>Số đoạn kết nối</span>
+          <output id="routeSegments">—</output>
+        </div>
+        <p class="route-sequence" id="routeSequence">Chọn điểm xuất phát và điểm đến để tính tuyến.</p>
+        <button class="route-reset" id="routeReset" type="button">Khôi phục mạng lưới</button>
+      </aside>
+    </section>
+
+    <section class="route-network">
+      <div class="route-network-heading">
+        <h2>Các kết nối trong mạng lưới</h2>
+        <p>Tắt một kết nối để xem tuyến được tính lại</p>
+      </div>
+      <div id="routeEdgeList" class="route-edge-list"></div>
+    </section>
+
+    <section class="route-method">
+      <h2>Cơ sở tính toán</h2>
+      <div class="route-method-grid">
+        <article>
+          <h3>Chiều dài trắc địa</h3>
+          <p>Chiều dài mỗi cạnh được tính từ tọa độ hai đầu trên ellipsoid WGS 84, không đo theo pixel của bản vẽ.</p>
+        </article>
+        <article>
+          <h3>Đồ thị có trọng số</h3>
+          <p>Mỗi nút là một vị trí; mỗi cạnh là một kết nối giả định. Trọng số cạnh là chiều dài trắc địa tính bằng kilômét.</p>
+        </article>
+        <article>
+          <h3>Thuật toán Dijkstra</h3>
+          <p>Thuật toán lần lượt chốt nút có tổng chi phí tạm thời nhỏ nhất và cập nhật các nút kề. Trọng số phải không âm.</p>
+        </article>
+      </div>
+      <p class="route-limit">Mạng lưới, tọa độ và các cạnh hiện tại là dữ liệu minh họa, không phải mạng đường giao thông thực. Mô hình chỉ tìm tuyến ngắn nhất theo chiều dài; không xét đường một chiều, cấm rẽ, địa hình, tốc độ, ùn tắc hoặc an toàn.</p>
+    </section>
+
+    <details class="route-sources">
+      <summary>Tài liệu khoa học và thuật toán</summary>
+      <p><a href="https://search.r-project.org/CRAN/refmans/geosphere/html/geodesic.html" target="_blank" rel="noopener noreferrer">geosphere — Bài toán trắc địa trên ellipsoid WGS 84</a></p>
+      <p><a href="https://networkx.org/documentation/stable/reference/algorithms/shortest_paths.html" target="_blank" rel="noopener noreferrer">NetworkX — Shortest-path algorithms</a></p>
+      <p><a href="https://doc.esri.com/en/arcgis-pro/latest/help/analysis/networks/algorithms-used-by-network-analyst.html" target="_blank" rel="noopener noreferrer">Esri — Algorithms used by Network Analyst</a></p>
+    </details>
+  </main>
+</body>
+</html>
