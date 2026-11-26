@@ -303,8 +303,8 @@
     stage.prepend(renderer.domElement);
     listenScene(renderer.domElement, 'webglcontextlost', event => {
       event.preventDefault();
-      showStatus('WebGL đã bị gián đoạn. Tải lại trang để khởi tạo lại quả Địa Cầu.', 'error');
-      destroy();
+      showStatus('WebGL đã bị gián đoạn. Quả Địa Cầu không thể tiếp tục hiển thị; các ô nhập tọa độ vẫn dùng được.', 'error');
+      disposeScene();
     });
 
     scene.add(new T.HemisphereLight(0xd9efff, 0x243b36, 1.25));
