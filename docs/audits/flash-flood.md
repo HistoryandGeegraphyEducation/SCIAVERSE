@@ -132,9 +132,14 @@ Có thể giữ cấu trúc bài học và cảnh 3D; phần lượng mưa–dò
 
 Đã dựng mô-đun độc lập tại `simulations/hydrology/flash-flood/`.
 
-- Bổ sung cường độ mưa (i) (mm/h) và thời lượng (t) (h), từ đó tính tổng lượng mưa (P=i t) (mm).
-- Dùng hệ số dòng chảy (C) do người học đặt để ước tính lớp nước chảy tràn (R=CP).
-- Tính thể tích (V=R A\times1000) (m³) khi (R) tính bằng mm và diện tích lưu vực (A) tính bằng km².
-- Ghi rõ hệ số C là giả định tổng hợp, không tự suy ra từ loại đất hoặc độ bão hòa; không tính lưu lượng đỉnh, thủy lực hay dự báo lũ.
+- Bổ sung cường độ mưa (i) (mm/h) và thời lượng (t) (h), tính tổng lượng mưa (P=it) (mm).
+- Dùng hệ số dòng chảy (C) do người học nhập để ước tính lớp nước chảy tràn (R=CP).
+- Tính thể tích (V=RA\times10) (m³), với (R) tính bằng mm và diện tích lưu vực (A) tính bằng ha.
+- Bổ sung lưu lượng đỉnh theo phương pháp Rational: (Q_p=0.00278CiA) (m³/s), với (i) là mm/h và (A) là ha. Chỉ tính khi thời lượng mưa không ngắn hơn thời gian tập trung (T_c).
+- Diện tích được giới hạn dưới 80 ha theo phạm vi áp dụng nhỏ-lưu-vực trong hướng dẫn FHWA. Cường độ mưa giả định đồng đều trên lưu vực và trong khoảng thời gian tương ứng với (T_c).
+- C và (T_c) do người học nhập; mô hình không tự suy ra chúng từ loại phủ bề mặt, độ dốc hoặc chiều dài dòng chảy.
+- Không tính lưu trữ, thủy lực lòng dẫn, thủy đồ, ngập lụt hoặc dự báo lũ quét.
 
-Công thức bảo toàn thể tích và đổi đơn vị đã được rà soát bằng kiểm tra tĩnh. Chưa kiểm thử runtime trên thiết bị; cần bổ sung nguồn giải thích phương pháp và kiểm tra các giá trị biên.
+Kiểm tra đổi đơn vị và công thức đã đạt bước tĩnh. Chưa kiểm thử runtime trên thiết bị. Cần kiểm tra điều kiện thời lượng mưa/Tc, các giá trị biên và cách diễn giải Qp trước khi nghiệm thu.
+
+Nguồn bổ sung: Federal Highway Administration. *HEC-22 Urban Drainage Design Manual*, mục 3.2.2 Rational Method. https://www.fhwa.dot.gov/engineering/hydraulics/pubs/10009/10009.pdf
