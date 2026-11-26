@@ -57,16 +57,15 @@ Khoảng cách từ tâm chiếu đến điểm được giữ bằng cung góc 
 - Phần cắt vĩ độ Mercator là giới hạn hiển thị; hai cực là điểm kỳ dị của công thức.
 - Chưa kiểm chứng bằng ảnh chụp runtime rằng hướng texture và lưới kinh-vĩ tuyến trùng đúng với landmark địa lí.
 
-## 4. Kiểm tra công thức đã chạy
+## 4. Kiểm tra công thức được tích hợp trong mã
 
-Các kiểm tra số học trong mã:
-- Plate Carrée tại \((0^\circ,0^\circ)\) trả về gốc tọa độ.
-- Mercator tại xích đạo trả về \(y=0\).
-- Mercator tại vĩ độ cắt cho giá trị hữu hạn.
-- Lambert hình trụ đồng diện tích tại cực cho \(y/R=\pm1\).
-- Phương vị cách đều: Bắc Cực là tâm; điểm xích đạo cách tâm \(\pi R/2\).
+Các kiểm tra số học được tích hợp trong hàm khởi tạo:
+- Plate Carrée tại (0°, 0°) trả về gốc tọa độ; kinh độ 180° được đổi thành π radian.
+- Mercator tại xích đạo trả về y = 0; kinh độ 180° được đổi thành π radian; tung độ tại vĩ độ cắt phải hữu hạn.
+- Lambert hình trụ đồng diện tích tại cực cho y/R = ±1; kinh độ 180° được đổi thành π radian.
+- Phương vị cách đều: Bắc Cực là tâm; điểm xích đạo cách tâm πR/2.
 
-Các kiểm tra trên là kiểm tra công thức và trường hợp chuẩn, không thay cho kiểm thử hiển thị.
+Các kiểm tra dùng console.assert. Chúng chưa được thực thi trong một phiên trình duyệt của lượt cập nhật này và không thay cho kiểm thử hiển thị.
 
 ## 5. Nguồn khoa học
 
