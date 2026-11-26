@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Xâm nhập mặn
 
 - Mã nguồn tham chiếu: `EDUVERSE/simulations/natural-hazards/xam-nhap-man/main.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: phân tầng nước ngọt–mặn trong cửa sông, dòng sông, thủy triều, ranh mặn, mật độ và xâm nhập mặn trong tầng chứa nước ven biển.
 - Kết luận hiện tại: mô tả nước ngọt nhẹ hơn và có thể chảy trên lớp nước mặn nặng hơn phù hợp với mô hình cửa sông phân tầng kiểu salt-wedge. Tuy nhiên, mô hình không có thủy triều, lưu lượng có đơn vị, độ mặn hoặc mật độ; khối nước mặn là hộp chữ nhật và vùng chuyển tiếp chỉ là đường trang trí. Nội dung nhắc đến xâm nhập mặn nước ngầm nhưng hình học không thể hiện tầng chứa nước. Chưa đủ điều kiện tiếp nhận.
 
@@ -132,3 +132,15 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - U.S. Geological Survey Ground-Water Resources Program. *Freshwater-Saltwater Interactions along the Atlantic Coast*. https://water.usgs.gov/ogw/gwrp/saltwater/salt.html
 - U.S. Geological Survey. *Water Quality Factors Affecting Ground-Water Sustainability — Saltwater Intrusion*. https://pubs.usgs.gov/circ/circ1186/html/wq_factors.html
 - U.S. Geological Survey. *Monitoring to Characterize Salt Intrusion in the Taunton River Estuary*. https://pubs.usgs.gov/publication/sir20245049/full
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/hydrology/saltwater-intrusion/`.
+
+- Tách hai cơ chế vốn bị trộn trong mô hình cũ: nêm mặn phân tầng ở cửa sông và xâm nhập mặn trong tầng chứa nước ven biển.
+- Cửa sông dùng lưu lượng nước ngọt và tác động thủy triều ở mức định tính; tầng chứa nước dùng mức khai thác và bổ cập nước ngọt.
+- Không gán khoảng cách, độ mặn, mật độ hoặc vị trí ranh mặn định lượng khi chưa có dữ liệu thủy động lực/địa chất.
+- Ghi rõ vùng chuyển tiếp trong tầng chứa nước là vùng khuếch tán, không phải một mặt ranh sắc nét.
+
+Các đường biên trong SVG chỉ diễn tả xu hướng khái niệm, không theo tỉ lệ. Chưa kiểm thử runtime trên thiết bị.
