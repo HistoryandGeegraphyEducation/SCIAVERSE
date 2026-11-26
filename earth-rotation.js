@@ -259,9 +259,7 @@
     updateAstronomicalPositions(new Date(), timestamp);
     renderer.render(scene, camera);
     renderingFrame = false;
-    if (!disposed && (reducedMotion || !document.hidden || damping)) {
-      frameId = window.requestAnimationFrame(renderFrame);
-    }
+    if (!disposed) frameId = window.requestAnimationFrame(renderFrame);
   }
 
   function requestRender() {
