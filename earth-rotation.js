@@ -47,8 +47,20 @@
           reject(new Error('Không tải được ảnh Blue Marble từ các nguồn NASA dự phòng.'));
           return;
         }
-        const timeout = window.setTimeout(attempt, 15000);
-        loader.load(TEXTURE_URLS[index++], texture => { window.clearTimeout(timeout); resolve(texture); }, undefined, () => { window.clearTimeout(timeout); attempt(); });
+        let finished = false;
+        const next = () => {
+          if (finished) return;
+          finished = true;
+          window.clearTimeout(timeout);
+          attempt();
+        };
+        const timeout = window.setTimeout(next, 15000);
+        loader.load(TEXTURE_URLS[index++], texture => {
+          if (finished) { texture.dispose(); return; }
+          finished = true;
+          window.clearTimeout(timeout);
+          resolve(texture);
+        }, undefined, next);
       };
       attempt();
     });
