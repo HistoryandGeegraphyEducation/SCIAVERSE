@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Lũ quét
 
 - Mã nguồn tham chiếu: `EDUVERSE/simulations/natural-hazards/lu-quet/main.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: mưa, lưu vực, dòng chảy mặt, tập trung dòng, lũ dâng nhanh, ngập ven suối và phân biệt lũ nước với dòng bùn đá.
 - Kết luận hiện tại: lời giải thích về mưa, dòng chảy mặt và tập trung dòng phù hợp ở mức khái quát. Tuy nhiên, lượng mưa không có thời lượng nên không thể suy ra cường độ; địa hình và mặt nước là hình học giả lập; không có cân bằng nước hoặc thủy lực. Giao diện còn hai trạng thái không nhất quán: giai đoạn đầu ẩn mưa, còn mặt nước lũ vẫn xuất hiện ở lượng mưa 0 mm. Chưa đủ điều kiện tiếp nhận.
 
@@ -126,3 +126,15 @@ Có thể giữ cấu trúc bài học và cảnh 3D; phần lượng mưa–dò
 - U.S. Geological Survey. *A framework for understanding the effects of subsurface agricultural drainage on downstream flows*. https://pubs.usgs.gov/publication/sir20255023/full
 - U.S. Geological Survey. Thomas C. Pierson. *Distinguishing between debris flows and floods from field evidence in small watersheds*. https://pubs.usgs.gov/fs/2004/3142/
 - U.S. Geological Survey. *What is a debris flow?* https://www.usgs.gov/faqs/what-a-debris-flow
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/hydrology/flash-flood/`.
+
+- Bổ sung cường độ mưa (i) (mm/h) và thời lượng (t) (h), từ đó tính tổng lượng mưa (P=i t) (mm).
+- Dùng hệ số dòng chảy (C) do người học đặt để ước tính lớp nước chảy tràn (R=CP).
+- Tính thể tích (V=R A\times1000) (m³) khi (R) tính bằng mm và diện tích lưu vực (A) tính bằng km².
+- Ghi rõ hệ số C là giả định tổng hợp, không tự suy ra từ loại đất hoặc độ bão hòa; không tính lưu lượng đỉnh, thủy lực hay dự báo lũ.
+
+Công thức bảo toàn thể tích và đổi đơn vị đã được rà soát bằng kiểm tra tĩnh. Chưa kiểm thử runtime trên thiết bị; cần bổ sung nguồn giải thích phương pháp và kiểm tra các giá trị biên.
