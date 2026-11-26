@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Khám phá các hành tinh
 
 - Mã nguồn tham chiếu: `EDUVERSE/js/sims/solar-system-explorer.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: dữ liệu tám hành tinh và Mặt Trời, kích thước, khoảng cách, chu kỳ tự quay/quỹ đạo, độ nghiêng trục, mô hình quỹ đạo, texture và tương tác.
 - Kết luận hiện tại: phần lớn số liệu kích thước/khối lượng được làm tròn ở mức hợp lý; mô hình chuyển động không được hiệu chuẩn theo thời gian thiên văn, một số thông tin định hướng trục sai hoặc thiếu, và texture chỉ là hình minh họa procedural. Chưa đủ điều kiện tiếp nhận.
 
