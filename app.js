@@ -25,6 +25,18 @@
       projectInfo: 'Thông tin dự án',
       orbitDiagram: 'Sơ đồ quỹ đạo minh họa',
       orbitDescription: 'Một thiên thể trung tâm và các quỹ đạo elip được vẽ để minh họa chuyển động quỹ đạo, không theo tỉ lệ.',
+      earthModelTitle: 'Trái Đất tự quay quanh trục',
+      earthModelDescription: 'Trục quay nghiêng 23,44° so với phương vuông góc mặt phẳng quỹ đạo.',
+      sunlightSource: 'Mặt Trời',
+      earthModelStage: 'Mô hình 3D Trái Đất tự quay quanh trục, có trục nghiêng và vùng ngày đêm',
+      earthGlobeCanvas: 'Quả Địa Cầu 3D với vùng được chiếu sáng và vùng ban đêm',
+      earthModelLoading: 'Đang tải mô hình Trái Đất…',
+      pauseRotation: 'Tạm dừng',
+      resumeRotation: 'Tiếp tục',
+      resetModel: 'Đặt lại',
+      simulationSpeed: 'Tốc độ mô phỏng',
+      simulationTime: 'Giờ mô phỏng',
+      earthModelFootnote: 'Một vòng ngày–đêm được quy ước là 24 giờ mô phỏng. Mô hình không mô phỏng chuyển động quỹ đạo quanh Mặt Trời.',
       mainNavigation: 'Điều hướng chính',
       spacesLabel: 'Không gian',
       overview: 'Tổng quan',
@@ -71,6 +83,18 @@
       projectInfo: 'Project information',
       orbitDiagram: 'Illustrative orbital diagram',
       orbitDescription: 'A central body and elliptical paths illustrate orbital motion. The diagram is not to scale.',
+      earthModelTitle: 'Earth’s axial rotation',
+      earthModelDescription: 'The rotation axis is tilted 23.44° from the normal to the orbital plane.',
+      sunlightSource: 'Sunlight',
+      earthModelStage: '3D model of Earth rotating on its tilted axis, showing day and night',
+      earthGlobeCanvas: '3D Earth globe with an illuminated hemisphere and a night hemisphere',
+      earthModelLoading: 'Loading the Earth model…',
+      pauseRotation: 'Pause',
+      resumeRotation: 'Resume',
+      resetModel: 'Reset',
+      simulationSpeed: 'Simulation speed',
+      simulationTime: 'Simulation time',
+      earthModelFootnote: 'One day–night cycle is represented as 24 simulated hours. This model does not show Earth’s orbital motion around the Sun.',
       mainNavigation: 'Main navigation',
       spacesLabel: 'Spaces',
       overview: 'Overview',
@@ -179,6 +203,7 @@
     }
     if (search) filterContent(search.value);
     savePreference('sciaverse-language', currentLanguage);
+    window.dispatchEvent(new CustomEvent('sciaverse:languagechange', { detail: { language: currentLanguage } }));
   }
 
   function applyTheme(choice) {
