@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Núi lửa
 
 - Mã nguồn tham chiếu: `EDUVERSE/js/sims/volcano.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: cấu trúc núi lửa, kho chứa magma, ống phun, áp suất, nhiệt độ, kiểu phun trào, dung nham, tro/tephra, khí và giai đoạn nguội.
 - Kết luận hiện tại: mô hình thể hiện được một số bộ phận và thuật ngữ cơ bản của núi lửa dạng nón; phân biệt magma và dung nham đúng. Cơ chế phun trào, nhiệt độ, áp suất, năng lượng và tốc độ dung nham hiện là các biến hoạt ảnh nội bộ, không phải mô hình vật lí. Mô hình chỉ là mặt cắt 2D Canvas, không phải mô hình 3D. Chưa đủ điều kiện tiếp nhận.
 
@@ -140,3 +140,16 @@ Có thể tiếp nhận cấu trúc bài học và một phần đồ họa 2D, 
 - U.S. Geological Survey. *Volcanoes! — Lesson 1*. https://pubs.usgs.gov/gip/70043848/lesson-1.pdf
 - U.S. Geological Survey, Yellowstone Volcano Observatory. *Yellowstone's Mushy Past*. https://www.usgs.gov/observatories/yvo/news/yellowstones-mushy-past
 - U.S. Geological Survey. *Eruption Styles*. https://volcano.wr.usgs.gov/volcanic_ash/eruption_styles.html
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/geophysics/volcano/`.
+
+- Bỏ các gauge áp suất, nhiệt độ và năng lượng được tạo từ công thức hoạt ảnh không có cơ sở.
+- Thay bằng lựa chọn định tính ba nhóm magma: bazan (45–53% SiO₂), andesit (53–63%) và rhyolit (khoảng 69% trở lên); ghi rõ độ nhớt tương đối.
+- Bổ sung mức khí hòa tan thấp/trung bình/cao dưới dạng lựa chọn định tính, không giả vờ đây là số đo.
+- Chỉ diễn giải xu hướng khi tổ hợp biến có căn cứ; các trường hợp còn lại ghi rõ chưa thể phân loại chỉ từ hai biến.
+- Bổ sung cảnh báo tương tác magma–nước có thể gây phun nổ; thành phần magma không quyết định duy nhất kiểu phun.
+
+Mô hình là mặt cắt SVG khái niệm, không phải mô phỏng 3D hoặc mô hình động lực học phun trào. Chưa kiểm thử runtime trên thiết bị.
