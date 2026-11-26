@@ -257,23 +257,56 @@
     const locale = document.documentElement.lang.startsWith('en') ? 'en-US' : 'vi-VN';
     let countryNames;
     try { countryNames = new Intl.DisplayNames([locale], { type: 'region' }); } catch (_) { countryNames = null; }
+
+    const card = document.createElement('article');
+    card.className = 'world-clock';
+
+    const header = document.createElement('div');
+    header.className = 'world-clock-header';
+
+    const select = document.createElement('select');
+    select.className = 'world-clock-select';
+    select.setAttribute('aria-label', locale === 'en-US' ? 'Choose country or time zone' : 'Chọn quốc gia hoặc múi giờ');
+
     CLOCKS.forEach(([city, countryCode, timeZone]) => {
-      const card = document.createElement('article');
-      card.className = 'world-clock';
-      const place = document.createElement('div');
-      place.className = 'world-clock-place';
-      place.textContent = countryCode
-        ? city + ', ' + (countryNames ? countryNames.of(countryCode) : countryCode)
-        : (locale === 'en-US' ? 'UTC reference time' : 'UTC — Múi giờ gốc');
-      const offset = document.createElement('div');
-      offset.className = 'world-clock-offset';
-      const { svg, hands } = createAnalogClock();
-      const date = document.createElement('time');
-      date.className = 'world-clock-date';
-      card.append(place, offset, svg, date);
-      clockGrid.appendChild(card);
-      clockNodes.push({ date, offset, hands, timeZone });
+      const option = document.createElement('option');
+      option.value = timeZone;
+      option.textContent = countryCode
+        ? (countryNames ? countryNames.of(countryCode) : countryCode)
+        : (locale === 'en-US' ? 'UTC reference' : 'UTC — Múi giờ gốc');
+      option.dataset.country = countryCode
+        ? (countryNames ? countryNames.of(countryCode) : countryCode)
+        : (locale === 'en-US' ? 'UTC reference' : 'Múi giờ gốc');
+      option.dataset.city = city;
+      select.appendChild(option);
     });
+
+    const date = document.createElement('time');
+    date.className = 'world-clock-date';
+    header.append(select, date);
+
+    const { svg, hands } = createAnalogClock();
+    const footer = document.createElement('div');
+    footer.className = 'world-clock-footer';
+    const country = document.createElement('div');
+    country.className = 'world-clock-country';
+    const offset = document.createElement('div');
+    offset.className = 'world-clock-offset';
+    footer.append(country, offset);
+
+    card.append(header, svg, footer);
+    clockGrid.replaceChildren(card);
+
+    const node = { date, offset, hands, timeZone: select.value, country, select };
+    clockNodes.push(node);
+    select.addEventListener('change', () => {
+      const option = select.options[select.selectedIndex];
+      node.timeZone = select.value;
+      node.country.textContent = option.dataset.country || option.textContent;
+      updateWorldClocks(new Date());
+    });
+    const initialOption = select.options[select.selectedIndex];
+    country.textContent = initialOption.dataset.country || initialOption.textContent;
   }
 
   function updateWorldClocks(now) {
