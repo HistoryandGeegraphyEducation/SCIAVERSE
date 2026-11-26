@@ -78,8 +78,8 @@ Pilot được xây dựng độc lập trong `earth-rotation.js`, không sao ch
 
 ### Điểm còn phải hoàn thiện
 
-1. **Ghi công NASA trên giao diện hoặc vùng thông tin nguồn.** URL texture là Blue Marble 2048×1024, nhưng trang chủ hiện chưa hiển thị tên bộ ảnh, NASA/GSFC SVS và thông tin đây là ảnh ghép từ quan sát năm 2001, phát hành năm 2004.
-2. **Nêu rõ quy ước thời gian ở ngay điều khiển.** Tốc độ 1× hiện tương ứng một giờ mô phỏng mỗi giây thực; nên ghi rõ để tránh hiểu 1× là thời gian thực.
+1. **Ghi công NASA trên giao diện:** đã bổ sung dòng nguồn dưới mô hình, ghi NASA/GSFC Scientific Visualization Studio, Blue Marble, dữ liệu quan sát năm 2001 và năm công bố 2004; liên kết trực tiếp đến trang NASA SVS.
+2. **Nêu rõ quy ước tốc độ:** đã bổ sung chú thích ngay dưới nhãn điều khiển: 1× tương ứng 1 giờ mô phỏng trong 1 giây thực; slider có aria-describedby trỏ đến chú thích này.
 3. **Kiểm tra hướng quay bằng địa danh.** Công thức tọa độ và chiều quay dương phù hợp về mặt toán học, nhưng chưa có kiểm thử trình duyệt xác nhận các địa danh trên texture di chuyển đúng hướng Đông/Tây.
 4. **Kiểm tra trạng thái lỗi giữa lúc khởi tạo.** Nếu lỗi xảy ra sau khi renderer hoặc một phần scene đã được tạo, `catch` chỉ hiển thị lỗi; cần bảo đảm các tài nguyên đã khởi tạo được giải phóng.
 5. **Kiểm tra CDN và texture trên mạng yếu.** Three.js, OrbitControls và texture đều tải từ bên ngoài; khi không có mạng, mô hình hiện không hoạt động. Trạng thái lỗi đã có, nhưng chưa có kiểm thử offline hoặc trên mạng chập chờn.
@@ -123,7 +123,7 @@ Mã EDUVERSE có nền tảng hình học hữu ích để tham khảo, nhưng s
 
 Pilot SCIAVERSE đã khắc phục các vấn đề khoa học chính bằng cách cố định độ nghiêng 23,44°, dùng cấu hình chiếu sáng phân điểm, giữ Mặt Trời cố định, sử dụng ngày Mặt Trời trung bình 24 giờ và không mô phỏng mùa khi chưa có quỹ đạo. Việc tải texture NASA có trạng thái lỗi rõ ràng và reduced motion được xử lý ở trạng thái khởi tạo.
 
-Pilot chưa được nghiệm thu vì chưa kiểm thử trực tiếp trên trình duyệt và thiết bị. Cần bổ sung ghi công NASA trên giao diện, kiểm tra hướng quay bằng landmark, xử lý lỗi khởi tạo một phần và xác nhận tương tác bàn phím/di động trước khi chuyển trạng thái sang `validated`.
+Pilot đã bổ sung ghi công NASA và quy ước tốc độ 1× trong giao diện. Các điểm còn mở là kiểm tra hướng quay bằng landmark, xử lý lỗi khởi tạo một phần, xác nhận tương tác bàn phím/di động và kiểm thử WebGL trên trình duyệt/thiết bị thực. Chưa có kết quả kiểm thử runtime; chưa được chuyển sang `validated`.
 
 ## Nguồn tham khảo
 
@@ -131,3 +131,22 @@ Pilot chưa được nghiệm thu vì chưa kiểm thử trực tiếp trên tr�
 - U.S. Naval Observatory. *The Seasons and the Earth's Orbit*. https://aa.usno.navy.mil/faq/seasons_orbit
 - NASA NSSDC. *Earth Fact Sheet*. https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html
 - NASA Goddard Space Flight Center Scientific Visualization Studio. *Blue Marble — A Seamless Image Mosaic of the Earth*. https://svs.gsfc.nasa.gov/2915/
+
+
+## Cập nhật triển khai — 26/11/2026
+
+Đã cập nhật trên nhánh `foundation/science-spaces-and-model-registry`:
+
+- `index.html`: thêm ghi công NASA SVS và liên kết nguồn; thêm chú thích quy ước tốc độ mô phỏng; liên kết slider với chú thích bằng `aria-describedby`.
+- `app.js`: bổ sung bản dịch Việt/Anh cho chú thích tốc độ và ghi công ảnh.
+- `styles.css`: bổ sung kiểu chữ cho chú thích tốc độ và dòng nguồn, giữ nguyên hệ màu và bố cục hiện có.
+
+Kiểm tra tĩnh:
+- Cú pháp `app.js` và `earth-rotation.js`: đạt.
+- Thẻ HTML p/label/span: số thẻ mở và đóng cân bằng.
+- `aria-describedby` trỏ đến phần tử tồn tại.
+- Cả ba khóa dịch mới có bản Việt và Anh.
+- Liên kết NASA SVS và `rel="noopener noreferrer"` tồn tại.
+- Dấu ngoặc CSS cân bằng; selector mới tồn tại.
+
+Chưa kiểm tra trực tiếp giao diện trong trình duyệt, WebGL, Android hoặc iOS. Không dùng kết quả kiểm tra tĩnh thay cho nghiệm thu hiển thị.
