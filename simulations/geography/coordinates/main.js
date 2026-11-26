@@ -15,7 +15,10 @@
   const resetPointButton = document.getElementById('resetPoint');
   const resetCameraButton = document.getElementById('resetCamera');
 
-  const TEXTURE_URL = 'https://svs.gsfc.nasa.gov/vis/a000000/a002900/a002915/bluemarble-2048.png';
+  const TEXTURE_URLS = [
+    'https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/july/world.200407.3x5400x2700.jpg',
+    'https://svs.gsfc.nasa.gov/vis/a000000/a002900/a002915/bluemarble-2048.png'
+  ];
   const RADIUS = 1.8;
   const SELECTED_RADIUS = 1.825;
   const state = { latitude: 0, longitude: 0 };
@@ -40,7 +43,7 @@
   const listeners = [];
   const sceneListeners = [];
   let sceneUnavailable = false;
-  const T = window.THREE;
+  let T;
 
   function listen(target, eventName, handler, options) {
     target.addEventListener(eventName, handler, options);
@@ -375,29 +378,33 @@
 
     const loader = new T.TextureLoader();
     loader.setCrossOrigin('anonymous');
-    loader.load(
-      TEXTURE_URL,
-      loadedTexture => {
-        if (destroyed || sceneUnavailable) {
-          loadedTexture.dispose();
-          return;
-        }
-        texture = loadedTexture;
-        texture.encoding = T.sRGBEncoding;
-        texture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 8);
-        earth.material.map = texture;
-        earth.material.color.set(0xffffff);
-        earth.material.needsUpdate = true;
-        showStatus('Ảnh Blue Marble đã tải. Chọn điểm trên bề mặt hoặc nhập tọa độ.', 'success');
-        requestRender();
-      },
-      undefined,
-      () => {
-        if (!destroyed && !sceneUnavailable) {
-          showStatus('Không tải được ảnh Blue Marble từ NASA. Lưới tọa độ và ô nhập vẫn dùng được; không có bản đồ thay thế giả lập.', 'error');
-        }
+    const loadNextTexture = index => new Promise((resolve, reject) => {
+      if (index >= TEXTURE_URLS.length) {
+        reject(new Error('Không tải được ảnh Blue Marble từ các nguồn NASA dự phòng.'));
+        return;
       }
-    );
+      loader.load(TEXTURE_URLS[index], resolve, undefined, () => {
+        loadNextTexture(index + 1).then(resolve, reject);
+      });
+    });
+    loadNextTexture(0).then(loadedTexture => {
+      if (destroyed || sceneUnavailable) {
+        loadedTexture.dispose();
+        return;
+      }
+      texture = loadedTexture;
+      texture.encoding = T.sRGBEncoding;
+      texture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 8);
+      earth.material.map = texture;
+      earth.material.color.set(0xffffff);
+      earth.material.needsUpdate = true;
+      showStatus('Ảnh Blue Marble đã tải.', 'success');
+      requestRender();
+    }).catch(() => {
+      if (!destroyed && !sceneUnavailable) {
+        showStatus('Không tải được ảnh Blue Marble từ các nguồn NASA dự phòng. Lưới tọa độ và ô nhập vẫn dùng được.', 'error');
+      }
+    });
 
     if (window.ResizeObserver) {
       resizeObserver = new ResizeObserver(resize);
@@ -450,10 +457,13 @@
   });
 
   updateInterface();
-  try {
-    initializeScene();
-  } catch (error) {
-    showStatus('Không thể khởi tạo mô hình 3D: ' + (error && error.message ? error.message : 'Lỗi không xác định.'), 'error');
-    disposeScene();
-  }
+  (window.SCIAVERSE_THREE_READY || Promise.reject(new Error('Thiếu bộ nạp thư viện 3D.')))
+    .then(THREE => {
+      T = THREE;
+      initializeScene();
+    })
+    .catch(error => {
+      showStatus('Không thể khởi tạo mô hình 3D: ' + (error && error.message ? error.message : 'Lỗi không xác định.'), 'error');
+      disposeScene();
+    });
 })();
