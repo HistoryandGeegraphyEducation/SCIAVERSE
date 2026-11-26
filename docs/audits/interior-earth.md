@@ -154,3 +154,17 @@ Có thể tiếp nhận cấu trúc lớp, nội dung kiến thức và ý tư�
 - U.S. Geological Survey. *P-wave and S-wave paths through the earth*. https://www.usgs.gov/media/images/p-wave-and-s-wave-paths-through-earth
 - U.S. Geological Survey. *The Interior of the Earth*. https://pubs.usgs.gov/gip/interior/
 - NASA Earth Observatory. *Blue Marble: Next Generation — Base Map with Topography and Bathymetry*. https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-topography-bathymetry/
+
+
+## Pilot SCIAVERSE — 26/11/2026
+
+Đã dựng mô-đun độc lập tại `simulations/earth/interior/`.
+
+- Giữ bốn nhóm lớp ở mức phổ thông: vỏ, lớp phủ, nhân ngoài, nhân trong. Độ sâu ranh giới được làm tròn; lớp phủ khoảng 2.900 km, ranh giới nhân ngoài khoảng 2.900 km và nhân trong khoảng 5.150 km.
+- Phân biệt lớp phủ chủ yếu rắn nhưng biến dạng chậm trong thời gian địa chất; nhân ngoài lỏng; nhân trong rắn.
+- Bổ sung giải thích sóng P truyền qua chất rắn và chất lỏng; sóng S không truyền qua nhân ngoài lỏng.
+- Loại bỏ hoạt ảnh đối lưu dạng dòng chất lỏng chạy nhanh và các đường sóng có thể bị hiểu là mô phỏng đường truyền định lượng.
+- Vỏ được phóng đại trong sơ đồ để có thể nhìn thấy; giao diện ghi rõ đây là mặt cắt giản đồ. Không tuyên bố tỉ lệ hình học chính xác.
+- Không tải ảnh nền ngoài và không cần WebGL; tương tác chọn lớp/sóng dùng HTML, SVG và bàn phím.
+
+Kiểm tra tĩnh: cú pháp JavaScript đạt; ID HTML không trùng; các nút có tên và trạng thái `aria-pressed`. Chưa kiểm tra trực quan trên trình duyệt/thiết bị. Trạng thái vẫn `needs-revision` cho đến khi xác nhận hình học, nội dung và tương tác trong runtime.
