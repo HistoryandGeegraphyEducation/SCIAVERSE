@@ -277,5 +277,6 @@
     if (!destroyed) initialize(THREEValue);
   }).catch(error => {
     setStatus('Không thể khởi tạo mô hình 3D: ' + error.message, 'error');
+    destroy();
   });
 })();
