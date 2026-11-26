@@ -34,10 +34,11 @@
     "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-mini-projects-02-05/main.js",
-    "implementationType": "shared-module",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Đã dựng mô-đun độc lập phân biệt Bắc địa lí, Bắc từ, độ từ thiên và phương vị thực. Dùng độ từ thiên giả định để học quy tắc dấu; không đại diện số đo tại địa phương. Đang thẩm định và kiểm thử runtime.",
+    "implementationPath": "simulations/cartography/compass/index.html"
   },
   {
     "id": "ti-le-ban-do",
@@ -45,10 +46,11 @@
     "fieldId": "mathematics-computing",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-mini-projects-02-05/main.js",
-    "implementationType": "shared-module",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Đã dựng mô-đun độc lập tính khoảng cách thực tế từ tỉ lệ số và chiều dài đo trên bản đồ. Có đơn vị cm, m, km và sơ đồ 3D minh họa; đang thẩm định và kiểm thử runtime.",
+    "implementationPath": "simulations/cartography/map-scale/index.html"
   },
   {
     "id": "do-khoang-cach",
@@ -56,10 +58,11 @@
     "fieldId": "mathematics-computing",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-mini-projects-02-05/main.js",
-    "implementationType": "shared-module",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Đã dựng mô-đun độc lập đo tuyến nhiều đoạn trên sơ đồ; tính tổng chiều dài tuyến và khoảng cách thẳng đầu-cuối theo tỉ lệ. Sơ đồ không phải dữ liệu đường giao thông thực; đang thẩm định và kiểm thử runtime.",
+    "implementationPath": "simulations/cartography/map-distance/index.html"
   },
   {
     "id": "tim-duong-ban-do",
