@@ -219,10 +219,12 @@
     "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-catalog.js",
-    "implementationType": "shared-catalog",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Pilot 3D so sánh truyền sóng P qua rắn/lỏng và sóng S bị chặn bởi nhân ngoài lỏng. Đường truyền là giản đồ, không tính khúc xạ hoặc vùng bóng địa chấn. Chưa kiểm thử runtime.",
+    "sciaversePath": "simulations/geophysics/seismic-waves/main.js",
+    "implementationPath": "simulations/geophysics/seismic-waves/index.html"
   },
   {
     "id": "dia-hinh-duong-dong-muc",
