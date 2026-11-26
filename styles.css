@@ -919,6 +919,16 @@ html[data-theme="light"] {
   color: var(--text-soft);
   font-size: 13px;
 }
+.earth-model-speed-copy {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+.earth-model-speed-note {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.25;
+}
 .earth-model-speed input {
   width: 100%;
   min-width: 0;
@@ -938,11 +948,17 @@ html[data-theme="light"] {
   color: var(--text);
   font-variant-numeric: tabular-nums;
 }
-.earth-model-footnote {
+.earth-model-footnote,
+.earth-model-source {
   margin: 0;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.45;
+}
+.earth-model-source a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .earth-model-axis-legend {
   margin: 0;
