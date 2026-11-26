@@ -117,7 +117,7 @@
   align-items: center;
   gap: 10px;
 }
-.coordinate-input-row input[type="range"] {
+.coordinate-input-row input[type="range"] { min-height:44px; touch-action:pan-y; cursor:pointer;
   width: 100%;
   min-width: 0;
   accent-color: var(--accent);
