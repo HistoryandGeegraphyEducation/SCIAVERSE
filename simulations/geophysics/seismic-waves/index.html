@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Mô hình ba chiều minh họa sự truyền của sóng P và sóng S qua các lớp bên trong Trái Đất.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#10171b">
+  <title>SCIAVERSE — Sóng địa chấn</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../../model-base.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#seismicMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a>
+    <a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a>
+  </header>
+  <main class="standalone-main seismic-main" id="seismicMain">
+    <header class="model-intro">
+      <h1>Sóng địa chấn trong lòng Trái Đất</h1>
+      <p>So sánh khả năng truyền của sóng P và sóng S qua các lớp vật chất.</p>
+    </header>
+    <section class="seismic-layout" aria-label="Mô hình truyền sóng địa chấn">
+      <div class="seismic-stage" id="seismicStage">
+        <div class="seismic-status" id="seismicStatus" role="status">Đang khởi tạo mô hình 3D…</div>
+      </div>
+      <aside class="seismic-panel">
+        <h2>Loại sóng</h2>
+        <div class="seismic-wave-choice" id="seismicWaveChoice" role="group" aria-label="Chọn loại sóng địa chấn">
+          <button type="button" data-wave="p" class="is-selected" aria-pressed="true">Sóng P</button>
+          <button type="button" data-wave="s" aria-pressed="false">Sóng S</button>
+        </div>
+        <section class="seismic-result" aria-live="polite" aria-atomic="true">
+          <h3 id="seismicResultTitle">Sóng P — sóng nén</h3>
+          <p id="seismicResultText">Sóng P truyền qua chất rắn và chất lỏng. Tốc độ và hướng truyền thay đổi khi đi qua ranh giới vật liệu.</p>
+        </section>
+        <ul class="seismic-layer-legend" aria-label="Các lớp cấu tạo Trái Đất">
+          <li><span class="legend-swatch mantle"></span>Manti rắn</li>
+          <li><span class="legend-swatch outer-core"></span>Nhân ngoài lỏng</li>
+          <li><span class="legend-swatch inner-core"></span>Nhân trong rắn</li>
+        </ul>
+      </aside>
+    </section>
+    <p class="seismic-note">Mô hình cắt lớp giản đồ. Đường truyền chỉ minh họa khả năng truyền qua các lớp, không tính khúc xạ, vận tốc thực hoặc vùng bóng địa chấn.</p>
+    <details class="model-sources">
+      <summary>Tài liệu khoa học</summary>
+      <p>Nguồn: <a href="https://www.usgs.gov/media/images/p-wave-and-s-wave-paths-through-earth" target="_blank" rel="noopener noreferrer">USGS — P-wave and S-wave paths through the Earth</a>; <a href="https://pubs.usgs.gov/gip/dynamic/inside.html" target="_blank" rel="noopener noreferrer">USGS — Inside the Earth</a>.</p>
+    </details>
+  </main>
+</body>
+</html>
