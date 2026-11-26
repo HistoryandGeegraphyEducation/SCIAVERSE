@@ -1,7 +1,7 @@
 # Thẩm định nguồn gốc — Cấu tạo bên trong Trái Đất
 
 - Mã nguồn tham chiếu: `EDUVERSE/js/sims/interior-earth.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: ranh giới và độ dày các lớp, trạng thái vật chất, thành phần, tỉ lệ hình học, đối lưu, sóng địa chấn, dữ liệu bề mặt và tương tác.
 - Kết luận hiện tại: mô hình lớp cấu tạo và các mô tả kiến thức cơ bản phù hợp ở mức phổ thông; các bán kính được chọn gần với độ sâu địa vật lí thường dùng. Các hoạt ảnh đối lưu/sóng chỉ là sơ đồ khái niệm, có một chuyển động toàn khối dễ gây hiểu sai; trạng thái dự phòng bản đồ và quản lý tài nguyên còn lỗi. Chưa đủ điều kiện tiếp nhận.
 
