@@ -57,3 +57,132 @@
 .world-clock-select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:760px){.world-clock{min-height:310px;padding:14px;gap:14px}.world-clock-header{gap:7px}.world-clock-select{max-width:62%;min-height:42px;font-size:12px}.world-clock-date{padding:8px 10px;font-size:11px}.world-clock-face{width:clamp(170px,48vw,220px)}}
 @media(max-width:360px){.world-clock{min-height:290px;padding:12px}.world-clock-header{flex-wrap:wrap}.world-clock-select{max-width:100%;flex:1 1 140px}.world-clock-date{font-size:10px}.world-clock-country{font-size:14px}.world-clock-offset{font-size:12px}}
+
+
+/* Reference layout: one selected country clock */
+.world-clock-grid { display: block; margin-top: 12px; }
+.world-clock {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  justify-items: stretch;
+  align-items: center;
+  gap: 4px;
+  width: min(100%, 680px);
+  min-height: 0;
+  margin-inline: auto;
+  padding: clamp(14px, 3vw, 24px);
+  border: 1px solid #172b35;
+  border-radius: 30px;
+  background: #c7c9cb;
+  color: #05090c;
+}
+.world-clock-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.world-clock-date {
+  justify-self: start;
+  padding: 7px 14px;
+  border: 1.5px solid #080d11;
+  border-radius: 999px;
+  background: #dce7ef;
+  color: #05090c;
+  font-size: clamp(15px, 2.5vw, 23px);
+  font-weight: 650;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.world-clock-select {
+  justify-self: end;
+  width: auto;
+  max-width: 150px;
+  min-width: 112px;
+  min-height: 42px;
+  padding: 6px 28px 6px 10px;
+  border: 1.5px solid #080d11;
+  border-radius: 999px;
+  background-color: #dce7ef;
+  color: #05090c;
+  font: inherit;
+  font-size: clamp(14px, 2.2vw, 20px);
+  font-weight: 650;
+}
+.world-clock-face {
+  display: block;
+  grid-column: auto;
+  grid-row: auto;
+  align-self: center;
+  justify-self: center;
+  width: min(100%, 440px);
+  height: auto;
+  aspect-ratio: 1;
+  margin-block: 0;
+}
+.clock-face-ring {
+  fill: #eef7ff;
+  stroke: #203a49;
+  stroke-width: 4.3;
+}
+.clock-tick-major {
+  stroke: #203a49;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+}
+.clock-tick-dot { fill: #203a49; }
+.clock-hand { stroke-linecap: round; }
+.clock-hand-hour { stroke: #203a49; stroke-width: 4.5; }
+.clock-hand-minute { stroke: #203a49; stroke-width: 2.8; }
+.clock-hand-second { stroke: #f28a12; stroke-width: 1.15; }
+.clock-pin { fill: #f28a12; }
+.world-clock-footer {
+  display: flex;
+  width: min(86%, 500px);
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border: 1.5px solid #080d11;
+  border-radius: 999px;
+  background: #dce7ef;
+  text-align: center;
+}
+.world-clock-country {
+  min-width: 0;
+  color: #05090c;
+  font-size: clamp(13px, 2.4vw, 22px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.world-clock-offset {
+  flex: 0 0 auto;
+  color: #05090c;
+  font-size: clamp(13px, 2.4vw, 22px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.world-clock-select:focus-visible { outline: 2px solid #203a49; outline-offset: 3px; }
+@media (max-width: 430px) {
+  .world-clock { width: 100%; min-height: 0; padding: 12px; border-radius: 24px; gap: 2px; }
+  .world-clock-header { gap: 6px; }
+  .world-clock-date { padding: 6px 9px; font-size: clamp(14px, 4vw, 19px); }
+  .world-clock-select { max-width: 42vw; min-width: 104px; min-height: 40px; padding-inline: 8px 22px; font-size: 15px; }
+  .world-clock-face { width: min(100%, 320px); }
+  .world-clock-footer { width: 88%; min-height: 38px; padding: 5px 8px; }
+  .world-clock-country, .world-clock-offset { font-size: clamp(12px, 3.7vw, 17px); }
+}
+@media (max-width: 340px) {
+  .world-clock { padding: 9px; }
+  .world-clock-header { gap: 4px; }
+  .world-clock-date { padding: 6px 7px; font-size: 13px; }
+  .world-clock-select { min-width: 96px; font-size: 13px; }
+  .world-clock-footer { width: 94%; }
+  .world-clock-country, .world-clock-offset { font-size: 11px; }
+}
