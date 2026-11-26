@@ -1,9 +1,9 @@
 # Thẩm định nguồn gốc — Xác định tọa độ địa lí
 
 - Mã nguồn tham chiếu: `EDUVERSE/js/sims/geo-01-coordinates/main.js`
-- Trạng thái: `in-review`
+- Trạng thái: `needs-revision`
 - Phạm vi: định nghĩa vĩ độ/kinh độ, lưới kinh-vĩ tuyến, chuyển đổi tọa độ, điểm khảo sát, nguồn bản đồ và tương tác 3D.
-- Kết luận hiện tại: công thức định vị trên hình cầu đúng trong phạm vi giả định của mô hình; chưa đủ điều kiện tiếp nhận do còn lỗi tương tác, hiển thị, dữ liệu bản đồ và giới hạn biểu diễn tọa độ.
+- Kết luận hiện tại: mã EDUVERSE có công thức hình cầu nhất quán nội bộ nhưng còn các điểm chặn về texture, tương tác và độ chính xác. Pilot SCIAVERSE đã được dựng lại; chưa có kiểm thử trình duyệt/thiết bị nên vẫn ở trạng thái `needs-revision`.
 
 ## Căn cứ khoa học
 
@@ -42,7 +42,11 @@
 - Giao diện ghi vĩ độ trước kinh độ. Cách ghi này phù hợp với cách trình bày giáo dục thông dụng; khi trao đổi dữ liệu số cần nêu rõ quy ước thứ tự trục của định dạng hoặc API đang sử dụng.
 - Các mô tả cơ bản về vĩ độ, kinh độ và cặp tọa độ phù hợp ở mức nhập môn, nhưng cần làm rõ giả định hình cầu và giới hạn độ chính xác.
 
-### Vấn đề khoa học và dữ liệu
+#### Kiểm tra bổ sung hướng kinh độ và texture
+
+Cặp công thức trong mã EDUVERSE dùng (z=+r\cos\varphi\sin\lambda) và phép nghịch đảo (operatorname{atan2}(z,x)). Hai biểu thức nhất quán nội bộ, nhưng cần đối chiếu với hướng UV của ảnh equirectangular trên THREE.SphereGeometry. Nếu texture tăng kinh độ về phía Đông theo chiều tăng U tiêu chuẩn, dấu Z dương có thể làm nhãn Đông/Tây bị đảo so với hình ảnh. Không kết luận chỉ từ tính nghịch đảo của công thức; phải kiểm tra bằng điểm địa lí đã biết.
+
+## Vấn đề khoa học và dữ liệu
 
 1. **Định nghĩa vĩ độ chưa phân biệt loại vĩ độ.** Mô hình dùng hình cầu và góc từ tâm Trái Đất, tức cách biểu diễn vĩ độ địa tâm trong giả định hình cầu. Nội dung giao diện hiện viết chung là “góc từ mặt phẳng xích đạo”, dễ khiến người học hiểu đây là định nghĩa trắc địa dùng trong WGS 84. Cần ghi rõ đây là mô hình hình cầu giản lược; khi giới thiệu định vị hiện đại phải phân biệt vĩ độ địa tâm và vĩ độ trắc địa.
 2. **Không có hệ quy chiếu/datum được công bố.** Mô hình chỉ hiển thị góc, không nói rõ đang minh họa lưới kinh-vĩ tuyến theo quy ước nào. Nếu bổ sung chức năng nhập/xuất hoặc đối chiếu GPS, phải khai báo hệ quy chiếu, chẳng hạn WGS 84, và quy ước thứ tự tọa độ.
@@ -95,11 +99,27 @@
 | Thiết bị cảm ứng và bàn phím | Điều khiển được, không mất thao tác hoặc bị khóa bởi canvas |
 | Màn hình 320, 360, 390 và 430 CSS px | Không tràn ngang, không che mất điều khiển hoặc nội dung |
 
+## Cập nhật pilot SCIAVERSE — 26/11/2026
+
+Đã tạo bản tái xây dựng tại simulations/geography/coordinates/; không sao chép CSS hoặc logic tương tác cũ.
+
+- Dùng texture Blue Marble từ NASA/GSFC SVS; có ghi công và liên kết nguồn. Nếu texture lỗi, hiển thị trạng thái lỗi, không dựng mảng lục địa giả.
+- Dùng quy ước khớp với texture equirectangular tiêu chuẩn: (x=r\cos\varphi\cos\lambda), (y=r\sin\varphi), (z=-r\cos\varphi\sin\lambda); phép nghịch đảo kinh độ dùng (operatorname{atan2}(-z,x)).
+- Có lưới vĩ tuyến/kinh tuyến, xích đạo, kinh tuyến gốc, trục Bắc–Nam và marker.
+- Đồng bộ thanh trượt và ô số, độ phân giải nhập 0,01°. Đây là độ phân giải hiển thị, không phải độ chính xác định vị.
+- Chọn điểm bằng pointer có ngưỡng phân biệt click/drag; nhập số bằng bàn phím là phương án thay thế.
+- Ở hai cực, kinh độ được ghi là không xác định và hai điều khiển kinh độ bị vô hiệu hóa. +180° và −180° được xem là cùng một kinh tuyến.
+- Ghi rõ mô hình cầu giản lược, không thay thế tọa độ trắc địa WGS 84; chuyển lĩnh vực chính sang Trái Đất và môi trường.
+
+Kiểm tra tĩnh đã đạt: cú pháp JavaScript, ID HTML, cân bằng thẻ, dấu ngoặc CSS, các phần tử được JS truy cập, các điểm hình học 0°/90°/180°, xử lý cực, trạng thái lỗi texture và cleanup.
+
+Chưa kiểm thử trực tiếp trên trình duyệt: chưa xác nhận texture khớp các landmark, chưa kiểm tra WebGL/CDN trên Android/iOS và chưa xác nhận thao tác cảm ứng thực tế. Vì vậy, pilot vẫn là sciaverse-pilot-in-progress; trạng thái khoa học tiếp tục là needs-revision.
+
 ## Kết luận thẩm định
 
-Phần toán học cốt lõi đúng đối với một quả cầu bán kính không đổi. Các khái niệm cơ bản về vĩ độ, kinh độ và lưới kinh-vĩ tuyến có thể dùng cho mô hình học tập sau khi chỉnh cách diễn đạt.
+Phần toán học cốt lõi đúng đối với một quả cầu bán kính không đổi. Pilot SCIAVERSE đã xử lý các điểm có thể kiểm tra bằng mã và quy tắc giao diện: quy ước hướng kinh độ cho texture, xử lý hai cực, chuẩn hóa ±180°, độ phân giải nhập, nguồn texture, click/drag và trạng thái lỗi.
 
-Mô hình hiện chưa đạt điều kiện tiếp nhận vào SCIAVERSE. Các điểm chặn chính là: phân biệt vĩ độ địa tâm với vĩ độ trắc địa; nguồn và hướng của texture; xử lý kinh độ ở hai cực; lỗi click/drag; selector CSS; và khả năng tiếp cận trên thiết bị di động. Chỉ chuyển trạng thái sang `validated` sau khi các điểm này được xử lý và ma trận kiểm thử có kết quả thực tế.
+Mô hình chưa đạt điều kiện nghiệm thu vì chưa kiểm tra trực quan hướng Đông/Tây của texture bằng landmark, chưa chạy thử WebGL trên thiết bị thật và chưa xác nhận thao tác cảm ứng/bàn phím trong trình duyệt. Chỉ chuyển trạng thái sang validated sau khi các kiểm thử runtime có kết quả thực tế.
 
 ## Nguồn tham khảo
 
