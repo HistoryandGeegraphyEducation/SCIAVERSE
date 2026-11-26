@@ -22,8 +22,20 @@
         script.src = sources[index++];
         script.async = true;
         script.crossOrigin = 'anonymous';
-        script.onload = () => ready() ? resolve() : attempt();
-        script.onerror = attempt;
+        const timeout = window.setTimeout(() => {
+          script.remove();
+          attempt();
+        }, 12000);
+        script.onload = () => {
+          window.clearTimeout(timeout);
+          if (ready()) resolve();
+          else attempt();
+        };
+        script.onerror = () => {
+          window.clearTimeout(timeout);
+          script.remove();
+          attempt();
+        };
         document.head.appendChild(script);
       };
       attempt();
