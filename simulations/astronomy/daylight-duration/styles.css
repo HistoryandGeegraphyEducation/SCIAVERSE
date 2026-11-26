@@ -1,0 +1,27 @@
+.daylight-main{width:min(100% - 32px,1200px);max-width:1200px;padding-top:clamp(14px,2vw,24px);padding-bottom:max(32px,env(safe-area-inset-bottom))}
+.daylight-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.75fr);gap:16px;align-items:stretch}
+.daylight-stage{position:relative;min-width:0;min-height:460px;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius-lg);background:#10191f}
+.daylight-stage canvas{display:block;width:100%;height:100%;min-height:460px;touch-action:none}
+.daylight-status{position:absolute;z-index:2;inset:auto 12px 12px;padding:8px 11px;border:1px solid rgba(255,255,255,.14);border-radius:9px;background:rgba(10,17,22,.84);color:#e8efed;font-size:13px}
+.daylight-status[data-state="ready"]{display:none}
+.daylight-status[data-state="error"]{inset:12px;display:grid;place-items:center;text-align:center;color:#ffd5b0}
+.daylight-panel{display:flex;min-width:0;flex-direction:column;gap:11px;padding:20px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface)}
+.daylight-panel h2{margin:0 0 4px;font-size:18px}
+.daylight-panel label{color:var(--text-soft);font-size:14px}
+.daylight-panel select{width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--bg-raised);color:var(--text);font:inherit}
+.daylight-panel input{width:100%;min-height:42px;accent-color:var(--accent);cursor:pointer}
+.daylight-panel output{font-size:14px;font-variant-numeric:tabular-nums}
+.daylight-result{margin-top:auto;padding-top:15px;border-top:1px solid var(--line)}
+.daylight-result h3{margin:0 0 12px;font-size:16px}
+.daylight-duration{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.daylight-duration div{display:grid;gap:3px}
+.daylight-duration span{font-size:12px;color:var(--text-soft)}
+.daylight-duration strong{font-size:19px;font-variant-numeric:tabular-nums}
+.daylight-bar{display:flex;height:13px;overflow:hidden;margin:13px 0;border-radius:99px;background:var(--bg-raised)}
+.daylight-bar #daylightPart{background:#e8bf6c}
+.daylight-bar #nightPart{background:#536b91}
+.daylight-result p{margin:0;color:var(--text-soft);font-size:13px;line-height:1.6}
+.daylight-note{max-width:90ch;margin:14px 0;color:var(--text-soft);font-size:13px;line-height:1.6}
+@media(max-width:760px){.daylight-main{width:min(100% - 24px,680px)}.daylight-layout{grid-template-columns:minmax(0,1fr)}.daylight-stage,.daylight-stage canvas{min-height:360px}.daylight-panel{padding:16px}}
+@media(max-width:430px){.daylight-main{width:min(100% - 18px,680px)}.daylight-stage,.daylight-stage canvas{min-height:300px}.daylight-panel{padding:13px}}
+@media(max-width:360px){.daylight-main{width:calc(100% - 14px)}.daylight-stage,.daylight-stage canvas{min-height:280px}}
