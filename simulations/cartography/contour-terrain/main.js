@@ -97,21 +97,23 @@
           const b=grid[iz][ix+1];
           const c=grid[iz+1][ix+1];
           const d=grid[iz+1][ix];
-          const edges=[];
           const cross=(p,q)=>((p.h<level&&q.h>=level)||(q.h<level&&p.h>=level));
-          if(cross(a,b))edges.push(edgePoint(a,b,level));
-          if(cross(b,c))edges.push(edgePoint(b,c,level));
-          if(cross(c,d))edges.push(edgePoint(c,d,level));
-          if(cross(d,a))edges.push(edgePoint(d,a,level));
-          const add=(p,q)=>{
-            target.push(p.x,level*HEIGHT_SCALE+0.018,p.z,q.x,level*HEIGHT_SCALE+0.018,q.z);
+          const addTriangle=triangle=>{
+            const points=[];
+            [[0,1],[1,2],[2,0]].forEach(([i,j])=>{
+              const p=triangle[i],q=triangle[j];
+              if(cross(p,q)){
+                const point=edgePoint(p,q,level);
+                if(!points.some(existing=>Math.hypot(existing.x-point.x,existing.z-point.z)<1e-9))points.push(point);
+              }
+            });
+            if(points.length===2){
+              const p=points[0],q=points[1];
+              target.push(p.x,level*HEIGHT_SCALE+0.018,p.z,q.x,level*HEIGHT_SCALE+0.018,q.z);
+            }
           };
-          if(edges.length===2)add(edges[0],edges[1]);
-          else if(edges.length===4){
-            const center=(a.h+b.h+c.h+d.h)/4;
-            if(center>=level){add(edges[0],edges[3]);add(edges[1],edges[2]);}
-            else{add(edges[0],edges[1]);add(edges[2],edges[3]);}
-          }
+          addTriangle([a,d,b]);
+          addTriangle([d,c,b]);
         }
       }
     }
