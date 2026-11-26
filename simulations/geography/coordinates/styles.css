@@ -51,7 +51,8 @@
   font-variant-numeric: tabular-nums;
   backdrop-filter: blur(8px);
 }
-.coordinate-hud-value { letter-spacing: 0; }
+.coordinate-hud-value { display: grid; gap: 2px; letter-spacing: 0; }
+.coordinate-hud-value span { display: block; }
 .coordinate-stage-status {
   position: absolute;
   z-index: 2;

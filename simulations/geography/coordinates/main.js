@@ -5,7 +5,8 @@
   if (!stage) return;
 
   const status = document.getElementById('textureStatus');
-  const hud = document.getElementById('coordinateHud');
+  const hudLatitude = document.getElementById('coordinateHudLatitude');
+  const hudLongitude = document.getElementById('coordinateHudLongitude');
   const output = document.getElementById('coordinateOutput');
   const poleNote = document.getElementById('coordinatePoleNote');
   const latitudeRange = document.getElementById('latitudeRange');
@@ -95,7 +96,8 @@
     latitudeNumber.value = state.latitude.toFixed(2);
     longitudeNumber.value = state.longitude.toFixed(2);
     output.textContent = latitudeText + ', ' + longitudeText;
-    hud.textContent = latitudeText + ' · ' + longitudeText;
+    hudLatitude.textContent = latitudeText;
+    hudLongitude.textContent = longitudeText;
     poleNote.hidden = !atPole;
     longitudeRange.disabled = atPole;
     longitudeNumber.disabled = atPole;

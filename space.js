@@ -37,9 +37,7 @@
         item.href = model.implementationPath;
         const heading = document.createElement('h3');
         heading.textContent = model.title;
-        const status = document.createElement('p');
-        status.textContent = 'Đã nghiệm thu khoa học · Đang kiểm thử kỹ thuật';
-        item.append(heading, status);
+      item.append(heading);
         content.appendChild(item);
       });
     } else if (spaceId === 'virtual-laboratories' || spaceId === 'scientific-data' || spaceId === 'learning-library') {

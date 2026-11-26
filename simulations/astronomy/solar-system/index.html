@@ -9,6 +9,7 @@
   <meta name="theme-color" content="#10171b">
   <title>SCIAVERSE — Khám phá các hành tinh</title>
   <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../../model-base.css">
   <link rel="stylesheet" href="styles.css">
   <script src="../../../three-loader.js?v=20261126-fallback1" defer></script>
   <script src="main.js?v=20261126-fallback1" defer></script>
@@ -31,7 +32,7 @@
           <svg class="solar-fallback" id="solarFallback" viewBox="0 0 600 400" role="img" aria-label="Sơ đồ tĩnh tám hành tinh quay quanh Mặt Trời, quỹ đạo và kích thước không theo tỉ lệ" hidden><g fill="none" stroke="#81928e" stroke-width="1" opacity=".7"><circle cx="300" cy="200" r="32"/><circle cx="300" cy="200" r="48"/><circle cx="300" cy="200" r="66"/><circle cx="300" cy="200" r="86"/><circle cx="300" cy="200" r="112"/><circle cx="300" cy="200" r="140"/><circle cx="300" cy="200" r="170"/><circle cx="300" cy="200" r="200"/></g><circle cx="300" cy="200" r="15" fill="#f3c66f"/><circle cx="332" cy="200" r="3" fill="#9a9995"/><circle cx="348" cy="200" r="4" fill="#d3a96f"/><circle cx="366" cy="200" r="4" fill="#4f9db3"/><circle cx="386" cy="200" r="3.5" fill="#b96c51"/><circle cx="412" cy="200" r="8" fill="#c79d78"/><circle cx="440" cy="200" r="7" fill="#c8b58c"/><circle cx="470" cy="200" r="5" fill="#86c6c9"/><circle cx="500" cy="200" r="5" fill="#5578c8"/><text x="20" y="30" fill="#edf4f1" font-size="14">Sơ đồ tĩnh — không theo tỉ lệ</text></svg>
           <canvas id="solarCanvas" role="img" aria-label="Mô hình ba chiều giản lược của Mặt Trời và tám quỹ đạo hành tinh"></canvas>
           <div class="solar-loading" id="solarLoading" role="status">Đang khởi tạo mô hình 3D…</div>
-          <div class="solar-stage-caption">Mặt phẳng quỹ đạo được giản lược để quan sát</div>
+          
         </div>
         <div class="solar-controls">
           <div class="solar-play-row">
@@ -74,12 +75,7 @@
         </section>
       </aside>
     </section>
-    <section class="solar-notes" aria-labelledby="solarLimitsTitle">
-      <h2 id="solarLimitsTitle">Cách đọc mô hình</h2>
-      <p>Khoảng cách quỹ đạo được nén phi tuyến và kích thước thiên thể được phóng đại để nhìn rõ. Quỹ đạo được biểu diễn bằng đường tròn, không phải quỹ đạo elip theo đúng độ lệch tâm. Vị trí ban đầu chỉ để phân bố các hành tinh trên hình, không phải vị trí thiên văn tại thời điểm hiện tại.</p>
-      <p>Hoạt ảnh giữ đúng tỉ lệ chu kỳ quỹ đạo trung bình giữa các hành tinh, nhưng thời gian được nén theo thang điều khiển. Mô hình không tính nhiễu loạn hấp dẫn, cộng hưởng quỹ đạo hoặc vị trí tức thời chính xác. Chu kỳ tự quay được cung cấp dưới dạng dữ liệu, không đồng bộ hoạt ảnh tự quay với hoạt ảnh quỹ đạo.</p>
-      <p class="solar-source">Dữ liệu: <a href="https://ssd.jpl.nasa.gov/planets/phys_par.html" target="_blank" rel="noopener noreferrer">NASA/JPL — Planetary Physical Parameters</a>; <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/" target="_blank" rel="noopener noreferrer">NASA/NSSDC — Planetary Fact Sheet</a> và <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html" target="_blank" rel="noopener noreferrer">ghi chú định nghĩa tham số</a>.</p>
-    </section>
-  </main>
+    
+  <section class="model-insight" aria-labelledby="solar-systemInsightTitle"><h2 id="solar-systemInsightTitle">Quỹ đạo và tỉ lệ hiển thị</h2><div class="model-insight-grid"><article><h3>Chu kỳ quỹ đạo</h3><p>Các hành tinh ở gần Mặt Trời hoàn thành một vòng quỹ đạo nhanh hơn. Chu kỳ tăng dần rõ rệt khi khoảng cách đến Mặt Trời lớn hơn.</p></article><article><h3>Tỉ lệ trong mô hình</h3><p>Khoảng cách và đường kính thiên thể được điều chỉnh riêng để có thể quan sát. Vị trí trên hình không phải vị trí thiên văn hiện tại.</p></article></div></section><details class="model-sources"><summary>Tài liệu khoa học</summary><p class="solar-source">Dữ liệu: <a href="https://ssd.jpl.nasa.gov/planets/phys_par.html" target="_blank" rel="noopener noreferrer">NASA/JPL — Planetary Physical Parameters</a>; <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/" target="_blank" rel="noopener noreferrer">NASA/NSSDC — Planetary Fact Sheet</a> và <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/fact_notes.html" target="_blank" rel="noopener noreferrer">ghi chú định nghĩa tham số</a>.</p></details></main>
 </body>
 </html>
