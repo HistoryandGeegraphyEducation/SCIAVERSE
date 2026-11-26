@@ -15,7 +15,8 @@ function update(){
  }
  const fs=(c+normal*Math.tan(phi))/driving;
  $('safetyFactor').textContent=fmt(fs,2);
- if(fs<1){$('slopeState').textContent='Mất ổn định';$('slopeExplanation').textContent='FS nhỏ hơn 1: trong giả định của mô hình, ứng suất gây trượt vượt sức kháng cắt.';}
+ if(Math.abs(fs-1)<1e-6){$('slopeState').textContent='Cân bằng giới hạn';$('slopeExplanation').textContent='FS xấp xỉ 1: mô hình ở trạng thái cân bằng giới hạn.';}
+ else if(fs<1){$('slopeState').textContent='Mất ổn định';$('slopeExplanation').textContent='FS nhỏ hơn 1: trong giả định của mô hình, ứng suất gây trượt vượt sức kháng cắt.';}
  else{$('slopeState').textContent='Ổn định';$('slopeExplanation').textContent='FS lớn hơn 1: sức kháng cắt tính toán lớn hơn ứng suất gây trượt trong giả định hiện tại.';}
 }
 ['slopeAngle','cohesion','frictionAngle','unitWeight','soilDepth','porePressure'].forEach(id=>$(id).addEventListener('input',update));
