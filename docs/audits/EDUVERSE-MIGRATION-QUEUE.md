@@ -4,8 +4,8 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 
 ## Trạng thái vòng thẩm định
 
-- Hồ sơ thẩm định chuyên sâu đã hoàn tất: **12/12 mô hình**.
-- Đạt trạng thái khoa học `validated`: **0/12**.
+- Rà soát mã nguồn và lập phiếu vấn đề ban đầu: **12/12 mô hình**.
+- Thẩm định khoa học cuối cùng đạt `validated`: **0/12**.
 - Trạng thái khoa học hiện tại: **12 `needs-revision`**.
 - Đã tiếp nhận vào bản SCIAVERSE: **0 mô hình hoàn tất**.
 - Đã dựng pilot SCIAVERSE độc lập: **12/12 mô hình**.
