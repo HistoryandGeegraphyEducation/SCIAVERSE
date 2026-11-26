@@ -31,6 +31,9 @@
   }
 
   window.SCIAVERSE_THREE_READY = loadFrom(THREE_SOURCES, () => Boolean(window.THREE))
-    .then(() => loadFrom(CONTROL_SOURCES, () => Boolean(window.THREE?.OrbitControls)))
     .then(() => window.THREE);
+
+  window.SCIAVERSE_ORBIT_CONTROLS_READY = window.SCIAVERSE_THREE_READY
+    .then(() => loadFrom(CONTROL_SOURCES, () => Boolean(window.THREE?.OrbitControls)))
+    .then(() => window.THREE.OrbitControls);
 })();
