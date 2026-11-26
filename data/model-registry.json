@@ -193,10 +193,12 @@
     "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-processes.js",
-    "implementationType": "shared-process-engine",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationType": "independent-module",
+    "scientificStatus": "in-review",
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Pilot 3D minh họa ba kiểu ranh giới; chế độ hội tụ giới hạn ở hút chìm đại dương–lục địa. Tốc độ là giá trị kịch bản, không phải dữ liệu mảng thực. Chưa kiểm thử runtime.",
+    "sciaversePath": "simulations/tectonics/plate-motion/main.js",
+    "implementationPath": "simulations/tectonics/plate-motion/index.html"
   },
   {
     "id": "phong-hoa-xam-thuc-boi-tu",
