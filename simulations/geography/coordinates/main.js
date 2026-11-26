@@ -38,11 +38,18 @@
   let pointerStart = null;
 
   const listeners = [];
+  const sceneListeners = [];
+  let sceneUnavailable = false;
   const T = window.THREE;
 
   function listen(target, eventName, handler, options) {
     target.addEventListener(eventName, handler, options);
     listeners.push([target, eventName, handler, options]);
+  }
+
+  function listenScene(target, eventName, handler, options) {
+    target.addEventListener(eventName, handler, options);
+    sceneListeners.push([target, eventName, handler, options]);
   }
 
   function showStatus(message, stateName) {
@@ -116,7 +123,7 @@
   }
 
   function requestRender() {
-    if (destroyed || !renderer || !scene || !camera || renderFrame || document.hidden) return;
+    if (destroyed || sceneUnavailable || !renderer || !scene || !camera || renderFrame || document.hidden) return;
     renderFrame = window.requestAnimationFrame(() => {
       renderFrame = 0;
       if (!destroyed && renderer && scene && camera) renderer.render(scene, camera);
@@ -203,7 +210,7 @@
   }
 
   function resize() {
-    if (destroyed || !renderer || !camera) return;
+    if (destroyed || sceneUnavailable || !renderer || !camera) return;
     const width = Math.max(1, stage.clientWidth);
     const height = Math.max(1, stage.clientHeight);
     renderer.setSize(width, height, false);
@@ -221,6 +228,22 @@
   }
 
   function disposeScene() {
+    sceneUnavailable = true;
+    if (renderFrame) window.cancelAnimationFrame(renderFrame);
+    renderFrame = 0;
+    if (resizeObserver) {
+      resizeObserver.disconnect();
+      resizeObserver = null;
+    }
+    sceneListeners.forEach(([target, eventName, handler, options]) => {
+      target.removeEventListener(eventName, handler, options);
+    });
+    sceneListeners.length = 0;
+    if (controls) {
+      controls.removeEventListener('change', requestRender);
+      controls.dispose();
+      controls = null;
+    }
     if (scene) {
       scene.traverse(object => {
         if (object.geometry) object.geometry.dispose();
@@ -247,13 +270,6 @@
   function destroy() {
     if (destroyed) return;
     destroyed = true;
-    if (renderFrame) window.cancelAnimationFrame(renderFrame);
-    renderFrame = 0;
-    if (resizeObserver) resizeObserver.disconnect();
-    if (controls) {
-      controls.removeEventListener('change', requestRender);
-      controls.dispose();
-    }
     listeners.forEach(([target, eventName, handler, options]) => {
       target.removeEventListener(eventName, handler, options);
     });
@@ -345,16 +361,16 @@
     };
     pointerCancelHandler = () => { pointerStart = null; };
 
-    listen(renderer.domElement, 'pointerdown', pointerDownHandler);
-    listen(renderer.domElement, 'pointerup', pointerUpHandler);
-    listen(renderer.domElement, 'pointercancel', pointerCancelHandler);
+    listenScene(renderer.domElement, 'pointerdown', pointerDownHandler);
+    listenScene(renderer.domElement, 'pointerup', pointerUpHandler);
+    listenScene(renderer.domElement, 'pointercancel', pointerCancelHandler);
 
     const loader = new T.TextureLoader();
     loader.setCrossOrigin('anonymous');
     loader.load(
       TEXTURE_URL,
       loadedTexture => {
-        if (destroyed) {
+        if (destroyed || sceneUnavailable) {
           loadedTexture.dispose();
           return;
         }
@@ -369,7 +385,7 @@
       },
       undefined,
       () => {
-        if (!destroyed) {
+        if (!destroyed && !sceneUnavailable) {
           showStatus('Không tải được ảnh Blue Marble từ NASA. Lưới tọa độ và ô nhập vẫn dùng được; không có bản đồ thay thế giả lập.', 'error');
         }
       }
@@ -379,16 +395,16 @@
       resizeObserver = new ResizeObserver(resize);
       resizeObserver.observe(stage);
     } else {
-      listen(window, 'resize', resize);
+      listenScene(window, 'resize', resize);
     }
-    listen(document, 'visibilitychange', () => {
+    listenScene(document, 'visibilitychange', () => {
       if (!document.hidden) requestRender();
       else if (renderFrame) {
         window.cancelAnimationFrame(renderFrame);
         renderFrame = 0;
       }
     });
-    listen(window, 'pagehide', destroy, { once: true });
+    listenScene(window, 'pagehide', destroy, { once: true });
 
     resize();
     updatePin();
@@ -432,6 +448,4 @@
     showStatus('Không thể khởi tạo mô hình 3D: ' + (error && error.message ? error.message : 'Lỗi không xác định.'), 'error');
     disposeScene();
   }
-
-  window.addEventListener('pagehide', destroy, { once: true });
 })();
