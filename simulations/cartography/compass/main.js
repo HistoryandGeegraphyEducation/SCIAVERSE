@@ -8,7 +8,7 @@ const declinationValue=document.getElementById('declinationValue');
 const magneticBearingValue=document.getElementById('magneticBearingValue');
 const trueBearingValue=document.getElementById('trueBearingValue');
 const reset=document.getElementById('resetCompass');
-let T,scene,camera,renderer,controls,needle,bearingArrow,observer,raf=0,dead=false;
+let T,scene,camera,renderer,controls,needle,bearingArrow,observer,usingResizeListener=false,raf=0,dead=false;
 const listeners=[];
 function listen(el,event,fn){el.addEventListener(event,fn);listeners.push([el,event,fn]);}
 function draw(){if(dead||!renderer||document.hidden)return;if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{raf=0;if(!dead)renderer.render(scene,camera);});}
@@ -40,7 +40,7 @@ function resize(){
  const aspect=w/h;camera.left=-4.2*aspect;camera.right=4.2*aspect;camera.top=4.2;camera.bottom=-4.2;camera.updateProjectionMatrix();draw();
 }
 function destroy(){
- if(dead)return;dead=true;if(raf)cancelAnimationFrame(raf);if(observer)observer.disconnect();
+ if(dead)return;dead=true;if(raf)cancelAnimationFrame(raf);if(observer)observer.disconnect();if(usingResizeListener)window.removeEventListener('resize',resize);
  listeners.forEach(([el,event,fn])=>el.removeEventListener(event,fn));document.removeEventListener('visibilitychange',draw);window.removeEventListener('pagehide',destroy);
  if(controls)controls.dispose();
  if(scene)scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});
@@ -63,7 +63,7 @@ function init(THREE){
  listen(declination,'input',updateValues);listen(magneticBearing,'input',updateValues);
  listen(reset,'click',()=>{declination.value='0';magneticBearing.value='45';updateValues();});
  document.addEventListener('visibilitychange',draw);window.addEventListener('pagehide',destroy,{once:true});
- if('ResizeObserver'in window){observer=new ResizeObserver(resize);observer.observe(stage);}else window.addEventListener('resize',resize);
+ if('ResizeObserver'in window){observer=new ResizeObserver(resize);observer.observe(stage);}else{usingResizeListener=true;window.addEventListener('resize',resize);}
  resize();updateValues();setStatus('La bàn đã sẵn sàng.','ready');
 }
 Promise.all([window.SCIAVERSE_THREE_READY||Promise.reject(new Error('Thiếu Three.js')),window.SCIAVERSE_ORBIT_CONTROLS_READY||Promise.reject(new Error('Thiếu OrbitControls'))])
