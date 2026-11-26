@@ -12,3 +12,10 @@ Một môi trường khoa học số đa lĩnh vực, nhằm kết nối các l�
 - `docs/audits/`: hồ sơ thẩm định từng mô hình.
 
 Các mô hình chưa có trạng thái `validated` không được xem là nội dung đã nghiệm thu.
+
+
+## Trang lĩnh vực và không gian
+
+- `field.html?id=<field-id>`: trang dùng chung cho sáu lĩnh vực; chỉ hiển thị mô hình đã thẩm định và kiểm thử.
+- `space.html?id=<space-id>`: trang dùng chung cho mô phỏng, phòng thí nghiệm ảo, dữ liệu khoa học và thư viện học liệu.
+- Các ID và nội dung nền được quản lý trong hai tệp JSON dưới `data/`.
