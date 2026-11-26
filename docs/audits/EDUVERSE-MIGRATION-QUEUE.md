@@ -17,7 +17,7 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 
 | Mô hình | Mã nguồn EDUVERSE | Phiếu thẩm định | Khoa học | Triển khai SCIAVERSE |
 |---|---|---|---|---|
-| Xác định tọa độ địa lí | `js/sims/geo-01-coordinates/main.js` | [Phiếu](geographic-coordinates.md) | `needs-revision` | `not-migrated` |
+| Xác định tọa độ địa lí | `js/sims/geo-01-coordinates/main.js` | [Phiếu](geographic-coordinates.md) · [Pilot](../../simulations/geography/coordinates/index.html) | `needs-revision` | `sciaverse-pilot-in-progress` |
 | Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | [Phiếu](solar-system.md) | `needs-revision` | `not-migrated` |
 | Cấu tạo bên trong Trái Đất 3D | `js/sims/interior-earth.js` | [Phiếu](interior-earth.md) | `needs-revision` | `not-migrated` |
 | Động đất | `js/sims/quake.js` | [Phiếu](earthquake.md) | `needs-revision` | `not-migrated` |
@@ -46,7 +46,7 @@ Chỉ chuyển `implementationStatus` sang `verified-in-build` sau khi phiên b�
 ## Thứ tự hiệu chỉnh và tiếp nhận
 
 1. **Hoàn tất pilot Trái Đất tự quay:** ghi công NASA, kiểm tra hướng quay bằng landmark, xử lý lỗi khởi tạo WebGL và thử nghiệm trên điện thoại.
-2. **Xác định tọa độ địa lí:** sửa các điểm toán học/UX và nguồn texture; đây là mô hình tiếp theo để kiểm tra quy trình tiếp nhận.
+2. **Xác định tọa độ địa lí:** pilot đã được dựng tại `simulations/geography/coordinates/`; tiếp tục kiểm tra texture bằng landmark, WebGL và thao tác cảm ứng trước khi nghiệm thu.
 3. **Cấu tạo bên trong Trái Đất:** giữ kiến thức phân lớp, sửa hoạt ảnh đối lưu/sóng và quản lý texture.
 4. **Động đất và sóng thần:** làm rõ nguồn phát, tham số vật lí, quan hệ độ lớn–độ trượt và giới hạn truyền sóng/ngập.
 5. **Núi lửa:** phân biệt kiểu phun trào và tách biến hoạt ảnh khỏi thông số vật lí.
