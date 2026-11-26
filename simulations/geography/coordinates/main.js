@@ -298,6 +298,7 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.outputEncoding = T.sRGBEncoding;
     renderer.domElement.style.touchAction = 'none';
+    renderer.domElement.setAttribute('role', 'img');
     renderer.domElement.setAttribute('aria-label', 'Quả Địa Cầu với lưới kinh tuyến, vĩ tuyến và điểm tọa độ đang chọn.');
     stage.prepend(renderer.domElement);
 
