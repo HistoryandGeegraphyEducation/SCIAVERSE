@@ -38,7 +38,11 @@
   let frameId = 0;
   let lastFrameTime = 0;
   let renderingFrame = false;
-  let motionEnabled = true;
+  let reducedMotion = false;
+  let initialEarthRotation = 0;
+  let initialMoonDirection = null;
+  let moonOrbitAxis = null;
+  let simulationStartTime = 0;
   let disposed = false;
   const listeners = [];
   const clockNodes = [];
@@ -225,12 +229,18 @@
     });
   }
 
-  function updateAstronomicalPositions(now) {
-    if (!earthGroup || !sunMesh || !moonMesh || !sunlight) return;
+  function updateAstronomicalPositions(now, timestamp) {
+    if (!earthGroup || !sunMesh || !moonMesh || !sunlight || !simulationStartTime) return;
     const jd = julianDate(now);
     const sunDirection = solarCoordinates(jd);
-    const moonDirection = lunarCoordinates(jd);
-    earthGroup.rotation.y = Math.PI / 2 - greenwichSiderealAngle(jd);
+    const elapsed = Math.max(0, timestamp - simulationStartTime);
+    const earthPeriod = reducedMotion ? 180000 : 60000;
+    const moonPeriod = reducedMotion ? 90000 : 24000;
+    const moonDirection = initialMoonDirection.clone().applyAxisAngle(
+      moonOrbitAxis,
+      elapsed * TAU / moonPeriod
+    );
+    earthGroup.rotation.y = initialEarthRotation + elapsed * TAU / earthPeriod;
     sunMesh.position.copy(sunDirection).multiplyScalar(3.55);
     sunlight.position.copy(sunDirection).multiplyScalar(12);
     moonMesh.position.copy(moonDirection).multiplyScalar(2.25);
@@ -239,17 +249,19 @@
   function renderFrame(timestamp) {
     frameId = 0;
     if (disposed || !renderer || !scene || !camera) return;
-    if (motionEnabled && timestamp - lastFrameTime < 1000 / 30) {
+    if (timestamp - lastFrameTime < 1000 / (reducedMotion ? 12 : 30)) {
       frameId = window.requestAnimationFrame(renderFrame);
       return;
     }
     lastFrameTime = timestamp;
     renderingFrame = true;
     const damping = controls ? controls.update() : false;
-    updateAstronomicalPositions(new Date());
+    updateAstronomicalPositions(new Date(), timestamp);
     renderer.render(scene, camera);
     renderingFrame = false;
-    if (motionEnabled || damping) frameId = window.requestAnimationFrame(renderFrame);
+    if (!disposed && (reducedMotion || !document.hidden || damping)) {
+      frameId = window.requestAnimationFrame(renderFrame);
+    }
   }
 
   function requestRender() {
@@ -378,22 +390,22 @@
     }
     addListener(window, 'resize', resize, { passive: true });
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    motionEnabled = !motionPreference.matches;
+    reducedMotion = motionPreference.matches;
     addListener(motionPreference, 'change', event => {
-      motionEnabled = !event.matches;
+      reducedMotion = event.matches;
       lastFrameTime = 0;
       requestRender();
     });
+    const startDate = new Date();
+    initialEarthRotation = Math.PI / 2 - greenwichSiderealAngle(julianDate(startDate));
+    initialMoonDirection = lunarCoordinates(julianDate(startDate));
+    moonOrbitAxis = new THREE.Vector3(0, 1, 0);
+    simulationStartTime = performance.now();
     if (loading) loading.hidden = true;
-    updateAstronomicalPositions(new Date());
+    updateAstronomicalPositions(startDate, simulationStartTime);
     requestRender();
     clockInterval = window.setInterval(() => {
-      const now = new Date();
-      updateWorldClocks(now);
-      if (!motionEnabled) {
-        updateAstronomicalPositions(now);
-        requestRender();
-      }
+      updateWorldClocks(new Date());
     }, 1000);
     updateWorldClocks(new Date());
   }
