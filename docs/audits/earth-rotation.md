@@ -150,3 +150,18 @@ Kiểm tra tĩnh:
 - Dấu ngoặc CSS cân bằng; selector mới tồn tại.
 
 Chưa kiểm tra trực tiếp giao diện trong trình duyệt, WebGL, Android hoặc iOS. Không dùng kết quả kiểm tra tĩnh thay cho nghiệm thu hiển thị.
+
+
+## Cập nhật vòng đời tài nguyên — 26/11/2026
+
+Trong pilot SCIAVERSE, đã bổ sung một đường cleanup idempotent dùng chung cho lỗi khởi tạo và sự kiện rời trang:
+
+- Hủy animation frame đang chờ.
+- Ngắt ResizeObserver.
+- Gỡ các listener được đăng ký bởi mô hình.
+- Gỡ listener change và dispose OrbitControls.
+- Dispose hình học, vật liệu, texture, renderer và WebGL context.
+- Nếu quá trình tải thư viện hoặc texture lỗi, giải phóng tài nguyên đã khởi tạo một phần trước khi hiển thị trạng thái lỗi.
+- Nếu người dùng rời trang trước khi texture tải xong, texture đến muộn được dispose thay vì gắn vào scene đã hủy.
+
+Đây là sửa lỗi vòng đời theo mã nguồn; chưa chứng minh được hành vi trên mọi trình duyệt. Vẫn cần thử WebGL và chuyển trang trên Android/iOS, kiểm tra landmark để xác nhận hướng quay trực quan.
