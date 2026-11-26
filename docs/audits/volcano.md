@@ -147,7 +147,7 @@ Có thể tiếp nhận cấu trúc bài học và một phần đồ họa 2D, 
 Đã dựng mô-đun độc lập tại `simulations/geophysics/volcano/`.
 
 - Bỏ các gauge áp suất, nhiệt độ và năng lượng được tạo từ công thức hoạt ảnh không có cơ sở.
-- Thay bằng lựa chọn định tính ba nhóm magma: bazan (45–53% SiO₂), andesit (53–63%) và rhyolit (khoảng 69% trở lên); ghi rõ độ nhớt tương đối.
+- Thay bằng lựa chọn định tính ba nhóm magma: bazan (45–53% SiO₂), andesit (54–62%) và rhyolit (khoảng 69% trở lên); ghi rõ độ nhớt tương đối.
 - Bổ sung mức khí hòa tan thấp/trung bình/cao dưới dạng lựa chọn định tính, không giả vờ đây là số đo.
 - Chỉ diễn giải xu hướng khi tổ hợp biến có căn cứ; các trường hợp còn lại ghi rõ chưa thể phân loại chỉ từ hai biến.
 - Bổ sung cảnh báo tương tác magma–nước có thể gây phun nổ; thành phần magma không quyết định duy nhất kiểu phun.
