@@ -6,8 +6,8 @@
     {id:'venus',name:'Sao Kim',type:'Hành tinh đất đá',diameter:12103.6,mass:4.86731,au:0.723332,orbit:224.701,rotation:-243.018,tilt:177.36,color:0xd3a96f},
     {id:'earth',name:'Trái Đất',type:'Hành tinh đất đá',diameter:12742.0168,mass:5.97217,au:1.0000174,orbit:365.25636,rotation:0.99726968,tilt:23.44,color:0x4f9db3},
     {id:'mars',name:'Sao Hỏa',type:'Hành tinh đất đá',diameter:6779,mass:0.641691,au:1.523679,orbit:686.98,rotation:1.02595676,tilt:25.19,color:0xb96c51},
-    {id:'jupiter',name:'Sao Mộc',type:'Hành tinh khí khổng lồ',diameter:139822,mass:1898.125,au:5.2028,orbit:4332.589,rotation:0.41354,tilt:3.13,color:0xc79d78},
-    {id:'saturn',name:'Sao Thổ',type:'Hành tinh khí khổng lồ',diameter:116464,mass:568.317,au:9.5388,orbit:10759.22,rotation:0.44401,tilt:26.73,color:0xc8b58c},
+    {id:'jupiter',name:'Sao Mộc',type:'Hành tinh khí khổng lồ',diameter:139822,mass:1898.125,au:5.2028,orbit:4332.820129,rotation:0.41354,tilt:3.13,color:0xc79d78},
+    {id:'saturn',name:'Sao Thổ',type:'Hành tinh khí khổng lồ',diameter:116464,mass:568.317,au:9.5388,orbit:10755.698645,rotation:0.44401,tilt:26.73,color:0xc8b58c},
     {id:'uranus',name:'Sao Thiên Vương',type:'Hành tinh băng khổng lồ',diameter:50724,mass:86.8099,au:19.191,orbit:30687.15,rotation:-0.71833,tilt:97.77,color:0x86c6c9},
     {id:'neptune',name:'Sao Hải Vương',type:'Hành tinh băng khổng lồ',diameter:49244,mass:102.4092,au:30.07,orbit:60190,rotation:0.67125,tilt:28.32,color:0x5578c8}
   ];
