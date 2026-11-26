@@ -108,8 +108,8 @@
     sun.position.set(-2.6,2.2,.9);base.add(sun);
 
     addCloud(base,.15,2.25,0,1);
-    addBox(base,[4.8,.12,3.8],[.8,-1.18,0],0x6b5747,1);
-    addBox(base,[3.2,.18,3.6],[.9,-.94,0],0x477b8c,.92);
+    addBox(base,[4.8,.25,3.8],[.8,-.5,0],0x6b5747,1);
+    addBox(base,[4.0,.3,3.6],[.6,-.82,0],0x477b8c,.92);
     scene.add(base);
   }
 
@@ -148,10 +148,11 @@
     scene.add(processGroups.runoff);
 
     processGroups.groundwater=new THREE.Group();
-    addArrow(processGroups.groundwater,[1.55,terrainHeight(1.55)+.03,.8],[1.5,-.85,.8],0x70c1d9);
-    addArrow(processGroups.groundwater,[1.45,-1.35,.8],[-1.2,-1.35,.8],0x70c1d9);
+    addArrow(processGroups.groundwater,[1.55,terrainHeight(1.55)+.03,.8],[1.5,-.68,.8],0x70c1d9);
+    addArrow(processGroups.groundwater,[1.45,-.82,.8],[-1.2,-.82,.8],0x70c1d9);
+    addArrow(processGroups.groundwater,[-1.0,-.82,.08],[-.75,terrainHeight(-.75)+.08,.08],0x70c1d9);
     const spring=new THREE.Mesh(new THREE.SphereGeometry(.09,14,10),new THREE.MeshStandardMaterial({color:0x75cce4}));
-    spring.position.set(-.75,-.34,.08);processGroups.groundwater.add(spring);
+    spring.position.set(-.75,terrainHeight(-.75)+.08,.08);processGroups.groundwater.add(spring);
     scene.add(processGroups.groundwater);
   }
 
