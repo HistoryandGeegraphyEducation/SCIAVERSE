@@ -235,10 +235,11 @@
   listen(reducedMotion,'change',event=>{if(event.matches)setRunning(false);});
 
   if (reducedMotion.matches) setRunning(false);
-  try {
-    if (!window.THREE) throw new Error('Không tải được thư viện 3D.');
-    createScene();
-  } catch(error) {
-    fail(error.message || 'Không thể khởi tạo mô hình.');
-  }
+  (window.SCIAVERSE_THREE_READY || Promise.reject(new Error('Thiếu bộ nạp thư viện 3D.')))
+    .then(() => {
+      if (!disposed) createScene();
+    })
+    .catch(error => {
+      if (!disposed) fail(error.message || 'Không thể khởi tạo mô hình.');
+    });
 })();
