@@ -13,7 +13,7 @@
   overflow: hidden;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-lg);
-  background: radial-gradient(ellipse at 48% 42%, #1b3541 0%, #10212b 56%, #0a141b 100%);
+  background:#101b20;
   isolation: isolate;
 }
 .coordinate-stage canvas {
@@ -275,3 +275,5 @@
 @media (prefers-reduced-motion: reduce) {
   .coordinate-button { transition: none; }
 }
+
+.standalone-title h1{font-weight:500}.coordinate-chip{letter-spacing:0;text-transform:none}
