@@ -138,7 +138,7 @@ function renderMap(result){
  });
  if(result){
   const pts=result.path.map(id=>{const p=project(nodeById[id]);return p.x+','+p.y;}).join(' ');
-  el('polyline',{points:pts,fill:'none',stroke:'#e5b65f','stroke-width':8,'stroke-linecap':'round','stroke-linejoin':'round',opacity:.96},pathRoot);
+  el('polyline',{points:pts,class:'route-active-path'},pathRoot);
  }
  const start=$('routeStart').value,end=$('routeEnd').value;
  nodes.forEach(n=>{

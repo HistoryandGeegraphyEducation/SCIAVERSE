@@ -6,7 +6,7 @@ Tìm tuyến có tổng chiều dài nhỏ nhất giữa hai nút trong một m�
 
 ## 2. Dữ liệu và biểu diễn
 
-- Đồ thị vô hướng mẫu gồm 8 nút và 11 cạnh.
+- Đồ thị vô hướng mẫu gồm 8 nút và 12 cạnh.
 - Mỗi nút có cặp tọa độ vĩ độ, kinh độ minh họa trong vùng 10,68–10,92°B và 106,60–106,90°Đ.
 - Các cạnh biểu thị kết nối giả định giữa các nút, không phải đường phố đã khảo sát.
 - Tọa độ được dùng để tính chiều dài trắc địa của từng cạnh. Bản vẽ dùng phép chiếu equirectangular cục bộ để định vị trực quan; vị trí trên màn hình không được dùng để đo chiều dài.

@@ -1,25 +1,43 @@
-/* SCIAVERSE route-finding · independent model stylesheet */
+/* Hallmark · v2.0.0 | SCIAVERSE route-finding | scientific workbench | WGS 84 network analysis */
+/* Critique: keep the map as the primary visual; controls and metadata remain quiet. */
+:root{
+  --route-map-bg:#172329;
+  --route-grid:rgba(200,218,220,.12);
+  --route-grid-label:#91a1a4;
+  --route-edge:#849397;
+  --route-edge-muted:#596468;
+  --route-active:#e5b65f;
+  --route-node:#dce4e2;
+  --route-node-start:#72b69a;
+  --route-node-end:#df9b73;
+  --route-panel:#182226;
+  --route-input:#202d32;
+  --route-border:rgba(220,235,238,.12);
+  --route-text:#f1f4f2;
+  --route-secondary:#b5c0c2;
+  --route-muted:#8e9b9e;
+}
 .route-main{max-width:1440px}
 .route-heading{max-width:760px;margin:28px 0 24px}
 .route-heading>p:first-child{color:var(--text-muted,#9aa5a8);font-size:13px;margin:0 0 8px}
 .route-heading h1{font-size:clamp(28px,4vw,42px);line-height:1.12;margin:0 0 10px;letter-spacing:-.025em}
-.route-heading>p:last-child{color:var(--text-secondary,#b5c0c2);font-size:16px;line-height:1.5;margin:0}
+.route-heading>p:last-child{color:var(--route-secondary);font-size:16px;line-height:1.5;margin:0}
 .route-workspace{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,.8fr);gap:16px;align-items:stretch}
-.route-map-panel,.route-controls,.route-network,.route-method{background:var(--surface-raised,#182226);border:1px solid var(--border-subtle,rgba(220,235,238,.12));border-radius:16px}
+.route-map-panel,.route-controls,.route-network,.route-method{background:var(--route-panel);border:1px solid var(--route-border);border-radius:16px}
 .route-map-panel{padding:16px;min-width:0}
 .route-map-topline{display:flex;justify-content:space-between;gap:12px;color:var(--text-secondary,#b5c0c2);font-size:13px;padding:2px 2px 12px}
-.route-map-scale{color:var(--text-muted,#8e9b9e)}
-.route-map{display:block;width:100%;height:auto;min-height:300px;background:#172329;border-radius:10px;touch-action:pan-y}
-.route-grid-line{stroke:rgba(200,218,220,.12);stroke-width:1;stroke-dasharray:3 7}
-.route-grid-label{fill:#91a1a4;font:12px system-ui,sans-serif}
-.route-edge{stroke:#849397;stroke-width:4;stroke-linecap:round;opacity:.7}
-.route-edge.blocked{stroke:#596468;stroke-dasharray:7 7;opacity:.42}
-.route-edge.active{stroke:#e5b65f;stroke-width:7;opacity:1}
-.route-edge-hit{stroke:transparent;stroke-width:18;cursor:pointer}
-.route-node circle{fill:#dce4e2;stroke:#182226;stroke-width:4}
+.route-map-scale{color:var(--route-muted)}
+.route-map{display:block;width:100%;height:auto;height:clamp(220px,38vw,430px);background:var(--route-map-bg);border-radius:10px;touch-action:pan-y}
+.route-grid-line{stroke:var(--route-grid);stroke-width:1;stroke-dasharray:3 7}
+.route-grid-label{fill:var(--route-grid-label);font:12px system-ui,sans-serif}
+.route-edge{stroke:var(--route-edge);stroke-width:4;stroke-linecap:round;opacity:.7}
+.route-edge.blocked{stroke:var(--route-edge-muted);stroke-dasharray:7 7;opacity:.42}
+.route-edge.active{stroke:var(--route-active);stroke-width:7;opacity:1}
+.route-edge-hit{stroke:transparent;stroke-width:18;cursor:pointer}\n.route-active-path{fill:none;stroke:var(--route-active);stroke-width:8;stroke-linecap:round;stroke-linejoin:round;opacity:.96}
+.route-node circle{fill:var(--route-node);stroke:#182226;stroke-width:4}
 .route-node text{fill:#f2f5f3;font:600 16px system-ui,sans-serif;text-anchor:middle;paint-order:stroke;stroke:#172329;stroke-width:4px;stroke-linejoin:round}
-.route-node.start circle{fill:#72b69a}
-.route-node.end circle{fill:#df9b73}
+.route-node.start circle{fill:var(--route-node-start)}
+.route-node.end circle{fill:var(--route-node-end)}
 .route-map-legend{display:flex;flex-wrap:wrap;gap:16px;margin:12px 2px 0;color:var(--text-secondary,#b5c0c2);font-size:12px}
 .route-map-legend span{display:inline-flex;align-items:center;gap:7px}
 .legend-line{width:22px;height:3px;background:#849397;border-radius:3px}
@@ -28,14 +46,14 @@
 .route-controls{padding:20px;display:flex;flex-direction:column;gap:16px}
 .route-controls h2,.route-network h2,.route-method h2{font-size:19px;line-height:1.25;margin:0}
 .route-field{display:grid;gap:7px;color:var(--text-secondary,#b5c0c2);font-size:13px}
-.route-field select{width:100%;min-height:44px;padding:0 12px;border-radius:9px;border:1px solid var(--border-subtle,rgba(220,235,238,.16));background:var(--surface-input,#202d32);color:var(--text-primary,#f1f4f2);font:inherit}
+.route-field select{width:100%;min-height:44px;padding:0 12px;border-radius:9px;border:1px solid var(--route-border);background:var(--route-input);color:var(--route-text);font:inherit}
 .route-result{padding:14px;border-radius:10px;background:var(--surface-input,#202d32);display:grid;gap:5px}
 .route-result span{font-size:12px;color:var(--text-secondary,#b5c0c2)}
 .route-result output{font-size:clamp(25px,3vw,34px);line-height:1.15;font-variant-numeric:tabular-nums;color:#f1f4f2}
 .route-result-secondary{display:flex;align-items:center;justify-content:space-between}
 .route-result-secondary output{font-size:18px}
 .route-sequence{font-size:14px;line-height:1.55;color:var(--text-secondary,#b5c0c2);margin:0;min-height:42px}
-.route-reset{min-height:44px;border:1px solid var(--border-subtle,rgba(220,235,238,.2));border-radius:9px;background:transparent;color:var(--text-primary,#f1f4f2);font:500 14px system-ui,sans-serif;cursor:pointer}
+.route-reset{min-height:44px;border:1px solid var(--route-border);border-radius:9px;background:transparent;color:var(--text-primary,#f1f4f2);font:500 14px system-ui,sans-serif;cursor:pointer}
 .route-reset:hover{background:rgba(255,255,255,.06)}
 .route-network,.route-method{margin-top:16px;padding:20px}
 .route-network-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
@@ -56,6 +74,6 @@
 .route-sources a{color:var(--text-primary,#f1f4f2);text-underline-offset:3px}
 .route-reset:focus-visible,.route-field select:focus-visible,.route-edge-item input:focus-visible,.route-sources summary:focus-visible{outline:3px solid #e5b65f;outline-offset:3px}
 @media(max-width:900px){.route-workspace{grid-template-columns:minmax(0,1fr)}.route-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:end}.route-controls h2,.route-sequence,.route-reset{grid-column:1/-1}.route-edge-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:600px){.route-heading{margin:20px 0 18px}.route-heading h1{font-size:30px}.route-heading>p:last-child{font-size:14px}.route-map-panel{padding:10px}.route-map{min-height:220px}.route-map-topline{font-size:12px}.route-map-legend{gap:10px;font-size:11px}.route-controls{padding:16px;gap:12px}.route-edge-list{grid-template-columns:repeat(2,minmax(0,1fr))}.route-network,.route-method{padding:16px}.route-network-heading{display:block}.route-network-heading p{margin-top:5px}.route-method-grid{grid-template-columns:1fr;gap:14px}.route-result output{font-size:27px}}
-@media(max-width:360px){.route-map{min-height:190px}.route-controls{grid-template-columns:1fr}.route-controls h2,.route-sequence,.route-reset{grid-column:1}.route-edge-list{grid-template-columns:1fr}.route-map-topline{flex-wrap:wrap}}
+@media(max-width:600px){.route-heading{margin:20px 0 18px}.route-heading h1{font-size:30px}.route-heading>p:last-child{font-size:14px}.route-map-panel{padding:10px}.route-map{height:220px}.route-map-topline{font-size:12px}.route-map-legend{gap:10px;font-size:11px}.route-controls{padding:16px;gap:12px}.route-edge-list{grid-template-columns:repeat(2,minmax(0,1fr))}.route-network,.route-method{padding:16px}.route-network-heading{display:block}.route-network-heading p{margin-top:5px}.route-method-grid{grid-template-columns:1fr;gap:14px}.route-result output{font-size:27px}}
+@media(max-width:360px){.route-map{height:200px}.route-controls{grid-template-columns:1fr}.route-controls h2,.route-sequence,.route-reset{grid-column:1}.route-edge-list{grid-template-columns:1fr}.route-map-topline{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.route-page *{scroll-behavior:auto!important;transition:none!important}}
