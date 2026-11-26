@@ -44,3 +44,5 @@
 @media(max-width:900px){.solar-layout{grid-template-columns:minmax(0,1fr)}.solar-stage{height:clamp(340px,68vw,520px)}.solar-information{display:grid;grid-template-columns:minmax(0,1fr);gap:0}}
 @media(max-width:520px){.solar-main{padding-inline:14px}.solar-stage{min-height:310px;height:360px}.solar-controls,.solar-information{padding:12px}.solar-play-row .solar-button{flex:1}.solar-body-list{grid-template-columns:repeat(2,minmax(0,1fr))}.solar-facts dl>div{grid-template-columns:minmax(0,1fr) auto}.solar-facts dd{max-width:150px}}
 @media(prefers-reduced-motion:reduce){.solar-button,.solar-body-list button{transition:none!important}}
+
+.solar-fallback{position:absolute;inset:0;width:100%;height:100%;display:block}.solar-fallback[hidden]{display:none}.solar-loading.is-error{background:rgba(10,20,25,.42)}
