@@ -8,8 +8,7 @@
   const loading = document.getElementById('earthModelLoading');
   const clockGrid = document.getElementById('worldClockGrid');
   const TEXTURE_URLS = [
-    'assets/earth-atmosphere.jpg',
-    'assets/earth-blue-marble.png',
+    '../../../assets/earth-blue-marble.png',
     'https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/july/world.200407.3x5400x2700.jpg',
     'https://svs.gsfc.nasa.gov/vis/a000000/a002900/a002915/bluemarble-2048.png'
   ];
@@ -50,58 +49,6 @@
   const listeners = [];
   const clockNodes = [];
 
-  function createEarthFallbackTexture(THREE) {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1024;
-    canvas.height = 512;
-    const context = canvas.getContext('2d');
-    if (!context) return null;
-
-    context.fillStyle = '#1f67a7';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-
-    const land = [
-      [[85, 170], [145, 115], [230, 125], [270, 180], [250, 245], [185, 250], [130, 220]],
-      [[235, 260], [290, 278], [310, 360], [282, 425], [245, 392], [224, 320]],
-      [[430, 125], [500, 95], [568, 112], [590, 170], [548, 220], [475, 205], [420, 160]],
-      [[500, 220], [576, 230], [610, 315], [580, 410], [530, 390], [496, 310]],
-      [[560, 120], [650, 105], [735, 135], [790, 195], [735, 235], [650, 220], [590, 175]],
-      [[730, 240], [805, 260], [850, 330], [820, 390], [760, 370], [714, 300]],
-      [[830, 420], [900, 400], [940, 438], [900, 468], [840, 458]]
-    ];
-
-    context.fillStyle = '#7f9f55';
-    land.forEach(points => {
-      context.beginPath();
-      points.forEach((point, index) => {
-        if (index === 0) context.moveTo(point[0], point[1]);
-        else context.lineTo(point[0], point[1]);
-      });
-      context.closePath();
-      context.fill();
-    });
-
-    context.fillStyle = '#d7dfd8';
-    context.fillRect(0, 0, canvas.width, 18);
-    context.fillRect(0, canvas.height - 24, canvas.width, 24);
-
-    context.globalAlpha = 0.32;
-    context.fillStyle = '#ffffff';
-    for (let i = 0; i < 22; i += 1) {
-      const x = (i * 163) % canvas.width;
-      const y = 65 + ((i * 97) % 360);
-      context.beginPath();
-      context.ellipse(x, y, 34 + (i % 4) * 8, 7 + (i % 3) * 3, 0, 0, TAU);
-      context.fill();
-    }
-    context.globalAlpha = 1;
-
-    const texture = new THREE.CanvasTexture(canvas);
-    if (THREE.sRGBEncoding) texture.encoding = THREE.sRGBEncoding;
-    texture.needsUpdate = true;
-    return texture;
-  }
-
   function loadEarthTexture(THREE) {
     const loader = new THREE.TextureLoader();
     loader.setCrossOrigin('anonymous');
@@ -109,9 +56,7 @@
       let index = 0;
       const attempt = () => {
         if (index >= TEXTURE_URLS.length) {
-          const fallback = createEarthFallbackTexture(THREE);
-          if (fallback) resolve(fallback);
-          else reject(new Error('Không thể tạo bề mặt Trái Đất dự phòng.'));
+          reject(new Error('Không tải được ảnh Blue Marble từ các nguồn đã khai báo.'));
           return;
         }
         let finished = false;
@@ -538,7 +483,7 @@
     );
     earthGroup.add(earth);
 
-    earthCloudTexture = new THREE.TextureLoader().load('assets/earth-clouds.png', requestRender);
+    earthCloudTexture = new THREE.TextureLoader().load('../../../assets/earth-clouds.png', requestRender);
     if (THREE.sRGBEncoding) earthCloudTexture.encoding = THREE.sRGBEncoding;
     earthClouds = new THREE.Mesh(
       new THREE.SphereGeometry(1.205, 72, 56),
@@ -621,7 +566,10 @@
       else texture.dispose();
     })
     .catch(error => {
-      if (!disposed) showError(error.message || 'Không thể khởi tạo mô hình không gian.');
+      if (!disposed) {
+        showError(error.message || 'Không thể khởi tạo mô hình không gian.');
+        cleanup();
+      }
     });
 
   addListener(window, 'sciaverse:languagechange', () => {
