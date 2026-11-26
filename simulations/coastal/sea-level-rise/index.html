@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Mô hình khái niệm mực nước biển tương đối tăng trên mặt cắt địa hình ven biển giả định."><meta name="page-type" content="software"><meta name="site-kind" content="software"><meta name="theme-color" content="#10171b"><title>SCIAVERSE — Nước biển dâng</title><link rel="stylesheet" href="../../../styles.css"><link rel="stylesheet" href="../../model-base.css"><link rel="stylesheet" href="styles.css"><script src="main.js" defer></script></head>
+<body class="standalone-page"><a class="skip-link" href="#modelMain">Bỏ qua điều hướng</a><header class="standalone-header"><a class="standalone-brand" href="../../../index.html#overview">SCIAVERSE</a><a class="standalone-back" href="../../../space.html?id=simulations">Không gian mô phỏng</a></header>
+<main class="standalone-main model-main" id="modelMain"><header class="model-intro"><p class="model-kicker">Trái Đất và môi trường</p><h1>Mực nước biển dâng</h1><p>Quan sát mực nước tương đối thay đổi trên một mặt cắt địa hình ven biển giả định.</p></header>
+<section class="model-layout"><div class="model-visual">
+<svg class="model-diagram sea-level-diagram" viewBox="0 0 640 360" role="img" aria-labelledby="seaTitle seaDesc"><title id="seaTitle">Mặt cắt minh họa mực nước biển dâng</title><desc id="seaDesc">Mặt cắt địa hình thấp dần về phía biển; đường nước biển được nâng lên theo tham số mực nước tương đối.</desc>
+<path d="M0 130 L100 150 L200 170 L280 190 L360 215 L420 225 L480 250 L640 310 V360 H0Z" fill="#826d54"/><path d="M0 130 L100 150 L200 170 L280 190 L360 215 L420 225 L480 250" fill="none" stroke="#c0a17b" stroke-width="5"/>
+<path id="seaFill" d="M480 250 L640 250 L640 360 L480 310Z" fill="#3b8290" opacity=".92"/>
+<path id="floodFill" d="" fill="#3b8290" opacity=".82"/>
+<path id="seaSurface" d="M480 250 H640" stroke="#b5e0df" stroke-width="4" fill="none"/>
+<path d="M480 250 V310" stroke="#c6d4c7" stroke-width="2" stroke-dasharray="5 5"/>
+<g fill="#f2f1e9" font-size="13"><text x="18" y="32">Đất liền</text><text x="550" y="32">Biển</text><text x="28" y="110">Địa hình giả định</text><text x="500" y="230">Mặt nước</text></g>
+</svg>
+<p class="model-visual-note">Địa hình mặt cắt được dựng để minh họa, không phải DEM hoặc bản đồ của một địa điểm.</p></div>
+<aside class="model-panel"><h2>Thay đổi mực nước tương đối</h2>
+<div class="model-control"><label for="seaRise">Mực nước tăng <output id="seaRiseOut">0,0 m</output></label><input id="seaRise" type="range" min="0" max="2" step=".05" value="0"></div>
+<div class="model-results"><div class="model-result"><small>Mốc nền minh họa</small><strong>0,0 m</strong></div><div class="model-result"><small>Mực nước tương đối</small><strong id="seaLevelValue">0,0 m</strong></div></div>
+<p class="model-explanation" id="seaExplanation" aria-live="polite">Ở mốc nền của sơ đồ, đường nước chạm bờ tại vị trí giả định.</p></aside></section>
+<section class="model-notes"><h2>Giới hạn diễn giải</h2><p>Đây là mặt cắt địa hình giả định với mốc nền 0 m; thang đứng chỉ nhằm giúp quan sát. Mô hình không sử dụng DEM, datum thủy triều địa phương, chuyển động thẳng đứng của đất, sụt lún, xói lở hoặc kết nối thủy văn thực. Vùng thấp bị biển ngăn cách tự nhiên không được xét như vùng ngập có kết nối.</p><p>Mực nước biển dâng là thay đổi dài hạn của mực nước trung bình. Nó khác với thủy triều, nước dâng do bão và sóng thần. Mô hình không gắn tham số với năm hoặc kịch bản khí hậu, không phải bản đồ ngập và không dự báo đường bờ thực tế.</p><p>Nguồn: <a href="https://coast.noaa.gov/slr/" target="_blank" rel="noopener noreferrer">NOAA — Sea Level Rise and Coastal Flooding Impacts</a>; <a href="https://www.tidesandcurrents.noaa.gov/trends-and-extremes/main-product.html" target="_blank" rel="noopener noreferrer">NOAA — Sea Level Trends and Extremes</a>.</p></section></main></body></html>
