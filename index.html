@@ -91,22 +91,31 @@
           <h1 id="pageTitle" data-i18n="pageTitle">Không gian khoa học số<br>đa lĩnh vực.</h1>
           <a class="primary-button" href="#fields"><span data-i18n="startExploring">Bắt đầu khám phá</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
-        <div class="welcome-visual" aria-label="Sơ đồ quỹ đạo minh họa" data-i18n-aria="orbitDiagram">
-          <svg class="orbit-visual" data-orbit-system viewBox="0 0 420 270" role="img" aria-labelledby="orbitTitle orbitDesc">
-            <title id="orbitTitle" data-i18n="orbitDiagram">Sơ đồ quỹ đạo minh họa</title>
-            <desc id="orbitDesc" data-i18n="orbitDescription">Một thiên thể trung tâm và các quỹ đạo elip được vẽ để minh họa chuyển động quỹ đạo, không theo tỉ lệ.</desc>
-            <g class="orbit-lines" fill="none" stroke="currentColor">
-              <g data-orbit-path="a" transform="translate(210 135) rotate(-17) translate(-24.3 0)"><ellipse rx="135" ry="132.2"/></g>
-              <g data-orbit-path="b" transform="translate(210 135) rotate(29) translate(-18.5 0)"><ellipse rx="103" ry="101.3"/></g>
-              <g data-orbit-path="c" transform="translate(210 135) rotate(-48) translate(-8.6 0)"><ellipse rx="72" ry="71.5"/></g>
-            </g>
-            <circle class="orbit-core" cx="210" cy="135" r="18"/>
-            <circle class="orbit-node node-a" data-orbit-node="a" data-a="135" data-e="0.18" data-rotation="-17" data-period="24" data-phase="0.18" cx="321.22" cy="131.18" r="6"/>
-            <circle class="orbit-node node-b" data-orbit-node="b" data-a="103" data-e="0.18" data-rotation="29" data-period="34" data-phase="2.1" cx="99.33" cy="164.44" r="8"/>
-            <circle class="orbit-node node-c" data-orbit-node="c" data-a="72" data-e="0.12" data-rotation="-48" data-period="43" data-phase="4.2" cx="133.07" cy="132.92" r="5"/>
-            <path class="scene-bridge" d="M0 238 C105 205 315 205 420 238"/>
-            <path class="orbit-cross" d="M210 108v-10m0 78v10m-29-49h-10m78 0h10"/>
-          </svg>
+        <div class="welcome-visual earth-rotation-visual">
+          <div class="earth-model-heading">
+            <div>
+              <h2 data-i18n="earthModelTitle">Trái Đất tự quay quanh trục</h2>
+              <p data-i18n="earthModelDescription">Trục quay nghiêng 23,44° so với phương vuông góc mặt phẳng quỹ đạo.</p>
+            </div>
+            <span class="earth-sun-indicator"><span aria-hidden="true"></span><span data-i18n="sunlightSource">Mặt Trời</span></span>
+          </div>
+          <div class="earth-model-stage" id="earthRotationStage" role="img" aria-label="Mô hình 3D Trái Đất tự quay quanh trục, có trục nghiêng và vùng ngày đêm" data-i18n-aria="earthModelStage">
+            <canvas id="earthRotationCanvas" aria-label="Quả Địa Cầu 3D với vùng được chiếu sáng và vùng ban đêm" data-i18n-aria="earthGlobeCanvas"></canvas>
+            <div class="earth-model-loading" id="earthModelLoading" role="status" data-i18n="earthModelLoading">Đang tải mô hình Trái Đất…</div>
+          </div>
+          <div class="earth-model-controls">
+            <div class="earth-model-actions">
+              <button class="earth-model-button is-primary" id="earthModelPlay" type="button" aria-pressed="true" data-i18n="pauseRotation">Tạm dừng</button>
+              <button class="earth-model-button" id="earthModelReset" type="button" data-i18n="resetModel">Đặt lại</button>
+            </div>
+            <label class="earth-model-speed">
+              <span data-i18n="simulationSpeed">Tốc độ mô phỏng</span>
+              <input id="earthModelSpeed" type="range" min="0.25" max="4" step="0.25" value="1">
+              <output id="earthModelSpeedValue" for="earthModelSpeed">1×</output>
+            </label>
+            <span class="earth-model-time"><span data-i18n="simulationTime">Giờ mô phỏng</span> <strong id="earthModelTime">00:00</strong></span>
+          </div>
+          <p class="earth-model-footnote" data-i18n="earthModelFootnote">Một vòng ngày–đêm được quy ước là 24 giờ mô phỏng. Mô hình không mô phỏng chuyển động quỹ đạo quanh Mặt Trời.</p>
         </div>
       </section>
 
@@ -235,7 +244,7 @@
     <a class="tab-link" href="#library" data-section="library"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1.2 5.3-1.2 8 0v14c-2.7-1.2-5.3-1.2-8 0zM20 5.5c-2.7-1.2-5.3-1.2-8 0v14c2.7-1.2 5.3-1.2 8 0z"/></svg><span data-i18n="library">Thư viện</span></a>
   </nav>
 
-  <script src="app.js?v=20261126-sciencevisuals2" defer></script>
-  <script src="motion.js?v=20261126-sciencevisuals2" defer></script>
+  <script src="app.js?v=20261126-earthmodel1" defer></script>
+  <script src="earth-rotation.js?v=20261126-earthmodel1" defer></script>
 </body>
 </html>
