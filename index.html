@@ -11,7 +11,7 @@
   <meta property="og:description" content="Môi trường khoa học số đa lĩnh vực.">
   <meta property="og:type" content="website">
   <title>SCIAVERSE: Không gian khoa học số</title>
-  <link rel="stylesheet" href="styles.css?v=20261126-sciencevisuals2">
+  <link rel="stylesheet" href="styles.css?v=20261126-earthmodel2">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skipLink">Bỏ qua điều hướng</a>
@@ -110,13 +110,14 @@
               <button class="earth-model-button" id="earthModelReset" type="button" data-i18n="resetModel">Đặt lại</button>
             </div>
             <label class="earth-model-speed">
-              <span data-i18n="simulationSpeed">Tốc độ mô phỏng</span>
-              <input id="earthModelSpeed" type="range" min="0.25" max="4" step="0.25" value="1">
+              <span class="earth-model-speed-copy"><span data-i18n="simulationSpeed">Tốc độ mô phỏng</span><small class="earth-model-speed-note" id="earthModelSpeedNote" data-i18n="simulationSpeedNote">1×: 1 giờ mô phỏng/giây thực.</small></span>
+              <input id="earthModelSpeed" type="range" min="0.25" max="4" step="0.25" value="1" aria-describedby="earthModelSpeedNote">
               <output id="earthModelSpeedValue" for="earthModelSpeed">1×</output>
             </label>
             <span class="earth-model-time"><span data-i18n="simulationTime">Giờ mô phỏng</span> <strong id="earthModelTime">00:00</strong></span>
           </div>
           <p class="earth-model-footnote" data-i18n="earthModelFootnote">Một ngày Mặt Trời trung bình kéo dài 24 giờ; chu kỳ quay sao khoảng 23 giờ 56 phút 4 giây. Hướng chiếu sáng đặt ở cấu hình phân điểm; mô hình không mô phỏng chuyển động quỹ đạo và sự thay đổi mùa.</p>
+          <p class="earth-model-source"><span data-i18n="earthModelImageCredit">Ảnh nền: NASA/GSFC Scientific Visualization Studio, Blue Marble (ảnh ghép từ dữ liệu quan sát năm 2001; công bố năm 2004).</span> <a href="https://svs.gsfc.nasa.gov/2915/" target="_blank" rel="noopener noreferrer" data-i18n="earthModelSourceLink">Thông tin bộ ảnh NASA</a></p>
         </div>
       </section>
 
@@ -278,7 +279,7 @@
     <a class="tab-link" href="#library" data-section="library"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1.2 5.3-1.2 8 0v14c-2.7-1.2-5.3-1.2-8 0zM20 5.5c-2.7-1.2-5.3-1.2-8 0v14c2.7-1.2 5.3-1.2 8 0z"/></svg><span data-i18n="library">Thư viện</span></a>
   </nav>
 
-  <script src="app.js?v=20261126-earthmodel1" defer></script>
+  <script src="app.js?v=20261126-earthmodel2" defer></script>
   <script src="earth-rotation.js?v=20261126-earthmodel1" defer></script>
 </body>
 </html>
