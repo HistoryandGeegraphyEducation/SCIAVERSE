@@ -64,7 +64,7 @@
     const x = a * (Math.cos(E) - e);
     const y = b * Math.sin(E);
     const c = Math.cos(rotation), s = Math.sin(rotation);
-    return { x: a * e * c + x * c - y * s, y: a * e * s + x * s + y * c };
+    return { x: x * c - y * s, y: x * s + y * c };
   }
 
   function drawOrbit(ctx, w, h, t, p) {
@@ -83,7 +83,7 @@
       const ox = o.a * o.e * Math.cos(o.r);
       const oy = o.a * o.e * Math.sin(o.r);
       ctx.save();
-      ctx.translate(ox, oy);
+      ctx.translate(-ox, -oy);
       ctx.rotate(o.r);
       ctx.beginPath();
       ctx.ellipse(0, 0, o.a, b, 0, 0, TAU);
