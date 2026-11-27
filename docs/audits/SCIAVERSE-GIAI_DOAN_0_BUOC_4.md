@@ -126,14 +126,14 @@ Trang này chưa có Model ID, trạng thái khoa học hoặc trạng thái tri
 
 ## 5. Bảng phân loại lỗi P0–P4
 
-| Mức | Phát hiện | Phạm vi | Xử lý đề xuất |
+| Mức | Phát hiện | Phạm vi | Xử lý / trạng thái |
 |---|---|---|---|
 | P0 | Chưa xác nhận có sự cố khiến toàn hệ thống không truy cập được | Chưa có lỗi P0 được chứng minh | Không gán P0 khi chưa có kiểm thử runtime |
-| P1 | Bộ lọc hiển thị ở space.js và field.js chỉ kiểm tra validated và implementationPath, chưa kiểm tra verified-in-build | Danh mục mô hình trong không gian và trang lĩnh vực | Sửa điều kiện công bố theo trạng thái kỹ thuật; giữ 12 trạng thái khoa học validated nhưng không công bố như mô hình đã kiểm thử |
-| P2 | index.html tham chiếu earth-rotation.js không tồn tại trong repository | Dashboard | Xác định chức năng dự kiến của script rồi sửa tham chiếu hoặc khôi phục đúng tệp |
+| P1 | Bộ lọc cũ ở space.js và field.js chỉ kiểm tra validated và implementationPath, chưa kiểm tra verified-in-build | Danh mục mô hình trong không gian và trang lĩnh vực | Đã sửa: bắt buộc đồng thời validated và verified-in-build |
+| P2 | index.html từng tham chiếu earth-rotation.js đã bị xóa sau khi chuyển mô hình sang trang riêng | Dashboard | Đã sửa: bỏ script và canvas cũ; khôi phục sơ đồ quỹ đạo SVG tĩnh bằng các lớp CSS sẵn có |
 | P2 | Có 25 trang mô hình nhưng chỉ 24 bản ghi có implementationPath | Registry và simulations/astronomy/daylight-duration/ | Xác định trang daylight-duration là mô hình tiếp nhận, trang thử nghiệm hay tài sản cần lưu ngoài danh mục |
 | P2 | Ba không gian virtual-laboratories, scientific-data và learning-library đang bị làm rỗng nội dung trong space.js | Các trang không gian chức năng | Ghi nhận trạng thái chưa triển khai; không trình bày như chức năng đã hoàn thiện |
-| P2 | Tài liệu EDUVERSE-MIGRATION-QUEUE.md có số liệu không đồng nhất: phần mô tả ghi 6 mô hình in-review và 17 pilot, trong khi Registry hiện có 12 in-review và 24 đường dẫn triển khai | Hồ sơ kiểm kê | Đồng bộ tài liệu sau khi xác nhận phạm vi và nguồn số liệu |
+| P2 | Tài liệu EDUVERSE-MIGRATION-QUEUE.md từng ghi 6 mô hình in-review và 17 pilot, không khớp Registry | Hồ sơ kiểm kê | Đã sửa: 12 mô hình in-review và 24 pilot độc lập |
 | P2 | 14/24 stylesheet chưa tìm thấy khai báo focus-visible rõ ràng; 16/24 chưa tìm thấy prefers-reduced-motion trong stylesheet đang áp dụng | Các trang mô hình | Kiểm tra bàn phím và reduced motion trên trình duyệt; bổ sung quy tắc nếu xác nhận thiếu |
 | P2 | Phụ thuộc Three.js và OrbitControls qua CDN ngoài | Các mô hình 3D dùng three-loader.js | Kiểm tra hành vi khi CDN lỗi hoặc bị chặn; xác định phương án cung cấp thư viện phù hợp |
 | P3 | Vòng tuần hoàn nước chưa có tự động diễn tiến dù tên mô hình ghi tự động | water-cycle | Bổ sung bộ thời gian và điều khiển chỉ sau khi đặc tả cơ chế khoa học |
