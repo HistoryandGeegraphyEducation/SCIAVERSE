@@ -5,7 +5,7 @@ Một môi trường khoa học số đa lĩnh vực, nhằm kết nối các l�
 ## Cấu trúc nền tảng
 
 - `data/fields.json`: sáu lĩnh vực khoa học hiện có.
-- `data/spaces.json`: bốn không gian chức năng.
+- `data/spaces.json`: định nghĩa bốn không gian chức năng. Tệp này là danh mục nền, không xác nhận các không gian đã hoàn thiện.
 - `data/model-registry.json`: danh mục mô hình nguồn và trạng thái thẩm định.
 - `docs/SCIAVERSE-ARCHITECTURE.md`: kiến trúc không gian khoa học.
 - `docs/SCIENTIFIC-VALIDATION-STANDARD.md`: tiêu chuẩn thẩm định khoa học.
@@ -18,6 +18,8 @@ Các mô hình chưa có trạng thái `validated` không được xem là nội
 
 
 ## Trang lĩnh vực và không gian
+
+Hiện tại, không gian mô phỏng có bộ lọc danh mục theo trạng thái nghiệm thu khoa học và kiểm thử kỹ thuật. Phòng thí nghiệm ảo, dữ liệu khoa học và thư viện học liệu mới có định nghĩa nền và tuyến trang; nội dung chức năng của ba khu vực này chưa được triển khai hoàn chỉnh.
 
 - `field.html?id=<field-id>`: trang dùng chung cho sáu lĩnh vực; chỉ hiển thị mô hình đã thẩm định và kiểm thử.
 - `space.html?id=<space-id>`: trang dùng chung cho mô phỏng, phòng thí nghiệm ảo, dữ liệu khoa học và thư viện học liệu.
