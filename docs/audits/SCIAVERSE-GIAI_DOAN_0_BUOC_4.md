@@ -74,7 +74,7 @@ Không tìm thấy cơ chế chuyển đổi rõ ràng giữa hai mức kiến t
 
 ### 2.8. Responsive
 
-Có media query trong stylesheet của 24/24 mô hình. Tuy nhiên, chưa có bằng chứng kiểm tra thực tế ở các chiều rộng 320, 360, 390 và 430 CSS px. Không đánh dấu đạt responsive chỉ dựa trên việc có media query.
+Có breakpoint max-width trong stylesheet riêng của 23/24 mô hình. Stylesheet riêng của mô hình Động đất chỉ có quy tắc reduced-motion, không có breakpoint theo chiều rộng; trang vẫn nạp stylesheet dùng chung của hệ thống. Chưa có bằng chứng kiểm tra thực tế ở các chiều rộng 320, 360, 390 và 430 CSS px. Không đánh dấu đạt responsive chỉ dựa trên việc có media query.
 
 ### 2.9. Lỗi kỹ thuật và phụ thuộc
 
