@@ -156,10 +156,12 @@
     "fieldId": "earth-environment",
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-catalog.js",
-    "implementationType": "shared-catalog",
+    "implementationType": "independent-module",
     "scientificStatus": "not-reviewed",
-    "implementationStatus": "not-migrated",
-    "notes": "Chưa được thẩm định khoa học; không sử dụng trong bản công bố SCIAVERSE."
+    "implementationStatus": "sciaverse-pilot-in-progress",
+    "notes": "Trang pilot độc lập đã có trong SCIAVERSE; chưa thẩm định khoa học và chưa kiểm thử runtime. Không sử dụng trong bản công bố.",
+    "sciaversePath": "simulations/astronomy/daylight-duration/main.js",
+    "implementationPath": "simulations/astronomy/daylight-duration/index.html"
   },
   {
     "id": "dinh-huong-ngoai-thuc-dia",
