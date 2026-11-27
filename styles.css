@@ -1,4 +1,4 @@
-/* Hallmark · v2.0.0 · shape: app screen · surface: absolute · posture: restrained · nav: compact sidebar and mobile tabs · footer: compact project note · hero: scientific overview · theme: custom · signature: restrained orbital measurement motif */
+/* Hallmark v2.0.0 | shape: app screen | surface: absolute | posture: restrained | nav: compact sidebar and mobile tabs | footer: compact project note | hero: scientific overview | theme: custom | signature: restrained orbital measurement motif */
 /* Critique: the initial dashboard had incomplete mobile search and drawer focus handling; this pass closes those interaction gaps. */
 :root {
   color-scheme: dark;
