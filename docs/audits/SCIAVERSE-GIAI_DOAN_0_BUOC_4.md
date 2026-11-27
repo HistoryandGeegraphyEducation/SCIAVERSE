@@ -20,7 +20,7 @@ Phạm vi: mã nguồn hiện có trong SCIAVERSE; không đọc hoặc chỉnh 
 | implementationStatus = verified-in-build | 0 |
 | Trang mô hình có trong simulations/ | 25 |
 | Trang có đường dẫn nhưng chưa có bản ghi Registry | 0 |
-| Kiểm thử runtime trên trình duyệt được xác nhận | 0/24 |
+| Kiểm thử runtime trên trình duyệt được xác nhận | 0/25 |
 
 Mười hai mô hình đã nghiệm thu khoa học ngày 26/11/2026 được giữ nguyên trạng thái validated. Không có căn cứ để chuyển bất kỳ mô hình nào sang verified-in-build. Việc rà soát mã nguồn không thay thế quyết định nghiệm thu khoa học.
 
@@ -68,13 +68,13 @@ Không tìm thấy cơ chế chuyển đổi rõ ràng giữa hai mức kiến t
 ### 2.7. Giao diện và khả năng tiếp cận
 
 - Các trang mô hình đều có quy tắc CSS responsive ở ít nhất một breakpoint.
-- Trong các stylesheet được rà soát, 10/24 mô hình có khai báo focus-visible rõ ràng; 14/24 chưa tìm thấy khai báo này trong stylesheet riêng hoặc stylesheet dùng chung được nạp.
-- Có 8/24 mô hình có khai báo prefers-reduced-motion trong stylesheet đang áp dụng; 16/24 chưa tìm thấy khai báo tương ứng.
+- Trong 24 mô hình thuộc hàng đợi tiếp nhận, 10/24 có khai báo focus-visible rõ ràng; 14/24 chưa tìm thấy khai báo này trong stylesheet riêng hoặc stylesheet dùng chung được nạp. Trang daylight-duration chưa được tính vào nhóm kiểm tra này.
+- Trong 24 mô hình thuộc hàng đợi tiếp nhận, có 8/24 khai báo prefers-reduced-motion trong stylesheet đang áp dụng; 16/24 chưa tìm thấy khai báo tương ứng. Trang daylight-duration chưa được tính vào nhóm kiểm tra này.
 - Đây là kết quả kiểm tra mã CSS tĩnh. Chưa kết luận rằng mọi điều khiển của các trang còn lại đều không thể dùng bằng bàn phím hoặc có hoạt ảnh gây vấn đề; cần kiểm tra trực tiếp trên trình duyệt.
 
 ### 2.8. Responsive
 
-Có breakpoint max-width trong stylesheet riêng của 23/24 mô hình. Stylesheet riêng của mô hình Động đất chỉ có quy tắc reduced-motion, không có breakpoint theo chiều rộng; trang vẫn nạp stylesheet dùng chung của hệ thống. Chưa có bằng chứng kiểm tra thực tế ở các chiều rộng 320, 360, 390 và 430 CSS px. Không đánh dấu đạt responsive chỉ dựa trên việc có media query.
+Trong 24 mô hình thuộc hàng đợi tiếp nhận, có breakpoint max-width trong stylesheet riêng của 23/24 mô hình. Stylesheet riêng của mô hình Động đất chỉ có quy tắc reduced-motion, không có breakpoint theo chiều rộng; trang vẫn nạp stylesheet dùng chung của hệ thống. Trang daylight-duration có breakpoint riêng nhưng chưa được kiểm thử thực tế. Chưa có bằng chứng kiểm tra thực tế ở các chiều rộng 320, 360, 390 và 430 CSS px. Không đánh dấu đạt responsive chỉ dựa trên việc có media query.
 
 ### 2.9. Lỗi kỹ thuật và phụ thuộc
 
@@ -85,7 +85,7 @@ Có breakpoint max-width trong stylesheet riêng của 23/24 mô hình. Styleshe
 
 ### 2.10. Tình trạng kiểm thử
 
-Trong cây repository hiện tại không tìm thấy bộ kiểm thử trình duyệt Playwright/Puppeteer, cấu hình Jest/Vitest hoặc workflow kiểm thử tương ứng. Không tìm thấy package.json ở thư mục gốc. Hồ sơ hàng đợi tiếp nhận cũng ghi nhận 0/24 mô hình đã hoàn tất kiểm thử runtime trên trình duyệt và thiết bị thật.
+Trong cây repository hiện tại không tìm thấy bộ kiểm thử trình duyệt Playwright/Puppeteer, cấu hình Jest/Vitest hoặc workflow kiểm thử tương ứng. Không tìm thấy package.json ở thư mục gốc. Hồ sơ hàng đợi ghi nhận 0/24 mô hình migration đã hoàn tất kiểm thử runtime; trang daylight-duration cũng chưa được kiểm thử. Tổng số trang pilot có đường dẫn trong Registry là 25, chưa có trang nào được xác nhận runtime.
 
 Kết luận: 24 mô hình vẫn là pilot về mặt triển khai. Không có mô hình nào được xác nhận verified-in-build.
 
@@ -139,8 +139,8 @@ Trang đã được liên kết với Model ID `ngay-dem-dai-ngan-theo-mua`. Tr�
 | P2 | Phụ thuộc Three.js và OrbitControls qua CDN ngoài | Các mô hình 3D dùng three-loader.js | Kiểm tra hành vi khi CDN lỗi hoặc bị chặn; xác định phương án cung cấp thư viện phù hợp |
 | P3 | Vòng tuần hoàn nước chưa có tự động diễn tiến dù tên mô hình ghi tự động | water-cycle | Bổ sung bộ thời gian và điều khiển chỉ sau khi đặc tả cơ chế khoa học |
 | P3 | Trái Đất chuyển động quanh Mặt Trời mới có bốn mốc mùa, chưa có thời gian quỹ đạo liên tục | earth-revolution | Bổ sung điều khiển thời gian nếu phạm vi mô hình yêu cầu |
-| P3 | Chưa có cơ chế hai mức kiến thức cơ bản và nâng cao được xác nhận | 24 pilot và Registry | Đặc tả cấu trúc hai mức dùng chung lõi mô phỏng |
-| P4 | Chưa phân loại được các chi tiết thẩm mỹ cần sửa do chưa có ảnh chụp và kiểm tra trực tiếp ở các kích thước mục tiêu | Toàn bộ 24 pilot | Chỉ đánh giá sau vòng kiểm thử giao diện thực tế |
+| P3 | Chưa có cơ chế hai mức kiến thức cơ bản và nâng cao được xác nhận | 25 trang pilot và Registry | Đặc tả cấu trúc hai mức dùng chung lõi mô phỏng |
+| P4 | Chưa phân loại được các chi tiết thẩm mỹ cần sửa do chưa có ảnh chụp và kiểm tra trực tiếp ở các kích thước mục tiêu | 25 trang pilot | Chỉ đánh giá sau vòng kiểm thử giao diện thực tế |
 
 ## 6. Danh sách theo hướng xử lý
 
@@ -192,6 +192,7 @@ Các vấn đề sau đã được xử lý trên nhánh main:
 | index.html gọi earth-rotation.js đã bị xóa sau khi chuyển mô hình sang trang riêng | Bỏ script legacy và vùng canvas không còn mã vận hành; dùng lại sơ đồ quỹ đạo SVG tĩnh đã có hệ CSS | Đã sửa ở mức mã nguồn |
 | README mô tả hàng đợi là 12 pilot | Đồng bộ thành 24 pilot độc lập | Đã sửa |
 | Hàng đợi ghi 6 mô hình in-review và 17 pilot | Đồng bộ thành 12 in-review và 24 pilot | Đã sửa |
+| Trang daylight-duration chưa được liên kết vào Registry | Gắn đường dẫn với bản ghi `ngay-dem-dai-ngan-theo-mua`, giữ trạng thái khoa học `not-reviewed` và triển khai `sciaverse-pilot-in-progress` | Đã sửa |
 
 Các nội dung chưa được giải quyết trong đợt này:
 
@@ -201,4 +202,4 @@ Các nội dung chưa được giải quyết trong đợt này:
 - Chưa bổ sung cơ chế diễn tiến tự động cho các mô hình quá trình, chưa triển khai hai mức kiến thức cơ bản và nâng cao.
 - Chưa chuyển mô hình nào sang verified-in-build. Điều kiện hiển thị mới sẽ khiến danh mục mô phỏng và trang lĩnh vực không công bố các pilot chưa qua kiểm thử kỹ thuật.
 
-Các thay đổi trên không sửa Registry, không thay đổi trạng thái nghiệm thu khoa học và không thay đổi mã nguồn của 24 mô hình.
+Các thay đổi trên có cập nhật Registry để liên kết trang daylight-duration với bản ghi đã tồn tại. Không thay đổi trạng thái nghiệm thu khoa học; không thay đổi mã nguồn của 24 mô hình thuộc hàng đợi migration.
