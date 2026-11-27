@@ -12,14 +12,14 @@ Phạm vi: mã nguồn hiện có trong SCIAVERSE; không đọc hoặc chỉnh 
 | Hạng mục | Kết quả |
 |---|---:|
 | Bản ghi Registry | 44 |
-| Bản ghi có implementationPath | 24 |
+| Bản ghi có implementationPath | 25 |
 | scientificStatus = validated | 12 |
 | scientificStatus = in-review | 12 |
 | scientificStatus = not-reviewed | 20 |
-| implementationStatus = sciaverse-pilot-in-progress | 24 |
+| implementationStatus = sciaverse-pilot-in-progress | 25 |
 | implementationStatus = verified-in-build | 0 |
 | Trang mô hình có trong simulations/ | 25 |
-| Trang có đường dẫn nhưng chưa có bản ghi Registry | 1 |
+| Trang có đường dẫn nhưng chưa có bản ghi Registry | 0 |
 | Kiểm thử runtime trên trình duyệt được xác nhận | 0/24 |
 
 Mười hai mô hình đã nghiệm thu khoa học ngày 26/11/2026 được giữ nguyên trạng thái validated. Không có căn cứ để chuyển bất kỳ mô hình nào sang verified-in-build. Việc rà soát mã nguồn không thay thế quyết định nghiệm thu khoa học.
@@ -117,12 +117,13 @@ Kết luận: 24 mô hình vẫn là pilot về mặt triển khai. Không có m
 | sat-lo-dat | Sạt lở đất | Tính hệ số an toàn theo mô hình mái dốc vô hạn từ thông số cơ học và áp lực nước lỗ rỗng | Kiểm tra miền áp dụng, đơn vị ứng suất, giả định mặt trượt và trường hợp ứng suất pháp hữu hiệu không dương; giữ validated |
 | xam-nhap-man | Xâm nhập mặn | Chọn cửa sông hoặc tầng chứa nước và các mức điều kiện định tính | Sơ đồ thể hiện xu hướng, không tính ranh mặn thực; không diễn giải lựa chọn low/medium/high thành số đo; giữ validated |
 | nuoc-bien-dang | Nước biển dâng | Điều chỉnh mực nước trong mặt cắt địa hình giả định | Không có DEM, datum, thời điểm kịch bản hoặc mô hình kết nối thủy văn; giữ validated |
+| ngay-dem-dai-ngan-theo-mua | Hiện tượng ngày đêm dài ngắn theo mùa | Trang tính thời lượng chiếu sáng theo vĩ độ và xích vĩ Mặt Trời; giới hạn ở đường chân trời hình học | Chưa thẩm định khoa học, chưa kiểm thử runtime; không công bố |
 
-## 4. Trang triển khai chưa có bản ghi Registry
+## 4. Trang triển khai được liên kết vào Registry nhưng chưa thẩm định khoa học
 
 Trang simulations/astronomy/daylight-duration/index.html có tệp main.js và stylesheet riêng. Trang tính thời lượng ngày/đêm từ vĩ độ và xích vĩ Mặt Trời; mã có khai báo giới hạn mô hình theo đường chân trời hình học, chưa hiệu chỉnh khúc xạ khí quyển và bán kính biểu kiến Mặt Trời.
 
-Trang này chưa có Model ID, trạng thái khoa học hoặc trạng thái triển khai trong Registry. Không tự thêm bản ghi hoặc gán trạng thái validated khi chưa có quyết định tiếp nhận.
+Trang đã được liên kết với Model ID `ngay-dem-dai-ngan-theo-mua`. Trạng thái khoa học vẫn là `not-reviewed`; trạng thái triển khai là `sciaverse-pilot-in-progress`. Không đưa trang vào danh mục công bố và không tự chuyển sang `validated` hoặc `verified-in-build`.
 
 ## 5. Bảng phân loại lỗi P0–P4
 
@@ -131,7 +132,7 @@ Trang này chưa có Model ID, trạng thái khoa học hoặc trạng thái tri
 | P0 | Chưa xác nhận có sự cố khiến toàn hệ thống không truy cập được | Chưa có lỗi P0 được chứng minh | Không gán P0 khi chưa có kiểm thử runtime |
 | P1 | Bộ lọc cũ ở space.js và field.js chỉ kiểm tra validated và implementationPath, chưa kiểm tra verified-in-build | Danh mục mô hình trong không gian và trang lĩnh vực | Đã sửa: bắt buộc đồng thời validated và verified-in-build |
 | P2 | index.html từng tham chiếu earth-rotation.js đã bị xóa sau khi chuyển mô hình sang trang riêng | Dashboard | Đã sửa: bỏ script và canvas cũ; khôi phục sơ đồ quỹ đạo SVG tĩnh bằng các lớp CSS sẵn có |
-| P2 | Có 25 trang mô hình nhưng chỉ 24 bản ghi có implementationPath | Registry và simulations/astronomy/daylight-duration/ | Xác định trang daylight-duration là mô hình tiếp nhận, trang thử nghiệm hay tài sản cần lưu ngoài danh mục |
+| P2 | Trang simulations/astronomy/daylight-duration/index.html từng chưa có liên kết trong Registry | Registry và simulations/astronomy/daylight-duration/ | Đã sửa: liên kết với bản ghi ngay-dem-dai-ngan-theo-mua; giữ not-reviewed và sciaverse-pilot-in-progress |
 | P2 | Ba không gian virtual-laboratories, scientific-data và learning-library đang bị làm rỗng nội dung trong space.js | Các trang không gian chức năng | Ghi nhận trạng thái chưa triển khai; không trình bày như chức năng đã hoàn thiện |
 | P2 | Tài liệu EDUVERSE-MIGRATION-QUEUE.md từng ghi 6 mô hình in-review và 17 pilot, không khớp Registry | Hồ sơ kiểm kê | Đã sửa: 12 mô hình in-review và 24 pilot độc lập |
 | P2 | 14/24 stylesheet chưa tìm thấy khai báo focus-visible rõ ràng; 16/24 chưa tìm thấy prefers-reduced-motion trong stylesheet đang áp dụng | Các trang mô hình | Kiểm tra bàn phím và reduced motion trên trình duyệt; bổ sung quy tắc nếu xác nhận thiếu |
@@ -151,7 +152,7 @@ Giữ nguyên trạng thái khoa học validated của 12 mô hình đã đượ
 
 - Điều kiện hiển thị mô hình phải kiểm tra cả trạng thái khoa học và trạng thái kỹ thuật.
 - Tham chiếu earth-rotation.js phải được xử lý.
-- Registry cần quyết định đối với daylight-duration.
+- Mô hình daylight-duration đã được liên kết với bản ghi Registry hiện có; vẫn chờ rà soát khoa học và kiểm thử kỹ thuật.
 - Hồ sơ migration queue cần thống nhất số liệu.
 - Cần kiểm thử bàn phím, reduced motion, WebGL, tài nguyên ngoài và responsive.
 
@@ -194,7 +195,7 @@ Các vấn đề sau đã được xử lý trên nhánh main:
 
 Các nội dung chưa được giải quyết trong đợt này:
 
-- Trang daylight-duration chưa có bản ghi Registry. Chưa tự thêm bản ghi hoặc gán trạng thái khoa học.
+- Trang daylight-duration đã được liên kết vào Registry với trạng thái not-reviewed và sciaverse-pilot-in-progress; không được công bố trước khi hoàn tất thẩm định và kiểm thử.
 - Ba không gian phòng thí nghiệm ảo, dữ liệu khoa học và thư viện học liệu chưa có chức năng nội dung. README đã được làm rõ đây là các khu vực mới có định nghĩa nền và tuyến trang. Trang không gian không còn hiển thị tiêu đề danh sách mô hình sai ngữ cảnh cho ba khu vực này; chưa coi chúng là hoàn thiện.
 - Chưa có kiểm thử runtime, kiểm tra WebGL trên trình duyệt hoặc xác minh responsive trên thiết bị.
 - Chưa bổ sung cơ chế diễn tiến tự động cho các mô hình quá trình, chưa triển khai hai mức kiến thức cơ bản và nâng cao.
