@@ -21,30 +21,30 @@ Theo xác nhận của chủ dự án ngày 26/11/2026, 12 mô hình có trạng
 
 | Mô hình | Mã nguồn EDUVERSE | Phiếu thẩm định | Khoa học | Triển khai SCIAVERSE |
 |---|---|---|---|---|
-| Xác định tọa độ địa lí | `js/sims/geo-01-coordinates/main.js` | [Phiếu](geographic-coordinates.md) · [Pilot](../../simulations/geography/coordinates/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | [Phiếu](solar-system.md) · [Pilot](../../simulations/astronomy/solar-system/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Cấu tạo bên trong Trái Đất | `js/sims/interior-earth.js` | [Phiếu](interior-earth.md) · [Pilot](../../simulations/earth/interior/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Động đất | `js/sims/quake.js` | [Phiếu](earthquake.md) · [Pilot](../../simulations/geophysics/earthquake/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Sóng thần và tốc độ truyền | `js/sims/tsunami.js` | [Phiếu](tsunami.md) · [Pilot](../../simulations/oceanography/tsunami/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Trái Đất tự quay | `js/sims/earth.js` | [Phiếu](earth-rotation.md) · [Pilot](../../simulations/earth/rotation/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Núi lửa | `js/sims/volcano.js` | [Phiếu](volcano.md) · [Pilot](../../simulations/geophysics/volcano/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | [Phiếu](tropical-cyclone.md) · [Pilot](../../simulations/meteorology/tropical-cyclone/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | [Phiếu](flash-flood.md) · [Pilot](../../simulations/hydrology/flash-flood/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | [Phiếu](landslide.md) · [Pilot](../../simulations/geotechnical/landslide/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | [Phiếu](saltwater-intrusion.md) · [Pilot](../../simulations/hydrology/saltwater-intrusion/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | [Phiếu](sea-level-rise.md) · [Pilot](../../simulations/coastal/sea-level-rise/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
-| Chuyển đổi quả Địa Cầu thành bản đồ | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](map-projection.md) · [Pilot](../../simulations/cartography/globe-projection/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| La bàn và phương hướng | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](compass-bearing.md) · [Pilot](../../simulations/cartography/compass/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Thay đổi tỉ lệ bản đồ | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](map-scale.md) · [Pilot](../../simulations/cartography/map-scale/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Đo khoảng cách thực tế | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](map-distance.md) · [Pilot](../../simulations/cartography/map-distance/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Tìm đường đi trên bản đồ | `js/sims/geo-catalog.js` | [Phiếu](route-finding.md) · [Pilot](../../simulations/cartography/route-finding/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Chuyển động các mảng kiến tạo | `js/sims/geo-processes.js` | [Phiếu](plate-tectonics.md) · [Pilot](../../simulations/tectonics/plate-motion/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Phong hóa, xâm thực và bồi tụ | `js/sims/geo-processes.js` | [Phiếu](weathering-erosion-deposition.md) · [Pilot](../../simulations/geomorphology/weathering-erosion-deposition/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Sóng địa chấn | `js/sims/geo-catalog.js` | [Phiếu](seismic-waves.md) · [Pilot](../../simulations/geophysics/seismic-waves/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Địa hình 3D và đường đồng mức | `js/sims/geo-catalog.js` | [Phiếu](contour-terrain.md) · [Pilot](../../simulations/cartography/contour-terrain/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Chuyển lược đồ thành lát cắt địa hình | `js/sims/geo-catalog.js` | [Phiếu](terrain-profile.md) · [Pilot](../../simulations/cartography/terrain-profile/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Trái Đất chuyển động quanh Mặt Trời | `js/sims/geo-catalog.js` | [Phiếu](earth-revolution.md) · [Pilot](../../simulations/astronomy/earth-revolution/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
-| Vòng tuần hoàn nước | `js/sims/geo-processes.js` | [Phiếu](water-cycle.md) · [Pilot](../../simulations/hydrology/water-cycle/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Xác định tọa độ địa lí | `js/sims/geo-01-coordinates/main.js` | [Phiếu](geographic-coordinates.md) / [Pilot](../../simulations/geography/coordinates/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Khám phá các hành tinh | `js/sims/solar-system-explorer.js` | [Phiếu](solar-system.md) / [Pilot](../../simulations/astronomy/solar-system/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Cấu tạo bên trong Trái Đất | `js/sims/interior-earth.js` | [Phiếu](interior-earth.md) / [Pilot](../../simulations/earth/interior/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Động đất | `js/sims/quake.js` | [Phiếu](earthquake.md) / [Pilot](../../simulations/geophysics/earthquake/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Sóng thần và tốc độ truyền | `js/sims/tsunami.js` | [Phiếu](tsunami.md) / [Pilot](../../simulations/oceanography/tsunami/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Trái Đất tự quay | `js/sims/earth.js` | [Phiếu](earth-rotation.md) / [Pilot](../../simulations/earth/rotation/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Núi lửa | `js/sims/volcano.js` | [Phiếu](volcano.md) / [Pilot](../../simulations/geophysics/volcano/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Bão nhiệt đới | `simulations/natural-hazards/bao-nhiet-doi/main.js` | [Phiếu](tropical-cyclone.md) / [Pilot](../../simulations/meteorology/tropical-cyclone/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Lũ quét | `simulations/natural-hazards/lu-quet/main.js` | [Phiếu](flash-flood.md) / [Pilot](../../simulations/hydrology/flash-flood/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Sạt lở đất | `simulations/natural-hazards/sat-lo-dat/main.js` | [Phiếu](landslide.md) / [Pilot](../../simulations/geotechnical/landslide/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Xâm nhập mặn | `simulations/natural-hazards/xam-nhap-man/main.js` | [Phiếu](saltwater-intrusion.md) / [Pilot](../../simulations/hydrology/saltwater-intrusion/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Nước biển dâng | `simulations/natural-hazards/nuoc-bien-dang/main.js` | [Phiếu](sea-level-rise.md) / [Pilot](../../simulations/coastal/sea-level-rise/index.html) | `validated` (26/11/2026) | `sciaverse-pilot-in-progress` |
+| Chuyển đổi quả Địa Cầu thành bản đồ | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](map-projection.md) / [Pilot](../../simulations/cartography/globe-projection/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| La bàn và phương hướng | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](compass-bearing.md) / [Pilot](../../simulations/cartography/compass/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Thay đổi tỉ lệ bản đồ | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](map-scale.md) / [Pilot](../../simulations/cartography/map-scale/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Đo khoảng cách thực tế | `js/sims/geo-mini-projects-02-05/main.js` | [Phiếu](map-distance.md) / [Pilot](../../simulations/cartography/map-distance/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Tìm đường đi trên bản đồ | `js/sims/geo-catalog.js` | [Phiếu](route-finding.md) / [Pilot](../../simulations/cartography/route-finding/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Chuyển động các mảng kiến tạo | `js/sims/geo-processes.js` | [Phiếu](plate-tectonics.md) / [Pilot](../../simulations/tectonics/plate-motion/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Phong hóa, xâm thực và bồi tụ | `js/sims/geo-processes.js` | [Phiếu](weathering-erosion-deposition.md) / [Pilot](../../simulations/geomorphology/weathering-erosion-deposition/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Sóng địa chấn | `js/sims/geo-catalog.js` | [Phiếu](seismic-waves.md) / [Pilot](../../simulations/geophysics/seismic-waves/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Địa hình 3D và đường đồng mức | `js/sims/geo-catalog.js` | [Phiếu](contour-terrain.md) / [Pilot](../../simulations/cartography/contour-terrain/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Chuyển lược đồ thành lát cắt địa hình | `js/sims/geo-catalog.js` | [Phiếu](terrain-profile.md) / [Pilot](../../simulations/cartography/terrain-profile/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Trái Đất chuyển động quanh Mặt Trời | `js/sims/geo-catalog.js` | [Phiếu](earth-revolution.md) / [Pilot](../../simulations/astronomy/earth-revolution/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
+| Vòng tuần hoàn nước | `js/sims/geo-processes.js` | [Phiếu](water-cycle.md) / [Pilot](../../simulations/hydrology/water-cycle/index.html) | `in-review` | `sciaverse-pilot-in-progress` |
 
 ## Quy tắc hoàn tất một mô hình
 
