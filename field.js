@@ -22,6 +22,7 @@
     const accepted = models.filter(model =>
       model.fieldId === fieldId &&
       model.scientificStatus === 'validated' &&
+      model.implementationStatus === 'verified-in-build' &&
       Boolean(model.implementationPath)
     );
     accepted.forEach(model => {
