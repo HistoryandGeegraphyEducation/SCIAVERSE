@@ -5,8 +5,8 @@ Danh sách được lập từ `js/registry.js` và đường dẫn triển khai
 ## Trạng thái vòng thẩm định
 
 - Hồ sơ thẩm định đã lập cho các pilot độc lập: **24/24 mô hình**.
-- Nghiệm thu khoa học: **12 mô hình** đã được chủ dự án xác nhận ngày 26/11/2026 (`validated`); **6 mô hình** gồm 5 mô hình bản đồ và mô hình chuyển động mảng kiến tạo vẫn ở trạng thái `in-review`.
-- Đã dựng và lưu pilot SCIAVERSE độc lập trên `main`: **17/17 mô hình**.
+- Nghiệm thu khoa học: **12 mô hình** đã được chủ dự án xác nhận ngày 26/11/2026 (`validated`); **12 mô hình** đang ở trạng thái `in-review`: năm mô hình bản đồ, chuyển động mảng kiến tạo, phong hóa, xâm thực và bồi tụ, sóng địa chấn, địa hình 3D và đường đồng mức, lát cắt địa hình, chuyển động quanh Mặt Trời và vòng tuần hoàn nước.
+- Đã dựng và lưu pilot SCIAVERSE độc lập trên `main`: **24/24 mô hình**.
 - Kiểm thử runtime trên trình duyệt/thiết bị thật: **chưa hoàn tất 0/24**.
 - Trạng thái triển khai: **24 `sciaverse-pilot-in-progress`**; chưa mô hình nào được đánh dấu `verified-in-build`.
 - Nghiệm thu khoa học không thay thế nghiệm thu kỹ thuật. Chỉ chuyển sang `verified-in-build` sau khi hoàn tất kiểm thử chức năng, WebGL, thiết bị di động, bàn phím, reduced motion và vòng đời tài nguyên.
