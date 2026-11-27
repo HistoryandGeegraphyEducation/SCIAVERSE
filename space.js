@@ -27,6 +27,9 @@
     purpose.textContent = space.purpose;
     document.title = 'SCIAVERSE — ' + space.name;
 
+    const contentSection = content.closest('.standalone-section');
+    if (spaceId !== 'simulations') contentSection.hidden = true;
+
     if (spaceId === 'simulations') {
       const accepted = models.filter(model =>
         model.scientificStatus === 'validated' &&
@@ -42,8 +45,6 @@
         item.append(heading);
         content.appendChild(item);
       });
-    } else if (spaceId === 'virtual-laboratories' || spaceId === 'scientific-data' || spaceId === 'learning-library') {
-      content.replaceChildren();
     }
   }).catch(error => {
     title.textContent = 'Không thể mở không gian';
