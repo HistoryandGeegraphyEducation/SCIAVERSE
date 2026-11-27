@@ -178,3 +178,26 @@ Do đó:
 Đã hoàn thành rà soát mã nguồn 24 mô hình có đường dẫn trong Registry, kiểm tra CSS responsive và khả năng tiếp cận ở mức tĩnh, đối chiếu thêm trang triển khai chưa đăng ký, và phân loại các vấn đề P0–P4.
 
 Chưa đủ điều kiện đóng Giai đoạn 0. Cần hoàn tất bước 5: lập bản đồ file và thành phần phụ thuộc, xác định phạm vi sửa cho từng nhóm nhiệm vụ. Các vấn đề P1/P2 cần được đưa vào kế hoạch xử lý trước khi bắt đầu triển khai diện rộng.
+
+## 9. Theo dõi chỉnh sửa sau bước 4
+
+Ngày cập nhật: 27/11/2026
+
+Các vấn đề sau đã được xử lý trên nhánh main:
+
+| Phát hiện ở bước 4 | Điều chỉnh | Trạng thái |
+|---|---|---|
+| Bộ lọc field.js và space.js chỉ kiểm tra nghiệm thu khoa học | Bắt buộc đồng thời scientificStatus = validated và implementationStatus = verified-in-build | Đã sửa |
+| index.html gọi earth-rotation.js đã bị xóa sau khi chuyển mô hình sang trang riêng | Bỏ script legacy và vùng canvas không còn mã vận hành; dùng lại sơ đồ quỹ đạo SVG tĩnh đã có hệ CSS | Đã sửa ở mức mã nguồn |
+| README mô tả hàng đợi là 12 pilot | Đồng bộ thành 24 pilot độc lập | Đã sửa |
+| Hàng đợi ghi 6 mô hình in-review và 17 pilot | Đồng bộ thành 12 in-review và 24 pilot | Đã sửa |
+
+Các nội dung chưa được giải quyết trong đợt này:
+
+- Trang daylight-duration chưa có bản ghi Registry. Chưa tự thêm bản ghi hoặc gán trạng thái khoa học.
+- Ba không gian phòng thí nghiệm ảo, dữ liệu khoa học và thư viện học liệu chưa có chức năng nội dung. Chúng vẫn là các khu vực nền, chưa được coi là hoàn thiện.
+- Chưa có kiểm thử runtime, kiểm tra WebGL trên trình duyệt hoặc xác minh responsive trên thiết bị.
+- Chưa bổ sung cơ chế diễn tiến tự động cho các mô hình quá trình, chưa triển khai hai mức kiến thức cơ bản và nâng cao.
+- Chưa chuyển mô hình nào sang verified-in-build. Điều kiện hiển thị mới sẽ khiến danh mục mô phỏng và trang lĩnh vực không công bố các pilot chưa qua kiểm thử kỹ thuật.
+
+Các thay đổi trên không sửa Registry, không thay đổi trạng thái nghiệm thu khoa học và không thay đổi mã nguồn của 24 mô hình.
