@@ -10,7 +10,7 @@ Một môi trường khoa học số đa lĩnh vực, nhằm kết nối các l�
 - `docs/SCIAVERSE-ARCHITECTURE.md`: kiến trúc không gian khoa học.
 - `docs/SCIENTIFIC-VALIDATION-STANDARD.md`: tiêu chuẩn thẩm định khoa học.
 - `docs/audits/`: hồ sơ thẩm định từng mô hình.
-- `docs/audits/EDUVERSE-MIGRATION-QUEUE.md`: danh sách 12 pilot và các điểm cần kiểm tra trước nghiệm thu.
+- `docs/audits/EDUVERSE-MIGRATION-QUEUE.md`: danh sách 24 pilot độc lập, trạng thái thẩm định và các điểm cần kiểm tra trước nghiệm thu.
 
 Các mô hình chưa có trạng thái `validated` không được xem là nội dung đã nghiệm thu. Hiện có 12 mô hình độc lập đã được xác nhận nghiệm thu khoa học ngày 26/11/2026 và được lưu trong `main`. Trạng thái triển khai vẫn là pilot; chưa đánh dấu `verified-in-build` vì còn thiếu kiểm thử runtime trên trình duyệt và thiết bị thật. Vì vậy, các mô hình chưa được đưa vào danh mục công bố chính thức.
 
