@@ -29,7 +29,9 @@
 
     if (spaceId === 'simulations') {
       const accepted = models.filter(model =>
-        model.scientificStatus === 'validated' && model.implementationPath
+        model.scientificStatus === 'validated' &&
+        model.implementationStatus === 'verified-in-build' &&
+        model.implementationPath
       );
       accepted.forEach(model => {
         const item = document.createElement('a');
@@ -37,7 +39,7 @@
         item.href = model.implementationPath;
         const heading = document.createElement('h3');
         heading.textContent = model.title;
-      item.append(heading);
+        item.append(heading);
         content.appendChild(item);
       });
     } else if (spaceId === 'virtual-laboratories' || spaceId === 'scientific-data' || spaceId === 'learning-library') {
