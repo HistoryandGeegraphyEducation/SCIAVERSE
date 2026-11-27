@@ -195,7 +195,7 @@ Các vấn đề sau đã được xử lý trên nhánh main:
 Các nội dung chưa được giải quyết trong đợt này:
 
 - Trang daylight-duration chưa có bản ghi Registry. Chưa tự thêm bản ghi hoặc gán trạng thái khoa học.
-- Ba không gian phòng thí nghiệm ảo, dữ liệu khoa học và thư viện học liệu chưa có chức năng nội dung. Chúng vẫn là các khu vực nền, chưa được coi là hoàn thiện.
+- Ba không gian phòng thí nghiệm ảo, dữ liệu khoa học và thư viện học liệu chưa có chức năng nội dung. README đã được làm rõ đây là các khu vực mới có định nghĩa nền và tuyến trang. Trang không gian không còn hiển thị tiêu đề danh sách mô hình sai ngữ cảnh cho ba khu vực này; chưa coi chúng là hoàn thiện.
 - Chưa có kiểm thử runtime, kiểm tra WebGL trên trình duyệt hoặc xác minh responsive trên thiết bị.
 - Chưa bổ sung cơ chế diễn tiến tự động cho các mô hình quá trình, chưa triển khai hai mức kiến thức cơ bản và nâng cao.
 - Chưa chuyển mô hình nào sang verified-in-build. Điều kiện hiển thị mới sẽ khiến danh mục mô phỏng và trang lĩnh vực không công bố các pilot chưa qua kiểm thử kỹ thuật.
