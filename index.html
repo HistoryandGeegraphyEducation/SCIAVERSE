@@ -91,12 +91,19 @@
           <h1 id="pageTitle" data-i18n="pageTitle">Không gian khoa học số<br>đa lĩnh vực.</h1>
           <a class="primary-button" href="#fields"><span data-i18n="startExploring">Bắt đầu khám phá</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
-        <div class="welcome-visual earth-rotation-visual">
-          <div class="earth-model-stage" id="earthRotationStage" aria-label="Quả Địa Cầu, Mặt Trời và Mặt Trăng theo thời gian thực">
-            <canvas id="earthRotationCanvas" aria-label="Mô hình không gian 3D"></canvas>
-            <div class="earth-model-loading" id="earthModelLoading" role="status">Đang tải…</div>
-          </div>
-          <div class="world-clock-grid" id="worldClockGrid" aria-label="Đồng hồ thời gian theo quốc gia"></div>
+        <div class="welcome-visual">
+          <svg class="orbit-visual" viewBox="0 0 520 280" role="img" aria-label="Sơ đồ quỹ đạo minh họa" data-i18n-aria="orbitDiagram">
+            <g class="orbit-lines" fill="none">
+              <ellipse cx="260" cy="140" rx="205" ry="70" transform="rotate(-24 260 140)"/>
+              <ellipse cx="260" cy="140" rx="158" ry="112" transform="rotate(32 260 140)"/>
+              <ellipse cx="260" cy="140" rx="118" ry="54" transform="rotate(78 260 140)"/>
+            </g>
+            <circle class="orbit-core" cx="260" cy="140" r="17"/>
+            <circle class="orbit-node node-a" cx="75" cy="72" r="7"/>
+            <circle class="orbit-node node-b" cx="398" cy="57" r="6"/>
+            <circle class="orbit-node node-c" cx="310" cy="249" r="5"/>
+            <path class="orbit-cross" d="M260 112v56M232 140h56"/>
+          </svg>
         </div>
       </section>
 
@@ -226,7 +233,5 @@
   </nav>
 
   <script src="app.js?v=20261126-earthmodel2" defer></script>
-  <script src="three-loader.js?v=20261126-fallback1" defer></script>
-  <script src="earth-rotation.js?v=20261126-mobile2" defer></script>
 </body>
 </html>
