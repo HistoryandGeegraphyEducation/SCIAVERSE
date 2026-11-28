@@ -99,6 +99,7 @@
         basic.classList.remove('is-selected');advanced.classList.add('is-selected');
         basic.setAttribute('aria-pressed','false');advanced.setAttribute('aria-pressed','true');
         panel.hidden=false;if(loaded)return;
+        panel.dataset.loaded='loading';
         panel.append(make('p','model-knowledge-status','Đang tải nội dung khoa học'));
         try{
           const response=await fetch('../../../'+auditPath);
@@ -112,7 +113,11 @@
             });
           }else panel.append(make('p','',model.notes||'Chưa có nội dung nâng cao cho mô hình này.'));
           loaded=true;
-        }catch(error){panel.replaceChildren(make('p','model-knowledge-status',error.message));}
+          panel.dataset.loaded='true';
+        }catch(error){
+          panel.dataset.loaded='error';
+          panel.replaceChildren(make('p','model-knowledge-status',error.message));
+        }
       }
       function showBasic(){
         advanced.classList.remove('is-selected');basic.classList.add('is-selected');

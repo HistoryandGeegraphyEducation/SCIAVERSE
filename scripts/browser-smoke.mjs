@@ -52,6 +52,11 @@ try{
       const metrics=await inspect(modelPage,'/'+model.implementationPath,width,844);
       assert.ok(metrics.knowledge,'missing knowledge-level switch: '+model.id);
     }
+    await modelPage.locator('.model-knowledge-switch button').nth(1).click();
+    await modelPage.waitForFunction(()=>document.querySelector('.model-knowledge-panel')?.dataset.loaded==='true',{timeout:10000});
+    const advancedText=await modelPage.locator('.model-knowledge-panel').textContent();
+    assert.ok(advancedText.trim().length>20,'empty advanced knowledge content: '+model.id);
+    await modelPage.locator('.model-knowledge-switch button').nth(0).click();
   }
   await modelPage.close();
 
