@@ -149,13 +149,14 @@
         const feed = await response.json();
         if (token !== requestToken) return;
         const minMagnitude = Number(magnitude.value);
-        const events = (feed.features || []).filter(feature => {
+        const filteredEvents = (feed.features || []).filter(feature => {
           const value = feature.properties && feature.properties.mag;
           return value !== null && value !== undefined && Number(value) >= minMagnitude;
-        }).slice(0, 50);
+        });
+        const events = filteredEvents.slice(0, 50);
         const generated = feed.metadata && Number(feed.metadata.generated);
         const updated = generated ? dateFormat.format(new Date(generated)) : 'Không có thời điểm cập nhật';
-        status.textContent = 'Cập nhật: ' + updated + ' | ' + events.length + ' sự kiện phù hợp';
+        status.textContent = 'Cập nhật: ' + updated + ' | Hiển thị ' + events.length + '/' + filteredEvents.length + ' sự kiện phù hợp';
         status.dataset.state = 'ready';
         const countStat=node('div','space-data-stat');
         countStat.append(node('strong','',events.length),node('span','','Sự kiện hiển thị'));

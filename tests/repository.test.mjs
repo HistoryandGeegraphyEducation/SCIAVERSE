@@ -23,6 +23,7 @@ test('Every pilot page has the shared knowledge-level module',()=>{
   assert.equal(Object.keys(index).length,registry.length);
   for(const model of registry){
     assert.ok(index[model.id],'missing knowledge index: '+model.id);
+    assert.ok(exists(index[model.id]),'missing model audit: '+index[model.id]);
     const html=read(model.implementationPath);
     assert.match(html,/<script src="\.\.\/\.\.\/model-levels\.js\?v=20261128-levels1" defer><\/script>/);
 
@@ -35,6 +36,12 @@ test('Every pilot page has the shared knowledge-level module',()=>{
 test('All four spaces have registered content and required metadata',()=>{
   const spaces=json('data/spaces.json');
   assert.equal(spaces.length,4);
+  for(const item of spaces){
+    assert.ok(item.implementationStatus,item.id+' missing implementationStatus');
+  }
+  for(const id of ['virtual-laboratories','scientific-data','learning-library']){
+    assert.equal(spaces.find(item=>item.id===id).implementationStatus,'functional-pilot');
+  }
   const labs=json('data/virtual-labs.json');
   assert.ok(labs.length>0);
   for(const lab of labs){
