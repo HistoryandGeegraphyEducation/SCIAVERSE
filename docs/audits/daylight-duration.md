@@ -49,3 +49,11 @@ Trong đó \(H_0\) tính bằng radian và \(D\) tính bằng giờ. Khi biểu 
 - Trang đã được mở trong kiểm thử Chromium ở bốn kích thước 320, 360, 390 và 430 CSS px; không phát sinh lỗi JavaScript hoặc tràn chiều ngang trong lượt kiểm thử.
 - Chưa kiểm tra riêng khả năng khởi tạo WebGL và các phép tính trên thiết bị vật lí.
 - Trạng thái khoa học vẫn là `not-reviewed`.
+
+
+## 8. Kiểm thử runtime và responsive
+
+- Quy trình: GitHub Actions, workflow `SCIAVERSE validation`, run `46107069388`, kết quả `success`, commit `0c99e085fe7d89b3cf054d52a614b89e7af296cd`.
+- Trình duyệt: Chromium headless với Playwright. Kiểm tra ở các chiều rộng 320, 360, 390 và 430 CSS px; kiểm tra lỗi JavaScript, tràn ngang, bảng kiến thức và chuyển nội dung nâng cao.
+- Kiểm thử tương tác riêng: Kiểm tra ngày cực 24 giờ tại 90°B vào tháng 6 và đêm cực 0 giờ vào tháng 12.
+- Kết quả xác nhận luồng giao diện và thao tác trong Chromium; không thay thế kiểm thử thiết bị vật lý, không xác nhận dữ liệu là quan trắc và không thay thế nghiệm thu khoa học.

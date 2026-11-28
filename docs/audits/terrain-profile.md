@@ -39,7 +39,7 @@ Các trường hợp cần xác nhận:
 - Khoảng cách ngang hiển thị đúng 6,4 km cho A–B và 4,4 km cho C–D theo quy ước mô hình.
 - Thay đổi tuyến không làm thay đổi bề mặt địa hình hoặc đường đồng mức.
 
-Đây là kiểm tra logic mô hình. Chưa có kiểm thử runtime WebGL trong trình duyệt ở lượt triển khai này.
+Đây là kiểm tra logic mô hình. Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại mục 8. Chưa kiểm thử trên thiết bị vật lý.
 
 ## 6. Nguồn tham khảo
 
@@ -52,4 +52,12 @@ Các trường hợp cần xác nhận:
 - Triển khai: `sciaverse-pilot-in-progress`.
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Chưa được xác nhận nghiệm thu khoa học.
-- Chưa kiểm thử runtime trên trình duyệt hoặc thiết bị di động.
+- Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại mục 8. Chưa kiểm thử trên thiết bị vật lý.
+
+
+## 8. Kiểm thử runtime và responsive
+
+- Quy trình: GitHub Actions, workflow `SCIAVERSE validation`, run `46107069388`, kết quả `success`, commit `0c99e085fe7d89b3cf054d52a614b89e7af296cd`.
+- Trình duyệt: Chromium headless với Playwright. Kiểm tra ở các chiều rộng 320, 360, 390 và 430 CSS px; kiểm tra lỗi JavaScript, tràn ngang, bảng kiến thức và chuyển nội dung nâng cao.
+- Kiểm thử tương tác riêng: Kiểm tra đổi tuyến sang C–D và cập nhật phần tóm tắt lát cắt.
+- Kết quả xác nhận luồng giao diện và thao tác trong Chromium; không thay thế kiểm thử thiết bị vật lý, không xác nhận dữ liệu là quan trắc và không thay thế nghiệm thu khoa học.

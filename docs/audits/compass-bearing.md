@@ -45,3 +45,11 @@ Kết quả được chuẩn hóa về khoảng 0° đến dưới 360°.
 - Khoa học: `in-review`.
 - Triển khai: `sciaverse-pilot-in-progress`.
 - Chưa được xác nhận nghiệm thu; chưa kiểm thử runtime trên thiết bị thật.
+
+
+## 8. Kiểm thử runtime và responsive
+
+- Quy trình: GitHub Actions, workflow `SCIAVERSE validation`, run `46107069388`, kết quả `success`, commit `0c99e085fe7d89b3cf054d52a614b89e7af296cd`.
+- Trình duyệt: Chromium headless với Playwright. Kiểm tra ở các chiều rộng 320, 360, 390 và 430 CSS px; kiểm tra lỗi JavaScript, tràn ngang, bảng kiến thức và chuyển nội dung nâng cao.
+- Kiểm thử tương tác riêng: Kiểm tra phương vị thực với độ từ thiên +0,5° và −0,5°; giữ phần thập phân.
+- Kết quả xác nhận luồng giao diện và thao tác trong Chromium; không thay thế kiểm thử thiết bị vật lý, không xác nhận dữ liệu là quan trắc và không thay thế nghiệm thu khoa học.

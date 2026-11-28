@@ -59,3 +59,11 @@ Các ca này kiểm tra logic Dijkstra; không phải số liệu thực địa.
 - Triển khai: sciaverse-pilot-in-progress.
 - Đã kiểm tra: cú pháp JavaScript, phép tính WGS 84 ở các cạnh mẫu, Dijkstra và các trường hợp đường thay thế/không có đường.
 - Chưa kiểm tra: runtime trình duyệt, thao tác cảm ứng trên thiết bị thật, khả năng truy cập bàn phím và hiệu năng ở các thiết bị cấu hình thấp.
+
+
+## 8. Kiểm thử runtime và responsive
+
+- Quy trình: GitHub Actions, workflow `SCIAVERSE validation`, run `46107069388`, kết quả `success`, commit `0c99e085fe7d89b3cf054d52a614b89e7af296cd`.
+- Trình duyệt: Chromium headless với Playwright. Kiểm tra ở các chiều rộng 320, 360, 390 và 430 CSS px; kiểm tra lỗi JavaScript, tràn ngang, bảng kiến thức và chuyển nội dung nâng cao.
+- Kiểm thử tương tác riêng: Kiểm tra tính lại đường đi ngắn nhất khi đóng cạnh FG trong đồ thị.
+- Kết quả xác nhận luồng giao diện và thao tác trong Chromium; không thay thế kiểm thử thiết bị vật lý, không xác nhận dữ liệu là quan trắc và không thay thế nghiệm thu khoa học.

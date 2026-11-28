@@ -79,3 +79,11 @@ Các kiểm tra dùng console.assert. Chúng chưa được thực thi trong m�
 - Chưa được xác nhận nghiệm thu khoa học.
 - Chưa kiểm thử runtime WebGL trên trình duyệt/điện thoại.
 - Chưa đủ điều kiện xuất hiện trong danh mục mô hình công bố.
+
+
+## 8. Kiểm thử runtime và responsive
+
+- Quy trình: GitHub Actions, workflow `SCIAVERSE validation`, run `46107069388`, kết quả `success`, commit `0c99e085fe7d89b3cf054d52a614b89e7af296cd`.
+- Trình duyệt: Chromium headless với Playwright. Kiểm tra ở các chiều rộng 320, 360, 390 và 430 CSS px; kiểm tra lỗi JavaScript, tràn ngang, bảng kiến thức và chuyển nội dung nâng cao.
+- Kiểm thử tương tác riêng: Kiểm tra chuyển đổi qua phép chiếu Mercator và phương vị cách đều.
+- Kết quả xác nhận luồng giao diện và thao tác trong Chromium; không thay thế kiểm thử thiết bị vật lý, không xác nhận dữ liệu là quan trắc và không thay thế nghiệm thu khoa học.

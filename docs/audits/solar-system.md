@@ -1,7 +1,9 @@
 # Thẩm định nguồn gốc — Khám phá các hành tinh
 
 - Mã nguồn tham chiếu: `EDUVERSE/js/sims/solar-system-explorer.js`
-- Trạng thái cập nhật: `in-review`
+- Khoa học theo Registry: `validated`.
+- Triển khai theo Registry: `verified-in-build`.
+- Phiếu rà soát kỹ thuật: `in-review`; các giả định giản lược được nêu tại phần cập nhật.
 - Phạm vi: dữ liệu tám hành tinh và Mặt Trời, kích thước, khoảng cách, chu kỳ tự quay/quỹ đạo, độ nghiêng trục, mô hình quỹ đạo, texture và tương tác.
 - Kết luận cập nhật 2026-11-28: bộ dữ liệu tám hành tinh được đối chiếu với NASA/JPL; chuyển động tự quay, độ nghiêng trục và chiều quay được thể hiện trong mô hình bằng trục quay nghiêng, mốc kinh tuyến và tốc độ tính từ chu kỳ tự quay sao. Quỹ đạo vẫn là đường tròn đồng phẳng, pha ban đầu không phải ephemeris, và kích thước/khoảng cách được nén riêng. Mô hình phù hợp để quan sát định tính, chưa dùng để xác định vị trí thiên văn theo thời điểm.
 
@@ -166,3 +168,11 @@ Kiểm tra tĩnh: cú pháp JavaScript đạt; ID HTML không trùng; CSS cân b
 ### Chuẩn hóa chu kỳ quỹ đạo theo JPL
 
 Các chu kỳ trong pilot được lấy từ cột Sidereal Orbital Period của bảng NASA/JPL và đổi từ năm Julian sang ngày bằng 365,25 ngày/năm. Sau khi đối chiếu, đã hiệu chỉnh Jupiter thành khoảng 4.332,820 ngày và Saturn thành khoảng 10.755,699 ngày; các giá trị khác cũng giữ theo cùng một nguồn/quy ước. Không trộn chu kỳ quỹ đạo sao với năm chí tuyến.
+
+
+## 8. Kiểm thử runtime và responsive
+
+- Quy trình: GitHub Actions, workflow `SCIAVERSE validation`, run `46107069388`, kết quả `success`, commit `0c99e085fe7d89b3cf054d52a614b89e7af296cd`.
+- Trình duyệt: Chromium headless với Playwright. Kiểm tra ở các chiều rộng 320, 360, 390 và 430 CSS px; kiểm tra lỗi JavaScript, tràn ngang, bảng kiến thức và chuyển nội dung nâng cao.
+- Kiểm thử tương tác riêng: Kiểm tra mô hình thời gian chạy tiến và chiều tự quay nghịch hành của Sao Kim.
+- Kết quả xác nhận luồng giao diện và thao tác trong Chromium; không thay thế kiểm thử thiết bị vật lý, không xác nhận dữ liệu là quan trắc và không thay thế nghiệm thu khoa học.

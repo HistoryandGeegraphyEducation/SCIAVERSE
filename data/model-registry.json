@@ -24,7 +24,7 @@
     "sourcePath": "js/sims/geo-mini-projects-02-05/main.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Đã dựng mô-đun SCIAVERSE độc lập với 4 phép chiếu có công thức riêng: Plate Carrée, Mercator giới hạn ±85,0511°, Lambert hình trụ đồng diện tích và phương vị cách đều tâm Bắc Cực. Đang thẩm định nguồn, kiểm tra trực quan hóa và kiểm thử runtime; chưa được công bố.",
     "implementationPath": "simulations/cartography/globe-projection/index.html"
   },
@@ -36,7 +36,7 @@
     "sourcePath": "js/sims/geo-mini-projects-02-05/main.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Đã dựng mô-đun độc lập phân biệt Bắc địa lí, Bắc từ, độ từ thiên và phương vị thực. Dùng độ từ thiên giả định để học quy tắc dấu; không đại diện số đo tại địa phương. Đang thẩm định và kiểm thử runtime.",
     "implementationPath": "simulations/cartography/compass/index.html"
   },
@@ -48,7 +48,7 @@
     "sourcePath": "js/sims/geo-mini-projects-02-05/main.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Đã dựng mô-đun độc lập tính khoảng cách thực tế từ tỉ lệ số và chiều dài đo trên bản đồ. Có đơn vị cm, m, km và sơ đồ 3D minh họa; đang thẩm định và kiểm thử runtime.",
     "implementationPath": "simulations/cartography/map-scale/index.html"
   },
@@ -60,7 +60,7 @@
     "sourcePath": "js/sims/geo-mini-projects-02-05/main.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Đã dựng mô-đun độc lập đo tuyến nhiều đoạn trên sơ đồ; tính tổng chiều dài tuyến và khoảng cách thẳng đầu-cuối theo tỉ lệ. Sơ đồ không phải dữ liệu đường giao thông thực; đang thẩm định và kiểm thử runtime.",
     "implementationPath": "simulations/cartography/map-distance/index.html"
   },
@@ -72,7 +72,7 @@
     "sourcePath": "js/sims/geo-catalog.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Pilot độc lập dùng đồ thị mạng lưới mẫu có tọa độ địa lí minh họa. Chiều dài cạnh tính bằng bài toán trắc địa ngược trên ellipsoid WGS 84 (Vincenty); tìm đường ngắn nhất bằng Dijkstra với trọng số không âm. Các nút/cạnh không phải dữ liệu đường giao thông thực; chưa có mạng lưới quan trắc hoặc dữ liệu đường có nguồn.",
     "implementationPath": "simulations/cartography/route-finding/index.html"
   },
@@ -84,7 +84,7 @@
     "sourcePath": "js/sims/solar-system-explorer.js",
     "implementationType": "independent-module",
     "scientificStatus": "validated",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Pilot dùng dữ liệu NASA/JPL về kích thước trung bình, khối lượng, chu kỳ tự quay và quỹ đạo. Quỹ đạo tròn hóa, vị trí đầu không phải ephemeris; kích thước/khoảng cách nén. Chưa kiểm thử WebGL.",
     "implementationPath": "simulations/astronomy/solar-system/index.html",
     "acceptanceRecord": {
@@ -157,8 +157,8 @@
     "sourceProject": "EDUVERSE",
     "sourcePath": "js/sims/geo-catalog.js",
     "implementationType": "independent-module",
-    "scientificStatus": "not-reviewed",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "scientificStatus": "in-review",
+    "implementationStatus": "verified-in-build",
     "notes": "Trang pilot độc lập đã có trong SCIAVERSE; chưa thẩm định khoa học và chưa kiểm thử runtime. Không sử dụng trong bản công bố.",
     "sciaversePath": "simulations/astronomy/daylight-duration/main.js",
     "implementationPath": "simulations/astronomy/daylight-duration/index.html"
@@ -238,7 +238,7 @@
     "sourcePath": "js/sims/geo-catalog.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Pilot 3D tạo đường đồng mức từ bề mặt độ cao tổng hợp; khoảng cao đều 50/100/200 m. Không dùng DEM hoặc datum độ cao thực. Chưa kiểm thử runtime.",
     "sciaversePath": "simulations/cartography/contour-terrain/main.js",
     "implementationPath": "simulations/cartography/contour-terrain/index.html"
@@ -251,7 +251,7 @@
     "sourcePath": "js/sims/geo-catalog.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Pilot 3D đối chiếu bề mặt địa hình, đường đồng mức và lát cắt A–B/C–D từ cùng hàm độ cao tổng hợp. Không dùng DEM thực; hình 3D phóng đại đứng 3 lần. Chưa kiểm thử runtime.",
     "sciaversePath": "simulations/cartography/terrain-profile/main.js",
     "implementationPath": "simulations/cartography/terrain-profile/index.html"

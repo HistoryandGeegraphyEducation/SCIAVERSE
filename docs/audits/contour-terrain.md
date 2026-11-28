@@ -40,7 +40,7 @@ Các trường hợp cần xác nhận:
 - Khoảng cách đường trên sườn dốc lớn hơn về độ dày hình học so với sườn thoải khi khoảng cao đều giữ nguyên.
 - Chế độ xem 3D và camera không làm thay đổi giá trị cao độ.
 
-Đây là kiểm tra logic mô hình. Chưa có kiểm thử runtime WebGL trong trình duyệt ở lượt triển khai này.
+Đây là kiểm tra logic mô hình. Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại mục 8. Chưa kiểm thử trên thiết bị vật lý.
 
 ## 6. Nguồn tham khảo
 
@@ -53,4 +53,12 @@ Các trường hợp cần xác nhận:
 - Triển khai: `sciaverse-pilot-in-progress`.
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Chưa được xác nhận nghiệm thu khoa học.
-- Chưa kiểm thử runtime trên trình duyệt hoặc thiết bị di động.
+- Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại mục 8. Chưa kiểm thử trên thiết bị vật lý.
+
+
+## 8. Kiểm thử runtime và responsive
+
+- Quy trình: GitHub Actions, workflow `SCIAVERSE validation`, run `46107069388`, kết quả `success`, commit `0c99e085fe7d89b3cf054d52a614b89e7af296cd`.
+- Trình duyệt: Chromium headless với Playwright. Kiểm tra ở các chiều rộng 320, 360, 390 và 430 CSS px; kiểm tra lỗi JavaScript, tràn ngang, bảng kiến thức và chuyển nội dung nâng cao.
+- Kiểm thử tương tác riêng: Kiểm tra thay đổi khoảng cao đều 50 m và khả năng dựng bề mặt/đường đồng mức.
+- Kết quả xác nhận luồng giao diện và thao tác trong Chromium; không thay thế kiểm thử thiết bị vật lý, không xác nhận dữ liệu là quan trắc và không thay thế nghiệm thu khoa học.
