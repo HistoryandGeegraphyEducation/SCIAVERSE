@@ -216,7 +216,7 @@ Kết quả:
 - 6/6 kiểm tra tĩnh đạt: Registry, đường dẫn, metadata, thư viện 3D nội bộ, điều khiển mô hình và quy tắc ký tự giao diện.
 - 25 trang mô hình được mở ở 320, 360, 390 và 430 CSS px; nội dung Nâng cao được tải cho cả 25 trang.
 - Sáu trang chức năng trọng yếu được kiểm tra ở cùng bốn kích thước.
-- Kiểm tra biểu đồ và thống kê dữ liệu USGS, tìm kiếm và liên kết học liệu, công thức con lắc, tính độc lập của chu kì với khối lượng.
+- Kiểm tra xử lý, lọc, biểu đồ và thống kê bằng fixture theo cấu trúc GeoJSON USGS ComCat; CI chưa kiểm tra kết nối mạng và CORS tới feed thật. Kiểm tra tìm kiếm và liên kết học liệu, công thức con lắc, tính độc lập của chu kì với khối lượng.
 - Kiểm tra khởi tạo WebGL bằng Three.js nội bộ và diễn tiến ở mô hình vòng tuần hoàn nước, mô hình Trái Đất quanh Mặt Trời.
 - Kiểm tra thao tác cảm ứng mô phỏng và chế độ giảm chuyển động.
 - GitHub Pages build và deploy thành công.
