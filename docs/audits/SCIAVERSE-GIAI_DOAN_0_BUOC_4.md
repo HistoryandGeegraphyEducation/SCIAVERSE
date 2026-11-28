@@ -210,7 +210,7 @@ Nhánh: main
 
 ### 9.3. Kiểm thử
 
-Workflow GitHub Actions đã chạy thành công ngày 28/11/2026 trên commit `e244c028c0f8e191cdaaee61de9c8228e351eddd` ([lượt kiểm thử](https://github.com/HistoryandGeegraphyEducation/SCIAVERSE/actions/runs/46094415701)).
+Workflow GitHub Actions đã chạy thành công ngày 28/11/2026 trên commit `9cbda5877d548144ce1af11b956b93fa7ab82a7e` ([lượt kiểm thử](https://github.com/HistoryandGeegraphyEducation/SCIAVERSE/actions/runs/46094937685)).
 
 Kết quả:
 - 6/6 kiểm tra tĩnh đạt: Registry, đường dẫn, metadata, thư viện 3D nội bộ, điều khiển mô hình và quy tắc ký tự giao diện.
