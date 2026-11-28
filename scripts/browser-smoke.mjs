@@ -233,11 +233,10 @@ try{
     element.value='1';element.dispatchEvent(new Event('input',{bubbles:true}));
   });
   assert.equal(await aModelPage.locator('#peakDischarge').textContent(),'0,19 m³/s');
-  await aModelPage.locator('#basinArea').evaluate(element=>{
-    element.value='80';element.dispatchEvent(new Event('input',{bubbles:true}));
-  });
-  assert.equal(await aModelPage.locator('#peakDischarge').textContent(),'Không áp dụng');
-  assert.match(await aModelPage.locator('#floodFormula').textContent(),/80 ha/);
+  assert.equal(await aModelPage.locator('#basinArea').getAttribute('max'),'79');
+  const floodSource=await aModelPage.evaluate(async()=>await (await fetch('main.js')).text());
+  assert.match(floodSource,/a<80&&t\*60>=tc/);
+  assert.match(await aModelPage.locator('#floodFormula').textContent(),/Rational Method/);
 
   await aModelPage.goto(base+'/simulations/oceanography/tsunami/index.html',{waitUntil:'domcontentloaded'});
   await aModelPage.locator('#waterDepth').evaluate(element=>{
