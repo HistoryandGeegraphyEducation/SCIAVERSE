@@ -161,6 +161,7 @@ try{
   await touchPage.emulateMedia({reducedMotion:'reduce'});
   await touchPage.goto(base+'/simulations/astronomy/solar-system/index.html',{waitUntil:'domcontentloaded'});
   await touchPage.waitForSelector('#solarPlay');
+  await touchPage.waitForFunction(()=>document.querySelector('#solarLoading')?.hidden===true,{timeout:30000});
   await touchPage.waitForFunction(()=>document.querySelector('#solarPlay')?.getAttribute('aria-pressed')==='false',{timeout:30000});
   assert.equal(touchErrors.length,0,'touch interaction page errors: '+touchErrors.join(' | '));
   await touchContext.close();
