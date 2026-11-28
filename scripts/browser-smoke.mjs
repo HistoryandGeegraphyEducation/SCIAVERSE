@@ -65,6 +65,10 @@ try{
   const aModelPage=await browser.newPage({viewport:{width:390,height:844}});
   await aModelPage.goto(base+'/simulations/astronomy/solar-system/index.html',{waitUntil:'domcontentloaded'});
   await aModelPage.waitForFunction(()=>document.querySelector('#solarLoading')?.hidden===true,{timeout:30000});
+  if(await aModelPage.locator('#solarPlay').getAttribute('aria-pressed')==='true'){
+    await aModelPage.locator('#solarPlay').click();
+  }
+  await aModelPage.locator('#solarReset').click();
   const solarTimeBefore=await aModelPage.locator('#solarTime').textContent();
   await aModelPage.locator('#solarPlay').click();
   await aModelPage.waitForTimeout(450);
