@@ -8,17 +8,25 @@
   const seasonSelect=document.getElementById('orbitSeason');
   const resultTitle=document.getElementById('orbitResultTitle');
   const resultText=document.getElementById('orbitResultText');
+  const daySlider=document.getElementById('orbitDay');
+  const dayValue=document.getElementById('orbitDayValue');
+  const playButton=document.getElementById('orbitPlay');
+  const pauseButton=document.getElementById('orbitPause');
+  const resetButton=document.getElementById('orbitReset');
+  const speedSelect=document.getElementById('orbitSpeed');
 
   const TILT=23.44*Math.PI/180;
   const ORBIT_RADIUS=4.15;
+  const YEAR_DAYS=365.2422;
   const SEASONS={
-    march:{title:'Xuân phân',angle:Math.PI/2,text:'Khoảng 20–21/3. Trục không nghiêng về phía Mặt Trời. Điểm Mặt Trời thiên đỉnh ở gần xích đạo; ngày và đêm gần bằng nhau.'},
-    june:{title:'Hạ chí',angle:0,text:'Khoảng 20–21/6. Bán cầu Bắc nghiêng về phía Mặt Trời, nhận bức xạ trực tiếp hơn và có ngày dài nhất trong năm.'},
-    september:{title:'Thu phân',angle:-Math.PI/2,text:'Khoảng 22–23/9. Trục không nghiêng về phía Mặt Trời. Điểm Mặt Trời thiên đỉnh ở gần xích đạo; ngày và đêm gần bằng nhau.'},
-    december:{title:'Đông chí',angle:Math.PI,text:'Khoảng 21–22/12. Bán cầu Bắc nghiêng xa Mặt Trời và có ngày ngắn nhất trong năm; bán cầu Nam bước vào mùa hạ.'}
+    march:{title:'Xuân phân',day:79,text:'Khoảng 20–21/3. Trục gần vuông góc với hướng Trái Đất–Mặt Trời; điểm Mặt Trời thiên đỉnh ở gần xích đạo.'},
+    june:{title:'Hạ chí',day:172,text:'Khoảng 20–21/6. Bán cầu Bắc nghiêng về phía Mặt Trời và nhận bức xạ trực tiếp hơn.'},
+    september:{title:'Thu phân',day:266,text:'Khoảng 22–23/9. Trục gần vuông góc với hướng Trái Đất–Mặt Trời; điểm Mặt Trời thiên đỉnh ở gần xích đạo.'},
+    december:{title:'Đông chí',day:355,text:'Khoảng 21–22/12. Bán cầu Bắc nghiêng xa Mặt Trời; mùa ở hai bán cầu trái ngược nhau.'}
   };
 
   let THREE,renderer,scene,camera,controls,earthGroup,earthTexture,resizeObserver,destroyed=false;
+  let dayOfYear=172,playing=false,rafId=0,lastFrame=0,daysPerSecond=5;
   const listeners=[];
 
   function setStatus(message,state='info'){
@@ -66,14 +74,56 @@
     return new THREE.Line(geometry,new THREE.LineBasicMaterial({color}));
   }
 
-  function updateEarthPosition(key){
-    const season=SEASONS[key];
-    const x=Math.cos(season.angle)*ORBIT_RADIUS;
-    const z=Math.sin(season.angle)*ORBIT_RADIUS;
-    earthGroup.position.set(x,0,z);
-    resultTitle.textContent=season.title;
-    resultText.textContent=season.text;
+  function circularDistance(a,b){
+    const difference=Math.abs(a-b);
+    return Math.min(difference,YEAR_DAYS-difference);
+  }
+
+  function updateEarthPositionForDay(day){
+    dayOfYear=((day%YEAR_DAYS)+YEAR_DAYS)%YEAR_DAYS;
+    const angle=-2*Math.PI*(dayOfYear-172)/YEAR_DAYS;
+    earthGroup.position.set(Math.cos(angle)*ORBIT_RADIUS,0,Math.sin(angle)*ORBIT_RADIUS);
+    const nearest=Object.entries(SEASONS).reduce((best,current)=>{
+      return circularDistance(dayOfYear,current[1].day)<circularDistance(dayOfYear,best[1].day)?current:best;
+    },Object.entries(SEASONS)[0]);
+    seasonSelect.value=nearest[0];
+    resultTitle.textContent=nearest[1].title;
+    resultText.textContent=nearest[1].text;
+    daySlider.value=String(dayOfYear);
+    dayValue.textContent='Ngày thứ '+Math.floor(dayOfYear+1);
     render();
+  }
+
+  function setPlaybackState(){
+    playButton.disabled=playing;
+    pauseButton.disabled=!playing;
+  }
+
+  function stopPlayback(){
+    playing=false;
+    if(rafId)cancelAnimationFrame(rafId);
+    rafId=0;lastFrame=0;
+    setPlaybackState();
+  }
+
+  function playbackFrame(now){
+    if(!playing||destroyed)return;
+    if(!lastFrame)lastFrame=now;
+    const delta=Math.min(.08,(now-lastFrame)/1000);
+    lastFrame=now;
+    updateEarthPositionForDay(dayOfYear+delta*daysPerSecond);
+    rafId=requestAnimationFrame(playbackFrame);
+  }
+
+  function startPlayback(){
+    if(playing||destroyed)return;
+    playing=true;lastFrame=0;setPlaybackState();
+    rafId=requestAnimationFrame(playbackFrame);
+  }
+
+  function resetPlayback(){
+    stopPlayback();
+    updateEarthPositionForDay(SEASONS.june.day);
   }
 
   function render(){
@@ -108,6 +158,7 @@
   function destroy(){
     if(destroyed)return;
     destroyed=true;
+    stopPlayback();
     if(resizeObserver)resizeObserver.disconnect();
     listeners.forEach(([target,event,handler,options])=>target.removeEventListener(event,handler,options));
     listeners.length=0;
@@ -186,13 +237,27 @@
     controls.enableDamping=false;controls.enablePan=false;controls.enableZoom=true;
     controls.minDistance=6;controls.maxDistance=16;controls.addEventListener('change',render);
 
-    listen(seasonSelect,'change',()=>updateEarthPosition(seasonSelect.value));
-    listen(document,'visibilitychange',render);
+    listen(seasonSelect,'change',()=>updateEarthPositionForDay(SEASONS[seasonSelect.value].day));
+    listen(daySlider,'input',()=>updateEarthPositionForDay(Number(daySlider.value)));
+    listen(playButton,'click',startPlayback);
+    listen(pauseButton,'click',stopPlayback);
+    listen(resetButton,'click',resetPlayback);
+    listen(speedSelect,'change',()=>{daysPerSecond=Number(speedSelect.value)||5;});
+    listen(document,'visibilitychange',()=>{
+      if(document.hidden){
+        if(rafId)cancelAnimationFrame(rafId);
+        rafId=0;lastFrame=0;
+      }else{
+        render();
+        if(playing)rafId=requestAnimationFrame(playbackFrame);
+      }
+    });
     listen(window,'pagehide',destroy,{once:true});
     if('ResizeObserver'in window){resizeObserver=new ResizeObserver(resize);resizeObserver.observe(stage);}
     else listen(window,'resize',resize);
 
-    updateEarthPosition(seasonSelect.value);
+    updateEarthPositionForDay(SEASONS[seasonSelect.value].day);
+    setPlaybackState();
     resize();
     setStatus('Mô hình đã sẵn sàng.','ready');
   }

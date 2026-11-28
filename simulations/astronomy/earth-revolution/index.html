@@ -34,10 +34,26 @@
         <label for="orbitSeason">Chọn mốc thiên văn</label>
         <select id="orbitSeason">
           <option value="march">Xuân phân</option>
-          <option value="june">Hạ chí</option>
+          <option value="june" selected>Hạ chí</option>
           <option value="september">Thu phân</option>
           <option value="december">Đông chí</option>
         </select>
+        <div class="orbit-time-controls">
+          <label for="orbitDay">Ngày trong năm</label>
+          <input id="orbitDay" type="range" min="0" max="365.2" step="0.1" value="172">
+          <output id="orbitDayValue" for="orbitDay">Ngày thứ 172</output>
+          <div class="orbit-playback-actions" role="group" aria-label="Điều khiển thời gian">
+            <button class="model-button primary" id="orbitPlay" type="button">Chạy</button>
+            <button class="model-button" id="orbitPause" type="button" disabled>Tạm dừng</button>
+            <button class="model-button" id="orbitReset" type="button">Đặt lại</button>
+          </div>
+          <label for="orbitSpeed">Ngày mô phỏng mỗi giây</label>
+          <select id="orbitSpeed">
+            <option value="1">1 ngày/giây</option>
+            <option value="5" selected>5 ngày/giây</option>
+            <option value="15">15 ngày/giây</option>
+          </select>
+        </div>
         <section class="orbit-result" aria-live="polite" aria-atomic="true">
           <h3 id="orbitResultTitle">Xuân phân</h3>
           <p id="orbitResultText">Trục không nghiêng về phía Mặt Trời. Điểm Mặt Trời thiên đỉnh ở gần xích đạo; ngày và đêm gần bằng nhau.</p>
