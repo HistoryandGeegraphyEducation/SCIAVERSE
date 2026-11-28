@@ -214,6 +214,7 @@
     disposeObject(mapGrid);
     mapGrid = buildMapGrid(key);
     mapGrid.position.set(MAP_X, 0, 0);
+    mapGrid.visible = graticuleToggle.checked;
     scene.add(mapGrid);
     mapMesh.position.set(MAP_X, 0, 0);
     nameOutput.textContent = PROJECTIONS[key].name;

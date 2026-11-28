@@ -27,6 +27,7 @@ Không sử dụng DEM quan trắc, tọa độ địa lí, hệ quy chiếu đ�
 - Bề mặt là địa hình tổng hợp, không phải dữ liệu đo đạc hoặc DEM.
 - Hệ tọa độ, tỷ lệ bản đồ, datum độ cao và mực nước biển trung bình không được mô phỏng.
 - Nội suy đường đồng mức là nội suy tuyến tính trên lưới tam giác; độ chi tiết phụ thuộc độ phân giải lưới.
+- Trục ngang quy ước 1 đơn vị mô hình = 1 km. Cao độ được đổi sang tọa độ cảnh bằng hệ số 0,003; tương ứng phóng đại chiều đứng 3 lần so với tỉ lệ ngang.
 - Không có nhãn số trên từng đường đồng mức, điểm độ cao, đường đồng mức phụ, ký hiệu vùng trũng hoặc quy tắc chữ V của thung lũng sông.
 - Không dùng mô hình để đo độ cao, tính độ dốc thực hoặc định hướng ngoài thực địa.
 
