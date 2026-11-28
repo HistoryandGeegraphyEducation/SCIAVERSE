@@ -37,6 +37,7 @@ async function inspect(page,url,width,height=900){
   const metrics=await page.evaluate(()=>({
     width:innerWidth,scrollWidth:document.documentElement.scrollWidth,
     knowledge:Boolean(document.querySelector('.model-knowledge')),
+    accessibilityStyle:Boolean(document.querySelector('link[data-sciaverse-accessibility]')),
     title:document.title
   }));
   assert.ok(metrics.scrollWidth<=metrics.width+1,url+' horizontal overflow at '+width+'px: '+JSON.stringify(metrics));
@@ -51,6 +52,7 @@ try{
     for(const width of [320,360,390,430]){
       const metrics=await inspect(modelPage,'/'+model.implementationPath,width,844);
       assert.ok(metrics.knowledge,'missing knowledge-level switch: '+model.id);
+      assert.ok(metrics.accessibilityStyle,'missing accessibility stylesheet: '+model.id);
     }
     await modelPage.locator('.model-knowledge-switch button').nth(1).click();
     await modelPage.waitForFunction(()=>document.querySelector('.model-knowledge-panel')?.dataset.loaded==='true',{timeout:10000});
@@ -138,7 +140,31 @@ try{
   await page.locator('.model-knowledge-switch button').nth(1).click();
   await page.waitForFunction(()=>document.querySelector('.model-knowledge-panel h3'),{timeout:10000});
   await page.close();
-  console.log('Browser smoke test passed: 25 model pages, 6 responsive pages at 4 widths, 3 interactive experiences.');
+
+  const touchContext=await browser.newContext({
+    viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:2
+  });
+  const touchPage=await touchContext.newPage();
+  const touchErrors=[];
+  touchPage.on('pageerror',error=>touchErrors.push(error.message));
+  await touchPage.goto(base+'/labs/simple-pendulum/index.html',{waitUntil:'domcontentloaded'});
+  await touchPage.locator('#pendulumPlay').tap();
+  await touchPage.locator('#pendulumPause').tap();
+  await touchPage.goto(base+'/simulations/hydrology/water-cycle/index.html',{waitUntil:'domcontentloaded'});
+  await touchPage.waitForFunction(()=>document.querySelector('#waterStatus')?.dataset.state==='ready',{timeout:30000});
+  await touchPage.locator('#waterPlay').tap();
+  await touchPage.locator('#waterPause').tap();
+  await touchPage.goto(base+'/simulations/astronomy/earth-revolution/index.html',{waitUntil:'domcontentloaded'});
+  await touchPage.waitForFunction(()=>document.querySelector('#orbitStatus')?.dataset.state==='ready',{timeout:30000});
+  await touchPage.locator('#orbitPlay').tap();
+  await touchPage.locator('#orbitPause').tap();
+  await touchPage.emulateMedia({reducedMotion:'reduce'});
+  await touchPage.goto(base+'/simulations/astronomy/solar-system/index.html',{waitUntil:'domcontentloaded'});
+  await touchPage.waitForSelector('#solarPlay');
+  await touchPage.waitForFunction(()=>document.querySelector('#solarPlay')?.getAttribute('aria-pressed')==='false',{timeout:30000});
+  assert.equal(touchErrors.length,0,'touch interaction page errors: '+touchErrors.join(' | '));
+  await touchContext.close();
+  console.log('Browser smoke test passed: 25 model pages at 4 widths with advanced content, 6 key pages at 4 widths, live data analysis, lab and 3D controls, touch input and reduced motion.');
 }finally{
   await browser.close();
   await new Promise(resolve=>server.close(resolve));
