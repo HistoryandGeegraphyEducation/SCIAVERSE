@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
 const root=process.cwd();
@@ -25,7 +24,6 @@ const server=http.createServer((req,res)=>{
 await new Promise(resolve=>server.listen(4173,'127.0.0.1',resolve));
 const browser=await chromium.launch({headless:true,args:['--no-sandbox','--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--ignore-gpu-blocklist']});
 const base='http://127.0.0.1:4173';
-const failures=[];
 async function inspect(page,url,width,height=900){
   await page.setViewportSize({width,height});
   const pageErrors=[];
@@ -84,7 +82,7 @@ try{
   }));
   await page.goto(base+'/space.html?id=scientific-data',{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.querySelector('.space-data-status')?.dataset.state==='ready',{timeout:10000});
-  assert.match(await page.locator('.space-data-status').textContent(),/1 sự kiện phù hợp/);
+  assert.match(await page.locator('.space-data-status').textContent(),/1\/1 sự kiện phù hợp/);
 
   await page.goto(base+'/space.html?id=learning-library',{waitUntil:'domcontentloaded'});
   await page.locator('input[type="search"]').fill('Pendulums');
@@ -97,23 +95,35 @@ try{
   });
   const periodAfter=await page.locator('#pendulumPeriod').textContent();
   assert.notEqual(periodBefore,periodAfter,'pendulum period must change with length');
+  await page.locator('#pendulumMass').evaluate(element=>{
+    element.value='2';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await page.locator('#pendulumPeriod').textContent(),periodAfter,'ideal pendulum period must not depend on bob mass');
   await page.locator('#pendulumPlay').click();
   await page.waitForTimeout(120);
   await page.locator('#pendulumPause').click();
 
   await page.goto(base+'/simulations/hydrology/water-cycle/index.html',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelector('#waterStatus')?.dataset.state==='ready',{timeout:30000});
+  assert.ok(await page.evaluate(()=>Boolean(window.THREE&&window.THREE.OrbitControls)),'local Three.js and OrbitControls must initialize');
+  await page.locator('#waterSpeed').selectOption('2');
   await page.locator('#waterPlay').click();
-  await page.waitForTimeout(120);
+  await page.waitForTimeout(2800);
   await page.locator('#waterPause').click();
+  assert.equal(await page.locator('[data-process="condensation"]').getAttribute('aria-pressed'),'true','water cycle must advance to condensation');
 
   await page.goto(base+'/simulations/astronomy/earth-revolution/index.html',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelector('#orbitStatus')?.dataset.state==='ready',{timeout:30000});
+  assert.ok(await page.evaluate(()=>Boolean(window.THREE&&window.THREE.OrbitControls)),'local Three.js and OrbitControls must initialize');
+  const orbitalDayBefore=await page.locator('#orbitDayValue').textContent();
   await page.locator('#orbitPlay').click();
-  await page.waitForTimeout(120);
+  await page.waitForTimeout(300);
   await page.locator('#orbitPause').click();
+  assert.notEqual(await page.locator('#orbitDayValue').textContent(),orbitalDayBefore,'orbital time must advance continuously');
   await page.locator('#orbitDay').evaluate(element=>{
     element.value='250';element.dispatchEvent(new Event('input',{bubbles:true}));
   });
-  assert.match(await page.locator('#orbitDayValue').textContent(),/Ngày thứ/);
+  assert.match(await page.locator('#orbitDayValue').textContent(),/Ngày mô phỏng/);
 
   await page.goto(base+'/simulations/astronomy/earth-revolution/index.html',{waitUntil:'domcontentloaded'});
   await page.locator('.model-knowledge-switch button').nth(1).click();
