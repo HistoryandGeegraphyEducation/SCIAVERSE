@@ -25,3 +25,5 @@
 @media(max-width:760px){.pendulum-layout{grid-template-columns:1fr}.pendulum-visual{min-height:280px}.pendulum-panel{padding:14px}}
 @media(max-width:520px){.pendulum-main{width:calc(100% - 24px)}.pendulum-visual{min-height:240px;padding:10px}.pendulum-panel .model-actions{grid-template-columns:1fr 1fr 1fr}.pendulum-theory{grid-template-columns:1fr}.pendulum-theory h2:nth-of-type(2),.pendulum-theory ol{grid-column:auto;grid-row:auto}}
 @media(prefers-reduced-motion:reduce){.pendulum-diagram *{transition:none!important}}
+
+.pendulum-safety{margin:14px 0;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);color:var(--text-soft);font-size:13px;line-height:1.55}

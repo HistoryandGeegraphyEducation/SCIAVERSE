@@ -82,6 +82,8 @@ test('Model playback and lab controls are present',()=>{
   for(const id of ['waterPlay','waterPause','waterReset','waterSpeed'])assert.ok(water.includes('id="'+id+'"'));
   for(const id of ['orbitDay','orbitPlay','orbitPause','orbitReset','orbitSpeed'])assert.ok(orbit.includes('id="'+id+'"'));
   for(const id of ['pendulumLength','pendulumGravity','pendulumMass','pendulumAngle','pendulumPlay','pendulumPause'])assert.ok(lab.includes('id="'+id+'"'));
+  assert.ok(lab.includes('pendulum-safety'));
+  assert.ok(lab.includes('Vật nặng được coi là chất điểm'));
 });
 
 test('No middle-dot separators in newly introduced space and knowledge files',()=>{
