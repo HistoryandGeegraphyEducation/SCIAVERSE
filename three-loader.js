@@ -1,58 +1,26 @@
 (() => {
   'use strict';
-
-  const THREE_SOURCES = [
-    'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',
-    'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js',
-    'https://unpkg.com/three@0.128.0/build/three.min.js'
-  ];
-  const CONTROL_SOURCES = [
-    'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js',
-    'https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js'
-  ];
-
-  function loadFrom(sources, ready) {
+  const scriptUrl = document.currentScript && document.currentScript.src;
+  if (!scriptUrl) {
+    window.SCIAVERSE_THREE_READY = Promise.reject(new Error('Không xác định được đường dẫn thư viện Three.js.'));
+    window.SCIAVERSE_ORBIT_CONTROLS_READY = window.SCIAVERSE_THREE_READY;
+    return;
+  }
+  function loadLocalScript(url, ready) {
     if (ready()) return Promise.resolve();
     return new Promise((resolve, reject) => {
-      let index = 0;
-      const attempt = () => {
-        if (ready()) return resolve();
-        if (index >= sources.length) return reject(new Error('Không tải được thư viện 3D từ các nguồn dự phòng.'));
-        const script = document.createElement('script');
-        script.src = sources[index++];
-        script.async = true;
-        script.crossOrigin = 'anonymous';
-        let finished = false;
-        const timeout = window.setTimeout(() => {
-          if (finished) return;
-          finished = true;
-          script.remove();
-          attempt();
-        }, 12000);
-        script.onload = () => {
-          if (finished) return;
-          finished = true;
-          window.clearTimeout(timeout);
-          if (ready()) resolve();
-          else attempt();
-        };
-        script.onerror = () => {
-          if (finished) return;
-          finished = true;
-          window.clearTimeout(timeout);
-          script.remove();
-          attempt();
-        };
-        document.head.appendChild(script);
-      };
-      attempt();
+      const script = document.createElement('script');
+      script.src = url;
+      script.async = true;
+      script.onload = () => ready() ? resolve() : reject(new Error('Tệp thư viện đã tải nhưng không khởi tạo được.'));
+      script.onerror = () => reject(new Error('Không tải được thư viện cục bộ: ' + url));
+      document.head.appendChild(script);
     });
   }
-
-  window.SCIAVERSE_THREE_READY = loadFrom(THREE_SOURCES, () => Boolean(window.THREE))
-    .then(() => window.THREE);
-
+  const threeUrl = new URL('vendor/three-r128.min.js', scriptUrl).href;
+  const controlsUrl = new URL('vendor/OrbitControls-r128.js', scriptUrl).href;
+  window.SCIAVERSE_THREE_READY = loadLocalScript(threeUrl, () => Boolean(window.THREE)).then(() => window.THREE);
   window.SCIAVERSE_ORBIT_CONTROLS_READY = window.SCIAVERSE_THREE_READY
-    .then(() => loadFrom(CONTROL_SOURCES, () => Boolean(window.THREE?.OrbitControls)))
+    .then(() => loadLocalScript(controlsUrl, () => Boolean(window.THREE && window.THREE.OrbitControls)))
     .then(() => window.THREE.OrbitControls);
 })();
