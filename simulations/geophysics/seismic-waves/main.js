@@ -79,7 +79,7 @@
     }
     waveGroup=new THREE.Group();
     const source=new THREE.Vector3(0,2.34,0);
-    const outerCoreBoundary=new THREE.Vector3(0,-1.34,0);
+    const outerCoreBoundary=new THREE.Vector3(0,1.34,0);
     if(key==='p'){
       const points=[
         source,
@@ -96,13 +96,12 @@
     }else{
       const points=[
         source,
-        new THREE.Vector3(0,1.2,0),
-        new THREE.Vector3(0,0.4,0),
-        new THREE.Vector3(0,-0.5,0),
+        new THREE.Vector3(0,1.95,0),
+        new THREE.Vector3(0,1.6,0),
         outerCoreBoundary
       ];
       makeWavePath(points,0x83d5e1);
-      addArrow(new THREE.Vector3(0,1.12,0),new THREE.Vector3(0,-1,0),0.72,0x83d5e1);
+      addArrow(new THREE.Vector3(0,1.82,0),new THREE.Vector3(0,-1,0),0.48,0x83d5e1);
       const stop=new THREE.Mesh(
         new THREE.SphereGeometry(0.13,16,12),
         new THREE.MeshStandardMaterial({color:0x83d5e1,emissive:0x24515b})

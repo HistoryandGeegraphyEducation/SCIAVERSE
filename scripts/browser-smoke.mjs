@@ -139,6 +139,61 @@ try{
   await aModelPage.waitForFunction(()=>document.querySelector('#profileStatus')?.dataset.state==='ready',{timeout:30000});
   await aModelPage.locator('#profileRoute').selectOption('cd');
   assert.match(await aModelPage.locator('#profileSummary').textContent(),/^Tuyến CD:/);
+  await aModelPage.goto(base+'/simulations/earth/rotation/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#earthModelLoading')?.hidden===true,{timeout:30000});
+  const earthCanvasBounds=await aModelPage.locator('#earthRotationCanvas').boundingBox();
+  assert.ok(earthCanvasBounds&&earthCanvasBounds.width>0,'Earth rotation canvas must render');
+  const worldClockSelect=aModelPage.locator('#worldClockGrid select');
+  assert.equal(await worldClockSelect.locator('option').count(),15);
+  await worldClockSelect.selectOption('UTC');
+  assert.equal(await aModelPage.locator('#worldClockGrid .world-clock-offset').textContent(),'UTC +0');
+  const earthRotationSource=await aModelPage.evaluate(async()=>await (await fetch('main.js')).text());
+  assert.match(earthRotationSource,/greenwichSiderealAngle\(simulatedJulianDate\)\s*-\s*greenwichSiderealAngle\(simulationStartJulianDate\)/);
+  assert.match(earthRotationSource,/TorusGeometry\(3\.55/);
+
+  await aModelPage.goto(base+'/simulations/astronomy/earth-revolution/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#orbitStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#orbitSeason').selectOption('december');
+  assert.equal(await aModelPage.locator('#orbitResultTitle').textContent(),'Đông chí');
+  await aModelPage.locator('#orbitDay').evaluate(element=>{
+    element.value='172';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#orbitResultTitle').textContent(),'Hạ chí');
+  const orbitDayBefore=await aModelPage.locator('#orbitDayValue').textContent();
+  await aModelPage.locator('#orbitPlay').click();
+  await aModelPage.waitForTimeout(350);
+  await aModelPage.locator('#orbitPause').click();
+  assert.notEqual(await aModelPage.locator('#orbitDayValue').textContent(),orbitDayBefore,'Earth orbit playback must advance');
+
+  await aModelPage.goto(base+'/simulations/tectonics/plate-motion/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#plateStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#plateBoundaryChoice [data-boundary="convergent"]').click();
+  assert.equal(await aModelPage.locator('#plateResultTitle').textContent(),'Ranh giới hội tụ: đại dương – lục địa');
+  await aModelPage.locator('#plateVelocity').evaluate(element=>{
+    element.value='20';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#plateVelocityValue').textContent(),'20 cm/năm');
+  await aModelPage.locator('#plateBoundaryChoice [data-boundary="transform"]').click();
+  assert.equal(await aModelPage.locator('#plateResultTitle').textContent(),'Ranh giới trượt ngang');
+
+  await aModelPage.goto(base+'/simulations/geophysics/seismic-waves/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#seismicStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#seismicWaveChoice [data-wave="s"]').click();
+  assert.match(await aModelPage.locator('#seismicResultText').textContent(),/không truyền qua chất lỏng/);
+  const seismicSource=await aModelPage.evaluate(async()=>await (await fetch('main.js')).text());
+  assert.match(seismicSource,/outerCoreBoundary\s*=\s*new THREE\.Vector3\(0,1\.34,0\)/);
+  await aModelPage.locator('#seismicWaveChoice [data-wave="p"]').click();
+  assert.match(await aModelPage.locator('#seismicResultText').textContent(),/chất rắn và chất lỏng/);
+
+  await aModelPage.goto(base+'/simulations/geomorphology/weathering-erosion-deposition/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#surfaceStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#surfaceProcessChoice [data-process="erosion"]').click();
+  assert.equal(await aModelPage.locator('#surfaceResultTitle').textContent(),'Xâm thực do dòng chảy');
+  await aModelPage.locator('#surfaceProcessChoice [data-process="deposition"]').click();
+  assert.equal(await aModelPage.locator('#surfaceResultTitle').textContent(),'Bồi tụ trầm tích');
+  const weatheringSource=await aModelPage.evaluate(async()=>await (await fetch('main.js')).text());
+  assert.doesNotMatch(weatheringSource,/delta\.rotation\.x\s*=\s*Math\.PI\s*\/\s*2/);
+  assert.match(weatheringSource,/const deltaBaseY\s*=\s*terrainHeight/);
   await aModelPage.close();
 
   const responsivePages=[

@@ -14,6 +14,7 @@
   ];
   const TAU = Math.PI * 2;
   const DEG = Math.PI / 180;
+  const OBLIQUITY = 23.439291 * DEG;
   const CLOCKS = [
     { city: 'UTC', country: 'UTC', code: 'UTC', flag: '🌐', timeZone: 'UTC', label: 'MÚI GIỜ GỐC' },
     { city: 'Vancouver', country: 'CA', code: 'CAN', flag: '🇨🇦', timeZone: 'America/Vancouver' },
@@ -152,7 +153,7 @@
     const t = (jd - 2451545.0) / 36525;
     const degrees = 280.46061837 + 360.98564736629 * (jd - 2451545.0)
       + 0.000387933 * t * t - t * t * t / 38710000;
-    return normalizeDegrees(degrees) * DEG;
+    return degrees * DEG;
   }
 
   function createAnalogClock() {
@@ -327,7 +328,7 @@
     const simulatedJulianDate = simulationStartJulianDate + simulationDaysElapsed;
     const sunDirection = solarCoordinates(simulatedJulianDate);
     const moonDirection = lunarCoordinates(simulatedJulianDate);
-    earthGroup.rotation.y = initialEarthRotation + simulationDaysElapsed * TAU;
+    earthGroup.rotation.y = initialEarthRotation + greenwichSiderealAngle(simulatedJulianDate) - greenwichSiderealAngle(simulationStartJulianDate);
     sunMesh.position.copy(sunDirection).multiplyScalar(3.55);
     sunlight.position.copy(sunDirection).multiplyScalar(12);
     moonMesh.position.copy(moonDirection).multiplyScalar(2.25);
@@ -430,6 +431,7 @@
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.setClearColor(0x10171b, 1);
+    renderer.domElement.setAttribute('aria-label', 'Mô hình Trái Đất tự quay quanh trục; mặt phẳng hoàng đạo nghiêng 23,44° so với mặt phẳng xích đạo; Mặt Trời và Mặt Trăng ở vị trí biểu kiến.');
     if (THREE.sRGBEncoding) {
       renderer.outputEncoding = THREE.sRGBEncoding;
       earthTexture.encoding = THREE.sRGBEncoding;
@@ -452,6 +454,29 @@
       })
     );
     earthGroup.add(earth);
+    const equator = new THREE.Mesh(
+      new THREE.TorusGeometry(1.19, 0.008, 8, 96),
+      new THREE.MeshBasicMaterial({ color: 0x9fb7c4, transparent: true, opacity: 0.62 })
+    );
+    equator.rotation.x = -Math.PI / 2;
+    earthGroup.add(equator);
+    const northPole = new THREE.Mesh(
+      new THREE.SphereGeometry(0.045, 12, 10),
+      new THREE.MeshBasicMaterial({ color: 0xf0c879 })
+    );
+    northPole.position.set(0, 1.2, 0);
+    earthGroup.add(northPole);
+    const earthAxis = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -1.55, 0), new THREE.Vector3(0, 1.55, 0)]),
+      new THREE.LineBasicMaterial({ color: 0xf0c879, transparent: true, opacity: 0.78 })
+    );
+    scene.add(earthAxis);
+    const ecliptic = new THREE.Mesh(
+      new THREE.TorusGeometry(3.55, 0.009, 8, 144),
+      new THREE.MeshBasicMaterial({ color: 0x7f9cab, transparent: true, opacity: 0.45 })
+    );
+    ecliptic.rotation.x = -Math.PI / 2 - OBLIQUITY;
+    scene.add(ecliptic);
 
     sunMesh = new THREE.Mesh(
       new THREE.SphereGeometry(0.25, 32, 24),
@@ -501,7 +526,7 @@
     });
     addListener(document, 'visibilitychange', handleVisibilityChange);
     const startDate = new Date();
-    initialEarthRotation = Math.PI / 2 - greenwichSiderealAngle(julianDate(startDate));
+    initialEarthRotation = Math.PI / 2 - normalizeDegrees(greenwichSiderealAngle(julianDate(startDate)) / DEG) * DEG;
     simulationStartTime = performance.now();
     simulationStartJulianDate = julianDate(startDate);
     lastSimulationTimestamp = simulationStartTime;

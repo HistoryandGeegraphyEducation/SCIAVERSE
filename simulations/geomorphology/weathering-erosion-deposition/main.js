@@ -160,9 +160,9 @@
       new THREE.CylinderGeometry(0.12,1.08,0.22,32,1,false),
       new THREE.MeshStandardMaterial({color:0xb79a73,roughness:1})
     );
-    delta.rotation.x = Math.PI / 2;
+    const deltaBaseY = terrainHeight(2.55, 0.12);
     delta.scale.z = 1.35;
-    delta.position.set(2.55,-0.22,0.12);
+    delta.position.set(2.55, deltaBaseY + 0.11, 0.12);
     processGroups.deposition.add(delta);
     for(let i=0;i<26;i+=1){
       const angle=(i/26)*Math.PI*2;
@@ -171,7 +171,9 @@
         new THREE.SphereGeometry(0.035+(i%3)*0.012,8,6),
         new THREE.MeshStandardMaterial({color:i%2?0xc5aa7e:0x8d7960,roughness:1})
       );
-      grain.position.set(2.55+Math.cos(angle)*radius,-0.08,0.12+Math.sin(angle)*radius*0.8);
+      const surfaceFraction = THREE.MathUtils.clamp((1.08 - radius) / (1.08 - 0.12), 0, 1);
+      const grainY = deltaBaseY + 0.22 * surfaceFraction + 0.03;
+      grain.position.set(2.55+Math.cos(angle)*radius,grainY,0.12+Math.sin(angle)*radius*1.35);
       processGroups.deposition.add(grain);
     }
     scene.add(processGroups.deposition);
