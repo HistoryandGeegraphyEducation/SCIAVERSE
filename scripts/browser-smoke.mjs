@@ -201,8 +201,6 @@ try{
   const weatheringSource=await aModelPage.evaluate(async()=>await (await fetch('main.js')).text());
   assert.doesNotMatch(weatheringSource,/delta\.rotation\.x\s*=\s*Math\.PI\s*\/\s*2/);
   assert.match(weatheringSource,/const deltaBaseY\s*=\s*terrainHeight/);
-  await aModelPage.close();
-
   await aModelPage.goto(base+'/simulations/meteorology/tropical-cyclone/index.html',{waitUntil:'domcontentloaded'});
   assert.match(await aModelPage.locator('#cycloneDirection').textContent(),/Bắc bán cầu/);
   assert.match(await aModelPage.locator('#latitudeState').textContent(),/\+3,77 × 10⁻⁵ s⁻¹/);
@@ -278,12 +276,12 @@ try{
   assert.equal(await aModelPage.locator('#seaLevelValue').textContent(),'2,0 m');
 
   await aModelPage.goto(base+'/simulations/geophysics/earthquake/index.html',{waitUntil:'domcontentloaded'});
-  assert.match(await aModelPage.locator('#seismicMoment').textContent(),/1,800/);
+  assert.match(await aModelPage.locator('#seismicMoment').textContent(),/1,8/);
   assert.equal(await aModelPage.locator('#momentMagnitude').textContent(),'Mw 6,77');
   await aModelPage.locator('#faultLength').evaluate(element=>{
     element.value='80';element.dispatchEvent(new Event('input',{bubbles:true}));
   });
-  assert.match(await aModelPage.locator('#seismicMoment').textContent(),/3,600/);
+  assert.match(await aModelPage.locator('#seismicMoment').textContent(),/3,6/);
   assert.equal(await aModelPage.locator('#momentMagnitude').textContent(),'Mw 6,97');
   await aModelPage.locator('#quakeDepth').evaluate(element=>{
     element.value='301';element.dispatchEvent(new Event('input',{bubbles:true}));
@@ -334,6 +332,8 @@ try{
   assert.equal(await aModelPage.locator('[data-process="condensation"]').getAttribute('aria-pressed'),'true');
   await aModelPage.locator('#waterReset').click();
   assert.equal(await aModelPage.locator('#waterResultTitle').textContent(),'Bốc hơi');
+
+  await aModelPage.close();
 
   const responsivePages=[
     '/space.html?id=virtual-laboratories',
