@@ -32,7 +32,10 @@ async function inspect(page,url,width,height=900){
   const onError=error=>pageErrors.push(error.message);
   page.on('pageerror',onError);
   await page.goto(base+url,{waitUntil:'domcontentloaded',timeout:30000});
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(250);
+  if(url.startsWith('/simulations/')){
+    await page.waitForSelector('.model-knowledge',{timeout:10000});
+  }
   const metrics=await page.evaluate(()=>({
     width:innerWidth,scrollWidth:document.documentElement.scrollWidth,
     knowledge:Boolean(document.querySelector('.model-knowledge')),
