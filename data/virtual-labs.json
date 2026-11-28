@@ -5,18 +5,44 @@
     "fieldId": "physics",
     "fieldName": "Vật lí",
     "implementationPath": "labs/simple-pendulum/index.html",
-    "experimentQuestion": "Chiều dài dây và gia tốc trọng trường ảnh hưởng thế nào đến chu kì dao động của con lắc đơn?",
+    "experimentQuestion": "Chiều dài dây và gia tốc trọng trường làm thay đổi chu kì ra sao? Khối lượng vật nặng có ảnh hưởng đến chu kì không?",
     "variables": [
-      {"symbol":"L","name":"Chiều dài dây","unit":"m","role":"independent"},
-      {"symbol":"g","name":"Gia tốc trọng trường","unit":"m/s²","role":"independent"},
-      {"symbol":"m","name":"Khối lượng vật nặng","unit":"kg","role":"controlled"},
-      {"symbol":"θ₀","name":"Góc lệch ban đầu","unit":"°","role":"controlled"},
-      {"symbol":"T","name":"Chu kì","unit":"s","role":"dependent"}
+      {
+        "symbol": "L",
+        "name": "Chiều dài dây",
+        "unit": "m",
+        "role": "independent"
+      },
+      {
+        "symbol": "g",
+        "name": "Gia tốc trọng trường",
+        "unit": "m/s²",
+        "role": "independent"
+      },
+      {
+        "symbol": "m",
+        "name": "Khối lượng vật nặng",
+        "unit": "kg",
+        "role": "independent-check"
+      },
+      {
+        "symbol": "θ₀",
+        "name": "Góc lệch ban đầu",
+        "unit": "°",
+        "role": "controlled"
+      },
+      {
+        "symbol": "T",
+        "name": "Chu kì",
+        "unit": "s",
+        "role": "dependent"
+      }
     ],
     "procedure": [
-      "Thay đổi chiều dài dây hoặc gia tốc trọng trường và giữ các biến còn lại không đổi.",
-      "Chạy mô hình để quan sát dao động.",
-      "So sánh chu kì và tần số giữa các lần thay đổi."
+      "Thay đổi chiều dài dây, giữ gia tốc trọng trường và góc lệch không đổi; ghi nhận chu kì.",
+      "Thay đổi gia tốc trọng trường, giữ chiều dài dây và góc lệch không đổi; so sánh chu kì.",
+      "Thay đổi khối lượng vật nặng; kiểm tra chu kì có thay đổi hay không.",
+      "Đối chiếu kết quả với công thức T = 2π√(L/g)."
     ],
     "safetyNotes": "Mô hình số; không có thao tác với vật thể hoặc thiết bị thực.",
     "dataModel": "Con lắc đơn lí tưởng, góc nhỏ: T = 2π√(L/g).",
