@@ -82,7 +82,7 @@ try{
       metadata:{generated:Date.now(),count:1},
       features:[{
         type:'Feature',
-        properties:{mag:4.2,place:'Browser test event',time:Date.now(),url:'https://earthquake.usgs.gov/'},
+        properties:{mag:4.2,magType:'mww',place:'Browser test event',time:Date.now(),url:'https://earthquake.usgs.gov/'},
         geometry:{type:'Point',coordinates:[105,10,12.5]}
       }]
     })
@@ -92,6 +92,7 @@ try{
   assert.match(await page.locator('.space-data-status').textContent(),/1\/1 sự kiện phù hợp/);
   assert.equal(await page.locator('.space-data-chart-section rect.space-data-bar').count(),6);
   assert.match(await page.locator('.space-data-analysis').textContent(),/độ lớn lớn nhất 4,2/);
+  assert.equal(await page.locator('.space-data-table tbody tr td').nth(2).textContent(),'mww');
 
   await page.goto(base+'/space.html?id=learning-library',{waitUntil:'domcontentloaded'});
   await page.locator('input[type="search"]').fill('Pendulums');

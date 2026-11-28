@@ -41,7 +41,7 @@ Dành cho hoạt động có thao tác thí nghiệm, biến số, điều kiệ
 
 ### Dữ liệu khoa học
 
-Dành cho bộ dữ liệu có nguồn, đơn vị, phạm vi không gian, khoảng thời gian và phương pháp thu thập. Mọi dữ liệu mô phỏng hoặc dữ liệu mẫu phải được đánh dấu rõ. Pilot hiện có sử dụng feed GeoJSON động đất từ USGS ComCat, cho phép lọc theo khoảng thời gian và độ lớn, hiển thị biểu đồ phân bố theo các khoảng độ lớn và thống kê trung vị, độ lớn lớn nhất, độ sâu trung bình từ dữ liệu đã lọc. Thời điểm tạo feed lấy từ metadata của nguồn, không tự đặt thời gian cập nhật.
+Dành cho bộ dữ liệu có nguồn, đơn vị, phạm vi không gian, khoảng thời gian và phương pháp thu thập. Mọi dữ liệu mô phỏng hoặc dữ liệu mẫu phải được đánh dấu rõ. Pilot hiện có sử dụng feed GeoJSON động đất từ USGS ComCat, cho phép lọc theo khoảng thời gian và độ lớn, hiển thị biểu đồ phân bố theo các khoảng độ lớn và thống kê trung vị, độ lớn lớn nhất, độ sâu trung bình từ dữ liệu đã lọc. Trường magType được giữ lại để nhận biết loại thang độ lớn; biểu đồ không quy đổi các thang khác nhau về một thang chung. Thời điểm tạo feed lấy từ metadata của nguồn, không tự đặt thời gian cập nhật.
 
 ### Thư viện học liệu
 

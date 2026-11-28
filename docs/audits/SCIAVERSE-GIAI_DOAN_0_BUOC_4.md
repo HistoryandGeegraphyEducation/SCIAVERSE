@@ -190,7 +190,7 @@ Nhánh: main
 | Hạng mục | Thay đổi | Phạm vi |
 |---|---|---|
 | Phòng thí nghiệm ảo | Thêm thí nghiệm con lắc đơn với biến số, công thức, quy trình, giả định và nguồn | `labs/simple-pendulum/`, `data/virtual-labs.json` |
-| Dữ liệu khoa học | Thêm bộ khám phá feed GeoJSON động đất USGS ComCat; lọc 24 giờ, 7 ngày, 30 ngày và độ lớn tối thiểu; biểu đồ phân bố độ lớn và thống kê từ dữ liệu đã lọc | `space.js`, `data/scientific-datasets.json` |
+| Dữ liệu khoa học | Thêm bộ khám phá feed GeoJSON động đất USGS ComCat; lọc 24 giờ, 7 ngày, 30 ngày và độ lớn tối thiểu; biểu đồ phân bố độ lớn và thống kê từ dữ liệu đã lọc; hiển thị magType và không quy đổi các thang độ lớn khác nhau | `space.js`, `data/scientific-datasets.json` |
 | Thư viện học liệu | Thêm bốn tài nguyên có loại tài liệu, xuất xứ, giấy phép và liên kết tới mô hình/thí nghiệm liên quan | `data/learning-resources.json` |
 | Vòng tuần hoàn nước | Thêm hạt chuyển động theo năm quá trình, chạy/tạm dừng/đặt lại và tốc độ trình diễn | `simulations/hydrology/water-cycle/` |
 | Chuyển động quanh Mặt Trời | Thêm thanh thời gian ngày trong năm và tốc độ mô phỏng liên tục | `simulations/astronomy/earth-revolution/` |

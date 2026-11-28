@@ -32,6 +32,7 @@ test('Every pilot page has the shared knowledge-level module',()=>{
   assert.ok(read('space.js').includes('dataset.spatialCoverage'));
   assert.ok(read('space.js').includes('dataset.units'));
   assert.ok(read('space.js').includes('dataset.license'));
+  assert.ok(read('space.js').includes('properties.magType'));
   assert.ok(read('space.js').includes('space-data-chart-section'));
   assert.ok(read('space.js').includes('resource.relatedItems'));
   assert.ok(exists('simulations/model-accessibility.css'));

@@ -190,10 +190,10 @@
 
         const bins=[
           {label:'<1',min:-Infinity,max:1},
-          {label:'1–1,9',min:1,max:2},
-          {label:'2–2,9',min:2,max:3},
-          {label:'3–3,9',min:3,max:4},
-          {label:'4–4,9',min:4,max:5},
+          {label:'1–<2',min:1,max:2},
+          {label:'2–<3',min:2,max:3},
+          {label:'3–<4',min:3,max:4},
+          {label:'4–<5',min:4,max:5},
           {label:'≥5',min:5,max:Infinity}
         ];
         const counts=bins.map(bin=>magnitudes.filter(value=>value>=bin.min&&value<bin.max).length);
@@ -233,7 +233,7 @@
         const table = node('table','space-data-table');
         const thead = node('thead');
         const headerRow = node('tr');
-        ['Thời gian','Độ lớn','Độ sâu (km)','Vị trí'].forEach(label => headerRow.append(node('th','',label)));
+        ['Thời gian','Độ lớn','Loại độ lớn','Độ sâu (km)','Vị trí'].forEach(label => headerRow.append(node('th','',label)));
         thead.append(headerRow);
         const tbody = node('tbody');
         events.forEach(feature => {
@@ -243,6 +243,7 @@
           const time = properties.time ? dateFormat.format(new Date(properties.time)) : '—';
           row.append(node('td','',time));
           row.append(node('td','space-number',properties.mag === null ? '—' : Number(properties.mag).toFixed(1).replace('.',',')));
+          row.append(node('td','space-number',properties.magType || '—'));
           row.append(node('td','space-number',Number.isFinite(Number(coordinates[2])) ? Number(coordinates[2]).toFixed(1).replace('.',',') : '—'));
           const placeCell = node('td');
           if (properties.url) placeCell.append(link(properties.url, properties.place || 'Chi tiết sự kiện'));

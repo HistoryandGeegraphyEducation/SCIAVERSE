@@ -11,8 +11,13 @@
     },
     "timeRange": "24 giờ, 7 ngày hoặc 30 ngày gần nhất, tùy bộ lọc",
     "spatialCoverage": "Toàn cầu",
-    "units": ["Độ lớn động đất theo trường mag của USGS", "Độ sâu chấn tiêu (km)", "Tọa độ địa lí (độ)"],
-    "methodology": "Dữ liệu sự kiện từ USGS ComCat, định dạng GeoJSON. Các feed tổng hợp được USGS cập nhật theo chu kỳ; thời điểm tạo feed được đọc trực tiếp từ metadata.generated.",
+    "units": [
+      "Độ lớn động đất theo trường mag của USGS",
+      "Độ sâu chấn tiêu (km)",
+      "Tọa độ địa lí (độ)",
+      "Loại độ lớn theo trường magType của USGS"
+    ],
+    "methodology": "Dữ liệu sự kiện từ USGS ComCat, định dạng GeoJSON. Các feed tổng hợp được USGS cập nhật theo chu kỳ; thời điểm tạo feed được đọc trực tiếp từ metadata.generated. Trường magType được hiển thị để nhận biết loại thang độ lớn; biểu đồ phân bố nhóm theo trường mag gốc của feed, không quy đổi các thang độ lớn về một thang chung.",
     "license": "Điều kiện sử dụng và ghi công theo USGS ComCat; dữ liệu có thể gồm đóng góp từ các mạng lưới quan trắc khác nhau."
   }
 ]
