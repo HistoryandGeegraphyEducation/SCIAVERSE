@@ -151,8 +151,12 @@
       particle.position.set(p[0],terrainHeight(p[0],p[1])+0.13,p[1]);
       processGroups.erosion.add(particle);
     });
-    addArrow(processGroups.erosion,[-1.8,0.95,-0.8],[0.15,0.25,-0.8]);
-    addArrow(processGroups.erosion,[0.15,0.25,-0.8],[2.0,-0.1,-0.8]);
+    const flowZ=-0.8;
+    const flowStartY=terrainHeight(-1.8,flowZ)+0.22;
+    const flowMidY=terrainHeight(0.15,flowZ)+0.22;
+    const flowEndY=terrainHeight(2.0,flowZ)+0.22;
+    addArrow(processGroups.erosion,[-1.8,flowStartY,flowZ],[0.15,flowMidY,flowZ]);
+    addArrow(processGroups.erosion,[0.15,flowMidY,flowZ],[2.0,flowEndY,flowZ]);
     scene.add(processGroups.erosion);
 
     processGroups.deposition = new THREE.Group();

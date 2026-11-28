@@ -153,6 +153,11 @@ try{
 
   await aModelPage.goto(base+'/simulations/astronomy/earth-revolution/index.html',{waitUntil:'domcontentloaded'});
   await aModelPage.waitForFunction(()=>document.querySelector('#orbitStatus')?.dataset.state==='ready',{timeout:30000});
+  assert.equal(await aModelPage.locator('#orbitDay').getAttribute('max'),'365.2422');
+  await aModelPage.locator('#orbitSeason').selectOption('march');
+  assert.equal(await aModelPage.locator('#orbitResultTitle').textContent(),'Xuân phân');
+  await aModelPage.locator('#orbitSeason').selectOption('september');
+  assert.equal(await aModelPage.locator('#orbitResultTitle').textContent(),'Thu phân');
   await aModelPage.locator('#orbitSeason').selectOption('december');
   assert.equal(await aModelPage.locator('#orbitResultTitle').textContent(),'Đông chí');
   await aModelPage.locator('#orbitDay').evaluate(element=>{
@@ -167,6 +172,7 @@ try{
 
   await aModelPage.goto(base+'/simulations/tectonics/plate-motion/index.html',{waitUntil:'domcontentloaded'});
   await aModelPage.waitForFunction(()=>document.querySelector('#plateStatus')?.dataset.state==='ready',{timeout:30000});
+  assert.equal(await aModelPage.locator('#plateResultTitle').textContent(),'Ranh giới tách giãn');
   await aModelPage.locator('#plateBoundaryChoice [data-boundary="convergent"]').click();
   assert.equal(await aModelPage.locator('#plateResultTitle').textContent(),'Ranh giới hội tụ: đại dương – lục địa');
   await aModelPage.locator('#plateVelocity').evaluate(element=>{
@@ -187,6 +193,7 @@ try{
 
   await aModelPage.goto(base+'/simulations/geomorphology/weathering-erosion-deposition/index.html',{waitUntil:'domcontentloaded'});
   await aModelPage.waitForFunction(()=>document.querySelector('#surfaceStatus')?.dataset.state==='ready',{timeout:30000});
+  assert.equal(await aModelPage.locator('#surfaceResultTitle').textContent(),'Phong hóa cơ học');
   await aModelPage.locator('#surfaceProcessChoice [data-process="erosion"]').click();
   assert.equal(await aModelPage.locator('#surfaceResultTitle').textContent(),'Xâm thực do dòng chảy');
   await aModelPage.locator('#surfaceProcessChoice [data-process="deposition"]').click();
