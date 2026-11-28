@@ -83,10 +83,14 @@ try{
   await page.goto(base+'/space.html?id=scientific-data',{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.querySelector('.space-data-status')?.dataset.state==='ready',{timeout:10000});
   assert.match(await page.locator('.space-data-status').textContent(),/1\/1 sự kiện phù hợp/);
+  assert.equal(await page.locator('.space-data-chart-section rect.space-data-bar').count(),6);
+  assert.match(await page.locator('.space-data-analysis').textContent(),/độ lớn lớn nhất 4,2/);
 
   await page.goto(base+'/space.html?id=learning-library',{waitUntil:'domcontentloaded'});
   await page.locator('input[type="search"]').fill('Pendulums');
   assert.equal(await page.locator('.space-content-card').count(),1);
+  assert.ok(await page.locator('.space-content-card').textContent().then(text=>text.includes('Tài liệu diễn giải')));
+  assert.equal(await page.locator('.space-content-card a[href="labs/simple-pendulum/index.html"]').count(),1);
 
   await page.goto(base+'/labs/simple-pendulum/index.html',{waitUntil:'domcontentloaded'});
   const periodBefore=await page.locator('#pendulumPeriod').textContent();
