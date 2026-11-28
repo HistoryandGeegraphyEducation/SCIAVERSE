@@ -25,6 +25,7 @@ test('Every pilot page has the shared knowledge-level module',()=>{
     assert.ok(index[model.id],'missing knowledge index: '+model.id);
     const html=read(model.implementationPath);
     assert.match(html,/<script src="\.\.\/\.\.\/model-levels\.js\?v=20261128-levels1" defer><\/script>/);
+    assert.ok(html.includes('class="model-intro"')||html.includes('class="standalone-title"'),'missing knowledge insertion point: '+model.id);
   }
   assert.ok(exists('simulations/model-levels.js'));
   assert.ok(exists('simulations/model-accessibility.css'));
