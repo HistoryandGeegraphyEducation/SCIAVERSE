@@ -49,4 +49,6 @@ Các trường hợp cần xác nhận:
 - Chưa được xác nhận nghiệm thu khoa học.
 - Đã bổ sung thanh thời gian mô phỏng theo chu kì năm, chạy/tạm dừng/đặt lại và chọn số ngày mô phỏng mỗi giây.
 - Trạng thái khoa học vẫn là `in-review`; trạng thái triển khai vẫn là `sciaverse-pilot-in-progress`.
-- Kiểm thử trình duyệt tự động đang chờ kết quả workflow; chưa xác nhận runtime hoặc thiết bị di động.
+- CI Chromium ngày 28/11/2026 đã xác nhận khởi tạo WebGL, thanh thời gian liên tục, điều khiển chạy/tạm dừng và cập nhật vị trí quỹ đạo.
+- Kiểm tra cảm ứng mô phỏng đạt; chưa kiểm thử thủ công trên thiết bị vật lí.
+- Trạng thái khoa học và triển khai chưa thay đổi.

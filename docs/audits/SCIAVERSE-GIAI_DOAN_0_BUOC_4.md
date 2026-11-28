@@ -210,14 +210,25 @@ Nhánh: main
 
 ### 9.3. Kiểm thử
 
-Đã bổ sung workflow tự động gồm kiểm tra Registry, dữ liệu, đường dẫn và Playwright trên trình duyệt Chromium. Bộ kiểm tra dự kiến chạy 25 trang mô hình ở 320, 360, 390 và 430 CSS px; sáu trang chức năng trọng yếu được kiểm tra ở cùng bốn kích thước. Tại thời điểm cập nhật tài liệu, chưa có kết quả workflow hoàn tất được xác nhận. Chưa thực hiện kiểm tra thủ công trên thiết bị vật lí.
+Workflow GitHub Actions đã chạy thành công ngày 28/11/2026 trên commit `e244c028c0f8e191cdaaee61de9c8228e351eddd` ([lượt kiểm thử](https://github.com/HistoryandGeegraphyEducation/SCIAVERSE/actions/runs/46094415701)).
+
+Kết quả:
+- 6/6 kiểm tra tĩnh đạt: Registry, đường dẫn, metadata, thư viện 3D nội bộ, điều khiển mô hình và quy tắc ký tự giao diện.
+- 25 trang mô hình được mở ở 320, 360, 390 và 430 CSS px; nội dung Nâng cao được tải cho cả 25 trang.
+- Sáu trang chức năng trọng yếu được kiểm tra ở cùng bốn kích thước.
+- Kiểm tra biểu đồ và thống kê dữ liệu USGS, tìm kiếm và liên kết học liệu, công thức con lắc, tính độc lập của chu kì với khối lượng.
+- Kiểm tra khởi tạo WebGL bằng Three.js nội bộ và diễn tiến ở mô hình vòng tuần hoàn nước, mô hình Trái Đất quanh Mặt Trời.
+- Kiểm tra thao tác cảm ứng mô phỏng và chế độ giảm chuyển động.
+- GitHub Pages build và deploy thành công.
+
+Đây là kiểm thử Chromium trong CI, không phải kiểm thử thủ công trên thiết bị vật lí.
 
 ### 9.4. Việc còn phải xử lý
 
-- Chờ workflow GitHub Actions hoàn tất; sửa mọi lỗi kiểm thử phát hiện được.
-- Kiểm tra thủ công trên điện thoại và máy tính bảng; xác nhận WebGL, cảm ứng, bàn phím và hiệu năng.
-- Mở rộng nội dung phòng thí nghiệm, dữ liệu khoa học và thư viện học liệu theo nguồn có thể kiểm chứng.
-- Rà soát nội dung nâng cao của từng mô hình; bộ chọn mức kiến thức hiện trình bày nội dung từ hồ sơ thẩm định, không thay thế biên soạn sư phạm.
-- Chỉ xem xét `verified-in-build` sau khi có kết quả kiểm thử đạt và rà soát kỹ thuật từng mô hình.
+- Kiểm tra thủ công trên điện thoại và máy tính bảng; xác nhận WebGL, cảm ứng, bàn phím, hiệu năng và các hành vi phụ thuộc phần cứng.
+- Mở rộng số lượng thí nghiệm, bộ dữ liệu và tài nguyên học liệu; hiện ba không gian mới ở mức functional-pilot.
+- Rà soát và biên soạn nội dung sư phạm riêng cho mức Cơ bản và Nâng cao; bộ chọn hiện tại mới trình bày nội dung từ hồ sơ thẩm định.
+- Kiểm thử chức năng riêng từng mô hình, không chỉ kiểm tra tải trang và responsive.
+- Chỉ xem xét `verified-in-build` sau khi hoàn tất các bước trên.
 
 Bước 5 chưa được thực hiện.

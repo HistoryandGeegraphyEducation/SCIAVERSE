@@ -46,4 +46,6 @@ Trong đó \(H_0\) tính bằng radian và \(D\) tính bằng giờ. Khi biểu 
 - Khoa học: not-reviewed.
 - Triển khai: sciaverse-pilot-in-progress.
 - Tài liệu này ghi nhận công thức và giả định được tìm thấy trong mã nguồn; không phải quyết định nghiệm thu khoa học.
-- Chưa kiểm thử runtime trên trình duyệt hoặc thiết bị di động.
+- Trang đã được mở trong kiểm thử Chromium ở bốn kích thước 320, 360, 390 và 430 CSS px; không phát sinh lỗi JavaScript hoặc tràn chiều ngang trong lượt kiểm thử.
+- Chưa kiểm tra riêng khả năng khởi tạo WebGL và các phép tính trên thiết bị vật lí.
+- Trạng thái khoa học vẫn là `not-reviewed`.
