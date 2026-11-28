@@ -46,7 +46,7 @@ Các trường hợp cần xác nhận:
 ## 6. Trạng thái
 
 - Khoa học: `in-review`.
-- Triển khai: `sciaverse-pilot-in-progress`.
+- Triển khai theo Registry: `verified-in-build` (CI Chromium/Playwright đạt).
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Chưa được xác nhận nghiệm thu khoa học.
 - Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại phần kiểm thử cập nhật. Chưa kiểm thử trên thiết bị vật lý.

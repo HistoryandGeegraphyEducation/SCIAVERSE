@@ -44,8 +44,8 @@ Mô hình cũng tính khoảng cách thẳng giữa điểm đầu và điểm c
 ## Trạng thái
 
 - Khoa học: `in-review`.
-- Triển khai: `sciaverse-pilot-in-progress`.
-- Chưa được xác nhận nghiệm thu; chưa kiểm thử runtime trên thiết bị thật.
+- Triển khai theo Registry: `verified-in-build` (CI Chromium/Playwright đạt).
+- Chưa nghiệm thu khoa học; đã kiểm thử runtime bằng Chromium/Playwright; chưa kiểm thử trên thiết bị vật lý.
 
 
 ## 8. Kiểm thử runtime và responsive

@@ -43,12 +43,12 @@ Các trường hợp cần xác nhận:
 ## 6. Trạng thái
 
 - Khoa học: `in-review`.
-- Triển khai: `sciaverse-pilot-in-progress`.
+- Triển khai theo Registry: `verified-in-build` (CI Chromium/Playwright đạt).
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Đã dùng texture NASA Blue Marble cục bộ, có nguồn dự phòng trực tuyến; không tạo bản đồ Trái Đất giả khi tải ảnh lỗi.
 - Chưa được xác nhận nghiệm thu khoa học.
 - Đã bổ sung thanh thời gian mô phỏng theo chu kì năm, chạy/tạm dừng/đặt lại và chọn số ngày mô phỏng mỗi giây.
-- Trạng thái khoa học vẫn là `in-review`; trạng thái triển khai vẫn là `sciaverse-pilot-in-progress`.
+- Trạng thái khoa học vẫn là `in-review`; trạng thái triển khai theo Registry là `verified-in-build`.
 - CI Chromium ngày 28/11/2026 đã xác nhận khởi tạo WebGL, thanh thời gian liên tục, điều khiển chạy/tạm dừng và cập nhật vị trí quỹ đạo.
 - Kiểm tra cảm ứng mô phỏng đạt; chưa kiểm thử thủ công trên thiết bị vật lí.
 - Trạng thái khoa học và triển khai chưa thay đổi.

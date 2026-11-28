@@ -118,7 +118,7 @@ Các điểm khoa học chính đã được giữ trong pilot: trục nghiêng 
 
 Đã sửa đường dẫn texture theo vị trí trang, bỏ texture Trái Đất procedural và lớp mây chưa xác minh nguồn, chuyển mã mô hình vào thư mục riêng, đồng bộ thời gian thiên văn với thời gian mô phỏng, dừng animation khi tab nền hoặc reduced motion, và bổ sung cleanup khi khởi tạo lỗi. Trang đã có tiêu đề mô hình, ghi nguồn ảnh Blue Marble và công bố giới hạn tỉ lệ hình học.
 
-Trạng thái khoa học trong registry là `validated` theo xác nhận của chủ dự án ngày 26/11/2026. Trạng thái triển khai vẫn là `sciaverse-pilot-in-progress`; chưa chuyển sang `verified-in-build` vì chưa có kiểm thử runtime trên trình duyệt và thiết bị thật.
+Trạng thái khoa học trong registry là `validated` theo xác nhận của chủ dự án ngày 26/11/2026. Trạng thái triển khai theo Registry hiện là `verified-in-build` sau kiểm thử CI Chromium/Playwright; kiểm thử thiết bị vật lý vẫn còn mở.
 
 ## Nguồn tham khảo
 

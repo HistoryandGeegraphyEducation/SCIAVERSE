@@ -75,7 +75,7 @@ Các kiểm tra dùng console.assert. Chúng chưa được thực thi trong m�
 ## 6. Trạng thái
 
 - Khoa học: `in-review`.
-- Triển khai: `sciaverse-pilot-in-progress`.
+- Triển khai theo Registry: `verified-in-build` (CI Chromium/Playwright đạt).
 - Chưa được xác nhận nghiệm thu khoa học.
 - Chưa kiểm thử runtime WebGL trên trình duyệt/điện thoại.
 - Chưa đủ điều kiện xuất hiện trong danh mục mô hình công bố.

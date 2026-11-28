@@ -163,7 +163,7 @@ Có thể tiếp nhận ý tưởng tương tác và cấu trúc thông tin, nh�
 - Chu kỳ tự quay được trình bày như dữ liệu, không ghép hoạt ảnh tự quay vào cùng thang thời gian đã nén quỹ đạo.
 - Thay texture procedural có hình dạng lục địa/đám mây giả bằng hình cầu màu trung tính; không gán bề mặt giả như ảnh quan sát.
 
-Kiểm tra tĩnh: cú pháp JavaScript đạt; ID HTML không trùng; CSS cân bằng dấu ngoặc, có breakpoint điện thoại và reduced-motion. Chưa kiểm tra WebGL trên trình duyệt hoặc thiết bị thật. Trạng thái vẫn `needs-revision` và `sciaverse-pilot-in-progress` cho đến khi kiểm thử runtime, kiểm tra dữ liệu hiển thị và xác nhận khả năng truy cập hoàn tất.
+Kiểm tra tĩnh ban đầu: cú pháp JavaScript đạt; ID HTML không trùng; CSS cân bằng dấu ngoặc, có breakpoint điện thoại và reduced-motion. Nhận định `needs-revision`/`sciaverse-pilot-in-progress` trong đoạn này thuộc thời điểm rà soát trước khi hoàn tất kiểm thử runtime; trạng thái hiện tại được ghi tại phần cập nhật và mục 8.
 
 ### Chuẩn hóa chu kỳ quỹ đạo theo JPL
 

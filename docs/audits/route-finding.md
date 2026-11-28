@@ -56,7 +56,7 @@ Các ca này kiểm tra logic Dijkstra; không phải số liệu thực địa.
 ## 7. Trạng thái
 
 - Khoa học: in-review.
-- Triển khai: sciaverse-pilot-in-progress.
+- Triển khai theo Registry: `verified-in-build` (CI Chromium/Playwright đạt).
 - Đã kiểm tra: cú pháp JavaScript, phép tính WGS 84 ở các cạnh mẫu, Dijkstra và các trường hợp đường thay thế/không có đường.
 - Chưa kiểm tra: runtime trình duyệt, thao tác cảm ứng trên thiết bị thật, khả năng truy cập bàn phím và hiệu năng ở các thiết bị cấu hình thấp.
 
