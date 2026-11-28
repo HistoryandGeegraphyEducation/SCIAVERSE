@@ -32,6 +32,8 @@ test('Every pilot page has the shared knowledge-level module',()=>{
   assert.ok(read('space.js').includes('dataset.spatialCoverage'));
   assert.ok(read('space.js').includes('dataset.units'));
   assert.ok(read('space.js').includes('dataset.license'));
+  assert.ok(read('space.js').includes('space-data-chart-section'));
+  assert.ok(read('space.js').includes('resource.relatedItems'));
   assert.ok(exists('simulations/model-accessibility.css'));
   assert.match(read('simulations/model-levels.js'),/model-accessibility\.css/);
 });
@@ -60,7 +62,7 @@ test('All four spaces have registered content and required metadata',()=>{
   const resources=json('data/learning-resources.json');
   assert.ok(resources.length>=3);
   for(const item of resources){
-    for(const key of ['title','creator','publisher','sourceUrl','license','relatedFields'])assert.ok(item[key],item.id+' missing '+key);
+    for(const key of ['title','creator','publisher','sourceUrl','license','relatedFields','resourceType','relatedItems'])assert.ok(item[key],item.id+' missing '+key);
     assert.ok(/^https:\/\//.test(item.sourceUrl));
   }
 });

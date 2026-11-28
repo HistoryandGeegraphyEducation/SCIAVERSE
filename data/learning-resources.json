@@ -7,8 +7,19 @@
     "publicationDate": null,
     "sourceUrl": "https://www.usgs.gov/special-topics/water-science-school/water-cycle",
     "license": "Trang không nêu giấy phép chung cho toàn bộ nội dung; từng hình ảnh và tài nguyên có điều kiện sử dụng riêng.",
-    "relatedFields": ["earth-environment"],
-    "fieldNames": {"earth-environment":"Trái Đất và môi trường"}
+    "relatedFields": [
+      "earth-environment"
+    ],
+    "fieldNames": {
+      "earth-environment": "Trái Đất và môi trường"
+    },
+    "resourceType": "Tài liệu diễn giải",
+    "relatedItems": [
+      {
+        "title": "Mô hình vòng tuần hoàn nước",
+        "path": "simulations/hydrology/water-cycle/index.html"
+      }
+    ]
   },
   {
     "id": "usgs-water-cycle-diagrams",
@@ -18,8 +29,19 @@
     "publicationDate": null,
     "sourceUrl": "https://www.usgs.gov/water-science-school/water-cycle-diagrams",
     "license": "Các poster trên trang có ghi Sources/Usage: Public Domain; kiểm tra thông tin của từng tệp trước khi tái sử dụng.",
-    "relatedFields": ["earth-environment"],
-    "fieldNames": {"earth-environment":"Trái Đất và môi trường"}
+    "relatedFields": [
+      "earth-environment"
+    ],
+    "fieldNames": {
+      "earth-environment": "Trái Đất và môi trường"
+    },
+    "resourceType": "Tài liệu gốc",
+    "relatedItems": [
+      {
+        "title": "Mô hình vòng tuần hoàn nước",
+        "path": "simulations/hydrology/water-cycle/index.html"
+      }
+    ]
   },
   {
     "id": "openstax-pendulums",
@@ -29,8 +51,19 @@
     "publicationDate": "2016-09-19",
     "sourceUrl": "https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums",
     "license": "CC BY-NC-SA 4.0; không sử dụng nội dung OpenStax cho mục đích thương mại nếu chưa được cấp phép.",
-    "relatedFields": ["physics"],
-    "fieldNames": {"physics":"Vật lí"}
+    "relatedFields": [
+      "physics"
+    ],
+    "fieldNames": {
+      "physics": "Vật lí"
+    },
+    "resourceType": "Tài liệu diễn giải",
+    "relatedItems": [
+      {
+        "title": "Thí nghiệm con lắc đơn",
+        "path": "labs/simple-pendulum/index.html"
+      }
+    ]
   },
   {
     "id": "usno-seasons",
@@ -40,7 +73,22 @@
     "publicationDate": null,
     "sourceUrl": "https://aa.usno.navy.mil/faq/seasons_orbit",
     "license": "Trang không nêu giấy phép tái sử dụng chung; SCIAVERSE chỉ liên kết đến nguồn gốc.",
-    "relatedFields": ["space-astronomy"],
-    "fieldNames": {"space-astronomy":"Vũ trụ và thiên văn"}
+    "relatedFields": [
+      "space-astronomy"
+    ],
+    "fieldNames": {
+      "space-astronomy": "Vũ trụ và thiên văn"
+    },
+    "resourceType": "Tài liệu gốc",
+    "relatedItems": [
+      {
+        "title": "Mô hình Trái Đất quanh Mặt Trời",
+        "path": "simulations/astronomy/earth-revolution/index.html"
+      },
+      {
+        "title": "Ngày đêm dài ngắn theo mùa",
+        "path": "simulations/astronomy/daylight-duration/index.html"
+      }
+    ]
   }
-]
+]\n

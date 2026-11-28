@@ -30,3 +30,12 @@
 @media(max-width:640px){.space-filter-row{grid-template-columns:1fr}.space-content-card{padding:15px 0}.space-data-table{min-width:600px}.space-meta-grid{grid-template-columns:100px minmax(0,1fr)}}
 
 .space-data-title{margin:0 0 14px;color:var(--text);font-size:18px;font-weight:550}
+
+.space-data-chart-section{margin:18px 0 8px;padding:14px 0;border-top:1px solid var(--line)}
+.space-data-chart-section h4{margin:0 0 10px;color:var(--text);font-size:15px;font-weight:550}
+.space-data-chart-section svg{display:block;width:100%;height:auto;max-height:250px;overflow:visible}
+.space-data-bar{fill:var(--accent)}
+.space-data-chart-count{fill:var(--text);font-size:12px}
+.space-data-chart-label{fill:var(--text-soft);font-size:12px}
+.space-data-chart-axis{stroke:var(--line-strong);stroke-width:1}
+.space-data-analysis{margin:12px 0 18px;color:var(--text-soft);font-size:14px;line-height:1.6}

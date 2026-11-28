@@ -125,8 +125,10 @@
     const status = node('p', 'space-data-status', 'Đang tải dữ liệu từ USGS');
     status.setAttribute('role','status');
     const summary = node('div', 'space-data-summary');
+    const chartWrap = node('section','space-data-chart-section');
+    const analysisWrap = node('p','space-data-analysis');
     const tableWrap = node('div', 'space-table-wrap');
-    shell.append(filters, status, summary, tableWrap);
+    shell.append(filters, status, summary, chartWrap, analysisWrap, tableWrap);
 
     const metadata=node('dl','space-meta-grid');
     metadata.append(node('dt','','Phạm vi không gian'),node('dd','',dataset.spatialCoverage));
@@ -146,6 +148,8 @@
       status.dataset.state = 'loading';
       refresh.disabled = true;
       tableWrap.replaceChildren();
+      chartWrap.replaceChildren();
+      analysisWrap.textContent='';
       summary.replaceChildren();
       try {
         const feedUrl = dataset.feedUrls[range.value];
@@ -173,6 +177,59 @@
           tableWrap.append(node('p','standalone-empty','Không có sự kiện phù hợp với bộ lọc.'));
           return;
         }
+
+        const magnitudes=filteredEvents.map(feature=>Number(feature.properties.mag)).filter(Number.isFinite);
+        const depths=filteredEvents.map(feature=>Number(feature.geometry?.coordinates?.[2])).filter(Number.isFinite);
+        const sortedMagnitudes=magnitudes.slice().sort((a,b)=>a-b);
+        const middle=Math.floor(sortedMagnitudes.length/2);
+        const median=sortedMagnitudes.length%2?sortedMagnitudes[middle]:(sortedMagnitudes[middle-1]+sortedMagnitudes[middle])/2;
+        const maximum=Math.max(...magnitudes);
+        const averageDepth=depths.length?depths.reduce((sum,value)=>sum+value,0)/depths.length:null;
+        const decimal=value=>Number(value).toFixed(1).replace('.',',');
+        analysisWrap.textContent='Phân tích '+magnitudes.length+' sự kiện: độ lớn lớn nhất '+decimal(maximum)+', trung vị '+decimal(median)+(averageDepth===null?'.':', độ sâu trung bình '+decimal(averageDepth)+' km.');
+
+        const bins=[
+          {label:'<1',min:-Infinity,max:1},
+          {label:'1–1,9',min:1,max:2},
+          {label:'2–2,9',min:2,max:3},
+          {label:'3–3,9',min:3,max:4},
+          {label:'4–4,9',min:4,max:5},
+          {label:'≥5',min:5,max:Infinity}
+        ];
+        const counts=bins.map(bin=>magnitudes.filter(value=>value>=bin.min&&value<bin.max).length);
+        const maxCount=Math.max(1,...counts);
+        const svgNS='http://www.w3.org/2000/svg';
+        const chart=document.createElementNS(svgNS,'svg');
+        chart.setAttribute('viewBox','0 0 600 210');
+        chart.setAttribute('role','img');
+        chart.setAttribute('aria-label','Phân bố '+magnitudes.length+' sự kiện theo độ lớn');
+        const chartTitle=document.createElementNS(svgNS,'title');chartTitle.textContent='Phân bố sự kiện theo độ lớn';
+        const chartDesc=document.createElementNS(svgNS,'desc');chartDesc.textContent='Số lượng sự kiện trong sáu khoảng độ lớn, tính từ dữ liệu USGS đã lọc.';
+        chart.append(chartTitle,chartDesc);
+        const baseline=160,barMax=112;
+        bins.forEach((bin,index)=>{
+          const x=38+index*92;
+          const height=counts[index]/maxCount*barMax;
+          const rect=document.createElementNS(svgNS,'rect');
+          rect.setAttribute('x',String(x));rect.setAttribute('y',String(baseline-height));
+          rect.setAttribute('width','48');rect.setAttribute('height',String(height));
+          rect.setAttribute('rx','4');rect.setAttribute('class','space-data-bar');
+          chart.append(rect);
+          const countText=document.createElementNS(svgNS,'text');
+          countText.setAttribute('x',String(x+24));countText.setAttribute('y',String(Math.max(22,baseline-height-8)));
+          countText.setAttribute('text-anchor','middle');countText.setAttribute('class','space-data-chart-count');
+          countText.textContent=String(counts[index]);chart.append(countText);
+          const labelText=document.createElementNS(svgNS,'text');
+          labelText.setAttribute('x',String(x+24));labelText.setAttribute('y','188');
+          labelText.setAttribute('text-anchor','middle');labelText.setAttribute('class','space-data-chart-label');
+          labelText.textContent=bin.label;chart.append(labelText);
+        });
+        const baselineLine=document.createElementNS(svgNS,'line');
+        baselineLine.setAttribute('x1','24');baselineLine.setAttribute('x2','576');
+        baselineLine.setAttribute('y1',String(baseline));baselineLine.setAttribute('y2',String(baseline));
+        baselineLine.setAttribute('class','space-data-chart-axis');chart.append(baselineLine);
+        chartWrap.append(node('h4','','Phân bố sự kiện theo độ lớn'),chart);
+
         const table = node('table','space-data-table');
         const thead = node('thead');
         const headerRow = node('tr');
@@ -231,7 +288,7 @@
       const query=search.value.trim().toLocaleLowerCase('vi');
       const selected=field.value;
       const filtered=resources.filter(resource=>{
-        const haystack=[resource.title,resource.creator,resource.publisher].join(' ').toLocaleLowerCase('vi');
+        const haystack=[resource.title,resource.creator,resource.publisher,resource.resourceType].join(' ').toLocaleLowerCase('vi');
         return (!query||haystack.includes(query))&&(selected==='all'||resource.relatedFields.includes(selected));
       });
       list.replaceChildren();
@@ -243,10 +300,20 @@
         card.append(heading);
         card.append(node('p','space-card-question',resource.creator+' | '+resource.publisher));
         const meta=node('dl','space-meta-grid');
+        meta.append(node('dt','','Loại tài liệu'),node('dd','',resource.resourceType));
         meta.append(node('dt','','Ngày xuất bản'),node('dd','',resource.publicationDate||'Không ghi trên trang nguồn'));
         meta.append(node('dt','','Giấy phép'),node('dd','',resource.license));
         meta.append(node('dt','','Lĩnh vực'),node('dd','',resource.relatedFields.map(id=>resource.fieldNames[id]||id).join(', ')));
         card.append(meta);
+        if(resource.relatedItems&&resource.relatedItems.length){
+          const related=node('p','space-source-line');
+          related.append(document.createTextNode('Liên kết liên quan: '));
+          resource.relatedItems.forEach((item,index)=>{
+            if(index)related.append(document.createTextNode('; '));
+            const anchor=node('a','',item.title);anchor.href=item.path;related.append(anchor);
+          });
+          card.append(related);
+        }
         list.append(card);
       });
     }
