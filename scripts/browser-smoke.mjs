@@ -203,6 +203,138 @@ try{
   assert.match(weatheringSource,/const deltaBaseY\s*=\s*terrainHeight/);
   await aModelPage.close();
 
+  await aModelPage.goto(base+'/simulations/meteorology/tropical-cyclone/index.html',{waitUntil:'domcontentloaded'});
+  assert.match(await aModelPage.locator('#cycloneDirection').textContent(),/Bắc bán cầu/);
+  assert.match(await aModelPage.locator('#latitudeState').textContent(),/\+3,77 × 10⁻⁵ s⁻¹/);
+  await aModelPage.locator('#hemisphereChoice [data-hemisphere="south"]').click();
+  assert.match(await aModelPage.locator('#cycloneDirection').textContent(),/Nam bán cầu/);
+  assert.match(await aModelPage.locator('#latitudeState').textContent(),/−3,77 × 10⁻⁵ s⁻¹/);
+  await aModelPage.locator('#cycloneLatitude').evaluate(element=>{
+    element.value='0';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.match(await aModelPage.locator('#latitudeState').textContent(),/f = 0 s⁻¹/);
+  await aModelPage.locator('#cycloneSst').evaluate(element=>{
+    element.value='25';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.match(await aModelPage.locator('#sstState').textContent(),/Thấp hơn mốc tham khảo/);
+  await aModelPage.locator('#cycloneHumidity').evaluate(element=>{
+    element.value='40';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.match(await aModelPage.locator('#humidityState').textContent(),/khô hơn/);
+  await aModelPage.locator('#cycloneShear').evaluate(element=>{
+    element.value='20';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.match(await aModelPage.locator('#shearState').textContent(),/Đứt gió lớn hơn/);
+
+  await aModelPage.goto(base+'/simulations/hydrology/flash-flood/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.locator('#rainDuration').evaluate(element=>{
+    element.value='0.5';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#peakDischarge').textContent(),'Không áp dụng');
+  await aModelPage.locator('#rainDuration').evaluate(element=>{
+    element.value='1';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#peakDischarge').textContent(),'0,19 m³/s');
+  await aModelPage.locator('#basinArea').evaluate(element=>{
+    element.value='80';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#peakDischarge').textContent(),'Không áp dụng');
+  assert.match(await aModelPage.locator('#floodFormula').textContent(),/80 ha/);
+
+  await aModelPage.goto(base+'/simulations/oceanography/tsunami/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.locator('#waterDepth').evaluate(element=>{
+    element.value='1000';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  await aModelPage.locator('#elapsedTime').evaluate(element=>{
+    element.value='2';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#waveSpeed').textContent(),'99,0 m/s');
+  assert.equal(await aModelPage.locator('#waveDistance').textContent(),'713,1 km');
+
+  await aModelPage.goto(base+'/simulations/hydrology/saltwater-intrusion/index.html',{waitUntil:'domcontentloaded'});
+  const estuaryShapeBefore=await aModelPage.locator('#saltWedge').getAttribute('d');
+  await aModelPage.locator('#riverFlow [data-value="low"]').click();
+  await aModelPage.locator('#tideStrength [data-value="high"]').click();
+  assert.notEqual(await aModelPage.locator('#saltWedge').getAttribute('d'),estuaryShapeBefore);
+  assert.match(await aModelPage.locator('#saltTendency').textContent(),/tiến sâu hơn/);
+  await aModelPage.locator('#saltMode [data-mode="aquifer"]').click();
+  assert.equal(await aModelPage.locator('#aquiferPanel').isVisible(),true);
+  const aquiferShapeBefore=await aModelPage.locator('#aquiferTransition').getAttribute('d');
+  await aModelPage.locator('#pumpingLevel [data-value="high"]').click();
+  await aModelPage.locator('#rechargeLevel [data-value="low"]').click();
+  assert.notEqual(await aModelPage.locator('#aquiferTransition').getAttribute('d'),aquiferShapeBefore);
+  assert.match(await aModelPage.locator('#saltTendency').textContent(),/dịch chuyển vào đất liền/);
+
+  await aModelPage.goto(base+'/simulations/coastal/sea-level-rise/index.html',{waitUntil:'domcontentloaded'});
+  assert.equal(await aModelPage.locator('#floodFill').getAttribute('d'),'');
+  await aModelPage.locator('#seaRise').evaluate(element=>{
+    element.value='1';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.notEqual(await aModelPage.locator('#floodFill').getAttribute('d'),'');
+  assert.equal(await aModelPage.locator('#seaLevelValue').textContent(),'1,0 m');
+  await aModelPage.locator('#seaRise').evaluate(element=>{
+    element.value='2';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#seaLevelValue').textContent(),'2,0 m');
+
+  await aModelPage.goto(base+'/simulations/geophysics/earthquake/index.html',{waitUntil:'domcontentloaded'});
+  assert.match(await aModelPage.locator('#seismicMoment').textContent(),/1,800/);
+  assert.equal(await aModelPage.locator('#momentMagnitude').textContent(),'Mw 6,77');
+  await aModelPage.locator('#faultLength').evaluate(element=>{
+    element.value='80';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.match(await aModelPage.locator('#seismicMoment').textContent(),/3,600/);
+  assert.equal(await aModelPage.locator('#momentMagnitude').textContent(),'Mw 6,97');
+  await aModelPage.locator('#quakeDepth').evaluate(element=>{
+    element.value='301';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#depthClass').textContent(),'Sâu');
+  await aModelPage.locator('#quakeTrigger').click();
+  assert.equal(await aModelPage.locator('.quake-diagram').getAttribute('class').then(value=>value.includes('is-active')),true);
+  await aModelPage.locator('#quakeReset').click();
+  assert.equal(await aModelPage.locator('#faultLength').inputValue(),'40');
+
+  await aModelPage.goto(base+'/simulations/geophysics/volcano/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.locator('#magmaChoice [data-magma="andesitic"]').click();
+  await aModelPage.locator('#gasChoice [data-gas="high"]').click();
+  assert.equal(await aModelPage.locator('#eruptionTendency').textContent(),'Xu hướng phun nổ tăng');
+  assert.equal(await aModelPage.locator('#volcanoDiagram').getAttribute('data-style'),'explosive');
+  await aModelPage.locator('#magmaChoice [data-magma="basaltic"]').click();
+  await aModelPage.locator('#gasChoice [data-gas="low"]').click();
+  assert.match(await aModelPage.locator('#eruptionTendency').textContent(),/phun tràn/);
+  assert.equal(await aModelPage.locator('#volcanoDiagram').getAttribute('data-style'),'effusive');
+  await aModelPage.locator('#magmaChoice [data-magma="andesitic"]').click();
+  await aModelPage.locator('#gasChoice [data-gas="medium"]').click();
+  assert.match(await aModelPage.locator('#eruptionTendency').textContent(),/Chưa thể phân loại/);
+
+  await aModelPage.goto(base+'/simulations/geotechnical/landslide/index.html',{waitUntil:'domcontentloaded'});
+  assert.equal(await aModelPage.locator('#safetyFactor').textContent(),'1,14');
+  await aModelPage.locator('#porePressure').evaluate(element=>{
+    element.value='20';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#slopeState').textContent(),'Mất ổn định');
+  await aModelPage.locator('#porePressure').evaluate(element=>{
+    element.value='50';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#safetyFactor').textContent(),'Không xác định');
+  assert.equal(await aModelPage.locator('#slopeState').textContent(),'Ngoài miền áp dụng');
+
+  await aModelPage.goto(base+'/simulations/hydrology/water-cycle/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#waterStatus')?.dataset.state==='ready',{timeout:30000});
+  const waterProcesses=[['evaporation','Bốc hơi'],['condensation','Ngưng tụ'],['precipitation','Mưa'],['runoff','Dòng chảy mặt'],['groundwater','Nước ngầm']];
+  for(const [key,title] of waterProcesses){
+    await aModelPage.locator('[data-process="'+key+'"]').click();
+    assert.equal(await aModelPage.locator('#waterResultTitle').textContent(),title);
+  }
+  await aModelPage.locator('[data-process="evaporation"]').click();
+  await aModelPage.locator('#waterSpeed').selectOption('2');
+  await aModelPage.locator('#waterPlay').click();
+  await aModelPage.waitForTimeout(2800);
+  await aModelPage.locator('#waterPause').click();
+  assert.equal(await aModelPage.locator('[data-process="condensation"]').getAttribute('aria-pressed'),'true');
+  await aModelPage.locator('#waterReset').click();
+  assert.equal(await aModelPage.locator('#waterResultTitle').textContent(),'Bốc hơi');
+
   const responsivePages=[
     '/space.html?id=virtual-laboratories',
     '/space.html?id=scientific-data',

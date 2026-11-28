@@ -2,6 +2,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 let hemisphere='north';
+const EARTH_ROTATION_RATE=7.2921150e-5;
 const fmt=(n,d=1)=>n.toLocaleString('vi-VN',{maximumFractionDigits:d});
 function setHemisphere(value){
  hemisphere=value;
@@ -21,7 +22,10 @@ function update(){
  $('sstState').textContent=sst>=26.5?'Đạt vùng nhiệt độ thường thuận lợi; cần xét độ sâu lớp nước ấm.':'Thấp hơn mốc tham khảo thường dùng; không phải ngưỡng tuyệt đối.';
  $('humidityState').textContent=humidity>=70?'Độ ẩm tầng giữa tương đối cao, thuận lợi hơn cho đối lưu sâu.':humidity>=50?'Độ ẩm trung bình; không thể kết luận chỉ từ giá trị này.':'Không khí tầng giữa khô hơn có thể hạn chế đối lưu sâu.';
  $('shearState').textContent=shear<10?'Đứt gió tương đối yếu theo mốc tham khảo, ít phá vỡ cấu trúc thẳng đứng hơn.':'Đứt gió lớn hơn có thể làm nghiêng hoặc phá vỡ cấu trúc đối lưu.';
- $('latitudeState').textContent=lat<5?'Gần xích đạo, lực Coriolis yếu.': 'Có lực Coriolis đáng kể hơn; vẫn cần nhiễu động ban đầu và các điều kiện khác.';
+ const signedLatitude=(hemisphere==='north'?1:-1)*lat;
+ const coriolis=2*EARTH_ROTATION_RATE*Math.sin(signedLatitude*Math.PI/180);
+ const coriolisText=Math.abs(coriolis)<1e-12?'0 s⁻¹':`${coriolis<0?'−':'+'}${(Math.abs(coriolis)/1e-5).toFixed(2).replace('.',',')} × 10⁻⁵ s⁻¹`;
+ $('latitudeState').textContent=(lat<5?'Gần xích đạo, lực Coriolis yếu.':'Có lực Coriolis đáng kể hơn; vẫn cần nhiễu động ban đầu và các điều kiện khác.')+' Tham số Coriolis f = '+coriolisText+'.';
 }
 ['cycloneSst','cycloneHumidity','cycloneShear','cycloneLatitude'].forEach(id=>$(id).addEventListener('input',update));
 $('hemisphereChoice').addEventListener('click',event=>{const b=event.target.closest('[data-hemisphere]');if(b)setHemisphere(b.dataset.hemisphere);});
