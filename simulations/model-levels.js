@@ -1,5 +1,12 @@
 (() => {
   'use strict';
+  if(!document.querySelector('link[data-sciaverse-accessibility]')){
+    const stylesheet=document.createElement('link');
+    stylesheet.rel='stylesheet';
+    stylesheet.href='../../model-accessibility.css?v=20261128-accessibility1';
+    stylesheet.dataset.sciaverseAccessibility='true';
+    document.head.append(stylesheet);
+  }
   const root=document.querySelector('.model-intro');
   if(!root)return;
   const registryUrl='../../../data/model-registry.json';

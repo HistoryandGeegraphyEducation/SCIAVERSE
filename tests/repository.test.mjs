@@ -27,6 +27,8 @@ test('Every pilot page has the shared knowledge-level module',()=>{
     assert.match(html,/<script src="\.\.\/\.\.\/model-levels\.js\?v=20261128-levels1" defer><\/script>/);
   }
   assert.ok(exists('simulations/model-levels.js'));
+  assert.ok(exists('simulations/model-accessibility.css'));
+  assert.match(read('simulations/model-levels.js'),/model-accessibility\.css/);
 });
 
 test('All four spaces have registered content and required metadata',()=>{
