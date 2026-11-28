@@ -90,7 +90,7 @@
     resultTitle.textContent=nearest[1].title;
     resultText.textContent=nearest[1].text;
     daySlider.value=String(dayOfYear);
-    dayValue.textContent='Ngày thứ '+Math.floor(dayOfYear+1);
+    dayValue.textContent='Ngày mô phỏng: '+dayOfYear.toFixed(1).replace('.',',');
     render();
   }
 

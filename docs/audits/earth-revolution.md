@@ -47,6 +47,6 @@ Các trường hợp cần xác nhận:
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Đã dùng texture NASA Blue Marble cục bộ, có nguồn dự phòng trực tuyến; không tạo bản đồ Trái Đất giả khi tải ảnh lỗi.
 - Chưa được xác nhận nghiệm thu khoa học.
-- Đã bổ sung thanh thời gian ngày trong năm, chạy/tạm dừng/đặt lại và chọn số ngày mô phỏng mỗi giây.
+- Đã bổ sung thanh thời gian mô phỏng theo chu kì năm, chạy/tạm dừng/đặt lại và chọn số ngày mô phỏng mỗi giây.
 - Trạng thái khoa học vẫn là `in-review`; trạng thái triển khai vẫn là `sciaverse-pilot-in-progress`.
 - Kiểm thử trình duyệt tự động đang chờ kết quả workflow; chưa xác nhận runtime hoặc thiết bị di động.
