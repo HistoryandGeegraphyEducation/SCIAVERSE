@@ -182,24 +182,42 @@ Chưa đủ điều kiện đóng Giai đoạn 0. Cần hoàn tất bước 5: l
 
 ## 9. Theo dõi chỉnh sửa sau bước 4
 
-Ngày cập nhật: 27/11/2026
+Ngày cập nhật: 28/11/2026  
+Nhánh: main
 
-Các vấn đề sau đã được xử lý trên nhánh main:
+### 9.1. Chức năng đã bổ sung
 
-| Phát hiện ở bước 4 | Điều chỉnh | Trạng thái |
+| Hạng mục | Thay đổi | Phạm vi |
 |---|---|---|
-| Bộ lọc field.js và space.js chỉ kiểm tra nghiệm thu khoa học | Bắt buộc đồng thời scientificStatus = validated và implementationStatus = verified-in-build | Đã sửa |
-| index.html gọi earth-rotation.js đã bị xóa sau khi chuyển mô hình sang trang riêng | Bỏ script legacy và vùng canvas không còn mã vận hành; dùng lại sơ đồ quỹ đạo SVG tĩnh đã có hệ CSS | Đã sửa ở mức mã nguồn |
-| README mô tả hàng đợi là 12 pilot | Đồng bộ thành 24 pilot độc lập | Đã sửa |
-| Hàng đợi ghi 6 mô hình in-review và 17 pilot | Đồng bộ thành 12 in-review và 24 pilot | Đã sửa |
-| Trang daylight-duration chưa được liên kết vào Registry | Gắn đường dẫn với bản ghi `ngay-dem-dai-ngan-theo-mua`, giữ trạng thái khoa học `not-reviewed` và triển khai `sciaverse-pilot-in-progress` | Đã sửa |
+| Phòng thí nghiệm ảo | Thêm thí nghiệm con lắc đơn với biến số, công thức, quy trình, giả định và nguồn | `labs/simple-pendulum/`, `data/virtual-labs.json` |
+| Dữ liệu khoa học | Thêm bộ khám phá feed GeoJSON động đất USGS ComCat; lọc 24 giờ, 7 ngày, 30 ngày và độ lớn tối thiểu | `space.js`, `data/scientific-datasets.json` |
+| Thư viện học liệu | Thêm bốn tài nguyên có thông tin xuất xứ và giấy phép | `data/learning-resources.json` |
+| Vòng tuần hoàn nước | Thêm hạt chuyển động theo năm quá trình, chạy/tạm dừng/đặt lại và tốc độ trình diễn | `simulations/hydrology/water-cycle/` |
+| Chuyển động quanh Mặt Trời | Thêm thanh thời gian ngày trong năm và tốc độ mô phỏng liên tục | `simulations/astronomy/earth-revolution/` |
+| Mức kiến thức | Thêm bộ chọn Cơ bản/Nâng cao trên 25 trang; mức nâng cao hiển thị các phần khoa học phù hợp từ hồ sơ thẩm định | `simulations/model-levels.js`, `data/model-knowledge-index.json` |
+| Khả năng tiếp cận | Nạp quy tắc focus-visible và prefers-reduced-motion dùng chung trên 25 trang mô hình | `simulations/model-accessibility.css` |
+| Thư viện 3D | Đưa Three.js r128 và OrbitControls vào repository; giữ giấy phép MIT | `vendor/`, `three-loader.js` |
+| Kiểm thử | Thêm kiểm tra dữ liệu, đường dẫn, tương tác trình duyệt và responsive | `tests/`, `scripts/browser-smoke.mjs`, workflow GitHub Actions |
 
-Các nội dung chưa được giải quyết trong đợt này:
+### 9.2. Trạng thái khoa học và kỹ thuật
 
-- Trang daylight-duration đã được liên kết vào Registry với trạng thái not-reviewed và sciaverse-pilot-in-progress; không được công bố trước khi hoàn tất thẩm định và kiểm thử.
-- Ba không gian phòng thí nghiệm ảo, dữ liệu khoa học và thư viện học liệu chưa có chức năng nội dung. README đã được làm rõ đây là các khu vực mới có định nghĩa nền và tuyến trang. Trang không gian không còn hiển thị tiêu đề danh sách mô hình sai ngữ cảnh cho ba khu vực này; chưa coi chúng là hoàn thiện.
-- Chưa có kiểm thử runtime, kiểm tra WebGL trên trình duyệt hoặc xác minh responsive trên thiết bị.
-- Chưa bổ sung cơ chế diễn tiến tự động cho các mô hình quá trình, chưa triển khai hai mức kiến thức cơ bản và nâng cao.
-- Chưa chuyển mô hình nào sang verified-in-build. Điều kiện hiển thị mới sẽ khiến danh mục mô phỏng và trang lĩnh vực không công bố các pilot chưa qua kiểm thử kỹ thuật.
+- Không thay đổi `scientificStatus` hoặc `implementationStatus` của 25 mô hình trong Registry.
+- Vòng tuần hoàn nước và chuyển động quanh Mặt Trời vẫn ở trạng thái `in-review` và `sciaverse-pilot-in-progress`.
+- Mô hình ngày đêm dài ngắn theo mùa vẫn ở trạng thái `not-reviewed`; tài liệu rà soát kỹ thuật mới không phải quyết định nghiệm thu.
+- Không có mô hình nào được gán `verified-in-build` trong đợt cập nhật này.
+- Các chuyển động trong vòng tuần hoàn nước là trình diễn thứ tự quá trình, không biểu diễn vận tốc hoặc lưu lượng thực.
+- Thời gian quỹ đạo trong mô hình Trái Đất quanh Mặt Trời là tham số mô phỏng theo năm trung bình, không phải ephemeris hoặc lịch thiên văn chính xác theo năm.
 
-Các thay đổi trên có cập nhật Registry để liên kết trang daylight-duration với bản ghi đã tồn tại. Không thay đổi trạng thái nghiệm thu khoa học; không thay đổi mã nguồn của 24 mô hình thuộc hàng đợi migration.
+### 9.3. Kiểm thử
+
+Đã bổ sung workflow tự động gồm kiểm tra Registry, dữ liệu, đường dẫn và Playwright trên trình duyệt Chromium. Bộ kiểm tra dự kiến chạy 25 trang mô hình ở 320, 360, 390 và 430 CSS px; sáu trang chức năng trọng yếu được kiểm tra ở cùng bốn kích thước. Tại thời điểm cập nhật tài liệu, chưa có kết quả workflow hoàn tất được xác nhận. Chưa thực hiện kiểm tra thủ công trên thiết bị vật lí.
+
+### 9.4. Việc còn phải xử lý
+
+- Chờ workflow GitHub Actions hoàn tất; sửa mọi lỗi kiểm thử phát hiện được.
+- Kiểm tra thủ công trên điện thoại và máy tính bảng; xác nhận WebGL, cảm ứng, bàn phím và hiệu năng.
+- Mở rộng nội dung phòng thí nghiệm, dữ liệu khoa học và thư viện học liệu theo nguồn có thể kiểm chứng.
+- Rà soát nội dung nâng cao của từng mô hình; bộ chọn mức kiến thức hiện trình bày nội dung từ hồ sơ thẩm định, không thay thế biên soạn sư phạm.
+- Chỉ xem xét `verified-in-build` sau khi có kết quả kiểm thử đạt và rà soát kỹ thuật từng mô hình.
+
+Bước 5 chưa được thực hiện.

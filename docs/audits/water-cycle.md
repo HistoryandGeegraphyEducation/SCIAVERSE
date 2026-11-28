@@ -37,7 +37,7 @@ Các trường hợp cần xác nhận:
 - Nước ngầm: nước thấm xuống tầng chứa nước, di chuyển trong tầng và có thể thoát ra gần bờ.
 - Chuyển quá trình: chỉ nhóm mũi tên và hạt tương ứng hiển thị; các thành phần nền giữ nguyên.
 
-Đây là kiểm tra logic mô hình. Chưa có kiểm thử runtime WebGL trong trình duyệt ở lượt triển khai này.
+Đây là kiểm tra logic mô hình. Mô hình hiện có bộ trình diễn tuần tự năm quá trình; hạt chuyển động chỉ biểu diễn hướng và trình tự, không biểu diễn vận tốc hoặc lưu lượng. Người dùng chủ động chạy, tạm dừng, đặt lại và chọn tốc độ trình diễn. Tốc độ trình diễn không phải tham số thủy văn.
 
 ## 5. Nguồn tham khảo
 
@@ -51,4 +51,6 @@ Các trường hợp cần xác nhận:
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Phạm vi loại trừ thoát hơi nước từ thực vật được ghi rõ trong giao diện và phiếu thẩm định.
 - Chưa được xác nhận nghiệm thu khoa học.
-- Chưa kiểm thử runtime trên trình duyệt hoặc thiết bị di động.
+- Đã bổ sung chuyển động hạt và điều khiển trình diễn.
+- Trạng thái khoa học vẫn là `in-review`; trạng thái triển khai vẫn là `sciaverse-pilot-in-progress`.
+- Kiểm thử trình duyệt tự động đang chờ kết quả workflow; chưa xác nhận runtime hoặc thiết bị di động.

@@ -21,7 +21,8 @@
       "Thông số có đơn vị, miền giá trị và nguồn hoặc lý do lựa chọn.",
       "Phân biệt rõ dữ liệu thực, dữ liệu minh họa và tham số giả định.",
       "Có mô tả giới hạn, không trình bày mô hình minh họa như dự báo thực tế."
-    ]
+    ],
+    "implementationStatus": "registry-backed"
   },
   {
     "id": "virtual-laboratories",
@@ -43,7 +44,8 @@
       "Kết quả thay đổi phù hợp với các biến và quy luật được mô tả.",
       "Nêu giới hạn khi thay thế thí nghiệm thực bằng mô hình số.",
       "Cảnh báo an toàn khi nội dung có nguy cơ thực nghiệm."
-    ]
+    ],
+    "implementationStatus": "functional-pilot"
   },
   {
     "id": "scientific-data",
@@ -66,7 +68,8 @@
       "Đơn vị, thời gian, phạm vi và phương pháp được công bố.",
       "Không tạo số liệu minh họa rồi trình bày như dữ liệu quan trắc.",
       "Biểu đồ thể hiện đúng kiểu dữ liệu và thang đo."
-    ]
+    ],
+    "implementationStatus": "functional-pilot"
   },
   {
     "id": "learning-library",
@@ -87,6 +90,7 @@
       "Tài liệu có xuất xứ và thông tin bản quyền.",
       "Phân biệt tài liệu gốc, tài liệu diễn giải và học liệu do SCIAVERSE biên soạn.",
       "Có liên kết tới mô hình hoặc lĩnh vực liên quan khi phù hợp."
-    ]
+    ],
+    "implementationStatus": "functional-pilot"
   }
 ]

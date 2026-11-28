@@ -4,7 +4,7 @@
 
 Mô hình trình bày bốn vị trí mốc trên quỹ đạo: xuân phân, hạ chí, thu phân và đông chí. Trục quay của Trái Đất nghiêng 23,44° so với phương vuông góc mặt phẳng quỹ đạo và giữ hướng gần như cố định trong không gian.
 
-Mô hình tập trung vào quan hệ giữa vị trí trên quỹ đạo, hướng trục nghiêng và mùa ở hai bán cầu. Không mô phỏng quỹ đạo chính xác theo thời gian hoặc dự báo thời tiết/khí hậu.
+Mô hình tập trung vào quan hệ giữa vị trí trên quỹ đạo, hướng trục nghiêng và mùa ở hai bán cầu. Người dùng có thể chọn bốn mốc phân/chí hoặc điều khiển ngày mô phỏng liên tục trong một năm 365,2422 ngày. Đây là thời gian mô phỏng giản đồ, không phải ephemeris hoặc lịch thiên văn chính xác theo năm.
 
 ## 2. Cơ sở khoa học
 
@@ -31,6 +31,7 @@ Các trường hợp cần xác nhận:
 - Xuân phân và thu phân: trục gần vuông góc với hướng Trái Đất–Mặt Trời.
 - Thay đổi mốc mùa: vị trí Trái Đất thay đổi nhưng hướng trục trong không gian không đổi.
 - Mặt Trời luôn ở tâm quỹ đạo; không thay đổi khoảng cách theo một quỹ đạo elip giả lập.
+- Bộ điều khiển thời gian thay đổi vị trí theo góc quỹ đạo giản đồ; tốc độ chọn là số ngày mô phỏng mỗi giây, không phải tốc độ vận tốc quỹ đạo vật lí.
 
 Đây là kiểm tra logic hình học. Chưa có kiểm thử runtime WebGL trong trình duyệt ở lượt triển khai này.
 
@@ -46,4 +47,6 @@ Các trường hợp cần xác nhận:
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Đã dùng texture NASA Blue Marble cục bộ, có nguồn dự phòng trực tuyến; không tạo bản đồ Trái Đất giả khi tải ảnh lỗi.
 - Chưa được xác nhận nghiệm thu khoa học.
-- Chưa kiểm thử runtime trên trình duyệt hoặc thiết bị di động.
+- Đã bổ sung thanh thời gian ngày trong năm, chạy/tạm dừng/đặt lại và chọn số ngày mô phỏng mỗi giây.
+- Trạng thái khoa học vẫn là `in-review`; trạng thái triển khai vẫn là `sciaverse-pilot-in-progress`.
+- Kiểm thử trình duyệt tự động đang chờ kết quả workflow; chưa xác nhận runtime hoặc thiết bị di động.

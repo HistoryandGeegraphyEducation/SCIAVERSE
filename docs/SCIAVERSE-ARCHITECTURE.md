@@ -37,15 +37,15 @@ Dành cho mô hình động, mô hình 3D, mô hình định lượng và mô h�
 
 ### Phòng thí nghiệm ảo
 
-Dành cho hoạt động có thao tác thí nghiệm, biến số, điều kiện ban đầu, quy trình và kết quả. Không gộp một mô hình trình diễn tĩnh vào phòng thí nghiệm nếu không có hoạt động thực nghiệm.
+Dành cho hoạt động có thao tác thí nghiệm, biến số, điều kiện ban đầu, quy trình và kết quả. Pilot hiện có là thí nghiệm con lắc đơn, với biến điều khiển chiều dài dây, gia tốc trọng trường, khối lượng vật nặng và góc lệch ban đầu. Kết quả tính theo công thức chu kì của con lắc đơn lí tưởng; các giả định và giới hạn được nêu ngay trong mô-đun.
 
 ### Dữ liệu khoa học
 
-Dành cho bộ dữ liệu có nguồn, đơn vị, phạm vi không gian, khoảng thời gian và phương pháp thu thập. Mọi dữ liệu mô phỏng hoặc dữ liệu mẫu phải được đánh dấu rõ.
+Dành cho bộ dữ liệu có nguồn, đơn vị, phạm vi không gian, khoảng thời gian và phương pháp thu thập. Mọi dữ liệu mô phỏng hoặc dữ liệu mẫu phải được đánh dấu rõ. Pilot hiện có sử dụng feed GeoJSON động đất từ USGS ComCat, cho phép lọc theo khoảng thời gian và độ lớn. Thời điểm tạo feed lấy từ metadata của nguồn, không tự đặt thời gian cập nhật.
 
 ### Thư viện học liệu
 
-Dành cho tài liệu tham khảo, ảnh, bản đồ, video, bộ dữ liệu, thuật ngữ và tài nguyên có bản quyền được xác định.
+Dành cho tài liệu tham khảo, ảnh, bản đồ, video, bộ dữ liệu, thuật ngữ và tài nguyên có bản quyền được xác định. Mỗi mục trong thư viện phải có nguồn gốc, nhà xuất bản, thông tin ngày xuất bản nếu được công bố, giấy phép và lĩnh vực liên quan. Pilot hiện có bốn tài nguyên liên kết đến USGS, OpenStax và U.S. Naval Observatory.
 
 ## 4. Hồ sơ mô hình chuẩn
 
@@ -72,6 +72,7 @@ Không được chuyển thẳng từ `discovered` sang `published`. Mô hình c
 - Mỗi mô hình được triển khai trong một thư mục hoặc mô-đun có ranh giới rõ.
 - Không tải mã trực tiếp từ EDUVERSE khi SCIAVERSE chạy.
 - Thư viện dùng chung phải có phiên bản và được kiểm thử riêng.
+- Three.js r128 và OrbitControls được lưu trong `vendor/`; bộ nạp dùng tài nguyên nội bộ, không phụ thuộc CDN cho lõi 3D.
 - Tài nguyên ngoài phải có nguồn, điều kiện sử dụng và phương án dự phòng.
 - Mô hình phải hoạt động độc lập với trang tổng quan; lỗi một mô hình không được làm hỏng điều hướng hoặc các mô hình khác.
 - Hỗ trợ điện thoại trước; WebGL phải có xử lí khi thiết bị không hỗ trợ hoặc thiếu tài nguyên.
@@ -96,4 +97,8 @@ Dữ liệu lĩnh vực, không gian và danh mục mô hình được lưu riê
 
 ## 8. Trạng thái hiện tại
 
-Đây là kiến trúc nền được thiết lập cho giai đoạn tái cấu trúc. Những phần chưa có mô hình hoặc chức năng thực thi phải được thể hiện là chưa triển khai; không hiển thị số liệu, hoạt động hay nội dung giả lập như thể đã có thật.
+Ba không gian chức năng đã có pilot thực thi đầu tiên: một thí nghiệm con lắc đơn, một feed dữ liệu động đất USGS và bốn tài nguyên học liệu. Các pilot này chưa đại diện cho phạm vi nội dung đầy đủ của từng không gian.
+
+Hai mươi lăm trang mô hình có bộ chọn Cơ bản/Nâng cao; nội dung nâng cao lấy từ hồ sơ thẩm định. Hai mô hình vòng tuần hoàn nước và chuyển động quanh Mặt Trời đã có điều khiển diễn tiến. Trạng thái khoa học và kỹ thuật trong Registry vẫn được giữ nguyên cho đến khi hoàn tất kiểm thử.
+
+Mọi nội dung chưa có dữ liệu hoặc chức năng thực thi phải được thể hiện là chưa triển khai; không hiển thị số liệu, hoạt động hay nội dung giả lập như thể đã có thật.
