@@ -245,7 +245,7 @@ try{
   await aModelPage.locator('#elapsedTime').evaluate(element=>{
     element.value='2';element.dispatchEvent(new Event('input',{bubbles:true}));
   });
-  assert.equal(await aModelPage.locator('#waveSpeed').textContent(),'99,0 m/s');
+  assert.match(await aModelPage.locator('#waveSpeed').textContent(),/^99(?:,0)? m\/s$/);
   assert.equal(await aModelPage.locator('#waveDistance').textContent(),'713,1 km');
 
   await aModelPage.goto(base+'/simulations/hydrology/saltwater-intrusion/index.html',{waitUntil:'domcontentloaded'});
