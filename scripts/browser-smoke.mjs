@@ -54,6 +54,25 @@ try{
       assert.ok(metrics.knowledge,'missing knowledge-level switch: '+model.id);
       assert.ok(metrics.accessibilityStyle,'missing accessibility stylesheet: '+model.id);
     }
+    await modelPage.keyboard.press('Tab');
+    const keyboardFocus=await modelPage.evaluate(()=>({
+      skipLink:document.activeElement?.classList.contains('skip-link'),
+      outline:getComputedStyle(document.activeElement).outlineStyle,
+      outlineWidth:getComputedStyle(document.activeElement).outlineWidth
+    }));
+    assert.equal(keyboardFocus.skipLink,true,'model page must expose skip navigation to keyboard users: '+model.id);
+    assert.equal(keyboardFocus.outline,'solid','keyboard focus must be visible: '+model.id);
+    assert.equal(keyboardFocus.outlineWidth,'2px','keyboard focus outline must be visible: '+model.id);
+    await modelPage.emulateMedia({reducedMotion:'reduce'});
+    const reducedMotion=await modelPage.evaluate(()=>{
+      const element=document.querySelector('.standalone-page *');
+      const style=getComputedStyle(element);
+      return {matches:matchMedia('(prefers-reduced-motion: reduce)').matches,animation:style.animationName,transition:style.transitionDuration};
+    });
+    assert.equal(reducedMotion.matches,true,'reduced-motion preference must be active: '+model.id);
+    assert.equal(reducedMotion.animation,'none','model page animation must respect reduced motion: '+model.id);
+    assert.equal(reducedMotion.transition,'0s','model page transitions must respect reduced motion: '+model.id);
+    await modelPage.emulateMedia({reducedMotion:'no-preference'});
     await modelPage.locator('.model-knowledge-switch button').nth(1).click();
     await modelPage.waitForFunction(()=>document.querySelector('.model-knowledge-panel')?.dataset.loaded==='true',{timeout:10000});
     const advancedText=await modelPage.locator('.model-knowledge-panel').textContent();
@@ -442,7 +461,7 @@ try{
   await touchPage.waitForFunction(()=>document.querySelector('#solarPlay')?.getAttribute('aria-pressed')==='false',{timeout:30000});
   assert.equal(touchErrors.length,0,'touch interaction page errors: '+touchErrors.join(' | '));
   await touchContext.close();
-  console.log('Browser smoke test passed: 25 model pages at 4 widths with advanced content, 6 key pages at 4 widths, live data analysis, lab and 3D controls, touch input and reduced motion.');
+  console.log('Browser smoke test passed: 25 model pages at 4 widths with advanced content, keyboard focus and reduced motion; 23 model-specific interaction checks; 6 key pages at 4 widths, live data analysis, lab and 3D controls, touch input.');
 }finally{
   await browser.close();
   await new Promise(resolve=>server.close(resolve));
