@@ -74,7 +74,9 @@
     labs.forEach(lab => {
       const card = node('article', 'space-content-card');
       const heading = node('h3');
-      heading.append(link(lab.implementationPath, lab.title, 'space-card-link'));
+      const labLink = node('a','space-card-link',lab.title);
+      labLink.href = lab.implementationPath;
+      heading.append(labLink);
       card.append(heading);
       card.append(node('p', 'space-card-question', lab.experimentQuestion));
       const meta = node('dl', 'space-meta-grid');
@@ -155,12 +157,11 @@
         const updated = generated ? dateFormat.format(new Date(generated)) : 'Không có thời điểm cập nhật';
         status.textContent = 'Cập nhật: ' + updated + ' | ' + events.length + ' sự kiện phù hợp';
         status.dataset.state = 'ready';
-        summary.append(
-          node('div','space-data-stat',node('strong','',events.length)),
-          node('div','space-data-stat',node('strong','',updated))
-        );
-        summary.children[0].append(node('span','','Sự kiện hiển thị'));
-        summary.children[1].append(node('span','','Thời điểm nguồn cập nhật'));
+        const countStat=node('div','space-data-stat');
+        countStat.append(node('strong','',events.length),node('span','','Sự kiện hiển thị'));
+        const updatedStat=node('div','space-data-stat');
+        updatedStat.append(node('strong','',updated),node('span','','Thời điểm nguồn cập nhật'));
+        summary.append(countStat,updatedStat);
 
         if (!events.length) {
           tableWrap.append(node('p','standalone-empty','Không có sự kiện phù hợp với bộ lọc.'));
@@ -210,7 +211,7 @@
     const searchLabel = node('label','space-filter');
     searchLabel.append(node('span','','Tìm tài liệu'));
     const search = node('input');
-    search.type='search'; search.placeholder='Tên tài liệu hoặc tác giả'; searchLabel.append(search);
+    search.type='search'; searchLabel.append(search);
     const fieldLabel = node('label','space-filter');
     fieldLabel.append(node('span','','Lĩnh vực'));
     const field = node('select');
