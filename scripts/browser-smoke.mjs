@@ -62,6 +62,81 @@ try{
   }
   await modelPage.close();
 
+  const aModelPage=await browser.newPage({viewport:{width:390,height:844}});
+  await aModelPage.goto(base+'/simulations/astronomy/solar-system/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#solarLoading')?.hidden===true,{timeout:30000});
+  const solarTimeBefore=await aModelPage.locator('#solarTime').textContent();
+  await aModelPage.locator('#solarPlay').click();
+  await aModelPage.waitForTimeout(450);
+  await aModelPage.locator('#solarPlay').click();
+  assert.notEqual(await aModelPage.locator('#solarTime').textContent(),solarTimeBefore,'planetary time must advance');
+  await aModelPage.locator('[data-body="venus"]').click();
+  assert.match(await aModelPage.locator('#solarDirection').textContent(),/nghịch hành/);
+
+  await aModelPage.goto(base+'/simulations/astronomy/daylight-duration/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#daylightStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#daylightSeason').selectOption('june');
+  await aModelPage.locator('#daylightLatitude').evaluate(element=>{
+    element.value='90';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#dayHours').textContent(),'24,00 giờ');
+  await aModelPage.locator('#daylightSeason').selectOption('december');
+  assert.equal(await aModelPage.locator('#dayHours').textContent(),'0,00 giờ');
+
+  await aModelPage.goto(base+'/simulations/cartography/compass/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#compassStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#declinationRange').evaluate(element=>{
+    element.value='0.5';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#trueBearingValue').textContent(),'045.5°');
+  await aModelPage.locator('#declinationRange').evaluate(element=>{
+    element.value='-0.5';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#trueBearingValue').textContent(),'044.5°');
+
+  await aModelPage.goto(base+'/simulations/cartography/contour-terrain/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#contourStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#contourInterval').selectOption('50');
+  assert.equal(await aModelPage.locator('#contourIntervalValue').textContent(),'50 m');
+
+  await aModelPage.goto(base+'/simulations/cartography/globe-projection/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#projectionStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#projectionType').selectOption('mercator');
+  assert.equal(await aModelPage.locator('#projectionName').textContent(),'Mercator');
+  await aModelPage.locator('#projectionType').selectOption('azimuthal');
+  assert.match(await aModelPage.locator('#projectionName').textContent(),/Phương vị cách đều/);
+
+  await aModelPage.goto(base+'/simulations/cartography/map-scale/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#mapScaleStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#scaleRatio').selectOption('100000');
+  await aModelPage.locator('#mapLength').evaluate(element=>{
+    element.value='4';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+  assert.equal(await aModelPage.locator('#groundDistance').textContent(),'4 km');
+
+  await aModelPage.goto(base+'/simulations/cartography/map-distance/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#distanceStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#toggleMeasure').click();
+  const distanceCanvas=aModelPage.locator('#distanceStage canvas');
+  const distanceBounds=await distanceCanvas.boundingBox();
+  assert.ok(distanceBounds&&distanceBounds.width>0,'distance map canvas must render');
+  await distanceCanvas.click({position:{x:distanceBounds.width*.35,y:distanceBounds.height*.5}});
+  await distanceCanvas.click({position:{x:distanceBounds.width*.65,y:distanceBounds.height*.5}});
+  assert.notEqual(await aModelPage.locator('#groundLengthOutput').textContent(),'—','two map points must produce a ground distance');
+
+  await aModelPage.goto(base+'/simulations/cartography/route-finding/index.html',{waitUntil:'domcontentloaded'});
+  const routeBefore=await aModelPage.locator('#routeSequence').textContent();
+  await aModelPage.locator('#routeEdgeList input[data-edge="FG"]').uncheck();
+  const routeAfter=await aModelPage.locator('#routeSequence').textContent();
+  assert.notEqual(routeAfter,routeBefore,'blocking a route edge must recalculate the shortest path');
+  assert.match(await aModelPage.locator('#routeDistance').textContent(),/km/);
+
+  await aModelPage.goto(base+'/simulations/cartography/terrain-profile/index.html',{waitUntil:'domcontentloaded'});
+  await aModelPage.waitForFunction(()=>document.querySelector('#profileStatus')?.dataset.state==='ready',{timeout:30000});
+  await aModelPage.locator('#profileRoute').selectOption('cd');
+  assert.match(await aModelPage.locator('#profileSummary').textContent(),/^Tuyến CD:/);
+  await aModelPage.close();
+
   const responsivePages=[
     '/space.html?id=virtual-laboratories',
     '/space.html?id=scientific-data',
