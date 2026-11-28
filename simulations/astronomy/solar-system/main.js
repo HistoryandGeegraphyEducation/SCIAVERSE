@@ -99,7 +99,8 @@
         const radius = 1.15 + Math.sqrt(body.au) * 1.22;
         const phase = DATA.findIndex(item => item.id === body.id) * 0.73;
         const angle = phase + simulatedDays / body.orbit * Math.PI * 2;
-        object.position.set(Math.cos(angle)*radius,0,Math.sin(angle)*radius);
+        object.group.position.set(Math.cos(angle)*radius,0,Math.sin(angle)*radius);
+        object.mesh.rotation.y = (simulatedDays / Math.abs(body.rotation)) * Math.PI * 2;
       });
       el('solarTime').textContent = 'Ngày ' + format(simulatedDays,1);
     }
@@ -140,10 +141,29 @@
 
       const radius = 0.045 * Math.sqrt(body.diameter / 12742.0168);
       const planet = new T.Mesh(new T.SphereGeometry(radius,32,24),new T.MeshStandardMaterial({color:body.color,roughness:0.88,metalness:0.02}));
+      const meridianPoints=[];
+      for(let i=0;i<=48;i++){
+        const latitude=-Math.PI/2+i/48*Math.PI;
+        meridianPoints.push(new T.Vector3(radius*1.006*Math.cos(latitude),radius*1.006*Math.sin(latitude),0));
+      }
+      const meridian = new T.Line(
+        new T.BufferGeometry().setFromPoints(meridianPoints),
+        new T.LineBasicMaterial({color:0xe8eee9,transparent:true,opacity:0.72})
+      );
+      planet.add(meridian);
+      const referenceMark = new T.Mesh(
+        new T.SphereGeometry(Math.max(0.003,radius*0.1),8,6),
+        new T.MeshBasicMaterial({color:0xf0c879})
+      );
+      referenceMark.position.set(radius*1.015,0,0);
+      planet.add(referenceMark);
+      const axialGroup = new T.Group();
+      axialGroup.rotation.z = body.tilt * Math.PI / 180;
+      axialGroup.add(planet);
       const phase = DATA.findIndex(item => item.id === body.id)*0.73;
-      planet.position.set(Math.cos(phase)*orbitRadius,0,Math.sin(phase)*orbitRadius);
-      scene.add(planet);
-      bodies.set(body.id,planet);
+      axialGroup.position.set(Math.cos(phase)*orbitRadius,0,Math.sin(phase)*orbitRadius);
+      scene.add(axialGroup);
+      bodies.set(body.id,{group:axialGroup,mesh:planet});
 
       if (body.id === 'saturn') {
         const ring = new T.Mesh(new T.RingGeometry(radius*1.35,radius*2.15,64),new T.MeshBasicMaterial({color:0xc4b38f,side:T.DoubleSide,transparent:true,opacity:0.68}));
@@ -218,7 +238,8 @@
       if(!object)return;
       const phase=DATA.findIndex(item=>item.id===body.id)*0.73;
       const radius=1.15+Math.sqrt(body.au)*1.22;
-      object.position.set(Math.cos(phase)*radius,0,Math.sin(phase)*radius);
+      object.group.position.set(Math.cos(phase)*radius,0,Math.sin(phase)*radius);
+      object.mesh.rotation.y=0;
     });
     requestRender();
   });

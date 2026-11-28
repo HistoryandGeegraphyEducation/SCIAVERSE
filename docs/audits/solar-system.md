@@ -1,9 +1,9 @@
 # Thẩm định nguồn gốc — Khám phá các hành tinh
 
 - Mã nguồn tham chiếu: `EDUVERSE/js/sims/solar-system-explorer.js`
-- Trạng thái: `needs-revision`
+- Trạng thái cập nhật: `in-review`
 - Phạm vi: dữ liệu tám hành tinh và Mặt Trời, kích thước, khoảng cách, chu kỳ tự quay/quỹ đạo, độ nghiêng trục, mô hình quỹ đạo, texture và tương tác.
-- Kết luận hiện tại: phần lớn số liệu kích thước/khối lượng được làm tròn ở mức hợp lý; mô hình chuyển động không được hiệu chuẩn theo thời gian thiên văn, một số thông tin định hướng trục sai hoặc thiếu, và texture chỉ là hình minh họa procedural. Chưa đủ điều kiện tiếp nhận.
+- Kết luận cập nhật 2026-11-28: bộ dữ liệu tám hành tinh được đối chiếu với NASA/JPL; chuyển động tự quay, độ nghiêng trục và chiều quay được thể hiện trong mô hình bằng trục quay nghiêng, mốc kinh tuyến và tốc độ tính từ chu kỳ tự quay sao. Quỹ đạo vẫn là đường tròn đồng phẳng, pha ban đầu không phải ephemeris, và kích thước/khoảng cách được nén riêng. Mô hình phù hợp để quan sát định tính, chưa dùng để xác định vị trí thiên văn theo thời điểm.
 
 ## Căn cứ khoa học
 
@@ -26,7 +26,18 @@
    - Trục quay Sao Hải Vương nghiêng khoảng 28° so với mặt phẳng quỹ đạo; một vòng quay mất khoảng 16 giờ và một vòng quỹ đạo khoảng 165 năm.
    - Sao Hải Vương không có bề mặt rắn; nhiệt độ phải gắn với độ cao/áp suất hoặc tầng khí quyển cụ thể.
 
-## Kết quả đọc mã nguồn EDUVERSE
+## Rà soát triển khai SCIAVERSE ngày 2026-11-28
+
+- Tám hành tinh được dùng cùng bộ tham số đường kính trung bình, khối lượng, bán trục lớn, chu kỳ quỹ đạo sao, chu kỳ tự quay sao và độ nghiêng trục. Nguồn dữ liệu chính là NASA/JPL Planetary Physical Parameters; NASA/NSSDC được dùng để đối chiếu định nghĩa.
+- Vị trí quỹ đạo được cập nhật theo thời gian mô phỏng. Tốc độ góc quỹ đạo dùng chu kỳ quỹ đạo riêng của từng hành tinh; mốc 1× tương ứng một năm Trái Đất trong 120 giây thực.
+- Mỗi hành tinh có trục quay nghiêng theo giá trị độ nghiêng trục. Mốc kinh tuyến trên bề mặt quay theo chu kỳ tự quay sao; độ nghiêng lớn hơn 90° biểu diễn trục hướng ngược so với pháp tuyến quỹ đạo, phù hợp với các trường hợp nghịch hành trong bộ dữ liệu.
+- Tỉ lệ kích thước và bán kính quỹ đạo được nén độc lập. Quỹ đạo tròn, đồng phẳng và pha ban đầu là giả định trực quan; không mô phỏng độ lệch tâm, định luật Kepler đầy đủ hoặc vị trí hành tinh tại epoch cụ thể.
+- Texture hình cầu đơn sắc và mốc kinh tuyến chỉ hỗ trợ quan sát hướng quay; chúng không phải ảnh bề mặt hành tinh hoặc dữ liệu quan trắc.
+- Kết quả rà soát mã nguồn không thay cho kiểm thử WebGL runtime trên thiết bị thật. Trạng thái khoa học tiếp tục là `in-review` cho đến khi các phép kiểm tra hiển thị và dữ liệu được nghiệm thu.
+
+## Kết quả đọc mã nguồn EDUVERSE (hồ sơ lịch sử)
+
+Các nhận xét trong phần này mô tả phiên bản EDUVERSE được dùng làm đầu vào nghiên cứu, không mô tả mã SCIAVERSE hiện tại.
 
 ### Dữ liệu hành tinh
 
@@ -76,7 +87,9 @@
 - Nhiệt độ Sao Thủy, Sao Kim cần gắn với đại lượng cụ thể (trung bình bề mặt hoặc nhiệt độ bề mặt) để không nhầm với chênh lệch ngày/đêm hoặc tầng khí quyển.
 - Các mô tả thành phần khí quyển, loại hành tinh và vệ tinh tự nhiên nhìn chung phù hợp ở mức khái quát; cần gắn nguồn và tránh trình bày số lượng vệ tinh như giá trị cố định nếu chưa có thời điểm cập nhật.
 
-## Vấn đề kỹ thuật ảnh hưởng đến tính trung thực của mô phỏng
+## Vấn đề kỹ thuật của phiên bản EDUVERSE trước khi tái cấu trúc
+
+Các vấn đề trong phần này được ghi lại để truy nguyên lịch sử và không được hiểu là trạng thái mã hiện tại nếu đã được xử lý trong phần rà soát cập nhật ở trên.
 
 1. Hàm `updatePlanets` dùng tốc độ góc cố định, không chuyển chu kỳ thực thành tốc độ mô phỏng. Tăng/giảm tốc độ chỉ làm nhanh/chậm các hằng số không hiệu chuẩn.
 2. Quỹ đạo tròn, đồng phẳng và pha ban đầu tùy chọn không thể dùng để minh họa vị trí thực của các hành tinh vào một ngày cụ thể.
