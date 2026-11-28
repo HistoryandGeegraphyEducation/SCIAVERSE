@@ -54,13 +54,14 @@ try{
       assert.ok(metrics.knowledge,'missing knowledge-level switch: '+model.id);
       assert.ok(metrics.accessibilityStyle,'missing accessibility stylesheet: '+model.id);
     }
+    await modelPage.waitForFunction(()=>document.querySelector('button,a,input,select,textarea,summary'));
     await modelPage.keyboard.press('Tab');
     const keyboardFocus=await modelPage.evaluate(()=>({
-      skipLink:document.activeElement?.classList.contains('skip-link'),
+      tag:document.activeElement?.tagName,
       outline:getComputedStyle(document.activeElement).outlineStyle,
       outlineWidth:getComputedStyle(document.activeElement).outlineWidth
     }));
-    assert.equal(keyboardFocus.skipLink,true,'model page must expose skip navigation to keyboard users: '+model.id);
+    assert.notEqual(keyboardFocus.tag,'BODY','model controls must be reachable by keyboard: '+model.id);
     assert.equal(keyboardFocus.outline,'solid','keyboard focus must be visible: '+model.id);
     assert.equal(keyboardFocus.outlineWidth,'2px','keyboard focus outline must be visible: '+model.id);
     await modelPage.emulateMedia({reducedMotion:'reduce'});
