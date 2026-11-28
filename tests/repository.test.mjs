@@ -29,6 +29,9 @@ test('Every pilot page has the shared knowledge-level module',()=>{
 
   }
   assert.ok(exists('simulations/model-levels.js'));
+  assert.ok(read('space.js').includes('dataset.spatialCoverage'));
+  assert.ok(read('space.js').includes('dataset.units'));
+  assert.ok(read('space.js').includes('dataset.license'));
   assert.ok(exists('simulations/model-accessibility.css'));
   assert.match(read('simulations/model-levels.js'),/model-accessibility\.css/);
 });

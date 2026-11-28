@@ -28,3 +28,5 @@
 .space-data-table .space-number{font-variant-numeric:tabular-nums;white-space:nowrap}
 .space-data-explorer .model-button:disabled{opacity:.5;cursor:wait}
 @media(max-width:640px){.space-filter-row{grid-template-columns:1fr}.space-content-card{padding:15px 0}.space-data-table{min-width:600px}.space-meta-grid{grid-template-columns:100px minmax(0,1fr)}}
+
+.space-data-title{margin:0 0 14px;color:var(--text);font-size:18px;font-weight:550}

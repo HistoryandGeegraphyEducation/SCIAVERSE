@@ -99,6 +99,7 @@
   function renderDatasetExplorer(dataset) {
     contentTitle.textContent = 'Bộ dữ liệu';
     const shell = node('section', 'space-data-explorer');
+    shell.append(node('h3','space-data-title',dataset.title));
     const filters = node('div', 'space-filter-row');
     const rangeLabel = node('label', 'space-filter');
     rangeLabel.append(node('span', '', 'Khoảng thời gian'));
@@ -127,11 +128,15 @@
     const tableWrap = node('div', 'space-table-wrap');
     shell.append(filters, status, summary, tableWrap);
 
+    const metadata=node('dl','space-meta-grid');
+    metadata.append(node('dt','','Phạm vi không gian'),node('dd','',dataset.spatialCoverage));
+    metadata.append(node('dt','','Khoảng thời gian'),node('dd','',dataset.timeRange));
+    metadata.append(node('dt','','Đơn vị'),node('dd','',dataset.units.join('; ')));
+    metadata.append(node('dt','','Điều kiện sử dụng'),node('dd','',dataset.license));
     const sourceLine = node('p', 'space-source-line');
     sourceLine.append(document.createTextNode('Nguồn dữ liệu: '), link(dataset.sourceUrl, dataset.provider + ' ComCat'));
-    shell.append(sourceLine);
     const method = node('p', 'space-method-note', dataset.methodology);
-    shell.append(method);
+    shell.append(metadata,sourceLine,method);
     content.replaceChildren(shell);
 
     let requestToken = 0;
