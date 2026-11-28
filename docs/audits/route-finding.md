@@ -48,9 +48,10 @@ Các ca này kiểm tra logic Dijkstra; không phải số liệu thực địa.
 
 ## 6. Nguồn tham khảo
 
-1. GeographicLib / geosphere documentation — bài toán trắc địa thuận và ngược trên ellipsoid, mặc định WGS 84: https://search.r-project.org/CRAN/refmans/geosphere/html/geodesic.html
-2. NetworkX — Dijkstra trên đồ thị có trọng số không âm: https://networkx.org/documentation/stable/reference/algorithms/shortest_paths.html
-3. Esri ArcGIS Pro — thuật toán Dijkstra trong phân tích mạng và các ràng buộc định tuyến thực tế: https://doc.esri.com/en/arcgis-pro/latest/help/analysis/networks/algorithms-used-by-network-analyst.html
+1. Vincenty, T. (1975). Direct and inverse solutions of geodesics on the ellipsoid with application of nested equations. *Survey Review*, 23(176), 88–93. DOI: https://doi.org/10.1179/sre.1975.23.176.88. Bài báo gốc mô tả công thức trắc địa thuận và ngược lặp trên ellipsoid.
+2. NOAA National Geodetic Survey. Bản lưu bài báo Vincenty: https://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf.
+3. National Geospatial-Intelligence Agency. *World Geodetic System 1984 (WGS 84)*: https://earth-info.nga.mil/?action=wgs84&dir=wgs84. Nguồn thông số bán trục lớn và nghịch đảo độ dẹt dùng trong mã.
+4. NetworkX. *Dijkstra’s Algorithm*: https://networkx.org/documentation/stable/reference/algorithms/dijkstra.html. Điều kiện trọng số không âm và cơ chế tìm đường đi ngắn nhất.
 
 ## 7. Trạng thái
 

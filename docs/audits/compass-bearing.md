@@ -24,6 +24,7 @@ Kết quả được chuẩn hóa về khoảng 0° đến dưới 360°.
 - Không mô phỏng nhiễu từ do sắt thép, dòng điện, thiết bị điện tử hoặc địa hình địa chất.
 - Không dùng kết quả để dẫn đường ngoài thực địa.
 - Chưa kiểm chứng trực quan hướng Đông/Tây của kim ở các giá trị độ từ thiên dương/âm trên thiết bị thật.
+- Kết quả hiển thị đến 0,1°; độ chính xác hiển thị không đồng nghĩa với độ chính xác đo đạc của la bàn.
 
 ## Kiểm tra số học
 
@@ -31,6 +32,8 @@ Kết quả được chuẩn hóa về khoảng 0° đến dưới 360°.
 - D=+10°, A=45° → Atrue=55°.
 - D=−10°, A=45° → Atrue=35°.
 - D=+20°, A=350° → Atrue=10° sau chuẩn hóa.
+- D=+0,5°, A=45° → Atrue=45,5°; phần thập phân phải được giữ khi hiển thị.
+- D=−0,5°, A=45° → Atrue=44,5°.
 
 ## Nguồn
 

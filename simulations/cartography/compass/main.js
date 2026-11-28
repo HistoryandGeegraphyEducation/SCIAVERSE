@@ -14,6 +14,13 @@ function listen(el,event,fn){el.addEventListener(event,fn);listeners.push([el,ev
 function draw(){if(dead||!renderer||document.hidden)return;if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{raf=0;if(!dead)renderer.render(scene,camera);});}
 function material(color,roughness=.6){return new T.MeshStandardMaterial({color,roughness});}
 function setStatus(text,state='info'){status.textContent=text;status.dataset.state=state;}
+function formatBearing(value){
+ const normalized=((value%360)+360)%360;
+ const rounded=Math.round(normalized*10)/10;
+ const stable=rounded>=360?0:rounded;
+ const [degrees,fraction]=stable.toFixed(1).split('.');
+ return degrees.padStart(3,'0')+(fraction==='0'?'':'.'+fraction)+'°';
+}
 function makeNeedle(){
  const group=new T.Group();
  const north=new T.Mesh(new T.ConeGeometry(.14,1.7,4),material(0xc85b4d,.35));
@@ -28,7 +35,7 @@ function updateValues(){
  const Bt=((Bm+D)%360+360)%360;
  declinationValue.textContent=(D>0?'+':'')+D.toFixed(1).replace('.0','')+'°';
  magneticBearingValue.textContent=String(Bm).padStart(3,'0')+'°';
- trueBearingValue.textContent=String(Math.round(Bt)%360).padStart(3,'0')+'°';
+ trueBearingValue.textContent=formatBearing(Bt);
  if(needle)needle.rotation.y=-D*Math.PI/180;
  if(bearingArrow){const rad=Bt*Math.PI/180;bearingArrow.setDirection(new T.Vector3(Math.sin(rad),0,-Math.cos(rad)).normalize());}
  draw();
