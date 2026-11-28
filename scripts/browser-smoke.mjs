@@ -236,7 +236,7 @@ try{
   assert.equal(await aModelPage.locator('#basinArea').getAttribute('max'),'79');
   const floodSource=await aModelPage.evaluate(async()=>await (await fetch('main.js')).text());
   assert.match(floodSource,/a<80&&t\*60>=tc/);
-  assert.match(await aModelPage.locator('#floodFormula').textContent(),/Rational Method/);
+  assert.match(await aModelPage.locator('#floodFormula').textContent(),/phương pháp Rational/);
 
   await aModelPage.goto(base+'/simulations/oceanography/tsunami/index.html',{waitUntil:'domcontentloaded'});
   await aModelPage.locator('#waterDepth').evaluate(element=>{
