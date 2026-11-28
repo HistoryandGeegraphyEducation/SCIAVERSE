@@ -1,0 +1,27 @@
+.pendulum-main{width:min(100% - 32px,1200px);max-width:1200px;padding-top:clamp(14px,2vw,24px)}
+.pendulum-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:16px;align-items:start}
+.pendulum-visual,.pendulum-panel{min-width:0;padding:18px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface)}
+.pendulum-visual{display:grid;min-height:360px;place-items:center}
+.pendulum-diagram{display:block;width:min(100%,520px);height:auto;overflow:visible}
+.pendulum-support{stroke:var(--text-soft);stroke-width:5;stroke-linecap:round}
+.pendulum-pivot{fill:var(--text)}
+.pendulum-string{stroke:var(--text-soft);stroke-width:2}
+.pendulum-bob{fill:var(--accent);stroke:var(--accent-ink);stroke-width:1.5}
+.pendulum-reference{stroke:var(--muted);stroke-width:1;stroke-dasharray:4 5}
+.pendulum-angle{fill:none;stroke:var(--accent);stroke-width:2}
+.pendulum-panel h2,.pendulum-theory h2{margin:0 0 14px;font-size:19px;font-weight:550}
+.pendulum-panel .model-control{margin:13px 0}
+.pendulum-panel .model-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.pendulum-panel .model-button{padding-inline:8px}
+.pendulum-panel .model-button:disabled{opacity:.5;cursor:not-allowed}
+.pendulum-mass-note{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);color:var(--text-soft);font-size:13px;line-height:1.6}
+.pendulum-theory{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.pendulum-theory h2{margin:0}
+.pendulum-theory p,.pendulum-theory ol{margin:0;color:var(--text-soft);font-size:14px;line-height:1.65}
+.pendulum-formula{color:var(--text)!important;font-size:21px!important;font-variant-numeric:tabular-nums}
+.pendulum-theory ol{padding-left:20px}
+.pendulum-theory h2:nth-of-type(2){grid-column:1}
+.pendulum-theory ol{grid-column:2;grid-row:2 / span 2}
+@media(max-width:760px){.pendulum-layout{grid-template-columns:1fr}.pendulum-visual{min-height:280px}.pendulum-panel{padding:14px}}
+@media(max-width:520px){.pendulum-main{width:calc(100% - 24px)}.pendulum-visual{min-height:240px;padding:10px}.pendulum-panel .model-actions{grid-template-columns:1fr 1fr 1fr}.pendulum-theory{grid-template-columns:1fr}.pendulum-theory h2:nth-of-type(2),.pendulum-theory ol{grid-column:auto;grid-row:auto}}
+@media(prefers-reduced-motion:reduce){.pendulum-diagram *{transition:none!important}}

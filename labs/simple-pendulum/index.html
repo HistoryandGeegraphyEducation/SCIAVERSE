@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Thí nghiệm số khảo sát chu kì con lắc đơn theo chiều dài dây và gia tốc trọng trường.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta name="theme-color" content="#10171b">
+  <title>SCIAVERSE — Thí nghiệm con lắc đơn</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../simulations/model-base.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body class="standalone-page">
+  <a class="skip-link" href="#labMain">Bỏ qua điều hướng</a>
+  <header class="standalone-header">
+    <a class="standalone-brand" href="../../index.html#overview">SCIAVERSE</a>
+    <a class="standalone-back" href="../../space.html?id=virtual-laboratories">Phòng thí nghiệm ảo</a>
+  </header>
+  <main class="standalone-main pendulum-main" id="labMain">
+    <header class="model-intro">
+      <h1>Thí nghiệm con lắc đơn</h1>
+      <p>Khảo sát chu kì dao động theo chiều dài dây và gia tốc trọng trường.</p>
+    </header>
+    <section class="pendulum-layout" aria-label="Thí nghiệm con lắc đơn">
+      <div class="pendulum-visual">
+        <svg id="pendulumDiagram" class="pendulum-diagram" viewBox="0 0 360 280" role="img" aria-label="Con lắc đơn gồm điểm treo, dây và vật nặng dao động trong mặt phẳng thẳng đứng">
+          <line x1="105" y1="24" x2="255" y2="24" class="pendulum-support"/>
+          <circle cx="180" cy="24" r="5" class="pendulum-pivot"/>
+          <line x1="180" y1="24" x2="180" y2="190" id="pendulumString" class="pendulum-string"/>
+          <circle cx="180" cy="190" r="16" id="pendulumBob" class="pendulum-bob"/>
+          <line x1="180" y1="24" x2="180" y2="225" class="pendulum-reference"/>
+          <path d="M180 90 A66 66 0 0 0 163 92" class="pendulum-angle"/>
+        </svg>
+      </div>
+      <aside class="pendulum-panel">
+        <h2>Biến thí nghiệm</h2>
+        <div class="model-control">
+          <label for="pendulumLength">Chiều dài dây (m) <output id="pendulumLengthValue">1,00</output></label>
+          <input id="pendulumLength" type="range" min="0.2" max="2" step="0.01" value="1">
+        </div>
+        <div class="model-control">
+          <label for="pendulumGravity">Gia tốc trọng trường (m/s²) <output id="pendulumGravityValue">9,80665</output></label>
+          <input id="pendulumGravity" type="range" min="1" max="20" step="0.01" value="9.80665">
+        </div>
+        <div class="model-control">
+          <label for="pendulumMass">Khối lượng vật nặng (kg) <output id="pendulumMassValue">1,0</output></label>
+          <input id="pendulumMass" type="range" min="0.1" max="2" step="0.1" value="1">
+        </div>
+        <div class="model-control">
+          <label for="pendulumAngle">Góc lệch ban đầu (°) <output id="pendulumAngleValue">10</output></label>
+          <input id="pendulumAngle" type="range" min="1" max="15" step="1" value="10">
+        </div>
+        <div class="model-actions">
+          <button class="model-button primary" id="pendulumPlay" type="button">Chạy</button>
+          <button class="model-button" id="pendulumPause" type="button" disabled>Tạm dừng</button>
+          <button class="model-button" id="pendulumReset" type="button">Đặt lại</button>
+        </div>
+        <div class="model-results">
+          <div class="model-result"><small>Chu kì (s)</small><strong id="pendulumPeriod">2,01</strong></div>
+          <div class="model-result"><small>Tần số (Hz)</small><strong id="pendulumFrequency">0,50</strong></div>
+        </div>
+        <p class="pendulum-mass-note">Trong mô hình con lắc đơn lí tưởng, chu kì không phụ thuộc khối lượng vật nặng.</p>
+      </aside>
+    </section>
+    <section class="pendulum-theory">
+      <h2>Mô hình toán học</h2>
+      <p class="pendulum-formula">T = 2π√(L/g)</p>
+      <p>Áp dụng xấp xỉ góc nhỏ: sin θ ≈ θ khi góc lệch không vượt quá 15°. Mô hình bỏ qua lực cản, ma sát tại điểm treo và khối lượng dây.</p>
+      <h2>Quy trình thí nghiệm</h2>
+      <ol>
+        <li>Thay đổi chiều dài dây hoặc gia tốc trọng trường, giữ các biến còn lại không đổi.</li>
+        <li>Chạy mô hình và quan sát dao động.</li>
+        <li>So sánh chu kì và tần số giữa các lần thay đổi.</li>
+      </ol>
+    </section>
+    <details class="model-sources">
+      <summary>Tài liệu khoa học</summary>
+      <p><a href="https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums" target="_blank" rel="noopener noreferrer">OpenStax — University Physics Volume 1, 15.4 Pendulums</a></p>
+    </details>
+  </main>
+</body>
+</html>

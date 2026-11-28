@@ -1,0 +1,18 @@
+[
+  {
+    "id": "usgs-earthquakes",
+    "title": "Động đất trên toàn cầu",
+    "provider": "U.S. Geological Survey",
+    "sourceUrl": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/",
+    "feedUrls": {
+      "day": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
+      "week": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+      "month": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
+    },
+    "timeRange": "24 giờ, 7 ngày hoặc 30 ngày gần nhất, tùy bộ lọc",
+    "spatialCoverage": "Toàn cầu",
+    "units": ["Độ lớn động đất theo trường mag của USGS", "Độ sâu chấn tiêu (km)", "Tọa độ địa lí (độ)"],
+    "methodology": "Dữ liệu sự kiện từ USGS ComCat, định dạng GeoJSON. Các feed tổng hợp được USGS cập nhật theo chu kỳ; thời điểm tạo feed được đọc trực tiếp từ metadata.generated.",
+    "license": "Điều kiện sử dụng và ghi công theo USGS ComCat; dữ liệu có thể gồm đóng góp từ các mạng lưới quan trắc khác nhau."
+  }
+]

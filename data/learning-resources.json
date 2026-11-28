@@ -1,0 +1,46 @@
+[
+  {
+    "id": "usgs-water-cycle",
+    "title": "Water cycle",
+    "creator": "Water Science School",
+    "publisher": "U.S. Geological Survey",
+    "publicationDate": null,
+    "sourceUrl": "https://www.usgs.gov/special-topics/water-science-school/water-cycle",
+    "license": "Trang không nêu giấy phép chung cho toàn bộ nội dung; từng hình ảnh và tài nguyên có điều kiện sử dụng riêng.",
+    "relatedFields": ["earth-environment"],
+    "fieldNames": {"earth-environment":"Trái Đất và môi trường"}
+  },
+  {
+    "id": "usgs-water-cycle-diagrams",
+    "title": "Water Cycle Diagrams",
+    "creator": "Water Science School",
+    "publisher": "U.S. Geological Survey",
+    "publicationDate": null,
+    "sourceUrl": "https://www.usgs.gov/water-science-school/water-cycle-diagrams",
+    "license": "Các poster trên trang có ghi Sources/Usage: Public Domain; kiểm tra thông tin của từng tệp trước khi tái sử dụng.",
+    "relatedFields": ["earth-environment"],
+    "fieldNames": {"earth-environment":"Trái Đất và môi trường"}
+  },
+  {
+    "id": "openstax-pendulums",
+    "title": "15.4 Pendulums",
+    "creator": "William Moebs, Samuel J. Ling, Jeff Sanny",
+    "publisher": "OpenStax, Rice University",
+    "publicationDate": "2016-09-19",
+    "sourceUrl": "https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums",
+    "license": "CC BY-NC-SA 4.0; không sử dụng nội dung OpenStax cho mục đích thương mại nếu chưa được cấp phép.",
+    "relatedFields": ["physics"],
+    "fieldNames": {"physics":"Vật lí"}
+  },
+  {
+    "id": "usno-seasons",
+    "title": "The Seasons and the Earth's Orbit",
+    "creator": "U.S. Naval Observatory",
+    "publisher": "U.S. Naval Observatory",
+    "publicationDate": null,
+    "sourceUrl": "https://aa.usno.navy.mil/faq/seasons_orbit",
+    "license": "Trang không nêu giấy phép tái sử dụng chung; SCIAVERSE chỉ liên kết đến nguồn gốc.",
+    "relatedFields": ["space-astronomy"],
+    "fieldNames": {"space-astronomy":"Vũ trụ và thiên văn"}
+  }
+]
