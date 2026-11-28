@@ -45,7 +45,7 @@ Dành cho bộ dữ liệu có nguồn, đơn vị, phạm vi không gian, kho�
 
 ### Thư viện học liệu
 
-Dành cho tài liệu tham khảo, ảnh, bản đồ, video, bộ dữ liệu, thuật ngữ và tài nguyên có bản quyền được xác định. Mỗi mục trong thư viện phải có loại tài liệu, nguồn gốc, nhà xuất bản, thông tin ngày xuất bản nếu được công bố, giấy phép và lĩnh vực liên quan. Khi phù hợp, tài nguyên phải liên kết tới mô hình hoặc thí nghiệm trong SCIAVERSE. Pilot hiện có bốn tài nguyên liên kết đến USGS, OpenStax và U.S. Naval Observatory.
+Dành cho tài liệu tham khảo, ảnh, bản đồ, video, bộ dữ liệu, thuật ngữ và tài nguyên có bản quyền được xác định. Mỗi mục trong thư viện phải có loại tài liệu, nguồn gốc, nhà xuất bản, thông tin ngày xuất bản nếu được công bố, giấy phép và lĩnh vực liên quan. Khi phù hợp, tài nguyên phải liên kết tới mô hình hoặc thí nghiệm trong SCIAVERSE. Pilot hiện có năm tài nguyên liên kết đến USGS, OpenStax, U.S. Naval Observatory và một tài liệu SCIAVERSE biên soạn.
 
 ## 4. Hồ sơ mô hình chuẩn
 

@@ -90,5 +90,27 @@
         "path": "simulations/astronomy/daylight-duration/index.html"
       }
     ]
+  },
+  {
+    "id": "sciaverse-water-cycle-note",
+    "title": "Các quá trình trong mô hình vòng tuần hoàn nước",
+    "creator": "SCIAVERSE",
+    "publisher": "SCIAVERSE",
+    "publicationDate": "2026-11-28",
+    "sourceUrl": "https://github.com/HistoryandGeegraphyEducation/SCIAVERSE/blob/main/docs/learning-library/water-cycle-model.md",
+    "license": "Chưa công bố giấy phép tái sử dụng.",
+    "relatedFields": [
+      "earth-environment"
+    ],
+    "fieldNames": {
+      "earth-environment": "Trái Đất và môi trường"
+    },
+    "resourceType": "SCIAVERSE biên soạn",
+    "relatedItems": [
+      {
+        "title": "Mô hình vòng tuần hoàn nước",
+        "path": "simulations/hydrology/water-cycle/index.html"
+      }
+    ]
   }
 ]

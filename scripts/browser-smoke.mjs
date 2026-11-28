@@ -99,6 +99,10 @@ try{
   assert.equal(await page.locator('.space-content-card').count(),1);
   assert.ok(await page.locator('.space-content-card').textContent().then(text=>text.includes('Tài liệu diễn giải')));
   assert.equal(await page.locator('.space-content-card a[href="labs/simple-pendulum/index.html"]').count(),1);
+  await page.locator('input[type="search"]').fill('Các quá trình trong mô hình vòng tuần hoàn nước');
+  assert.equal(await page.locator('.space-content-card').count(),1);
+  assert.match(await page.locator('.space-content-card').textContent(),/SCIAVERSE biên soạn/);
+  assert.equal(await page.locator('.space-content-card a[href="simulations/hydrology/water-cycle/index.html"]').count(),1);
 
   await page.goto(base+'/labs/simple-pendulum/index.html',{waitUntil:'domcontentloaded'});
   const periodBefore=await page.locator('#pendulumPeriod').textContent();

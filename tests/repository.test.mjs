@@ -61,7 +61,10 @@ test('All four spaces have registered content and required metadata',()=>{
     assert.ok(Object.values(item.feedUrls).every(url=>/^https:\/\//.test(url)));
   }
   const resources=json('data/learning-resources.json');
-  assert.ok(resources.length>=3);
+  assert.ok(resources.length>=5);
+  assert.ok(resources.some(item=>item.resourceType==='SCIAVERSE biên soạn'));
+  assert.ok(resources.some(item=>item.resourceType==='Tài liệu gốc'));
+  assert.ok(resources.some(item=>item.resourceType==='Tài liệu diễn giải'));
   for(const item of resources){
     for(const key of ['title','creator','publisher','sourceUrl','license','relatedFields','resourceType','relatedItems'])assert.ok(item[key],item.id+' missing '+key);
     assert.ok(/^https:\/\//.test(item.sourceUrl));

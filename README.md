@@ -28,7 +28,7 @@ Không gian mô phỏng chỉ công bố mô hình đồng thời đạt `valida
 Ba không gian còn lại đã có chức năng thử nghiệm:
 - Phòng thí nghiệm ảo: một thí nghiệm con lắc đơn, cho phép thay đổi chiều dài, gia tốc trọng trường, khối lượng và góc lệch; tính chu kì và tần số theo mô hình con lắc đơn lí tưởng.
 - Dữ liệu khoa học: một feed GeoJSON động đất của USGS ComCat, có bộ lọc khoảng thời gian và độ lớn, biểu đồ phân bố theo độ lớn và thống kê từ dữ liệu đã lọc.
-- Thư viện học liệu: bốn tài nguyên có loại tài liệu, xuất xứ, giấy phép, lĩnh vực và liên kết tới mô hình hoặc thí nghiệm liên quan.
+- Thư viện học liệu: năm tài nguyên gồm tài liệu gốc, tài liệu diễn giải và một tài liệu SCIAVERSE biên soạn; có xuất xứ, giấy phép, lĩnh vực và liên kết tới mô hình hoặc thí nghiệm liên quan.
 
 Đây là các pilot chức năng đầu tiên, chưa phải bộ sưu tập thí nghiệm, dữ liệu hoặc học liệu đầy đủ.
 
