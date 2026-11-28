@@ -7,7 +7,7 @@
     stylesheet.dataset.sciaverseAccessibility='true';
     document.head.append(stylesheet);
   }
-  const root=document.querySelector('.model-intro, .standalone-title');
+  const root=document.querySelector('.model-intro, .standalone-title, main > header');
   if(!root)return;
   const registryUrl='../../../data/model-registry.json';
   const indexUrl='../../../data/model-knowledge-index.json';
