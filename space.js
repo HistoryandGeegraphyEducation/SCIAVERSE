@@ -200,7 +200,7 @@
         const maxCount=Math.max(1,...counts);
         const svgNS='http://www.w3.org/2000/svg';
         const chart=document.createElementNS(svgNS,'svg');
-        chart.setAttribute('viewBox','0 0 600 210');
+        chart.setAttribute('viewBox','0 0 480 210');
         chart.setAttribute('role','img');
         chart.setAttribute('aria-label','Phân bố '+magnitudes.length+' sự kiện theo độ lớn');
         const chartTitle=document.createElementNS(svgNS,'title');chartTitle.textContent='Phân bố sự kiện theo độ lớn';
@@ -208,24 +208,24 @@
         chart.append(chartTitle,chartDesc);
         const baseline=160,barMax=112;
         bins.forEach((bin,index)=>{
-          const x=38+index*92;
+          const x=24+index*72;
           const height=counts[index]/maxCount*barMax;
           const rect=document.createElementNS(svgNS,'rect');
           rect.setAttribute('x',String(x));rect.setAttribute('y',String(baseline-height));
-          rect.setAttribute('width','48');rect.setAttribute('height',String(height));
+          rect.setAttribute('width','40');rect.setAttribute('height',String(height));
           rect.setAttribute('rx','4');rect.setAttribute('class','space-data-bar');
           chart.append(rect);
           const countText=document.createElementNS(svgNS,'text');
-          countText.setAttribute('x',String(x+24));countText.setAttribute('y',String(Math.max(22,baseline-height-8)));
+          countText.setAttribute('x',String(x+20));countText.setAttribute('y',String(Math.max(22,baseline-height-8)));
           countText.setAttribute('text-anchor','middle');countText.setAttribute('class','space-data-chart-count');
           countText.textContent=String(counts[index]);chart.append(countText);
           const labelText=document.createElementNS(svgNS,'text');
-          labelText.setAttribute('x',String(x+24));labelText.setAttribute('y','188');
+          labelText.setAttribute('x',String(x+20));labelText.setAttribute('y','188');
           labelText.setAttribute('text-anchor','middle');labelText.setAttribute('class','space-data-chart-label');
           labelText.textContent=bin.label;chart.append(labelText);
         });
         const baselineLine=document.createElementNS(svgNS,'line');
-        baselineLine.setAttribute('x1','24');baselineLine.setAttribute('x2','576');
+        baselineLine.setAttribute('x1','12');baselineLine.setAttribute('x2','468');
         baselineLine.setAttribute('y1',String(baseline));baselineLine.setAttribute('y2',String(baseline));
         baselineLine.setAttribute('class','space-data-chart-axis');chart.append(baselineLine);
         chartWrap.append(node('h4','','Phân bố sự kiện theo độ lớn'),chart);
