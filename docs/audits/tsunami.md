@@ -149,3 +149,14 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - Không mô phỏng dịch chuyển đáy biển, biên độ, shoaling định lượng, run-up hoặc ngập ven bờ; địa hình trong hình chỉ là sơ đồ.
 
 Kiểm tra tĩnh công thức và cú pháp JavaScript đã đạt bước đầu. Chưa kiểm thử runtime trên thiết bị. Không chuyển sang `validated` khi chưa có bathymetry, nguồn phát và mô hình thủy động lực phù hợp với mục tiêu dự báo.
+
+
+## Cập nhật triển khai SCIAVERSE — 28/11/2026
+
+- Đường dẫn: `simulations/oceanography/tsunami/index.html`.
+- Khoa học: `validated` (giữ nguyên). Triển khai: `verified-in-build`.
+- Mô hình dùng xấp xỉ sóng dài ở nước nông (c=\sqrt{gh}), sau đó tính (d=ct) trong độ sâu không đổi. Kiểm thử với (h=1.000\ m) cho (c\approx99\ m/s); trong 2 giờ, quãng đường xấp xỉ 713,1 km.
+- Độ sâu được giả định không đổi. Mô hình không mô phỏng nguồn động đất, bathymetry biến đổi, khúc xạ, shoaling gần bờ, run-up hoặc ngập; kết quả không phải dự báo thời gian đến hay độ cao sóng tại bờ.
+- Playwright xác nhận vận tốc và quãng đường cập nhật theo độ sâu và thời gian.
+- Nguồn: NOAA, *Tsunami Propagation*, https://noaa.gov/jetstream/tsunamis/tsunami-propagation; NOAA/PMEL, *Development, testing, and applications of site-specific tsunami inundation models*, https://www.pmel.noaa.gov/pubs/outstand/tang3332/modeldev.shtml.
+- CI run `46118669438`, kết quả `success`. Chưa kiểm thử trên thiết bị vật lý.

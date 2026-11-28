@@ -140,3 +140,14 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - Không tính trường gió, áp suất, nhiệt động lực học, quỹ đạo hoặc cường độ bão.
 
 Đây là mô hình giải thích điều kiện môi trường và cấu trúc, không phải mô hình dự báo. Chưa kiểm thử runtime trên trình duyệt/thiết bị.
+
+
+## Cập nhật triển khai SCIAVERSE — 28/11/2026
+
+- Đường dẫn: `simulations/meteorology/tropical-cyclone/index.html`.
+- Khoa học: `validated` (giữ nguyên). Triển khai: `verified-in-build`.
+- Chiều hoàn lưu được chọn theo bán cầu. Bổ sung tham số Coriolis có dấu theo vĩ độ: (f=2\Omega\sin\varphi), với (Omega=7,2921150\times10^{-5}\ s^{-1}). Ở vĩ độ 15°, mô hình hiển thị xấp xỉ (+3,77\times10^{-5}\ s^{-1}) tại Bắc bán cầu và giá trị âm tương ứng tại Nam bán cầu; tại xích đạo (f=0).
+- 26,5°C là mốc tham khảo, không phải điều kiện đủ. Mô hình chưa mô phỏng độ sâu lớp nước ấm, nhiễu động ban đầu, trường áp suất, đối lưu hoặc trường gió ba chiều; không tạo xác suất hay dự báo hình thành bão.
+- Playwright kiểm tra đổi bán cầu, dấu của (f), (f=0) tại xích đạo và các điều kiện SST, độ ẩm, đứt gió.
+- Nguồn: NOAA/AOML, *How do tropical cyclones form?*, https://www.aoml.noaa.gov/hrd/tcfaq/A15.html; NOAA, *Tropical Cyclone Introduction*, https://www.noaa.gov/jetstream/tropical/tropical-cyclone-introduction; NOAA/AOML, *Anatomy and Life Cycle of a Hurricane*, https://www.aoml.noaa.gov/hrd/tcfaq/G1.html.
+- CI run `46118669438`, kết quả `success`. Chưa kiểm thử trên thiết bị vật lý.

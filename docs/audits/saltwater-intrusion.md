@@ -144,3 +144,14 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - Ghi rõ vùng chuyển tiếp trong tầng chứa nước là vùng khuếch tán, không phải một mặt ranh sắc nét.
 
 Các đường biên trong SVG chỉ diễn tả xu hướng khái niệm, không theo tỉ lệ. Chưa kiểm thử runtime trên thiết bị.
+
+
+## Cập nhật triển khai SCIAVERSE — 28/11/2026
+
+- Đường dẫn: `simulations/hydrology/saltwater-intrusion/index.html`.
+- Khoa học: `validated` (giữ nguyên). Triển khai: `verified-in-build`.
+- Giao diện tách hai môi trường: nêm mặn trong cửa sông và vùng chuyển tiếp mặn trong tầng chứa nước ven biển. Lưu lượng sông, thủy triều, khai thác nước ngầm và bổ cập nước ngọt làm thay đổi hình học sơ đồ theo xu hướng định tính.
+- Các mức Yếu/Trung bình/Mạnh là cấp bậc điều khiển, không phải lưu lượng, mực triều, tốc độ bơm hoặc độ mặn đã đo. Mô hình không tính nồng độ muối, gradient thủy lực, độ thấm, khuếch tán, phân tán hoặc khoảng cách xâm nhập thực tế.
+- Playwright xác nhận chuyển chế độ và thay đổi sơ đồ theo các mức điều kiện.
+- Nguồn: NOAA National Ocean Service, *Estuary Water Circulation*, https://oceanservice.noaa.gov/education/tutorial_estuaries/est05_circulation.html; USGS, *Saltwater Intrusion*, https://www.usgs.gov/mission-areas/water-resources/science/saltwater-intrusion.
+- CI run `46118669438`, kết quả `success`. Chưa kiểm thử trên thiết bị vật lý.

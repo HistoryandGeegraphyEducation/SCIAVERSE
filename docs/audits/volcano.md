@@ -153,3 +153,15 @@ Có thể tiếp nhận cấu trúc bài học và một phần đồ họa 2D, 
 - Bổ sung cảnh báo tương tác magma–nước có thể gây phun nổ; thành phần magma không quyết định duy nhất kiểu phun.
 
 Mô hình là mặt cắt SVG khái niệm, không phải mô phỏng 3D hoặc mô hình động lực học phun trào. Chưa kiểm thử runtime trên thiết bị.
+
+
+## Cập nhật triển khai SCIAVERSE — 28/11/2026
+
+- Đường dẫn: `simulations/geophysics/volcano/index.html`.
+- Khoa học: `validated` (giữ nguyên). Triển khai: `verified-in-build`.
+- Mô hình phân biệt magma bazan, andesit và rhyolit cùng các mức khí hòa tan. Các tổ hợp đầu vào chỉ tạo xu hướng định tính: magma bazan ít khí thường gắn với phun tràn; magma giàu silica và khí có thể giữ khí tốt hơn, làm tăng xu hướng phun nổ. Tổ hợp chưa đủ căn cứ được giữ ở trạng thái chưa phân loại.
+- Không quy đổi lựa chọn khí thành áp suất hoặc dự báo kiểu phun trào; không tính VEI, nhiệt độ, độ nhớt thực, thể tích phun, cột tro hay dòng mật độ pyroclastic. Hình núi lửa là mặt cắt giản đồ.
+- Sửa liên kết nguồn “Eruption Styles” bị trùng URL với trang Glossary; liên kết hiện trỏ đến tài liệu USGS về kiểu phun trào.
+- Playwright xác nhận các tổ hợp bazan/ít khí, andesit/nhiều khí và tổ hợp chưa đủ điều kiện phân loại; kiểm tra trạng thái effusive/explosive.
+- Nguồn: USGS, *How Do Volcanoes Erupt?*, https://www.usgs.gov/faqs/how-do-volcanoes-erupt; USGS, *About Volcanoes*, https://www.usgs.gov/programs/vhp/about-volcanoes; USGS, *Eruption Styles*, https://volcano.wr.usgs.gov/volcanic_ash/eruption_styles.html.
+- CI run `46118669438`, kết quả `success`. Chưa kiểm thử trên thiết bị vật lý.

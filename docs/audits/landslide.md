@@ -138,3 +138,19 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - Chặn trường hợp ứng suất pháp hữu hiệu không dương; ghi rõ mô hình không đại diện trượt quay, đá rơi hoặc dòng bùn đá.
 
 Kiểm tra cú pháp và công thức tĩnh đã đạt bước đầu. Cần đối chiếu thêm công thức với trường hợp bão hòa/không bão hòa và thử giá trị biên trong runtime trước nghiệm thu.
+
+
+## Cập nhật triển khai SCIAVERSE — 28/11/2026
+
+- Đường dẫn: `simulations/geotechnical/landslide/index.html`.
+- Khoa học: `validated` (giữ nguyên). Triển khai: `verified-in-build`.
+- Mô hình dùng mái dốc vô hạn, đất đồng nhất và mặt trượt phẳng song song với sườn. Hệ số an toàn:
+  [
+  FS=\frac{c'+(\gamma z\cos^2\beta-u)\tan\phi'}{\gamma z\sin\beta\cos\beta}
+  ]
+  Trong đó (c') là lực dính kết hữu hiệu, (phi') là góc ma sát trong hữu hiệu, (gamma) là trọng lượng thể tích, (z) là độ sâu thẳng đứng, (eta) là góc dốc và (u) là áp lực nước lỗ rỗng tại mặt trượt.
+- (FS<1) biểu thị mất ổn định trong giả định mô hình; nếu ứng suất pháp hữu hiệu không dương, mô hình báo ngoài miền áp dụng.
+- Người học điều chỉnh trực tiếp (u); mô hình không tính thấm từ mưa, diễn biến bão hòa theo thời gian, địa tầng phân lớp, tải trọng động đất hoặc các kiểu sạt lở khác như rơi, đổ, trượt quay và dòng chảy.
+- Playwright kiểm tra trường hợp mặc định (FS=1,14); tăng (u) lên 20 kPa làm mô hình chuyển sang mất ổn định; khi (u=50) kPa, mô hình báo ngoài miền áp dụng.
+- Nguồn: USGS, Jibson, Harp & Michael, *A Method for Producing Digital Probabilistic Seismic Landslide Hazard Maps*, https://pubs.usgs.gov/of/1998/ofr-98-113/ofr98-113.html; USACE, *EM 1110-2-1902 — Slope Stability*, https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-1902.pdf.
+- CI run `46118669438`, kết quả `success`. Chưa kiểm thử trên thiết bị vật lý.

@@ -16,9 +16,9 @@ Một môi trường khoa học số đa lĩnh vực, nhằm kết nối các l�
 - `docs/audits/`: hồ sơ thẩm định từng mô hình.
 - `docs/audits/EDUVERSE-MIGRATION-QUEUE.md`: danh sách 24 pilot độc lập, trạng thái thẩm định và các điểm cần kiểm tra trước nghiệm thu.
 
-Các mô hình chưa có trạng thái `validated` không được xem là nội dung đã nghiệm thu. Hiện có 12 mô hình độc lập đã được xác nhận nghiệm thu khoa học ngày 26/11/2026 và được lưu trong `main`. CI đã kiểm tra 25 trang mô hình ở bốn kích thước, nội dung mức Nâng cao, các tương tác chính, WebGL trên hai mô hình, thao tác cảm ứng mô phỏng và chế độ giảm chuyển động. Chưa có kiểm thử thủ công trên thiết bị vật lí hoặc nghiệm thu chức năng riêng cho toàn bộ 25 mô hình; vì vậy chưa gán `verified-in-build` và chưa đưa các mô hình vào danh mục công bố chính thức.
+Các mô hình chưa có trạng thái `validated` không được xem là nội dung đã nghiệm thu. Hiện có 12 mô hình đã được xác nhận nghiệm thu khoa học ngày 26/11/2026. Registry có 25 đường dẫn triển khai: 23 mô hình đạt `verified-in-build`, 2 mô hình còn ở `sciaverse-pilot-in-progress` (tọa độ địa lí và cấu tạo bên trong Trái Đất). Có 13 mô hình `in-review` và 19 mô hình `not-reviewed`; trạng thái kỹ thuật không thay thế nghiệm thu khoa học. CI kiểm tra 25 trang ở bốn kích thước, nội dung Nâng cao, bàn phím, reduced motion và 23 nhóm tương tác mô hình. WebGL, cảm ứng và điều khiển 3D được kiểm tra trong các luồng tương ứng. Chưa kiểm thử thủ công trên thiết bị vật lý.
 
-Đợt tiếp nhận bản đồ từ EDUVERSE đã dựng thêm 4 pilot độc lập: Chuyển đổi quả Địa Cầu thành bản đồ, La bàn và phương hướng, Thay đổi tỉ lệ bản đồ, Đo khoảng cách thực tế. Bốn mô hình này đang `in-review` và `sciaverse-pilot-in-progress`; chưa được xem là đã nghiệm thu hoặc công bố.
+Đợt A đã kiểm thử 9 mô hình; Đợt B 5 mô hình; Đợt C 6 mô hình; Đợt D 3 mô hình. Các mô hình đang `in-review` chưa được xem là nghiệm thu khoa học, dù trạng thái triển khai đã đạt kiểm thử.
 
 
 ## Trang lĩnh vực và không gian

@@ -137,3 +137,15 @@ Chỉ chuyển trạng thái sang `validated` sau khi sửa các điểm chặn 
 - Giao diện nêu rõ môđun trượt và hình học đứt gãy là tham số giả định, không phải nguồn động đất thực.
 
 Kiểm tra tĩnh công thức và cú pháp JavaScript đã đạt bước đầu; chưa kiểm thử trực quan trên trình duyệt/điện thoại. Cần kiểm tra thêm đơn vị, phạm vi tham số và phản hồi bàn phím trước nghiệm thu.
+
+
+## Cập nhật triển khai SCIAVERSE — 28/11/2026
+
+- Đường dẫn: `simulations/geophysics/earthquake/index.html`.
+- Khoa học: `validated` (giữ nguyên). Triển khai: `verified-in-build`.
+- Mômen địa chấn: (M_0=\mu A D), với (mu) là môđun trượt, (A) là diện tích đứt gãy và (D) là độ trượt trung bình. Độ lớn mômen: (M_w=\frac{2}{3}(\log_{10}M_0-9,1)), khi (M_0) tính bằng N·m.
+- Độ sâu được phân loại nông đến 70 km, trung gian trên 70 đến 300 km và sâu trên 300 km. Độ sâu không tham gia công thức (M_0).
+- Vòng sóng và rung lắc công trình chỉ là hoạt ảnh minh họa. Mô hình không tính trường vận tốc sóng, gia tốc nền, cường độ rung lắc tại địa điểm hoặc cơ chế trượt của một đứt gãy thực.
+- Playwright kiểm tra giá trị mặc định (M_0=1,8\times10^{19}\ N\cdot m), (M_w=6,77); tăng gấp đôi chiều dài đứt gãy làm (M_0) tăng gấp đôi và (M_w) tăng khoảng 0,20; kiểm tra nhóm độ sâu, kích hoạt và đặt lại.
+- Nguồn: USGS, *Earthquake Magnitude, Energy Release, and Shaking Intensity*, https://www.usgs.gov/programs/earthquake-hazards/earthquake-magnitude-energy-release-and-shaking-intensity; USGS, *Determining the Depth of an Earthquake*, https://www.usgs.gov/programs/earthquake-hazards/determining-depth-earthquake.
+- CI run `46118669438`, kết quả `success`. Chưa kiểm thử trên thiết bị vật lý.

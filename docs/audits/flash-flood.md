@@ -143,3 +143,19 @@ Có thể giữ cấu trúc bài học và cảnh 3D; phần lượng mưa–dò
 Kiểm tra đổi đơn vị và công thức đã đạt bước tĩnh. Chưa kiểm thử runtime trên thiết bị. Cần kiểm tra điều kiện thời lượng mưa/Tc, các giá trị biên và cách diễn giải Qp trước khi nghiệm thu.
 
 Nguồn bổ sung: Federal Highway Administration. *HEC-22 Urban Drainage Design Manual*, 4th edition (2024), mục 4.2.2 Rational Method. https://www.fhwa.dot.gov/engineering/hydraulics/pubs/hif24006.pdf
+
+
+## Cập nhật triển khai SCIAVERSE — 28/11/2026
+
+- Đường dẫn: `simulations/hydrology/flash-flood/index.html`.
+- Khoa học: `validated` (giữ nguyên). Triển khai: `verified-in-build`.
+- Đầu vào phân biệt cường độ mưa (i(T_c)), thời lượng mưa, diện tích lưu vực (A), hệ số dòng chảy (C) và thời gian tập trung (T_c). Lưu lượng đỉnh chỉ tính khi (A<80\ ha) và thời lượng mưa không ngắn hơn (T_c):
+  [
+  Q_p=0,00278\,C\,i(T_c)\,A
+  ]
+  với (i) tính bằng mm/h, (A) bằng ha và (Q_p) bằng m³/s. Miền diện tích điều khiển giới hạn 1–79 ha.
+- Thể tích chảy tràn dùng (V=C\,P\,A\times10), với (P) là lượng mưa tích lũy mm. Đây là ước tính giản lược, giả định (C) không đổi trong sự kiện; không phải thủy đồ hay mô hình thủy lực.
+- (i(T_c)) do người học nhập; không truy xuất đường cong IDF, chu kỳ lặp hoặc số liệu mưa trạm. Không dùng kết quả để cảnh báo lũ.
+- Playwright kiểm tra thời lượng ngắn hơn (T_c), trường hợp bằng (T_c), giới hạn diện tích và công thức.
+- Nguồn: FHWA, *Hydraulic Design Series 4 — Introduction to Highway Hydraulics*, mục 2.5 Rational Method, https://www.fhwa.dot.gov/engineering/hydraulics/pubs/08090/hds4_608.pdf; USGS, *Floods: Things to Know*, https://www.usgs.gov/water-science-school/science/floods-things-know; NOAA/NSSL, *Flood Forecasting*, https://www.nssl.noaa.gov/education/svrwx101/floods/forecasting/.
+- CI run `46118669438`, kết quả `success`. Chưa kiểm thử trên thiết bị vật lý.

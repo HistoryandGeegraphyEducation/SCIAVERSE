@@ -56,3 +56,14 @@ Các trường hợp cần xác nhận:
 - CI Chromium ngày 28/11/2026 đã xác nhận khởi tạo WebGL, điều khiển chạy/tạm dừng và tự chuyển từ bốc hơi sang ngưng tụ theo tốc độ chọn.
 - Kiểm tra cảm ứng mô phỏng đạt; chưa kiểm thử thủ công trên thiết bị vật lí.
 - Trạng thái khoa học và triển khai chưa thay đổi.
+
+
+## Cập nhật triển khai SCIAVERSE — 28/11/2026
+
+- Đường dẫn: `simulations/hydrology/water-cycle/index.html`.
+- Khoa học: `in-review` (giữ nguyên). Triển khai: `verified-in-build`.
+- Mô hình 3D có năm quá trình: bốc hơi, ngưng tụ, mưa, dòng chảy mặt và nước ngầm; hỗ trợ chọn từng quá trình, chạy tuần tự, tạm dừng, đặt lại và thay đổi tốc độ.
+- Playwright xác nhận cả năm lựa chọn, chuyển tự động từ bốc hơi sang ngưng tụ ở tốc độ 2× và đặt lại. WebGL xác nhận Three.js và OrbitControls khởi tạo.
+- Hạt chuyển động chỉ biểu diễn hướng và trình tự. Không tính cân bằng nước, lưu lượng, tốc độ dòng, thấm định lượng hoặc thoát hơi nước thực vật.
+- Nguồn: USGS, *The Water Cycle*, https://www.usgs.gov/special-topics/water-science-school/water-cycle; NOAA, *The Water Cycle*, https://www.noaa.gov/education/resource-collections/freshwater/water-cycle.
+- CI run `46118669438`, commit kiểm thử `f9cf007831b9fad72542be3b74906b14d4ac50d6`, kết quả `success`. Chưa kiểm thử trên thiết bị vật lý.

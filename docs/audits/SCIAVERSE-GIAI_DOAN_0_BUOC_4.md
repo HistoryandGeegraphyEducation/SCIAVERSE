@@ -232,3 +232,25 @@ Kết quả:
 - Chỉ xem xét `verified-in-build` sau khi hoàn tất các bước trên.
 
 Bước 5 chưa được thực hiện.
+
+
+## 10. Cập nhật sau các đợt A–D — 28/11/2026
+
+Đây là số liệu hiện hành, thay cho các con số lịch sử tại mục 1 được ghi ngày 27/11/2026.
+
+| Hạng mục | Kết quả hiện hành |
+|---|---:|
+| Bản ghi Registry | 44 |
+| Bản ghi có implementationPath | 25 |
+| scientificStatus = validated | 12 |
+| scientificStatus = in-review | 13 |
+| scientificStatus = not-reviewed | 19 |
+| implementationStatus = verified-in-build | 23 |
+| implementationStatus = sciaverse-pilot-in-progress | 2 |
+| Mô hình có kiểm thử tương tác riêng trong A–D | 23 |
+
+Đợt C gồm sáu mô hình: vòng tuần hoàn nước, bão nhiệt đới, lũ quét, sóng thần, xâm nhập mặn và nước biển dâng. Đợt D gồm ba mô hình: động đất, núi lửa và sạt lở đất. Cả chín mô hình đã được kiểm thử tương tác bằng Chromium/Playwright. Tám mô hình giữ nguyên trạng thái khoa học `validated`; vòng tuần hoàn nước tiếp tục `in-review`. Không thay đổi trạng thái khoa học trong lần cập nhật này.
+
+CI run `46118669438` đạt `success` tại commit `f9cf007831b9fad72542be3b74906b14d4ac50d6`. Pages deployment run `46118669206` đạt `success`. Bộ kiểm thử đã kiểm tra 25 trang mô hình ở 320, 360, 390 và 430 CSS px; nội dung Nâng cao; bàn phím; reduced motion; 23 nhóm tương tác mô hình; WebGL, điều khiển 3D và cảm ứng trong các luồng tương ứng.
+
+Kiểm thử được thực hiện trong Chromium headless/Playwright. Chưa kiểm thử thủ công trên thiết bị Android/iOS. Hai mô hình còn ở trạng thái `sciaverse-pilot-in-progress` là xác định tọa độ địa lí và cấu tạo bên trong Trái Đất. Trạng thái `verified-in-build` không phải quyết định nghiệm thu khoa học.

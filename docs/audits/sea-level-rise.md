@@ -140,3 +140,14 @@ Chỉ chuyển trạng thái sang `validated` sau khi xử lý các điểm ch�
 - Không đưa ra bản đồ ngập, đường bờ dự báo hoặc mốc thời gian/kịch bản khí hậu.
 
 Chưa kiểm thử runtime trên thiết bị. Mô hình chỉ đủ làm học liệu khái niệm; để trở thành mô hình địa phương cần DEM, datum đứng, kết nối thủy văn và dữ liệu chuyển động thẳng đứng của đất.
+
+
+## Cập nhật triển khai SCIAVERSE — 28/11/2026
+
+- Đường dẫn: `simulations/coastal/sea-level-rise/index.html`.
+- Khoa học: `validated` (giữ nguyên). Triển khai: `verified-in-build`.
+- Slider biểu diễn kịch bản mực nước tương đối tăng 0–2 m trên mặt cắt địa hình giả định. Vùng tô ngập được xác định từ giao điểm đường nước với mặt cắt trong mã; không dùng dữ liệu địa hình thực.
+- Không có DEM, bathymetry, datum cao độ địa phương, sụt lún/nâng đất hoặc kiểm tra kết nối thủy văn. Mô hình không xác định phạm vi ngập, độ sâu ngập hay đường bờ thực tế và không phải công cụ dự báo.
+- Playwright xác nhận mốc 0 m không tạo vùng tô ngập; mốc 1 m và 2 m cập nhật đường nước và vùng địa hình thấp bị phủ.
+- Nguồn: NOAA, *Sea Level Rise and Coastal Flooding Impacts*, https://coast.noaa.gov/slr/; NOAA, *Sea Level Trends and Extremes*, https://www.tidesandcurrents.noaa.gov/trends-and-extremes/main-product.html; NOAA, *2022 Sea Level Rise Technical Report — Application Guide*, https://cdn.oceanservice.noaa.gov/oceanserviceprod/hazards/sealevelrise/noaa-nos-techrpt02-global-regional-SLR-scenarios-US-application-guide.pdf.
+- CI run `46118669438`, kết quả `success`. Chưa kiểm thử trên thiết bị vật lý.
