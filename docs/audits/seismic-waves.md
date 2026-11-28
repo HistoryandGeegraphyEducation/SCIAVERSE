@@ -31,7 +31,7 @@ Các trường hợp cần xác nhận:
 - Chuyển loại sóng: đường truyền, màu, tiêu đề và nội dung giải thích thay đổi cùng trạng thái.
 - Chuyển động camera không làm thay đổi vị trí tương đối của các lớp và đường truyền.
 
-Đây là kiểm tra logic giao diện. Chưa có kiểm thử runtime WebGL trong trình duyệt ở lượt triển khai này.
+Đây là kiểm tra logic giao diện. Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại phần kiểm thử cập nhật. Chưa kiểm thử trên thiết bị vật lý.
 
 ## 5. Nguồn tham khảo
 
@@ -44,4 +44,16 @@ Các trường hợp cần xác nhận:
 - Triển khai: `sciaverse-pilot-in-progress`.
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Chưa được xác nhận nghiệm thu khoa học.
-- Chưa kiểm thử runtime trên trình duyệt hoặc thiết bị di động.
+- Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại phần kiểm thử cập nhật. Chưa kiểm thử trên thiết bị vật lý.
+
+
+## Cập nhật mô hình — 28/11/2026
+
+- Điểm dừng của sóng S được sửa về ranh giới phía trên của nhân ngoài lỏng. Đường minh họa hiện dừng tại bán kính 1,34 đơn vị mô hình tính từ tâm; không đi xuyên qua nhân ngoài.
+- Sóng P vẫn được biểu diễn bằng đường thẳng giản đồ xuyên qua các lớp. Không mô phỏng khúc xạ hoặc đường tia địa chấn thực.
+
+## Kiểm thử runtime — 28/11/2026
+
+- GitHub Actions workflow `SCIAVERSE validation`, run `46107719993`, kết quả `success`, commit `eff7290536d290e83d47395061eb232d7af95ab0`.
+- Chromium/Playwright chuyển đổi P/S và kiểm tra nội dung giải thích; kiểm tra mã xác nhận điểm dừng sóng S tại ranh giới nhân ngoài.
+- Responsive smoke test kiểm tra 320, 360, 390 và 430 CSS px. Không xác nhận vận tốc hoặc đường đi tia địa chấn thực.

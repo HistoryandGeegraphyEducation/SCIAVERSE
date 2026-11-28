@@ -43,7 +43,7 @@ Các trường hợp cần kiểm tra khi chạy mô hình:
 - Thay đổi tốc độ: độ dài mũi tên thay đổi theo giá trị thanh trượt; hướng chuyển động không đổi.
 - Chuyển kiểu ranh giới: hình học, mũi tên, tiêu đề và nội dung giải thích phải chuyển cùng một trạng thái.
 
-Các kiểm tra trên mô tả logic cần xác nhận. Chưa có kiểm thử runtime WebGL trong trình duyệt ở lượt triển khai này.
+Các kiểm tra trên mô tả logic cần xác nhận. Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại phần kiểm thử cập nhật. Chưa kiểm thử trên thiết bị vật lý.
 
 ## 5. Nguồn tham khảo
 
@@ -57,4 +57,11 @@ Các kiểm tra trên mô tả logic cần xác nhận. Chưa có kiểm thử r
 - Triển khai: `sciaverse-pilot-in-progress`.
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Chưa được xác nhận nghiệm thu khoa học.
-- Chưa kiểm thử runtime trên trình duyệt hoặc thiết bị di động.
+- Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại phần kiểm thử cập nhật. Chưa kiểm thử trên thiết bị vật lý.
+
+
+## Kiểm thử runtime — 28/11/2026
+
+- GitHub Actions workflow `SCIAVERSE validation`, run `46107719993`, kết quả `success`, commit `eff7290536d290e83d47395061eb232d7af95ab0`.
+- Chromium/Playwright kiểm tra trạng thái mặc định tách giãn, chuyển sang hội tụ và trượt ngang, thay đổi tốc độ giả định từ 5 lên 20 cm/năm.
+- Responsive smoke test kiểm tra 320, 360, 390 và 430 CSS px. Tốc độ vẫn là kịch bản, không phải số đo GPS.

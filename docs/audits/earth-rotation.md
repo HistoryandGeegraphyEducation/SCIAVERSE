@@ -3,7 +3,9 @@
 - Mã nguồn tham chiếu EDUVERSE: `js/sims/earth.js`
 - Mã thử nghiệm SCIAVERSE: `simulations/earth/rotation/main.js`
 - SHA blob nguồn EDUVERSE đã đọc: `56feba1aea96326fd2a2c95c576507b4eee7fe40`
-- Trạng thái: `needs-revision` đối với mô hình EDUVERSE; pilot SCIAVERSE đang chờ kiểm thử trình duyệt.
+- Trạng thái mã EDUVERSE lưu trữ: `needs-revision`.
+- Trạng thái khoa học SCIAVERSE theo Registry: `validated`.
+- Trạng thái triển khai SCIAVERSE: `verified-in-build` sau kiểm thử CI ngày 28/11/2026.
 - Phạm vi: hướng và chu kỳ quay, trục nghiêng, chiếu sáng ngày–đêm, vị trí biểu kiến Mặt Trời và Mặt Trăng, đồng hồ múi giờ, texture và vòng đời WebGL.
 
 ## 1. Cơ sở khoa học dùng làm chuẩn
@@ -63,9 +65,9 @@ Pilot được triển khai độc lập trong `simulations/earth/rotation/main.
 
 ### Cơ chế hiện tại
 
-- Trục quay nghiêng cố định 23,44° so với phương vuông góc mặt phẳng quỹ đạo.
+- Trục quay trùng pháp tuyến mặt phẳng xích đạo; mặt phẳng hoàng đạo được biểu diễn riêng và nghiêng 23,44° so với mặt phẳng xích đạo.
 - Trái Đất quay quanh trục theo chiều Tây sang Đông.
-- Đồng hồ mô phỏng dùng thời gian tích lũy theo delta thời gian giữa các khung hình. Một ngày Mặt Trời trung bình trong mô hình tương ứng 60 giây thực.
+- Đồng hồ mô phỏng dùng thời gian tích lũy theo delta thời gian giữa các khung hình. Một ngày Mặt Trời trung bình trong mô hình tương ứng 60 giây thực. Góc quay Trái Đất được cập nhật bằng chênh lệch GMST, không dùng 360°/ngày sao.
 - Vị trí biểu kiến của Mặt Trời được tính bằng công thức thiên văn xấp xỉ theo ngày Julius mô phỏng. Vị trí Mặt Trăng được tính bằng bộ phần tử quỹ đạo gần đúng; cả hai dùng cùng thời gian mô phỏng đã tăng tốc.
 - Mô hình không vẽ quỹ đạo Trái Đất quanh Mặt Trời. Sự thay đổi hướng biểu kiến của Mặt Trời theo ngày được tính bằng công thức, không phải dữ liệu ephemeris độ chính xác cao.
 - Ảnh bề mặt Trái Đất tải từ tệp NASA Blue Marble cục bộ; nếu không tải được, mô hình thử các nguồn NASA trực tuyến. Không còn tạo bản đồ procedural để thay ảnh thật. Nếu tất cả nguồn đều lỗi, trang hiển thị lỗi và dọn tài nguyên đã khởi tạo.
@@ -158,3 +160,16 @@ Trong pilot SCIAVERSE, đã bổ sung một đường cleanup idempotent dùng c
 - Nếu người dùng rời trang trước khi texture tải xong, texture đến muộn được dispose thay vì gắn vào scene đã hủy.
 
 Đây là sửa lỗi vòng đời theo mã nguồn; chưa chứng minh được hành vi trên mọi trình duyệt. Vẫn cần thử WebGL và chuyển trang trên Android/iOS, kiểm tra landmark để xác nhận hướng quay trực quan.
+
+## Cập nhật mô hình — 28/11/2026
+
+- Bổ sung vòng xích đạo và trục quay Trái Đất; vòng hoàng đạo được đặt nghiêng 23,439291° so với mặt phẳng xích đạo. Trục quay cố định trong hệ quy chiếu không gian của mô hình.
+- Góc quay dùng chênh lệch Greenwich Mean Sidereal Time (GMST) giữa thời điểm mô phỏng và thời điểm bắt đầu. Một ngày Mặt Trời trung bình 60 giây tương ứng khoảng 360,985647° quay so với hệ sao; chuyển động biểu kiến của Mặt Trời bù phần xấp xỉ 0,985647° mỗi ngày.
+- GMST được tính theo công thức gần đúng từ Julian Date. Thời gian JavaScript UTC được dùng thay UT1; mô hình không hiệu chỉnh chuyển động cực hoặc toàn bộ thành phần nutation. Không dùng kết quả cho định vị thiên văn chính xác.
+- Nguồn bổ sung: U.S. Naval Observatory, *Computing Approximate Sidereal Time*, https://aa.usno.navy.mil/faq/GAST; NOAA/NESDIS/STAR, *MAG Convert Data to Alternate Geophysical Coordinate Systems*, ATBD v1.3, mục 3.4.2.3, https://www.ngdc.noaa.gov/stp/space-weather/online-publications/stp_sii/spades/algorithm-theoretic-basis-documents/atbds_mag/atbd_mag07_coordinate-systems_v1-3.pdf.
+
+## Kiểm thử runtime — 28/11/2026
+
+- GitHub Actions workflow `SCIAVERSE validation`, run `46107719993`, kết quả `success`, commit `eff7290536d290e83d47395061eb232d7af95ab0`.
+- Chromium/Playwright xác nhận tải texture và khởi tạo canvas; danh sách múi giờ có 15 lựa chọn; chọn UTC trả về `UTC +0`. Kiểm tra nguồn mã xác nhận dùng chênh lệch GMST và vòng hoàng đạo.
+- Responsive smoke test kiểm tra 320, 360, 390 và 430 CSS px. Không thay thế kiểm thử trên thiết bị vật lý hoặc đối chiếu ephemeris độc lập.

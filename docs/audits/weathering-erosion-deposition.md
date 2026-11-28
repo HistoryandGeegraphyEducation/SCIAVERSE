@@ -35,7 +35,7 @@ Các trường hợp cần xác nhận:
 - Bồi tụ: vật liệu tích tụ ở vùng thấp; không mô tả đây là quá trình tạo ra vật liệu mới.
 - Chuyển chế độ: chỉ nhóm hình học tương ứng hiển thị; tiêu đề và giải thích đổi cùng trạng thái.
 
-Đây là kiểm tra logic giao diện. Chưa có kiểm thử runtime WebGL trong trình duyệt ở lượt triển khai này.
+Đây là kiểm tra logic giao diện. Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại phần kiểm thử cập nhật. Chưa kiểm thử trên thiết bị vật lý.
 
 ## 5. Nguồn tham khảo
 
@@ -49,4 +49,16 @@ Các trường hợp cần xác nhận:
 - Triển khai: `sciaverse-pilot-in-progress`.
 - Đã tạo mô-đun HTML, JavaScript và CSS độc lập.
 - Chưa được xác nhận nghiệm thu khoa học.
-- Chưa kiểm thử runtime trên trình duyệt hoặc thiết bị di động.
+- Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại phần kiểm thử cập nhật. Chưa kiểm thử trên thiết bị vật lý.
+
+
+## Cập nhật mô hình — 28/11/2026
+
+- Khối bồi tụ được dựng theo phương thẳng đứng như một nón cụt thấp đặt trên bề mặt địa hình; các hạt trầm tích được đặt theo bề mặt khối nón. Các mũi tên xâm thực được đặt theo cao độ địa hình tại các điểm đầu, giữa và cuối.
+- Địa hình, dòng chảy và trầm tích vẫn là hình học tổng hợp. Không có dữ liệu địa hình, lưu lượng hoặc tải lượng trầm tích quan trắc.
+
+## Kiểm thử runtime — 28/11/2026
+
+- GitHub Actions workflow `SCIAVERSE validation`, run `46107719993`, kết quả `success`, commit `eff7290536d290e83d47395061eb232d7af95ab0`.
+- Chromium/Playwright chuyển đổi ba quá trình phong hóa, xâm thực và bồi tụ; kiểm tra mã xác nhận khối bồi tụ không còn bị xoay nằm ngang.
+- Responsive smoke test kiểm tra 320, 360, 390 và 430 CSS px. Không thay thế kiểm chứng bằng địa hình hoặc dữ liệu trầm tích thực.

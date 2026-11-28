@@ -134,7 +134,7 @@
     "sourcePath": "js/sims/geo-catalog.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Pilot 3D thể hiện bốn mốc phân/chí, trục nghiêng 23,44° giữ hướng gần như cố định. Quỹ đạo tròn và kích thước không theo tỉ lệ; mùa không do khoảng cách Mặt Trời. Chưa kiểm thử runtime.",
     "sciaversePath": "simulations/astronomy/earth-revolution/main.js",
     "implementationPath": "simulations/astronomy/earth-revolution/index.html"
@@ -199,7 +199,7 @@
     "sourcePath": "js/sims/geo-processes.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Pilot 3D minh họa ba kiểu ranh giới; chế độ hội tụ giới hạn ở hút chìm đại dương–lục địa. Tốc độ là giá trị kịch bản, không phải dữ liệu mảng thực. Chưa kiểm thử runtime.",
     "sciaversePath": "simulations/tectonics/plate-motion/main.js",
     "implementationPath": "simulations/tectonics/plate-motion/index.html"
@@ -212,7 +212,7 @@
     "sourcePath": "js/sims/geo-processes.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Pilot 3D phân biệt phong hóa cơ học tại chỗ, xâm thực do dòng chảy và bồi tụ ở vùng cửa sông. Không mô phỏng định lượng vận chuyển trầm tích. Chưa kiểm thử runtime.",
     "sciaversePath": "simulations/geomorphology/weathering-erosion-deposition/main.js",
     "implementationPath": "simulations/geomorphology/weathering-erosion-deposition/index.html"
@@ -225,7 +225,7 @@
     "sourcePath": "js/sims/geo-catalog.js",
     "implementationType": "independent-module",
     "scientificStatus": "in-review",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Pilot 3D so sánh truyền sóng P qua rắn/lỏng và sóng S bị chặn bởi nhân ngoài lỏng. Đường truyền là giản đồ, không tính khúc xạ hoặc vùng bóng địa chấn. Chưa kiểm thử runtime.",
     "sciaversePath": "simulations/geophysics/seismic-waves/main.js",
     "implementationPath": "simulations/geophysics/seismic-waves/index.html"
@@ -465,7 +465,7 @@
     "sourcePath": "js/sims/earth.js",
     "implementationType": "independent-module",
     "scientificStatus": "validated",
-    "implementationStatus": "sciaverse-pilot-in-progress",
+    "implementationStatus": "verified-in-build",
     "notes": "Pilot độc lập dùng Blue Marble NASA SVS, trục nghiêng 23,44°, chu kỳ ngày Mặt Trời trung bình 24 giờ. Đã tăng cường cleanup WebGL; còn kiểm tra hướng quay bằng landmark và thiết bị thật.",
     "sciaversePath": "simulations/earth/rotation/main.js",
     "implementationPath": "simulations/earth/rotation/index.html",

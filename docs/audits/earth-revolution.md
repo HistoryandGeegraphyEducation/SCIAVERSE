@@ -33,7 +33,7 @@ Các trường hợp cần xác nhận:
 - Mặt Trời luôn ở tâm quỹ đạo; không thay đổi khoảng cách theo một quỹ đạo elip giả lập.
 - Bộ điều khiển thời gian thay đổi vị trí theo góc quỹ đạo giản đồ; tốc độ chọn là số ngày mô phỏng mỗi giây, không phải tốc độ vận tốc quỹ đạo vật lí.
 
-Đây là kiểm tra logic hình học. Chưa có kiểm thử runtime WebGL trong trình duyệt ở lượt triển khai này.
+Đây là kiểm tra logic hình học. Đã có kiểm thử runtime bằng Chromium/Playwright; kết quả và phạm vi được ghi tại phần kiểm thử cập nhật. Chưa kiểm thử trên thiết bị vật lý.
 
 ## 5. Nguồn tham khảo
 
@@ -52,3 +52,10 @@ Các trường hợp cần xác nhận:
 - CI Chromium ngày 28/11/2026 đã xác nhận khởi tạo WebGL, thanh thời gian liên tục, điều khiển chạy/tạm dừng và cập nhật vị trí quỹ đạo.
 - Kiểm tra cảm ứng mô phỏng đạt; chưa kiểm thử thủ công trên thiết bị vật lí.
 - Trạng thái khoa học và triển khai chưa thay đổi.
+
+
+## Kiểm thử runtime — 28/11/2026
+
+- GitHub Actions workflow `SCIAVERSE validation`, run `46107719993`, kết quả `success`, commit `eff7290536d290e83d47395061eb232d7af95ab0`.
+- Chromium/Playwright kiểm tra bốn mốc phân/chí, ngày mô phỏng 172 tương ứng hạ chí, thanh thời gian chạy và tạm dừng, giới hạn thanh trượt bằng 365,2422 ngày.
+- Responsive smoke test kiểm tra 320, 360, 390 và 430 CSS px. Không xác nhận vị trí thiên văn thực theo năm hoặc epoch cụ thể.
