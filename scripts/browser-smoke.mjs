@@ -47,8 +47,10 @@ try{
   const modelRegistry=JSON.parse(fs.readFileSync(path.join(root,'data/model-registry.json'),'utf8')).filter(item=>item.implementationPath);
   const modelPage=await browser.newPage({viewport:{width:390,height:844}});
   for(const model of modelRegistry){
-    const metrics=await inspect(modelPage,'/'+model.implementationPath,390,844);
-    assert.ok(metrics.knowledge,'missing knowledge-level switch: '+model.id);
+    for(const width of [320,360,390,430]){
+      const metrics=await inspect(modelPage,'/'+model.implementationPath,width,844);
+      assert.ok(metrics.knowledge,'missing knowledge-level switch: '+model.id);
+    }
   }
   await modelPage.close();
 
@@ -87,7 +89,9 @@ try{
 
   await page.goto(base+'/labs/simple-pendulum/index.html',{waitUntil:'domcontentloaded'});
   const periodBefore=await page.locator('#pendulumPeriod').textContent();
-  await page.locator('#pendulumLength').fill('2');
+  await page.locator('#pendulumLength').evaluate(element=>{
+    element.value='2';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
   const periodAfter=await page.locator('#pendulumPeriod').textContent();
   assert.notEqual(periodBefore,periodAfter,'pendulum period must change with length');
   await page.locator('#pendulumPlay').click();
@@ -103,7 +107,9 @@ try{
   await page.locator('#orbitPlay').click();
   await page.waitForTimeout(120);
   await page.locator('#orbitPause').click();
-  await page.locator('#orbitDay').fill('250');
+  await page.locator('#orbitDay').evaluate(element=>{
+    element.value='250';element.dispatchEvent(new Event('input',{bubbles:true}));
+  });
   assert.match(await page.locator('#orbitDayValue').textContent(),/Ngày thứ/);
 
   await page.goto(base+'/simulations/astronomy/earth-revolution/index.html',{waitUntil:'domcontentloaded'});
