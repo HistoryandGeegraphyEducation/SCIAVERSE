@@ -44,18 +44,14 @@
   }
 
   function renderSimulationList(models) {
-    contentTitle.textContent = 'Mô hình đã nghiệm thu';
-    const accepted = models.filter(model =>
-      model.scientificStatus === 'validated' &&
-      model.implementationStatus === 'verified-in-build' &&
-      model.implementationPath
-    );
-    if (!accepted.length) {
-      showError('Chưa có mô hình đạt đồng thời điều kiện nghiệm thu khoa học và kiểm thử kỹ thuật.');
+    contentTitle.textContent = 'Mô hình khoa học';
+    const available = models.filter(model => Boolean(model.implementationPath));
+    if (!available.length) {
+      showError('Chưa có mô hình được triển khai trong không gian này.');
       return;
     }
     const list = node('div', 'standalone-list');
-    accepted.forEach(model => {
+    available.forEach(model => {
       const item = node('a', 'standalone-item');
       item.href = model.implementationPath;
       item.append(node('h3', '', model.title));

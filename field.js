@@ -18,14 +18,14 @@
     list.textContent = '';
   }
 
-  function renderModels(models) {
-    const accepted = models.filter(model =>
-      model.fieldId === fieldId &&
-      model.scientificStatus === 'validated' &&
-      model.implementationStatus === 'verified-in-build' &&
-      Boolean(model.implementationPath)
+  function renderModels(models, labs) {
+    const availableModels = models.filter(model =>
+      model.fieldId === fieldId && Boolean(model.implementationPath)
     );
-    accepted.forEach(model => {
+    const availableLabs = labs
+      .filter(lab => lab.fieldId === fieldId && Boolean(lab.implementationPath))
+      .map(lab => ({ title: lab.title, implementationPath: lab.implementationPath }));
+    [...availableModels, ...availableLabs].forEach(model => {
       const item = document.createElement('a');
       item.className = 'standalone-item';
       item.href = model.implementationPath;
@@ -44,8 +44,12 @@
     fetch('data/model-registry.json').then(response => {
       if (!response.ok) throw new Error('Không tải được danh mục mô hình.');
       return response.json();
+    }),
+    fetch('data/virtual-labs.json').then(response => {
+      if (!response.ok) throw new Error('Không tải được danh mục thí nghiệm.');
+      return response.json();
     })
-  ]).then(([fields, models]) => {
+  ]).then(([fields, models, labs]) => {
     const field = fields.find(item => item.id === fieldId);
     if (!field) {
       showError('Liên kết lĩnh vực không hợp lệ hoặc lĩnh vực chưa được đăng ký.');
@@ -54,6 +58,6 @@
     title.textContent = field.name;
     description.textContent = field.description;
     document.title = 'SCIAVERSE — ' + field.name;
-    renderModels(models);
+    renderModels(models, labs);
   }).catch(error => showError(error.message || 'Không thể tải nội dung lĩnh vực.'));
 })();
